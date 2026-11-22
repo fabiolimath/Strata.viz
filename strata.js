@@ -140,7 +140,7 @@
 </div>
 <div id="painel-macros" class="painel-mini" hidden="" role="dialog" aria-label="Macros LaTeX do documento">
   <div class="linha"><b>Adicionar macros LaTeX</b></div>
-  <div class="pmc-dica">Acrescente macros a este documento, um <code>\newcommand</code> por linha. Elas são gravadas no arquivo. <a href="https://fabiolimath.github.io/Strata.viz/#macros" target="_blank" rel="noopener">Macros pré-carregadas</a></div>
+  <div class="pmc-dica">Acrescente macros a este documento, um <code>\newcommand</code> por linha. Elas são gravadas no arquivo. <a href="https://github.com/fabiolimath/Preambulo/blob/HEAD/fol-MathJax.sty" target="_blank" rel="noopener">Todas as macros (fol-MathJax.sty, no Preambulo)</a></div>
   <textarea id="pmc-tex" rows="6" spellcheck="false"></textarea>
   <div id="pmc-erro"></div>
   <div class="linha" style="justify-content:flex-end"><button type="button" id="pmc-cancelar">Cancelar</button><button type="button" id="pmc-ok" style="background:#2a6;color:#fff;border-color:#2a6">Aplicar</button></div>
