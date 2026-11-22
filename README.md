@@ -24,8 +24,8 @@ apresentação, edição), sem recarregar:
 
 No canto superior direito ficam o botão de **tema** (o ícone mostra o tema
 atual, sol no claro e lua no escuro; na 1ª vez segue o sistema; vale só na tela
-de quem lê, o arquivo não muda), o **menu** ☰ e, no modo edição, o botão
-**Novo documento**. O menu tem, em todos os modos, **Salvar para usar offline**
+de quem lê, o arquivo não muda) e o **menu** ☰, no canto. No modo edição, o
+botão **Novo documento** aparece à esquerda do tema. O menu tem, em todos os modos, **Salvar para usar offline**
 e o link para o site; na edição, também **Adicionar macros LaTeX** e a opção
 **Enter cria camada** (cada Enter no texto começa uma camada nova; preferência
 de quem edita, guardada no navegador).
@@ -64,7 +64,7 @@ salvar, sai de novo só o conteúdo: a interface não fica gravada no arquivo, e
 uma versão nova do Strata vale para todos os documentos que o carregam.
 
 O jeito mais simples de começar um documento é o botão **Novo documento** (modo
-edição, à direita do menu ☰): abre uma página em branco com o mesmo editor e
+edição, à esquerda do tema): abre uma página em branco com o mesmo editor e
 o mesmo `<head>` do documento de onde saiu (inclusive o bloco de macros), que se
 salva como `novo_documento.html`.
 

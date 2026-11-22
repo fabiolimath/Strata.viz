@@ -127,8 +127,8 @@ body.sujo #modos .sep { display: block; }
 /* modos: coluna flutuante à direita, sempre no mesmo lugar (leitura, apresentação, edição) */
 #modos-v { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 6px; }
 #modos-v button { box-shadow: 0 1px 6px rgba(0,0,0,.12); }
-/* Novo documento só na edição, mas o lugar fica reservado: o ☰ não se move */
-body:not(.editando) #modos #b-novo { visibility: hidden; }
+/* Novo documento só na edição, à esquerda do tema: surge sem mover o tema e o ☰ (o canto) */
+body:not(.editando) #modos #b-novo { display: none; }
 #aviso { color: #2a6; background: #fff; border-radius: 4px; padding: 0 4px; }
 #aviso:empty { display: none; }
 @media print { #modos { display: none !important; } }
