@@ -101,7 +101,7 @@
   <button type="button" id="b-novo" title="Novo documento: abre, numa nova aba, uma página em branco com o mesmo editor" aria-label="Novo documento"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h8l5 5v6"></path><path d="M13 3v5h5"></path><path d="M5 3v18h8"></path><path d="M18 16v6M15 19h6"></path></svg></button>
   <button type="button" id="b-tema" title="Tema claro (clique para o escuro; só nesta tela, o arquivo não muda)" aria-label="Tema claro ou escuro"><svg class="lua" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg><svg class="sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"></path></svg></button>
   <span class="menu-strata"><button type="button" id="b-menu" title="Menu" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h16"></path></svg></button>
-    <span id="menu-strata" role="menu" hidden><button type="button" role="menuitem" id="mi-macros" class="so-edicao"><span class="mi-check" aria-hidden="true"></span>Adicionar macros LaTeX…</button><button type="button" role="menuitemcheckbox" id="mi-enter-camada" class="so-edicao" aria-checked="false" title="Na edição, cada Enter no texto começa uma camada nova (preferência desta tela; o arquivo não muda)"><span class="mi-check" aria-hidden="true"></span>Enter cria camada</button><button type="button" role="menuitem" id="mi-offline" title="Baixa este documento num arquivo só, com o Strata e o MathJax dentro, que abre sem internet"><span class="mi-check" aria-hidden="true"></span>Salvar para usar offline</button><a role="menuitem" href="https://fabiolimath.github.io/Strata.viz/" target="_blank" rel="noopener"><span class="mi-check" aria-hidden="true"></span>Sobre o Strata.viz</a></span></span>
+    <span id="menu-strata" role="menu" hidden><button type="button" role="menuitem" id="mi-macros" class="so-edicao"><span class="mi-check" aria-hidden="true"></span>Adicionar macros LaTeX…</button><button type="button" role="menuitemcheckbox" id="mi-enter-camada" class="so-edicao" aria-checked="false" title="Na edição, cada Enter no texto começa uma camada nova (preferência desta tela; o arquivo não muda)"><span class="mi-check" aria-hidden="true"></span>Enter cria camada</button><button type="button" role="menuitem" id="mi-offline" title="Baixa este documento num arquivo só, com o Strata e o MathJax dentro, que abre sem internet"><span class="mi-check" aria-hidden="true"></span>Salvar para usar offline</button><button type="button" role="menuitem" id="mi-pdf" title="Abre a impressão com as páginas no tamanho certo; escolha &quot;Salvar como PDF&quot;"><span class="mi-check" aria-hidden="true"></span>Exportar PDF…</button><a role="menuitem" href="https://fabiolimath.github.io/Strata.viz/" target="_blank" rel="noopener"><span class="mi-check" aria-hidden="true"></span>Sobre o Strata.viz</a></span></span>
   <span id="modos-v">
   <button type="button" id="m-leitura" data-modo="leitura" title="Modo leitura" aria-label="Modo leitura"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5C5.5 4.3 8.5 4.3 12 6c3.5-1.7 6.5-1.7 9-.5V19c-2.5-1.2-5.5-1.2-9 .5-3.5-1.7-6.5-1.7-9-.5z"></path><path d="M12 6v13.5"></path></svg></button>
   <button type="button" id="m-aula" data-modo="aula" title="Modo apresentação (camadas). Clique de novo para voltar ao modo anterior" aria-label="Modo apresentação"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"></rect><path d="M12 16v3M8 21l4-2 4 2"></path><path d="M10 7.8v4.4l3.8-2.2z"></path></svg></button>
@@ -110,18 +110,20 @@
 </div>
 <div id="barra">
   <span class="combo" id="c-estilo"><button type="button" id="b-estilo" class="b-icone" title="Estilo do parágrafo: Parágrafo" aria-label="Estilo do parágrafo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4v16M17 4v16M19.5 4H10.5a4.5 4.5 0 0 0 0 9H13"/></svg></button><button type="button" class="combo-seta" title="Estilo do parágrafo: escolher" aria-label="Estilo do parágrafo: escolher">▾</button>
-    <span class="combo-menu" hidden=""><button type="button" data-estilo="p" style="font: 15px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4v16M17 4v16M19.5 4H10.5a4.5 4.5 0 0 0 0 9H13"/></svg></span>Parágrafo</button><button type="button" data-estilo="h1" style="font: bold 25px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">1</text></svg></span>Título 1</button><button type="button" data-estilo="subtitulo" style="font: 17px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16" stroke-width="3"/><path d="M7 15h10M9 19h6"/></svg></span>Subtítulo</button><button type="button" data-estilo="h2" style="font: bold 23px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">2</text></svg></span>Título 2</button><button type="button" data-estilo="h3" style="font: bold 21px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">3</text></svg></span>Título 3</button><button type="button" data-estilo="h4" style="font: bold 18px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">4</text></svg></span>Título 4</button><button type="button" data-estilo="eq" style="font: 15px system-ui, sans-serif" title="Linha de equação: fórmulas sem recuo; alinhada à esquerda vira linha de igualdades (Enter no fim cria a próxima linha)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="5" y="18.5" font-family="Times New Roman, serif" font-style="italic" font-weight="bold" font-size="17">x</text><text x="14" y="10.5" font-family="Times New Roman, serif" font-weight="bold" font-size="10">2</text></svg></span>Equação</button><button type="button" data-estilo="pre" style="font: 14px ui-monospace, Consolas, monospace"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 7L3.5 12l5 5M15.5 7l5 5-5 5M13.5 5l-3 14"/></svg></span>Pré-formatado</button><button type="button" data-estilo="blockquote" style="font: 15px system-ui, sans-serif; color: #666"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7c-3.2.6-5 2.8-5 6v4h5v-5H7.2c.2-1.6 1.2-2.7 2.8-3.1zM19 7c-3.2.6-5 2.8-5 6v4h5v-5h-2.8c.2-1.6 1.2-2.7 2.8-3.1z" fill="currentColor" stroke="none"/></svg></span>Bloco de citação</button></span></span>
+    <span class="combo-menu" hidden=""><button type="button" data-estilo="p" style="font: 15px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4v16M17 4v16M19.5 4H10.5a4.5 4.5 0 0 0 0 9H13"/></svg></span>Parágrafo</button><button type="button" data-estilo="h1" style="font: bold 25px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">1</text></svg></span>Título 1</button><button type="button" data-estilo="subtitulo" style="font: 17px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16" stroke-width="3"/><path d="M7 15h10M9 19h6"/></svg></span>Subtítulo</button><button type="button" data-estilo="h2" style="font: bold 23px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">2</text></svg></span>Título 2</button><button type="button" data-estilo="h3" style="font: bold 21px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">3</text></svg></span>Título 3</button><button type="button" data-estilo="h4" style="font: bold 18px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">4</text></svg></span>Título 4</button><button type="button" data-estilo="eq" style="font: 15px system-ui, sans-serif" title="Linha de equação: fórmulas sem recuo; alinhada à esquerda vira linha de igualdades (Enter no fim cria a próxima linha)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="5" y="18.5" font-family="Times New Roman, serif" font-style="italic" font-weight="bold" font-size="17">x</text><text x="14" y="10.5" font-family="Times New Roman, serif" font-weight="bold" font-size="10">2</text></svg></span>Equação</button><button type="button" data-estilo="pre" style="font: 14px ui-monospace, Consolas, monospace"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 7L3.5 12l5 5M15.5 7l5 5-5 5M13.5 5l-3 14"/></svg></span>Pré-formatado</button><button type="button" data-estilo="blockquote" style="font: 15px system-ui, sans-serif; color: #666"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7c-3.2.6-5 2.8-5 6v4h5v-5H7.2c.2-1.6 1.2-2.7 2.8-3.1zM19 7c-3.2.6-5 2.8-5 6v4h5v-5h-2.8c.2-1.6 1.2-2.7 2.8-3.1z" fill="currentColor" stroke="none"/></svg></span>Bloco de citação</button><button type="button" data-ambiente="definicao" title="Ambiente Definição: caixa com título editável em volta dos parágrafos selecionados (clique de novo para tirar)" style="font: 15px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#1b8a3a"/><path d="M6 8.5h5" stroke="#1b8a3a" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Definição</button><button type="button" data-ambiente="teorema" title="Ambiente Teorema: caixa com título editável em volta dos parágrafos selecionados (clique de novo para tirar)" style="font: 15px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#3333cc"/><path d="M6 8.5h5" stroke="#3333cc" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Teorema</button><button type="button" data-ambiente="exemplo" title="Ambiente Exemplo: caixa com título editável em volta dos parágrafos selecionados (clique de novo para tirar)" style="font: 15px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#ff8000"/><path d="M6 8.5h5" stroke="#ff8000" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Exemplo</button><button type="button" data-ambiente="observacao" title="Ambiente Observação: caixa com título editável em volta dos parágrafos selecionados (clique de novo para tirar)" style="font: 15px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#777"/><path d="M6 8.5h5" stroke="#777" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Observação</button></span></span>
   <span class="combo grupo" id="c-fmt"><button type="button" id="b-fmt" class="b-icone" title="Formatação do texto" aria-label="Formatação do texto"></button><button type="button" class="combo-seta" title="Formatação do texto: escolher" aria-label="Formatação do texto: escolher">▾</button>
     <span class="combo-menu" hidden=""><button type="button" id="b-negrito" title="Negrito (Ctrl+B)" aria-label="Negrito"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17.5" text-anchor="middle" font-size="17" font-family="Times New Roman, serif" font-weight="bold">B</text></svg></span>Negrito (Ctrl+B)</button><button type="button" id="b-italico" title="Itálico (Ctrl+I)" aria-label="Itálico"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17.5" text-anchor="middle" font-size="17" font-family="Times New Roman, serif" font-style="italic">I</text></svg></span>Itálico (Ctrl+I)</button><button type="button" id="b-limpar" title="Remover formatação (negrito, itálico, cor do texto)" aria-label="Remover formatação"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h11M11.5 5L9 18"/><path d="M14.5 14.5l5 5M19.5 14.5l-5 5"/></svg></span>Remover formatação</button></span></span>
   <span class="combo" id="c-cor"><button type="button" id="b-cor" class="b-icone" title="Cor do texto: preto (clique de novo na mesma cor para remover)" aria-label="Cor do texto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 16L12 4l5 12M8.8 12h6.4"></path><rect class="barra-cor" x="4" y="18.5" width="16" height="3.5" rx="1" stroke="none"></rect></svg></button><button type="button" class="combo-seta" title="Escolher a cor" aria-label="Escolher a cor">▾</button>
     <span class="combo-menu" hidden=""><button type="button" class="b-cor" data-cor="cor-preto" style="--c: #111111" title="Preto">Preto</button><button type="button" class="b-cor" data-cor="cor-azul" style="--c: #3333cc" title="Azul">Azul</button><button type="button" class="b-cor" data-cor="rotulo" style="--c: #ff8000" title="Laranja">Laranja</button><button type="button" class="b-cor" data-cor="cor-vermelho" style="--c: #d01c1c" title="Vermelho">Vermelho</button><button type="button" class="b-cor" data-cor="cor-verde" style="--c: #1b8a3a" title="Verde">Verde</button><button type="button" class="b-cor" data-cor="cor-roxo" style="--c: #8e24aa" title="Roxo">Roxo</button></span></span>
   <button type="button" id="b-link" class="b-icone" title="Inserir ou editar link (Ctrl+K)" aria-label="Link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></button>
   <button type="button" id="b-imagem" class="b-icone" title="Inserir imagem: colar, arrastar, arquivo ou link" aria-label="Imagem"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg></button>
+  <button type="button" id="b-video" class="b-icone" title="Inserir vídeo ou conteúdo embutido (YouTube, Vimeo, GeoGebra, código de incorporação)" aria-label="Vídeo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></button>
+  <button type="button" id="b-simbolos" class="b-icone" title="Símbolos e caracteres especiais" aria-label="Símbolos"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="18" text-anchor="middle" font-size="16" font-family="Times New Roman, serif" fill="currentColor" stroke="none">Ω</text></svg></button>
   <span class="combo" id="c-tabela"><button type="button" id="b-tabela" class="b-icone" title="Inserir tabela" aria-label="Inserir tabela"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M3 15h18M9 4v16M15 4v16"/></svg></button><button type="button" class="combo-seta" title="Tabela: linhas, colunas, mesclar" aria-label="Tabela: linhas, colunas, mesclar">▾</button>
     <span class="combo-menu" hidden=""><button type="button" data-tab="linha-acima" title="Inserir linha acima"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="9" rx="1"/><path d="M3 15.5h18M9 11v9M15 11v9M12 2.5v6M9 5.5h6"/></svg></span>Inserir linha acima</button><button type="button" data-tab="linha-abaixo" title="Inserir linha abaixo"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="9" rx="1"/><path d="M3 8.5h18M9 4v9M15 4v9M12 15.5v6M9 18.5h6"/></svg></span>Inserir linha abaixo</button><button type="button" data-tab="col-esq" title="Inserir coluna à esquerda"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="11" y="3" width="9" height="18" rx="1"/><path d="M15.5 3v18M11 9h9M11 15h9M2.5 12h6M5.5 9v6"/></svg></span>Inserir coluna à esquerda</button><button type="button" data-tab="col-dir" title="Inserir coluna à direita"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="9" height="18" rx="1"/><path d="M8.5 3v18M4 9h9M4 15h9M15.5 12h6M18.5 9v6"/></svg></span>Inserir coluna à direita</button><button type="button" data-tab="del-linha" title="Excluir linha"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="8" rx="1"/><path d="M9 8v8M15 8v8"/><path d="M8 3l8 18" stroke="#d01c1c"/></svg></span>Excluir linha</button><button type="button" data-tab="del-col" title="Excluir coluna"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="3" width="8" height="18" rx="1"/><path d="M8 9h8M8 15h8"/><path d="M3 8l18 8" stroke="#d01c1c"/></svg></span>Excluir coluna</button><button type="button" data-tab="mesclar" title="Mesclar células (selecione duas ou mais)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 12h10M14 9l3 3-3 3M10 9l-3 3 3 3"/></svg></span>Mesclar células</button><button type="button" data-tab="separar" title="Separar célula mesclada"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M12 5v14M4.5 12h5M7 9.5L9.5 12 7 14.5M19.5 12h-5M17 9.5L14.5 12l2.5 2.5"/></svg></span>Separar célula mesclada</button><button type="button" data-tab="cabecalho" title="1ª linha como cabeçalho (liga/desliga)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><rect x="3" y="4" width="18" height="5" fill="#ff8000" stroke="none" opacity=".7"/><path d="M3 9h18M3 14.5h18M12 4v16"/></svg></span>1ª linha como cabeçalho</button><button type="button" data-tab="del-tabela" title="Excluir tabela"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M3 15h18M9 4v16M15 4v16"/><path d="M4 21L20 3" stroke="#d01c1c"/></svg></span>Excluir tabela</button></span></span>
   <span class="sep"></span>
   <span class="combo grupo" id="c-alinha"><button type="button" id="b-alinha" class="b-icone" title="Alinhamento" aria-label="Alinhamento"></button><button type="button" class="combo-seta" title="Alinhamento: escolher" aria-label="Alinhamento: escolher">▾</button>
-    <span class="combo-menu" hidden=""><button type="button" id="b-al-esq" data-alinha="alinha-esq" title="Alinhar à esquerda" aria-label="Alinhar à esquerda"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h10M4 14h16M4 18h10"/></svg></span>À esquerda</button><button type="button" id="b-al-centro" data-alinha="alinha-centro" title="Centralizar" aria-label="Centralizar"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 10h10M4 14h16M7 18h10"/></svg></span>Centralizado</button><button type="button" id="b-al-dir" data-alinha="alinha-dir" title="Alinhar à direita" aria-label="Alinhar à direita"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M10 10h10M4 14h16M10 18h10"/></svg></span>À direita</button><button type="button" id="b-al-just" data-alinha="alinha-just" title="Justificado (com hifenização automática)" aria-label="Justificado"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h16M4 14h16M4 18h10"/></svg></span>Justificado</button><button type="button" id="b-colunas" title="Duas colunas: os blocos selecionados (ou o atual) ficam em duas colunas. Clique de novo para voltar a uma." aria-label="Duas colunas"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h7.5M3 10h7.5M3 14h7.5M3 18h5M13.5 6H21M13.5 10H21M13.5 14H21M13.5 18h5"/></svg></span>Duas colunas</button><button type="button" id="b-nota" title="Nota lateral vermelha (*:) ao lado do parágrafo atual" aria-label="Nota lateral"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="12" height="17" rx="1"></rect><path d="M5.5 8h6M5.5 11.5h6M5.5 15h4"></path><path d="M19.5 6.5v6M16.9 8l5.2 3M22.1 8l-5.2 3" stroke="#d01c1c"></path></svg></span>Nota lateral</button><button type="button" id="b-qed" title="Quod erat demonstrandum (Q.E.D.): ◼ laranja à direita, no fim do bloco atual, numa camada própria. Clique de novo no mesmo bloco para tirar." aria-label="Quod erat demonstrandum (Q.E.D.)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11M3 12h11M3 17h8"/><rect x="15" y="13" width="6" height="6" fill="#ff8000" stroke="none"/></svg></span>Quod erat demonstrandum (Q.E.D.)</button></span></span>
+    <span class="combo-menu" hidden=""><button type="button" id="b-al-esq" data-alinha="alinha-esq" title="Alinhar à esquerda" aria-label="Alinhar à esquerda"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h10M4 14h16M4 18h10"/></svg></span>À esquerda</button><button type="button" id="b-al-centro" data-alinha="alinha-centro" title="Centralizar" aria-label="Centralizar"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 10h10M4 14h16M7 18h10"/></svg></span>Centralizado</button><button type="button" id="b-al-dir" data-alinha="alinha-dir" title="Alinhar à direita" aria-label="Alinhar à direita"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M10 10h10M4 14h16M10 18h10"/></svg></span>À direita</button><button type="button" id="b-al-just" data-alinha="alinha-just" title="Justificado (com hifenização automática)" aria-label="Justificado"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h16M4 14h16M4 18h10"/></svg></span>Justificado</button><button type="button" id="b-colunas" title="Duas colunas: os blocos selecionados (ou o atual) ficam em duas colunas. Clique de novo para voltar a uma." aria-label="Duas colunas"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h7.5M3 10h7.5M3 14h7.5M3 18h5M13.5 6H21M13.5 10H21M13.5 14H21M13.5 18h5"/></svg></span>Duas colunas</button><button type="button" id="b-nota" title="Nota lateral vermelha (*:) ao lado do parágrafo atual" aria-label="Nota lateral"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="12" height="17" rx="1"></rect><path d="M5.5 8h6M5.5 11.5h6M5.5 15h4"></path><path d="M19.5 6.5v6M16.9 8l5.2 3M22.1 8l-5.2 3" stroke="#d01c1c"></path></svg></span>Nota lateral</button><button type="button" id="b-nota-rodape" title="Nota de rodapé: número no ponto do cursor e o texto no pé da página" aria-label="Nota de rodapé"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="2.5" width="15" height="19" rx="1"/><path d="M7.5 6.5h9M7.5 10h9"/><path d="M7.5 17.5h7" stroke-width="1.3"/><path d="M7.5 15h9" stroke-dasharray="2 1.5" stroke-width="1"/><text x="15.5" y="9" font-size="6" fill="#d01c1c" stroke="none">1</text></svg></span>Nota de rodapé</button><button type="button" id="b-qed" title="Quod erat demonstrandum (Q.E.D.): ◼ laranja à direita, no fim do bloco atual, numa camada própria. Clique de novo no mesmo bloco para tirar." aria-label="Quod erat demonstrandum (Q.E.D.)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11M3 12h11M3 17h8"/><rect x="15" y="13" width="6" height="6" fill="#ff8000" stroke="none"/></svg></span>Quod erat demonstrandum (Q.E.D.)</button></span></span>
   <span class="combo grupo" id="c-lista"><button type="button" id="b-listas" class="b-icone" title="Listas" aria-label="Listas"></button><button type="button" class="combo-seta" title="Listas: escolher" aria-label="Listas: escolher">▾</button>
     <span class="combo-menu" hidden=""><button type="button" id="b-lista" title="Lista com marcadores" aria-label="Lista com marcadores"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="6" r="1.3" fill="currentColor" stroke="none"/><circle cx="5" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="5" cy="18" r="1.3" fill="currentColor" stroke="none"/><path d="M9 6h11M9 12h11M9 18h11"/></svg></span>Com marcadores</button><button type="button" id="b-lista-num" title="Lista numerada" aria-label="Lista numerada"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="8.5" font-size="7.5">1</text><text x="2" y="14.5" font-size="7.5">2</text><text x="2" y="20.5" font-size="7.5">3</text><path d="M9 6h11M9 12h11M9 18h11"/></svg></span>Numerada</button><button type="button" id="b-lista-rom" title="Lista com romanos: i), ii), iii)" aria-label="Lista com romanos"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="1" y="8.5" font-size="6.5" font-family="Times New Roman, serif" font-style="italic">i)</text><text x="1" y="14.5" font-size="6.5" font-family="Times New Roman, serif" font-style="italic">ii)</text><text x="1" y="20.5" font-size="6.5" font-family="Times New Roman, serif" font-style="italic">iii)</text><path d="M10 6h10M10 12h10M10 18h10"/></svg></span>Romanos: i), ii), iii)</button><button type="button" id="b-lista-alfa" title="Lista com letras: a), b), c)" aria-label="Lista com letras"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="1" y="8.5" font-size="6.5" font-family="Times New Roman, serif" font-style="italic">a)</text><text x="1" y="14.5" font-size="6.5" font-family="Times New Roman, serif" font-style="italic">b)</text><text x="1" y="20.5" font-size="6.5" font-family="Times New Roman, serif" font-style="italic">c)</text><path d="M10 6h10M10 12h10M10 18h10"/></svg></span>Letras: a), b), c)</button></span></span>
   <button type="button" id="b-menos-recuo" class="b-icone" title="Diminuir recuo (no parágrafo sem recuo, tira o recuo da primeira linha)" aria-label="Diminuir recuo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 6h9M11 10h9M11 14h9M4 18h16"/><path d="M7.5 8.5L4.5 11.5l3 3"/></svg></button>
@@ -141,6 +143,7 @@
 </div>
 <div id="painel-link" class="painel-mini" hidden="">
   <div class="linha"><span class="rot">Link</span><input type="url" id="pl-url" placeholder="https://..." spellcheck="false"></div>
+  <div class="linha"><span class="rot">Ou ir para</span><select id="pl-destino"><option value="">(um ponto deste documento)</option></select></div>
   <div class="linha" style="justify-content:flex-end"><button type="button" id="pl-remover">Remover link</button><button type="button" id="pl-cancelar">Cancelar</button><button type="button" id="pl-ok" style="background:#2a6;color:#fff;border-color:#2a6">OK</button></div>
 </div>
 <div id="painel-imagem" class="painel-mini" hidden="" role="dialog" aria-label="Inserir imagem">
@@ -156,6 +159,18 @@
   <div class="linha"><span class="rot">Linhas</span><input type="number" id="pt-linhas" min="1" max="60" value="3"><span class="rot" style="width:auto;margin-left:10px">Colunas</span><input type="number" id="pt-colunas" min="1" max="20" value="3"></div>
   <div class="linha"><label><input type="checkbox" id="pt-cab" checked=""> 1ª linha como cabeçalho</label></div>
   <div class="linha" style="justify-content:flex-end"><button type="button" id="pt-cancelar">Cancelar</button><button type="button" id="pt-ok" style="background:#2a6;color:#fff;border-color:#2a6">Inserir</button></div>
+</div>
+<div id="aviso-rascunho" hidden="" role="alert"><span id="ar-texto"></span><button type="button" id="ar-recuperar">Recuperar</button><button type="button" id="ar-baixar" title="Baixa o rascunho como um arquivo à parte">Baixar</button><button type="button" id="ar-descartar">Descartar</button></div>
+<div id="painel-video" class="painel-mini" hidden="" role="dialog" aria-label="Inserir vídeo">
+  <div class="linha"><b>Inserir vídeo ou conteúdo</b></div>
+  <div class="linha"><span class="rot">Link</span><input type="url" id="pv-url" placeholder="YouTube, Vimeo, GeoGebra ou código &lt;iframe&gt;" spellcheck="false"></div>
+  <div id="pv-erro"></div>
+  <div class="pmc-dica">O vídeo fica na página como um quadro (precisa de internet). Na edição, clique nele para mudar a largura ou apagar.</div>
+  <div class="linha" style="justify-content:flex-end"><button type="button" id="pv-cancelar">Cancelar</button><button type="button" id="pv-ok" style="background:#2a6;color:#fff;border-color:#2a6">Inserir</button></div>
+</div>
+<div id="painel-simbolos" class="painel-mini" hidden="" role="dialog" aria-label="Símbolos">
+  <div class="linha"><b>Símbolos</b><span class="pmc-dica" style="margin-left:auto">clique para inserir no texto</span><button type="button" id="ps-fechar" title="Fechar (Esc)">✕</button></div>
+  <div class="ps-grupo"><span class="ps-rot">Gregas</span><button type="button" data-s="α">α</button><button type="button" data-s="β">β</button><button type="button" data-s="γ">γ</button><button type="button" data-s="δ">δ</button><button type="button" data-s="ε">ε</button><button type="button" data-s="ϵ">ϵ</button><button type="button" data-s="ζ">ζ</button><button type="button" data-s="η">η</button><button type="button" data-s="θ">θ</button><button type="button" data-s="ϑ">ϑ</button><button type="button" data-s="ι">ι</button><button type="button" data-s="κ">κ</button><button type="button" data-s="λ">λ</button><button type="button" data-s="μ">μ</button><button type="button" data-s="ν">ν</button><button type="button" data-s="ξ">ξ</button><button type="button" data-s="π">π</button><button type="button" data-s="ρ">ρ</button><button type="button" data-s="σ">σ</button><button type="button" data-s="τ">τ</button><button type="button" data-s="υ">υ</button><button type="button" data-s="φ">φ</button><button type="button" data-s="ϕ">ϕ</button><button type="button" data-s="χ">χ</button><button type="button" data-s="ψ">ψ</button><button type="button" data-s="ω">ω</button><button type="button" data-s="Γ">Γ</button><button type="button" data-s="Δ">Δ</button><button type="button" data-s="Θ">Θ</button><button type="button" data-s="Λ">Λ</button><button type="button" data-s="Ξ">Ξ</button><button type="button" data-s="Π">Π</button><button type="button" data-s="Σ">Σ</button><button type="button" data-s="Φ">Φ</button><button type="button" data-s="Ψ">Ψ</button><button type="button" data-s="Ω">Ω</button></div><div class="ps-grupo"><span class="ps-rot">Operadores</span><button type="button" data-s="±">±</button><button type="button" data-s="∓">∓</button><button type="button" data-s="×">×</button><button type="button" data-s="÷">÷</button><button type="button" data-s="·">·</button><button type="button" data-s="∘">∘</button><button type="button" data-s="√">√</button><button type="button" data-s="∞">∞</button><button type="button" data-s="∂">∂</button><button type="button" data-s="∇">∇</button><button type="button" data-s="∑">∑</button><button type="button" data-s="∏">∏</button><button type="button" data-s="∫">∫</button><button type="button" data-s="∮">∮</button><button type="button" data-s="′">′</button><button type="button" data-s="″">″</button><button type="button" data-s="°">°</button><button type="button" data-s="‰">‰</button><button type="button" data-s="%">%</button></div><div class="ps-grupo"><span class="ps-rot">Relações</span><button type="button" data-s="=">=</button><button type="button" data-s="≠">≠</button><button type="button" data-s="≈">≈</button><button type="button" data-s="≡">≡</button><button type="button" data-s="∼">∼</button><button type="button" data-s="≃">≃</button><button type="button" data-s="∝">∝</button><button type="button" data-s="<"><</button><button type="button" data-s=">">></button><button type="button" data-s="≤">≤</button><button type="button" data-s="≥">≥</button><button type="button" data-s="≪">≪</button><button type="button" data-s="≫">≫</button></div><div class="ps-grupo"><span class="ps-rot">Setas</span><button type="button" data-s="→">→</button><button type="button" data-s="←">←</button><button type="button" data-s="↔">↔</button><button type="button" data-s="⇒">⇒</button><button type="button" data-s="⇐">⇐</button><button type="button" data-s="⇔">⇔</button><button type="button" data-s="↑">↑</button><button type="button" data-s="↓">↓</button><button type="button" data-s="↦">↦</button><button type="button" data-s="⟶">⟶</button><button type="button" data-s="⟹">⟹</button></div><div class="ps-grupo"><span class="ps-rot">Conjuntos</span><button type="button" data-s="∈">∈</button><button type="button" data-s="∉">∉</button><button type="button" data-s="⊂">⊂</button><button type="button" data-s="⊆">⊆</button><button type="button" data-s="⊃">⊃</button><button type="button" data-s="⊇">⊇</button><button type="button" data-s="∪">∪</button><button type="button" data-s="∩">∩</button><button type="button" data-s="∅">∅</button><button type="button" data-s="∀">∀</button><button type="button" data-s="∃">∃</button><button type="button" data-s="∄">∄</button><button type="button" data-s="¬">¬</button><button type="button" data-s="∧">∧</button><button type="button" data-s="∨">∨</button><button type="button" data-s="ℕ">ℕ</button><button type="button" data-s="ℤ">ℤ</button><button type="button" data-s="ℚ">ℚ</button><button type="button" data-s="ℝ">ℝ</button><button type="button" data-s="ℂ">ℂ</button></div><div class="ps-grupo"><span class="ps-rot">Texto</span><button type="button" data-s="…">…</button><button type="button" data-s="–">–</button><button type="button" data-s="—">—</button><button type="button" data-s="«">«</button><button type="button" data-s="»">»</button><button type="button" data-s="“">“</button><button type="button" data-s="”">”</button><button type="button" data-s="‘">‘</button><button type="button" data-s="’">’</button><button type="button" data-s="•">•</button><button type="button" data-s="§">§</button><button type="button" data-s="¶">¶</button><button type="button" data-s="†">†</button><button type="button" data-s="‡">‡</button><button type="button" data-s="©">©</button><button type="button" data-s="®">®</button><button type="button" data-s="™">™</button><button type="button" data-s="€">€</button><button type="button" data-s="£">£</button><button type="button" data-s="¹">¹</button><button type="button" data-s="²">²</button><button type="button" data-s="³">³</button><button type="button" data-s="½">½</button><button type="button" data-s="¼">¼</button><button type="button" data-s="¾">¾</button></div>
 </div>
 <div id="painel-macros" class="painel-mini" hidden="" role="dialog" aria-label="Macros LaTeX do documento">
   <div class="linha"><b>Adicionar macros LaTeX</b></div>
@@ -176,6 +191,7 @@
   <div>Fórmula em LaTeX <span style="color: rgb(136, 136, 136);">(Enter aplica, Ctrl+Enter quebra a linha, Esc cancela)</span></div>
   <textarea id="ee-tex" rows="3" spellcheck="false"></textarea>
   <div id="ee-previa"></div>
+  <label id="ee-tag-l" hidden="">Número <input type="text" id="ee-tag" spellcheck="false" placeholder="1, 2.3, * ..." title="Número (rótulo) da equação, à direita: 1 vira (1). Vazio: sem número."></label>
   <label><input type="checkbox" id="ee-display"> destacada (linha própria, centralizada)</label>
   <div id="ee-cores"><span>Cor:</span><button type="button" class="ee-cor" data-cor="cor-preto" style="--c: #111111" title="Preto (padrão)" aria-label="Preto (padrão)"></button><button type="button" class="ee-cor" data-cor="cor-azul" style="--c: #3333cc" title="Azul" aria-label="Azul"></button><button type="button" class="ee-cor" data-cor="rotulo" style="--c: #ff8000" title="Laranja" aria-label="Laranja"></button><button type="button" class="ee-cor" data-cor="cor-vermelho" style="--c: #d01c1c" title="Vermelho" aria-label="Vermelho"></button><button type="button" class="ee-cor" data-cor="cor-verde" style="--c: #1b8a3a" title="Verde" aria-label="Verde"></button><button type="button" class="ee-cor" data-cor="cor-roxo" style="--c: #8e24aa" title="Roxo" aria-label="Roxo"></button><button type="button" class="ee-cor" data-cor="cor-amarelo" style="--c: #c9a000" title="Amarelo" aria-label="Amarelo"></button><button type="button" class="ee-cor" data-cor="cor-rosa" style="--c: #e020b0" title="Rosa" aria-label="Rosa"></button></div>
   <div class="ee-botoes"><button type="button" id="ee-remover">Remover</button><button type="button" id="ee-cancelar">Cancelar</button><button type="button" id="ee-aplicar">Aplicar</button></div>
@@ -426,7 +442,7 @@
     // ---------- modo edição (não precisa editar) ----------
     const ED = { range: null, bloco: null, alvo: null, modo: null, handle: null, sujo: false };
     // marca se há alterações não salvas (mostra o disquete)
-    function sujo(v) { ED.sujo = v; document.body.classList.toggle('sujo', v); if (v) histAgendar(); }
+    function sujo(v) { ED.sujo = v; document.body.classList.toggle('sujo', v); if (v) histAgendar(); else apagarRascunho(); }
     const $ = id => document.getElementById(id);
     const BLOCOS = 'p, div.eq, div.caixa, h1, h2, h3, h4, h5, h6, pre, blockquote, aside.nota, li, .subtitulo';
 
@@ -737,12 +753,23 @@
     }
     function abrirEditor(alvo, modo, tex, display) {
       ED.alvo = alvo; ED.modo = modo; ED.cor = corDaFormula(alvo); mostrarCorEq();
-      $('ee-tex').value = tex; $('ee-display').checked = display;
+      const tg = separarTag(tex); tex = tg.tex; $('ee-tag').value = tg.tag;
+      $('ee-tex').value = tex; $('ee-display').checked = display; $('ee-tag-l').hidden = !display;
       $('ee-remover').style.display = alvo ? '' : 'none';
       $('editor-eq').hidden = false; previa(); $('ee-tex').focus();
     }
+    // número da equação = \tag{...} no fim do LaTeX (no diálogo, campo à parte)
+    function separarTag(tex) {
+      const m = /\s*\\tag(\*?)\{([^{}]*)\}\s*$/.exec(tex || '');
+      return m ? { tex: tex.slice(0, m.index), tag: (m[1] ? '*' : '') + m[2] } : { tex: tex || '', tag: '' };
+    }
+    function texComTag() {
+      const t = $('ee-tex').value.trim(), g = $('ee-tag').value.trim().replace(/[{}]/g, '');
+      if (!t || !g || !$('ee-display').checked) return t;
+      return t + (g[0] === '*' ? ' \\tag*{' + g.slice(1) + '}' : ' \\tag{' + g.replace(/^\((.*)\)$/, '$1') + '}');
+    }
     async function previa() {
-      const t = $('ee-tex').value.trim();
+      const t = texComTag();
       $('ee-previa').innerHTML = '';
       if (!t) return;
       try {
@@ -751,7 +778,9 @@
       } catch (e) { $('ee-previa').textContent = 'Erro: ' + e.message; }
     }
     $('ee-tex').addEventListener('input', () => { clearTimeout(previa.t); previa.t = setTimeout(previa, 250); });
-    $('ee-display').onchange = previa;
+    $('ee-display').onchange = () => { $('ee-tag-l').hidden = !$('ee-display').checked; previa(); };
+    $('ee-tag').addEventListener('input', () => { clearTimeout(previa.t); previa.t = setTimeout(previa, 250); });
+    $('ee-tag').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); $('ee-aplicar').click(); } else if (e.key === 'Escape') { e.preventDefault(); $('ee-cancelar').click(); } });
     $('ee-cancelar').onclick = () => { $('editor-eq').hidden = true; voltarAoTexto(); };
     $('ee-remover').onclick = () => {
       let pai = ED.alvo.parentElement; ED.alvo.remove();
@@ -760,7 +789,7 @@
       sujo(true); $('editor-eq').hidden = true;
     };
     $('ee-aplicar').onclick = async () => {
-      const t = $('ee-tex').value.trim(); if (!t) return;
+      const t = texComTag(); if (!t) return;
       const c = await renderTex(t, $('ee-display').checked);
       if (ED.alvo) ED.alvo.replaceWith(c);
       else if (ED.modo === 'inline') { ED.range.collapse(false); ED.range.insertNode(c); }
@@ -878,6 +907,8 @@
       });
       doc.querySelectorAll('[id^="MJX"], head style[type="text/css"], head script[src*="/extensions/"], head script[src*="/output/"], head script[src*="/input/"]').forEach(e => e.remove());
       tirarFimDeLinha(doc);
+      doc.querySelectorAll('section.pagina[style]').forEach(e => { e.style.removeProperty('padding-bottom'); });
+      doc.querySelectorAll('.oculta, .piscando').forEach(e => e.classList.remove('oculta', 'piscando'));
       doc.querySelectorAll('[style=""]').forEach(e => e.removeAttribute('style'));
       doc.querySelectorAll('[contenteditable]').forEach(e => e.removeAttribute('contenteditable'));
       doc.querySelectorAll('.visivel').forEach(e => e.classList.remove('visivel'));
@@ -1111,6 +1142,7 @@
       document.querySelectorAll('.apostila .marca').forEach(c => c.classList.toggle('pairada', pairadas.has(c)));
       const estado = m => MK.rascunho ? (m === MK.rascunho ? 'foco' : 'apagada') : (pairadas.has(m) ? 'foco' : '');
       if (typeof tipoDaLista === 'function') numerarListas();
+      if (typeof novoIdNota === 'function') sincronizarNotas();
       ajustarFimDeLinha();
       for (const m of lista) if (marcaAtiva(m)) desenharUma(m, !!(novas && novas.has(m)), estado(m));
       desenharAlcas();
@@ -2016,7 +2048,7 @@
     document.addEventListener('input', ev => {
       if (ev.inputType !== 'insertParagraph' || !document.body.classList.contains('editando')) return;
       const sel = getSelection(); if (!sel.rangeCount) return;
-      const n = sel.getRangeAt(0).startContainer, B = (n.nodeType === 1 ? n : n.parentElement).closest('.duas-colunas > *, section.pagina > *, li');
+      const n = sel.getRangeAt(0).startContainer, B = (n.nodeType === 1 ? n : n.parentElement).closest('.duas-colunas > *, .ambiente > *, section.pagina > *, li');
       const A = B && B.previousElementSibling; if (!A) return;
       if (ED.enterCamada && !B.matches('.rodape')) {   // opção "Enter cria camada": a linha de baixo é uma camada nova
         B.classList.add('fragment'); B.removeAttribute('data-junto');
@@ -2326,8 +2358,8 @@
       const sl = getSelection(), r0 = sl.rangeCount ? sl.getRangeAt(0) : null;
       const pontas = r0 ? [r0.startContainer, r0.startOffset, r0.endContainer, r0.endOffset] : null, x = selAtual();
       f();
-      if (pontas && pontas[0].nodeType === 3 && pontas[2].nodeType === 3 && pontas[0].isConnected && pontas[2].isConnected) {
-        try { const r = document.createRange(); r.setStart(pontas[0], Math.min(pontas[1], pontas[0].length)); r.setEnd(pontas[2], Math.min(pontas[3], pontas[2].length)); sl.removeAllRanges(); sl.addRange(r); } catch (e) { porSel(x); }
+      if (pontas && pontas[0].isConnected && pontas[2].isConnected && (pontas[0].nodeType === 3 || pontas[1] <= pontas[0].childNodes.length) && (pontas[2].nodeType === 3 || pontas[3] <= pontas[2].childNodes.length)) {
+        try { const r = document.createRange(); const L = n => n.nodeType === 3 ? n.length : n.childNodes.length; r.setStart(pontas[0], Math.min(pontas[1], L(pontas[0]))); r.setEnd(pontas[2], Math.min(pontas[3], L(pontas[2]))); sl.removeAllRanges(); sl.addRange(r); } catch (e) { porSel(x); }
       } else porSel(x);
       lerCursor();
       iconesCamada(); sujo(true); desenharMarcas(); montarSumario(); mostrarFormatos();
@@ -2336,7 +2368,7 @@
     (() => {
       const c = $('c-estilo'), menu = c.querySelector('.combo-menu');
       c.querySelector('.combo-seta').onclick = $('b-estilo').onclick = () => { const ab = menu.hidden; document.querySelectorAll('.combo-menu').forEach(m => m.hidden = true); menu.hidden = !ab; };
-      menu.querySelectorAll('button').forEach(b => b.onclick = () => {
+      menu.querySelectorAll('button[data-estilo]').forEach(b => b.onclick = () => {
         menu.hidden = true;
         const bl = blocosDa(faixaAtual(), BLOCOS).filter(e => e.matches(TEXTUAIS + ', div.eq'));
         if (!bl.length) return avisar('Clique num parágrafo de texto (em listas, o estilo não muda)');
@@ -2368,6 +2400,7 @@
       LINK.r = r.cloneRange(); LINK.a = noDe(r.startContainer).closest('section.pagina a');
       $('pl-url').value = LINK.a ? LINK.a.getAttribute('href') || '' : '';
       $('pl-remover').style.display = LINK.a ? '' : 'none';
+      DESTINOS.rot = ''; preencherDestinos();
       const b = $('b-link').getBoundingClientRect(), P = $('painel-link');
       P.hidden = false; P.style.left = Math.max(8, Math.min(b.left, innerWidth - P.offsetWidth - 8)) + 'px'; P.style.top = b.bottom + 8 + 'px';
       $('pl-url').focus(); $('pl-url').select();
@@ -2381,11 +2414,11 @@
       if (!/^[a-z][\w+.-]*:|^[#\/.]/i.test(url)) url = 'https://' + url;
       fecharLink(true);
       depoisDe(() => {
-        if (LINK.a) { LINK.a.setAttribute('href', url); return; }
+        if (LINK.a) { LINK.a.setAttribute('href', url); if (url[0] === '#') { LINK.a.removeAttribute('target'); LINK.a.removeAttribute('rel'); } else { LINK.a.target = '_blank'; LINK.a.rel = 'noopener'; } return; }
         const r = LINK.r;
-        if (r.collapsed) { const a = document.createElement('a'); a.href = url; a.textContent = url; a.target = '_blank'; a.rel = 'noopener'; r.insertNode(a); r.setStartAfter(a); r.collapse(true); const s = getSelection(); s.removeAllRanges(); s.addRange(r); return; }
+        if (r.collapsed) { const a = document.createElement('a'); a.href = url; a.textContent = url[0] === '#' && DESTINOS.rot ? DESTINOS.rot : url; if (url[0] !== '#') { a.target = '_blank'; a.rel = 'noopener'; } r.insertNode(a); r.setStartAfter(a); r.collapse(true); const s = getSelection(); s.removeAllRanges(); s.addRange(r); return; }
         document.execCommand('createLink', false, url);
-        document.querySelectorAll('section.pagina a[href="' + CSS.escape(url) + '"]:not([target])').forEach(a => { a.target = '_blank'; a.rel = 'noopener'; });
+        if (url[0] !== '#') document.querySelectorAll('section.pagina a[href="' + CSS.escape(url) + '"]:not([target])').forEach(a => { a.target = '_blank'; a.rel = 'noopener'; });
       });
     }
     $('b-link').onclick = abrirLink;
@@ -2700,7 +2733,7 @@
     function selecionarImagem(im) { ISEL.img = im; posImagem(); }
     document.addEventListener('mousedown', e => {
       if (e.target.closest && e.target.closest('#img-sel')) return;
-      const im = document.body.classList.contains('editando') && e.target.closest && e.target.closest('section.pagina img');
+      const im = document.body.classList.contains('editando') && e.target.closest && e.target.closest('section.pagina img, section.pagina .video');
       if (im) {
         e.preventDefault(); selecionarImagem(im);
         const sec = im.closest('section.pagina'); sec.focus({ preventScroll: true });
@@ -2733,6 +2766,77 @@
       });
       // dois cliques numa alça: volta ao tamanho natural (limitado à largura do bloco)
       a.addEventListener('dblclick', e => { e.preventDefault(); const im = ISEL.img; if (!im) return; im.style.removeProperty('width'); if (!im.getAttribute('style')) im.removeAttribute('style'); sujo(true); desenharMarcas(); posImagem(); });
+    });
+    // ---------- colar: só o que faz parte do documento ----------
+    // Texto vindo do Word, de PDF ou da web traz fontes, cores e estilos de fora. Fica só a estrutura
+    // (parágrafos, títulos, listas, tabelas, negrito, itálico, links) e as fórmulas do próprio Strata.
+    // Ctrl+Shift+V cola como texto puro.
+    let colarPuro = false;
+    document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'v') { colarPuro = true; setTimeout(() => { colarPuro = false; }, 400); } }, true);
+    const COLAR_TAGS = { P: 'p', DIV: 'p', H1: 'h2', H2: 'h2', H3: 'h3', H4: 'h4', H5: 'h4', H6: 'h4', UL: 'ul', OL: 'ol', LI: 'li', BR: 'br', B: 'b', STRONG: 'b', I: 'i', EM: 'i', A: 'a',
+      SUP: 'sup', SUB: 'sub', TABLE: 'table', TBODY: 'tbody', THEAD: 'tbody', TR: 'tr', TD: 'td', TH: 'th', BLOCKQUOTE: 'blockquote', PRE: 'pre', IMG: 'img' };
+    function limparColado(html) {
+      const t = document.createElement('template'); t.innerHTML = html;
+      const tex = [];
+      const limpar = (de, para) => {
+        for (const n of [...de.childNodes]) {
+          if (n.nodeType === 3) { para.append(n.data.replace(/ /g, ' ').replace(/​/g, '')); continue; }
+          if (n.nodeType !== 1) continue;
+          if (/^(STYLE|SCRIPT|META|LINK|TITLE|HEAD|svg|SVG|O:P|XML)$/i.test(n.tagName) && !n.matches('mjx-container')) continue;
+          if (n.matches('.ancora-camada, .marca, .alca-marca, svg.tinta, .tinta-html, .rodape')) continue;
+          if (n.matches('mjx-container')) {   // fórmula do Strata: volta como LaTeX e é desenhada de novo
+            const x = n.getAttribute('data-tex'); if (x == null) continue;
+            const ph = document.createElement('span'); ph.className = 'colar-tex'; ph.dataset.i = tex.length; tex.push({ tex: x, display: n.getAttribute('data-display') === '1' || n.getAttribute('display') === 'true' }); para.append(ph); continue;
+          }
+          // Word e Google Docs marcam negrito e itálico por estilo
+          const st = n.getAttribute('style') || '';
+          let tag = COLAR_TAGS[n.tagName];
+          if (!tag && n.tagName === 'SPAN') { if (/font-weight:\s*(bold|[6-9]00)/.test(st)) tag = 'b'; else if (/font-style:\s*italic/.test(st)) tag = 'i'; }
+          if (tag === 'b' && /font-weight:\s*(normal|[1-4]00)/.test(st)) tag = null;   // Google Docs: <b style="font-weight:normal">
+          if (!tag) { limpar(n, para); continue; }
+          const e = document.createElement(tag);
+          if (tag === 'a') { const h = n.getAttribute('href') || ''; if (!/^(https?:|mailto:|#)/i.test(h)) { limpar(n, para); continue; } e.setAttribute('href', h); if (h[0] !== '#') { e.target = '_blank'; e.rel = 'noopener'; } }
+          if (tag === 'img') { const src = n.getAttribute('src') || ''; if (!/^(data:image\/|https?:)/.test(src)) continue; e.src = src; e.alt = n.getAttribute('alt') || ''; para.append(e); continue; }
+          if (tag === 'table') e.className = 'tabela';
+          if ((tag === 'td' || tag === 'th') && n.getAttribute('colspan')) e.setAttribute('colspan', n.getAttribute('colspan'));
+          if ((tag === 'td' || tag === 'th') && n.getAttribute('rowspan')) e.setAttribute('rowspan', n.getAttribute('rowspan'));
+          limpar(n, e);
+          if (/^(b|i|a|sup|sub)$/.test(tag) && !e.textContent.trim() && !e.querySelector('img, .colar-tex')) { e.childNodes.length && para.append(...e.childNodes); continue; }
+          para.append(e);
+        }
+      };
+      const out = document.createElement('div'); limpar(t.content, out);
+      out.querySelectorAll('p').forEach(p => { if (p.querySelector('p, ul, ol, table, h2, h3, h4, pre, blockquote')) p.replaceWith(...p.childNodes); });   // <div> que só agrupava
+      out.querySelectorAll('p, h2, h3, h4, li').forEach(p => { if (!p.textContent.trim() && !p.querySelector('img, .colar-tex, br')) p.remove(); });
+      return { html: out.innerHTML, tex };
+    }
+    document.addEventListener('paste', async e => {
+      if (e.defaultPrevented || !document.body.classList.contains('editando') || document.body.classList.contains('escolhendo')) return;
+      const t = e.target.closest ? e.target : e.target.parentElement;
+      if (!t || !t.closest('section.pagina') || t.closest('#editor-eq, input, textarea')) return;
+      const dt = e.clipboardData; if (!dt) return;
+      const html = dt.getData('text/html'), txt = dt.getData('text/plain');
+      if (!html && !txt) return;
+      e.preventDefault();
+      const celula = t.closest('td, th');
+      if (colarPuro || !html || celula) {   // texto puro (numa célula, sempre: sem parágrafos dentro da tabela)
+        const linhas = txt.replace(/\r\n?/g, '\n').replace(/ /g, ' ');
+        if (celula) { document.execCommand('insertText', false, linhas.replace(/\n+/g, ' ')); return; }
+        const partes = linhas.split('\n');
+        partes.forEach((l, i) => { if (i) document.execCommand('insertParagraph'); if (l) document.execCommand('insertText', false, l); });
+        return;
+      }
+      const { html: limpo, tex } = limparColado(html);
+      if (!limpo.replace(/<[^>]+>/g, '').trim() && !/<img|colar-tex/.test(limpo)) { document.execCommand('insertText', false, txt); return; }
+      document.execCommand('insertHTML', false, limpo);
+      // o navegador às vezes põe estilos por conta própria ao inserir
+      document.querySelectorAll('section.pagina span[style]:not([class]), section.pagina font').forEach(x => x.replaceWith(...x.childNodes));
+      document.querySelectorAll('section.pagina b[style], section.pagina i[style], section.pagina a[style], section.pagina li[style], section.pagina ul[style], section.pagina ol[style], section.pagina h2[style], section.pagina h3[style], section.pagina h4[style], section.pagina p[style]:not(.no-fim)').forEach(x => x.removeAttribute('style'));
+      for (const ph of [...document.querySelectorAll('section.pagina span.colar-tex')]) {
+        const x = tex[+ph.dataset.i]; if (!x) { ph.remove(); continue; }
+        const c = await renderTex(x.tex, x.display); ph.replaceWith(c);
+      }
+      sujo(true); iconesCamada(); desenharMarcas(); montarSumario();
     });
     // arrastar um arquivo de imagem direto para o texto
     const temArquivo = dt => dt && [...(dt.types || [])].includes('Files');
@@ -3039,6 +3143,317 @@
       tituloTema(); desenharMarcas();
     };
 
+    // ---------- notas de rodapé ----------
+    // No texto: <sup class="ref-nota" data-nota="nr-1">1</sup>; no pé da página:
+    // <div class="notas-rodape"><p class="nota-rodape" id="nr-1" data-n="1">texto</p></div>.
+    // A numeração segue a ordem das chamadas no documento; na apresentação, a nota aparece com a chamada.
+    function novoIdNota() { let k = 1; while (document.getElementById('nr-' + k)) k++; return 'nr-' + k; }
+    function sincronizarNotas() {
+      const refs = [...document.querySelectorAll('.apostila sup.ref-nota')];
+      const aula = document.body.classList.contains('aula'), edicao = document.body.classList.contains('editando');
+      const usadas = new Set();
+      refs.forEach((ref, i) => {
+        const n = String(i + 1); if (ref.textContent !== n) ref.textContent = n;
+        ref.setAttribute('contenteditable', 'false');
+        const pag = ref.closest('section.pagina'); if (!pag) return;
+        let nota = ref.dataset.nota && document.getElementById(ref.dataset.nota);
+        if (!nota || usadas.has(nota)) { nota = document.createElement('p'); nota.className = 'nota-rodape'; nota.id = ref.dataset.nota = (ref.dataset.nota && !document.getElementById(ref.dataset.nota)) ? ref.dataset.nota : novoIdNota(); nota.innerHTML = '<br>'; }
+        usadas.add(nota);
+        if (nota.dataset.n !== n) nota.dataset.n = n;
+        let caixa = pag.querySelector(':scope > .notas-rodape');
+        if (!caixa) { caixa = document.createElement('div'); caixa.className = 'notas-rodape'; const rod = pag.querySelector(':scope > .rodape'); if (rod) rod.before(caixa); else pag.append(caixa); }
+        if (nota.parentElement !== caixa || (nota.previousElementSibling && !usadas.has(nota.previousElementSibling))) caixa.append(nota);
+        else { const ant = refs[i - 1]; if (ant && ant.closest('section.pagina') === pag && nota.previousElementSibling !== document.getElementById(ant.dataset.nota)) caixa.append(nota); }
+        nota.classList.toggle('oculta', aula && !!ref.closest('.fragment:not(.visivel)'));
+      });
+      document.querySelectorAll('.apostila .notas-rodape').forEach(c => {
+        if (edicao) [...c.querySelectorAll('.nota-rodape')].forEach(x => { if (!usadas.has(x)) x.remove(); });   // chamada apagada: a nota sai junto
+        if (!c.querySelector('.nota-rodape')) { c.remove(); return; }
+      });
+      document.querySelectorAll('.apostila section.pagina').forEach(pag => {
+        const c = pag.querySelector(':scope > .notas-rodape');
+        pag.style.paddingBottom = c ? (parseFloat(getComputedStyle(pag, null).getPropertyValue('--pe') || 72) + c.offsetHeight + 12) + 'px' : '';
+        if (!pag.getAttribute('style')) pag.removeAttribute('style');
+      });
+    }
+    $('b-nota-rodape').onclick = () => {
+      const r = faixaAtual(); if (!r) return avisar('Clique no texto, no ponto da chamada da nota');
+      if (noDe(r.startContainer).closest('.notas-rodape')) return avisar('Clique no texto, fora das notas');
+      const ref = document.createElement('sup'); ref.className = 'ref-nota'; ref.dataset.nota = novoIdNota(); ref.setAttribute('contenteditable', 'false');
+      const q = r.cloneRange(); q.collapse(false); q.insertNode(ref);
+      sincronizarNotas();
+      const nota = document.getElementById(ref.dataset.nota);
+      if (nota) { const sec = nota.closest('section.pagina'); sec.focus({ preventScroll: true }); cursorEm(nota); nota.scrollIntoView({ block: 'nearest' }); }
+      lerCursor(); sujo(true); desenharMarcas();
+    };
+    // dentro da nota, Enter não cria outra nota (Shift+Enter quebra a linha)
+    document.addEventListener('keydown', ev => {
+      if (ev.key !== 'Enter' || ev.shiftKey || !document.body.classList.contains('editando')) return;
+      const s = getSelection(); if (!s.rangeCount) return;
+      if (noDe(s.getRangeAt(0).startContainer).closest('.nota-rodape')) { ev.preventDefault(); ev.stopImmediatePropagation(); }
+    }, true);
+    // clicar na chamada (fora da edição) leva à nota
+    document.addEventListener('click', ev => {
+      const ref = ev.target.closest && ev.target.closest('.apostila sup.ref-nota');
+      if (!ref || document.body.classList.contains('editando')) return;
+      const n = document.getElementById(ref.dataset.nota); if (n) { n.scrollIntoView({ block: 'center', behavior: 'smooth' }); n.classList.add('piscando'); setTimeout(() => n.classList.remove('piscando'), 1200); }
+    });
+
+    // ---------- ambientes: Definição, Teorema, Exemplo, Observação ----------
+    // <div class="ambiente" data-tipo="teorema"> em volta dos blocos; o título é texto comum, editável
+    // (<span class="rotulo amb-titulo">Teorema:</span>), sem numeração automática.
+    const AMB_NOMES = { definicao: 'Definição', teorema: 'Teorema', exemplo: 'Exemplo', observacao: 'Observação' };
+    document.querySelectorAll('#c-estilo [data-ambiente]').forEach(b => b.onclick = () => {
+      $('c-estilo').querySelector('.combo-menu').hidden = true;
+      const tipo = b.dataset.ambiente, bl = blocosDa(faixaAtual(), BLOCOS).filter(e => !e.closest('.notas-rodape, td, th')); if (!bl.length) return avisar('Clique num parágrafo');
+      const caixa = bl[0].closest('.ambiente');
+      depoisDe(() => {
+        if (caixa) {
+          const tit = caixa.querySelector('.amb-titulo'), padrao = tit && Object.values(AMB_NOMES).some(n => tit.textContent.trim() === n + ':');
+          if (caixa.dataset.tipo === tipo) {   // mesmo tipo: tira a caixa (e o título, se for o padrão)
+            if (padrao) { const nx = tit.nextSibling; if (nx && nx.nodeType === 3) nx.data = nx.data.replace(/^[\s ]+/, ''); tit.remove(); }
+            caixa.replaceWith(...caixa.childNodes); return;
+          }
+          caixa.dataset.tipo = tipo; if (padrao) tit.textContent = AMB_NOMES[tipo] + ':'; return;
+        }
+        const sec = bl[0].closest('section.pagina'); if (!sec) return;
+        const pai = bl[0].closest('.duas-colunas') || sec;
+        const topo = e => { while (e && e.parentElement !== pai) e = e.parentElement; return e; };
+        const tops = bl.filter(e => pai.contains(e)).map(topo).filter(Boolean);
+        const ini = tops[0], fim = tops[tops.length - 1];
+        const d = document.createElement('div'); d.className = 'ambiente'; d.dataset.tipo = tipo;
+        ini.before(d);
+        for (let e = ini; e; ) { const prox = e.nextSibling; if (!(e.nodeType === 1 && e.matches('.rodape, svg.tinta, .tinta-html, .notas-rodape'))) d.append(e); if (e === fim) break; e = prox; }
+        // título no começo do primeiro bloco de texto
+        const alvo = d.querySelector('p, h2, h3, h4, li') || d.firstElementChild;
+        if (alvo) { const t = document.createElement('span'); t.className = 'rotulo amb-titulo'; t.textContent = AMB_NOMES[tipo] + ':'; let pos = alvo.firstChild; while (pos && pos.nodeType === 1 && pos.matches('.ancora-camada')) pos = pos.nextSibling; alvo.insertBefore(t, pos); t.after(' '); }
+      });
+    });
+    // Enter numa linha vazia no fim do ambiente: a linha sai da caixa
+    document.addEventListener('keydown', ev => {
+      if (ev.key !== 'Enter' || ev.shiftKey || ev.ctrlKey || ev.altKey || !document.body.classList.contains('editando')) return;
+      const s = getSelection(); if (!s.rangeCount || !s.isCollapsed) return;
+      const b = noDe(s.getRangeAt(0).startContainer).closest(BLOCOS), caixa = b && b.parentElement && b.parentElement.matches('.ambiente') ? b.parentElement : null;
+      if (!caixa || b !== caixa.lastElementChild || b.textContent.replace(/[\s​]/g, '') || b.querySelector('mjx-container, img, .marca')) return;
+      ev.preventDefault(); ev.stopImmediatePropagation();
+      caixa.after(b); if (!caixa.children.length) caixa.remove(); cursorEm(b); lerCursor(); sujo(true); desenharMarcas();
+    }, true);
+    // ---------- mover o bloco do cursor: Alt+↑ / Alt+↓ ----------
+    // O bloco leva junto as notas laterais que vêm antes dele (e as camadas e marcações de dentro dele).
+    // Na ponta de uma página passa para a página vizinha; na ponta de uma caixa (colunas, ambiente) sai dela.
+    const PULAR = 'svg.tinta, .tinta-html, .rodape, .notas-rodape';
+    function unidadeDoCursor() {
+      const r = faixaAtual(); if (!r) return null;
+      const n = noDe(r.startContainer); if (!n.closest('section.pagina')) return null;
+      const li = n.closest('section.pagina li'); if (li) return li;
+      let u = n.closest('section.pagina table') || n.closest(BLOCOS) || n;
+      while (u.parentElement && !u.parentElement.matches('section.pagina, .duas-colunas, .ambiente')) u = u.parentElement;
+      return u.parentElement && !u.matches('section.pagina') ? u : null;
+    }
+    const ehNota = e => e && e.matches('aside.nota');
+    function grupoDe(u) { const g = [u]; for (let a = u.previousElementSibling; ehNota(a); a = a.previousElementSibling) g.unshift(a); return g; }
+    function vizinho(u, passo) {   // próximo bloco (não nota, não interface) na direção
+      let e = passo < 0 ? grupoDe(u)[0].previousElementSibling : u.nextElementSibling;
+      while (e && (e.matches(PULAR) || ehNota(e))) e = passo < 0 ? e.previousElementSibling : e.nextElementSibling;
+      return e;
+    }
+    function moverBloco(passo) {
+      const u = unidadeDoCursor(); if (!u) return avisar('Clique num parágrafo');
+      const g = grupoDe(u), cont = u.parentElement, v = vizinho(u, passo);
+      if (u.matches('li') && !v) return;   // item de lista fica na lista
+      // o cursor está dentro do bloco, que se move inteiro: guarda os nós (não os caminhos) e volta para eles
+      const sl = getSelection(), r0 = sl.rangeCount ? sl.getRangeAt(0) : null;
+      const pontas = r0 ? [r0.startContainer, r0.startOffset, r0.endContainer, r0.endOffset] : null;
+      const mover = f => {
+        f();
+        if (pontas && g.some(e => e.contains(pontas[0]))) { try { const r = document.createRange(); r.setStart(pontas[0], pontas[1]); r.setEnd(pontas[2], pontas[3]); sl.removeAllRanges(); sl.addRange(r); } catch (e) {} }
+        lerCursor(); iconesCamada(); sujo(true); desenharMarcas(); montarSumario(); mostrarFormatos();
+      };
+      mover(() => {
+        if (v) { if (passo < 0) grupoDe(v)[0].before(...g); else v.after(...g); return; }
+        if (!cont.matches('section.pagina')) { if (passo < 0) cont.before(...g); else cont.after(...g); return; }
+        const pags = [...document.querySelectorAll('section.pagina')], k = pags.indexOf(cont), outra = pags[k + passo];
+        if (!outra) return;
+        if (passo < 0) { const fim = [...outra.children].find(e => e.matches('.notas-rodape, .rodape, svg.tinta, .tinta-html')); if (fim) fim.before(...g); else outra.append(...g); }
+        else { const ini = [...outra.children].find(e => !e.matches(PULAR)); if (ini) ini.before(...g); else outra.prepend(...g); }
+      });
+      u.scrollIntoView({ block: 'nearest' });
+    }
+    document.addEventListener('keydown', ev => {
+      if (!ev.altKey || ev.ctrlKey || ev.metaKey || ev.shiftKey || (ev.key !== 'ArrowUp' && ev.key !== 'ArrowDown')) return;
+      if (!document.body.classList.contains('editando') || document.body.classList.contains('escolhendo') || DS.rascunho) return;
+      if (!(ev.target.closest && ev.target.closest('section.pagina'))) return;
+      ev.preventDefault(); moverBloco(ev.key === 'ArrowUp' ? -1 : 1);
+    });
+    // ---------- vídeo e conteúdo embutido ----------
+    // <div class="video"><iframe src="..." allowfullscreen></iframe></div>; largura em % como as imagens
+    function urlEmbutido(t) {
+      t = (t || '').trim();
+      const ifr = /<iframe[^>]*\ssrc=["']([^"']+)["']/i.exec(t); if (ifr) t = ifr[1];
+      if (!/^https?:\/\//i.test(t)) { if (/^[\w-]+(\.[\w-]+)+\//.test(t)) t = 'https://' + t; else return null; }
+      let u; try { u = new URL(t); } catch (e) { return null; }
+      const h = u.hostname.replace(/^www\.|^m\./, '');
+      const seg = (u.searchParams.get('t') || u.searchParams.get('start') || '').replace(/s$/, '');
+      const ini = /^\d+$/.test(seg) ? '?start=' + seg : '';
+      if (h === 'youtu.be') return 'https://www.youtube-nocookie.com/embed/' + u.pathname.slice(1) + ini;
+      if (/(^|\.)youtube(-nocookie)?\.com$/.test(h)) {
+        const id = u.searchParams.get('v') || (/^\/(embed|shorts|live)\/([\w-]+)/.exec(u.pathname) || [])[2];
+        return id ? 'https://www.youtube-nocookie.com/embed/' + id + ini : null;
+      }
+      if (h === 'vimeo.com') { const id = (/^\/(\d+)/.exec(u.pathname) || [])[1]; return id ? 'https://player.vimeo.com/video/' + id : null; }
+      if (h === 'geogebra.org') { const id = (/^\/(?:m|classic|calculator|graphing|geometry|3d|material\/iframe\/id)\/([\w-]+)/.exec(u.pathname) || [])[1]; return id ? 'https://www.geogebra.org/material/iframe/id/' + id : u.href; }
+      return u.href;
+    }
+    const VID = { r: null };
+    function abrirVideo() {
+      const r = faixaAtual(); if (!r) return avisar('Clique no texto');
+      VID.r = r.cloneRange(); $('pv-url').value = ''; $('pv-erro').textContent = '';
+      const b = $('b-video').getBoundingClientRect(), P = $('painel-video');
+      P.hidden = false; P.style.left = Math.max(8, Math.min(b.left, innerWidth - P.offsetWidth - 8)) + 'px'; P.style.top = b.bottom + 8 + 'px';
+      $('pv-url').focus();
+    }
+    function fecharVideo(voltar) {
+      $('painel-video').hidden = true;
+      if (voltar && VID.r && VID.r.startContainer.isConnected) { const sec = noDe(VID.r.startContainer).closest('section.pagina'); if (sec) sec.focus({ preventScroll: true }); const s = getSelection(); s.removeAllRanges(); s.addRange(VID.r); }
+    }
+    // bloco novo no lugar de um parágrafo vazio, ou depois do bloco do cursor
+    function inserirBloco(el, r) {
+      const n = noDe(r.startContainer), sec = n.closest('section.pagina'); if (!sec) return false;
+      let b = n.closest(BLOCOS); if (b && b.closest('li')) b = b.closest('ul, ol');
+      while (b && b.parentElement !== sec && !b.parentElement.matches('.duas-colunas, .ambiente')) b = b.parentElement;
+      const vazio = b && b.matches('p') && !b.textContent.replace(/[\s​]/g, '') && !b.querySelector('mjx-container, img, .marca, sup');
+      if (vazio) { if (b.classList.contains('fragment')) el.classList.add('fragment'); b.replaceWith(el); }
+      else if (b) b.after(el); else sec.append(el);
+      if (!el.nextElementSibling || el.nextElementSibling.matches('.rodape, .notas-rodape')) { const p = document.createElement('p'); p.innerHTML = '<br>'; el.after(p); }
+      return true;
+    }
+    function inserirVideo() {
+      const src = urlEmbutido($('pv-url').value); if (!src) { $('pv-erro').textContent = 'Não reconheci esse link. Cole o endereço do vídeo ou o código <iframe> de incorporação.'; return; }
+      const r = VID.r; fecharVideo(true); if (!r || !r.startContainer.isConnected) return;
+      const d = document.createElement('div'); d.className = 'video'; d.setAttribute('contenteditable', 'false');
+      const f = document.createElement('iframe'); f.src = src; f.setAttribute('allowfullscreen', ''); f.setAttribute('loading', 'lazy');
+      f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen'); f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      d.append(f);
+      if (!inserirBloco(d, r)) return;
+      const nx = d.nextElementSibling; if (nx) { d.closest('section.pagina').focus({ preventScroll: true }); cursorEm(nx); }
+      lerCursor(); sujo(true); iconesCamada(); desenharMarcas();
+    }
+    $('b-video').onclick = () => $('painel-video').hidden ? abrirVideo() : fecharVideo(true);
+    $('pv-ok').onclick = inserirVideo;
+    $('pv-cancelar').onclick = () => fecharVideo(true);
+    $('pv-url').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); inserirVideo(); } else if (e.key === 'Escape') { e.preventDefault(); fecharVideo(true); } });
+    document.querySelectorAll('#painel-video button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
+    document.addEventListener('mousedown', e => { const P = $('painel-video'); if (!P.hidden && !P.contains(e.target) && !e.target.closest('#b-video')) fecharVideo(false); }, true);
+
+    // ---------- símbolos ----------
+    function fecharSimbolos() { $('painel-simbolos').hidden = true; }
+    $('b-simbolos').onclick = () => {
+      const P = $('painel-simbolos'); if (!P.hidden) return fecharSimbolos();
+      if (!faixaAtual()) return avisar('Clique no texto');
+      const b = $('b-simbolos').getBoundingClientRect();
+      P.hidden = false; P.style.left = Math.max(8, Math.min(b.left, innerWidth - P.offsetWidth - 8)) + 'px'; P.style.top = b.bottom + 8 + 'px';
+    };
+    $('ps-fechar').onclick = fecharSimbolos;
+    document.querySelectorAll('#painel-simbolos button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
+    document.querySelectorAll('#painel-simbolos [data-s]').forEach(b => b.onclick = () => {
+      const s = getSelection(); if (!s.rangeCount || !noDe(s.getRangeAt(0).startContainer).closest('section.pagina')) { if (ED.range && ED.range.startContainer.isConnected) { s.removeAllRanges(); s.addRange(ED.range); } else return avisar('Clique no texto'); }
+      document.execCommand('insertText', false, b.dataset.s); lerCursor();
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('painel-simbolos').hidden) fecharSimbolos(); });
+    document.addEventListener('mousedown', e => { const P = $('painel-simbolos'); if (!P.hidden && !P.contains(e.target) && !e.target.closest('#b-simbolos, section.pagina')) fecharSimbolos(); }, true);
+
+    // ---------- links internos: títulos, ambientes e equações numeradas ----------
+    const slug = t => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^\w]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'x';
+    function idPara(el, pref, nome) {
+      if (el.id) return el.id;
+      let base = pref + '-' + slug(nome), id = base, k = 2; while (document.getElementById(id)) id = base + '-' + k++;
+      el.id = id; return id;
+    }
+    function destinosInternos() {
+      const l = [];
+      document.querySelectorAll('.apostila section.pagina h1, .apostila section.pagina h2, .apostila section.pagina h3, .apostila section.pagina h4, .apostila .ambiente, .apostila mjx-container[data-display="1"]').forEach(e => {
+        if (e.matches('mjx-container')) {
+          const tg = separarTag(e.dataset.tex || '').tag; if (!tg) return;
+          const alvo = e.closest('div.eq') || e.closest(BLOCOS) || e;
+          l.push({ el: alvo, pref: 'eq', nome: 'eq ' + tg.replace(/^\*/, ''), rot: 'Equação (' + tg.replace(/^\*/, '') + ')' });
+        } else if (e.matches('.ambiente')) {
+          const t = e.textContent.replace(/[​\s]+/g, ' ').trim(); l.push({ el: e, pref: 'amb', nome: t.slice(0, 30), rot: t.slice(0, 60) });
+        } else { const t = e.textContent.replace(/[​\s]+/g, ' ').trim(); if (t) l.push({ el: e, pref: 'sec', nome: t, rot: '§ ' + t.slice(0, 60) }); }
+      });
+      return l;
+    }
+    const DESTINOS = { lista: [] };
+    function preencherDestinos() {
+      const sel = $('pl-destino'); DESTINOS.lista = destinosInternos();
+      sel.innerHTML = '<option value="">(um ponto deste documento)</option>' + DESTINOS.lista.map((d, i) => '<option value="' + i + '"></option>').join('');
+      DESTINOS.lista.forEach((d, i) => { sel.options[i + 1].textContent = d.rot; });
+      const atual = ($('pl-url').value || '').startsWith('#') ? $('pl-url').value.slice(1) : '';
+      if (atual) { const k = DESTINOS.lista.findIndex(d => d.el.id === atual); if (k >= 0) sel.value = String(k); }
+    }
+    $('pl-destino').onchange = () => {
+      const d = DESTINOS.lista[+$('pl-destino').value]; if (!d) return;
+      $('pl-url').value = '#' + idPara(d.el, d.pref, d.nome); DESTINOS.rot = d.rot.replace(/^§ /, '');
+    };
+
+    // ---------- exportar PDF: impressão com páginas do tamanho das da tela ----------
+    function exportarPDF() {
+      const modo = modoAtual(), escuro = document.documentElement.classList.contains('strata-escuro');
+      if (modo !== 'leitura') mudarModo('leitura');
+      document.documentElement.classList.remove('strata-escuro'); desenharMarcas();
+      const voltar = () => {
+        removeEventListener('afterprint', voltar);
+        if (escuro) document.documentElement.classList.add('strata-escuro');
+        if (modo !== 'leitura') mudarModo(modo); else desenharMarcas();
+      };
+      addEventListener('afterprint', voltar);
+      setTimeout(() => { window.print(); }, 60);
+    }
+    $('mi-pdf').onclick = exportarPDF;
+    // ---------- rascunho automático ----------
+    // Com alterações não salvas, uma cópia do documento vai para o navegador (localStorage) a cada 20 s
+    // e ao fechar a aba. Ao abrir de novo o mesmo arquivo, o Strata oferece recuperar. Salvar apaga a cópia.
+    const RASC = { chave: 'strata-rascunho:' + location.pathname + location.search, ultimo: '', avisado: false };
+    const lerRascunho = () => { try { return JSON.parse(localStorage.getItem(RASC.chave) || 'null'); } catch (e) { return null; } };
+    function apagarRascunho() { RASC.ultimo = ''; try { localStorage.removeItem(RASC.chave); } catch (e) {} }
+    function guardarRascunho() {
+      if (!ED.sujo || DS.rascunho || document.body.classList.contains('escolhendo')) return;
+      let html; try { html = gerarHTML(); } catch (e) { return; }
+      if (html === RASC.ultimo) return;
+      try { localStorage.setItem(RASC.chave, JSON.stringify({ t: Date.now(), html })); RASC.ultimo = html; }
+      catch (e) { if (!RASC.avisado) { RASC.avisado = true; avisar('Rascunho automático: sem espaço no navegador'); } }
+    }
+    setInterval(guardarRascunho, 20000);
+    addEventListener('pagehide', guardarRascunho);
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') guardarRascunho(); });
+    const conteudoDe = html => { const d = new DOMParser().parseFromString(html, 'text/html'); const m = d.querySelector('main.apostila'); return { d, m, txt: m ? m.innerHTML.replace(/\s+/g, ' ') : '' }; };
+    function oferecerRascunho() {
+      const r = lerRascunho(); if (!r || !r.html) return;
+      if (conteudoDe(r.html).txt === conteudoDe(gerarHTML()).txt) { apagarRascunho(); return; }   // igual ao arquivo: nada a recuperar
+      const q = new Date(r.t);
+      $('ar-texto').textContent = 'Há alterações não salvas deste documento, de ' + q.toLocaleDateString() + ' às ' + q.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + '.';
+      $('aviso-rascunho').hidden = false;
+    }
+    $('ar-descartar').onclick = () => { apagarRascunho(); $('aviso-rascunho').hidden = true; };
+    $('ar-baixar').onclick = () => { const r = lerRascunho(); if (r) baixar(r.html, 'rascunho_' + ((decodeURIComponent(location.pathname.split('/').pop() || '') || 'apostila.html'))); };
+    $('ar-recuperar').onclick = async () => {
+      const r = lerRascunho(); $('aviso-rascunho').hidden = true; if (!r) return;
+      const { d, m } = conteudoDe(r.html); if (!m) return avisar('Rascunho ilegível');
+      const modo = modoAtual(); if (modo !== 'leitura') mudarModo('leitura');
+      const mac = d.querySelector('script[type="text/x-tex-macros"]');
+      if (mac && mac.textContent.trim()) {   // macros do rascunho
+        let b = blocoMacros(); if (!b) { b = document.createElement('script'); b.type = 'text/x-tex-macros'; document.head.append(b); }
+        if (b.textContent !== mac.textContent) { b.textContent = mac.textContent; try { await MathJax.tex2svgPromise(mac.textContent, { display: false }); } catch (e) {} }
+      }
+      const main = document.querySelector('main.apostila');
+      try { MathJax.typesetClear([main]); } catch (e) {}
+      main.replaceChildren(...[...m.childNodes].map(n => document.importNode(n, true)));
+      await MathJax.typesetPromise([main]); guardarTex();
+      HIST.pilha = []; HIST.refazer = []; HIST.atual = null; HIST.ultimo = null;
+      contarCamadas(); montarSumario(); desenharMarcas();
+      if (modo === 'edicao') mudarModo('edicao');
+      sujo(true); avisar('Rascunho recuperado (salve para gravar no arquivo)');
+    };
+    document.querySelectorAll('#aviso-rascunho button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
     // ---------- macros LaTeX do documento (menu ☰) ----------
     // ficam num <script type="text/x-tex-macros"> do <head>, que vai para o arquivo salvo
     const blocoMacros = () => document.querySelector('script[type="text/x-tex-macros"]');
@@ -3106,7 +3521,7 @@
     else if (new URLSearchParams(location.search).has('editar') || new URLSearchParams(location.search).has('novo')) mudarModo('edicao', true);
     else mudarModo('leitura', true);
 
-    mathjaxCarregado.then(() => MathJax.startup.promise).then(() => MathJax.typesetPromise()).then(guardarTex).then(montarSumario).then(() => desenharMarcas());
+    mathjaxCarregado.then(() => MathJax.startup.promise).then(() => MathJax.typesetPromise()).then(guardarTex).then(montarSumario).then(() => desenharMarcas()).then(() => setTimeout(oferecerRascunho, 300));
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar);

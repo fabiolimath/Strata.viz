@@ -2,6 +2,24 @@
 
 ## Próxima versão
 
+- Colar limpo: do Word, PDF ou web ficam só parágrafos, títulos, listas,
+  tabelas, negrito, itálico, links e fórmulas do próprio Strata; Ctrl+Shift+V
+  cola texto puro.
+- Rascunho automático no navegador (a cada 20 s e ao fechar), com aviso para
+  recuperar, baixar ou descartar ao abrir o mesmo arquivo; salvar apaga o rascunho.
+- Alt+↑ / Alt+↓ movem o bloco do cursor (passa de página e sai de caixas).
+- Notas de rodapé (menu de alinhamento, abaixo de Nota lateral).
+- Ambientes Definição, Teorema, Exemplo e Observação (menu de estilos), com
+  título editável.
+- Número da equação destacada no diálogo da fórmula (`\tag{...}`).
+- Vídeo e conteúdo embutido (YouTube, Vimeo, GeoGebra, código `<iframe>`),
+  com largura ajustável pelas alças.
+- Links internos: o diálogo de link lista títulos, ambientes e equações
+  numeradas.
+- Painel de símbolos (gregas, operadores, relações, setas, conjuntos, texto).
+- Menu ☰ → Exportar PDF: páginas do PDF no tamanho das da tela (proporção A4),
+  sempre no tema claro e com todas as camadas.
+- O cursor fica no lugar quando um bloco muda de caixa (colunas, ambiente).
 - Desenho: nova camada (botão Desenhar, ao lado de Marcar) com caneta livre,
   marca-texto, linha, seta, retângulo, elipse e borracha; 7 cores e 3
   espessuras. Fica em `span.marca[data-tipo="desenho"]` com `data-tracos`, na
