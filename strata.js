@@ -131,6 +131,7 @@
   <button type="button" id="b-camada" class="b-icone" title="Insere camada de conteúdo. A camada começa no ponto do cursor (no início ou no meio da linha). Com o cursor logo depois de uma âncora de camada, junta essa camada à anterior. (Alt+C)" aria-label="Camada"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"></path><path d="M3 13l9 5 9-5"></path></svg></button>
   <span class="combo" id="c-marcar"><button type="button" id="b-marcar" class="b-icone" title="Insere camada de marcação. Marca termos já escritos (destaque, risco, círculo, seta...); a marcação aparece, no modo apresentação, no ponto do cursor." aria-label="Marcar"></button><button type="button" class="combo-seta" title="Escolher o tipo de marcação" aria-label="Escolher o tipo de marcação">▾</button>
     <span class="combo-menu" hidden=""><button type="button" data-tipo="destaque" title="Destaque (marca-texto)"><span class="ci"></span>Destaque (marca-texto)</button><button type="button" data-tipo="risca" title="Risco"><span class="ci"></span>Risco</button><button type="button" data-tipo="circula" title="Círculo"><span class="ci"></span>Círculo</button><button type="button" data-tipo="caixa" title="Retângulo"><span class="ci"></span>Retângulo</button><button type="button" data-tipo="seta" title="Seta apontando para cada termo"><span class="ci"></span>Seta apontando para cada termo</button><button type="button" data-tipo="liga" title="Seta ligando o 1º termo ao 2º"><span class="ci"></span>Seta ligando o 1º termo ao 2º</button><button type="button" data-tipo="check" title="Visto (✓)"><span class="ci"></span>Visto (✓)</button><button type="button" data-tipo="texto" title="Texto à direita do termo"><span class="ci"></span>Texto</button></span></span>
+  <button type="button" id="b-desenho" class="b-icone" title="Insere camada de desenho: caneta, marca-texto, linha, seta, retângulo e elipse, livres na página. O desenho aparece, no modo apresentação, no ponto do cursor, e acompanha o parágrafo em que está a âncora." aria-label="Desenhar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18c2.5-4 4.5-6 6-6 2 0 1 5 3 5s3-6 5-9"/><path d="M16.5 3.5l4 4L12 16l-5 1 1-5z" stroke-width="1.6"/></svg></button>
   <button type="button" id="b-olho" class="b-icone" title="Mostra ou recolhe as âncoras. Recolhidas, cada âncora vira uma linha vertical, na cor dela, no ponto em que está; passe o mouse sobre a linha para ver o ícone. (Ctrl+Q)" aria-label="Mostrar ou recolher âncoras"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="olho-aberto" d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle class="olho-aberto" cx="12" cy="12" r="3"/><path class="olho-fechado" d="M2.5 10.5s3.5 4.5 9.5 4.5 9.5-4.5 9.5-4.5M5.2 13.4l-1.7 2.3M9.2 14.8l-.7 2.7M14.8 14.8l.7 2.7M18.8 13.4l1.7 2.3"/></svg></button>
   <span class="sep"></span>
   <span class="combo grupo" id="c-eq"><button type="button" id="b-eqs" class="b-icone" title="Equações" aria-label="Equações"></button><button type="button" class="combo-seta" title="Equações: escolher" aria-label="Equações: escolher">▾</button>
@@ -189,6 +190,12 @@
   <div class="ee-botoes"><button type="button" id="pm-apagar" title="Apagar marcação"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"></path></svg></button><button type="button" id="pm-cancelar">Cancelar</button><button type="button" id="pm-ok">Pronto</button></div>
 </div>
 <div id="retangulo" hidden=""></div>
+<div id="painel-desenho" hidden="">
+  <div class="pm-linha"><b>Desenho</b> <span class="pm-dica">Desenhe na página. Tudo o que fizer aqui é uma camada só. Enter conclui, Esc cancela, Ctrl+Z desfaz o último traço.</span></div>
+  <div class="pm-linha"><span class="pm-rot">Ferram.</span><button type="button" data-ferr="livre" title="Caneta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17c3-5 5-7 6.5-7 2 0 .5 6 3 6s3.5-7 8-10"/></svg></button><button type="button" data-ferr="marca" title="Marca-texto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21.5h10" stroke="#f0c000" stroke-width="3.2"/><path d="M14.2 3.6l6.2 6.2-8.3 8.3-6.2-6.2z"/><path d="M5.9 11.9l-1.6 4.4 3.4 3.4 4.4-1.6"/></svg></button><button type="button" data-ferr="linha" title="Linha"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20L20 4"/></svg></button><button type="button" data-ferr="seta" title="Seta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20L19 5M11 5h8v8"/></svg></button><button type="button" data-ferr="ret" title="Retângulo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6" width="17" height="12" rx="1"/></svg></button><button type="button" data-ferr="elipse" title="Elipse"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="9" ry="6.5"/></svg></button><button type="button" data-ferr="borracha" title="Borracha (apaga o traço inteiro)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 20h12M5.5 14.5l8-8a2 2 0 0 1 2.8 0l2.2 2.2a2 2 0 0 1 0 2.8L12 18H9z"/><path d="M9.5 10.5l5 5"/></svg></button></div>
+  <div class="pm-linha"><span class="pm-rot">Cor</span><button type="button" class="pm-cor" data-dcor="preto" style="--c:#111111" title="preto"></button><button type="button" class="pm-cor" data-dcor="azul" style="--c:#3333cc" title="azul"></button><button type="button" class="pm-cor" data-dcor="laranja" style="--c:#ff8000" title="laranja"></button><button type="button" class="pm-cor" data-dcor="vermelho" style="--c:#d01c1c" title="vermelho"></button><button type="button" class="pm-cor" data-dcor="verde" style="--c:#1b8a3a" title="verde"></button><button type="button" class="pm-cor" data-dcor="roxo" style="--c:#8e24aa" title="roxo"></button><button type="button" class="pm-cor" data-dcor="amarelo" style="--c:#ffe600" title="amarelo"></button><span class="pm-rot" style="width:auto;margin-left:12px">Traço</span><button type="button" data-esp="1.6" title="Fino"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16" stroke-width="1.4"/></svg></button><button type="button" data-esp="2.6" title="Médio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16" stroke-width="2.6"/></svg></button><button type="button" data-esp="4.5" title="Grosso"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16" stroke-width="4.4"/></svg></button></div>
+  <div class="ee-botoes"><button type="button" id="pd-apagar">Apagar desenho</button><button type="button" id="pd-desfazer" title="Desfazer o último traço (Ctrl+Z)">Desfazer traço</button><button type="button" id="pd-cancelar">Cancelar</button><button type="button" id="pd-ok">Concluir</button></div>
+</div>
 <div id="img-sel" hidden=""><span class="img-alca" data-canto="nw"></span><span class="img-alca" data-canto="ne"></span><span class="img-alca" data-canto="sw"></span><span class="img-alca" data-canto="se"></span><span id="img-tam"></span></div>
 <div id="passos"><button id="ant" title="Camada anterior (←)">◀</button><span id="contador"></span><button id="prox" title="Próxima camada (→)">▶</button></div>
 `;
@@ -601,6 +608,7 @@
       });
     }
     function sairEdicao() {
+      if (DS.rascunho) fecharDesenho();
       if (document.body.classList.contains('escolhendo')) fecharPainel();
       document.querySelectorAll('.apostila .marca').forEach(m => { m.removeAttribute('draggable'); m.innerHTML = ''; });
       tirarIconesCamada(); tirarPontos();
@@ -1029,9 +1037,11 @@
       seta: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12H4.5M10 6.5L4.5 12l5.5 5.5"/></svg>',
       liga: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="15.5" width="6" height="6"/><rect x="15.5" y="2.5" width="6" height="6"/><path d="M8.5 15.5l5.6-5.6"/><path d="M14.6 9.4l-4.2 1.1 3.1 3.1z" fill="currentColor"/></svg>',
       check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l5 5L20 6" stroke-width="2.4"/></svg>',
+      desenho: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18c2.5-4 4.5-6 6-6 2 0 1 5 3 5s3-6 5-9"/><path d="M16.5 3.5l4 4L12 16l-5 1 1-5z" stroke-width="1.6"/></svg>',
       texto: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M8 9h8M12 9v7"/></svg>'
     };
     const SVGNS = 'http://www.w3.org/2000/svg';
+    const DS = { rascunho: null, existente: null, range: null, bloco: null, ferr: 'livre', cor: 'vermelho', esp: '2.6', vivo: null, desfeitos: [] };   // desenho em edição
     const MK = { formas: [], pairadas: new Set(), rascunho: null, existente: null, range: null, esc: [], arrasto: null, drag: null, foco: null, arrastoCamada: null };
     function svgEl(tag, at, pai) { const e = document.createElementNS(SVGNS, tag); for (const k in at) e.setAttribute(k, at[k]); if (pai) pai.append(e); return e; }
     function alvosDe(nome) {
@@ -1084,7 +1094,8 @@
       return rs.filter(r => r.width > 0).map(r => ({ pag, x: r.left - P.left, y: r.top - P.top, w: r.width, h: r.height }));
     }
     function marcaAtiva(m) {
-      if (m === MK.rascunho) return true;
+      if (m === MK.rascunho || m === DS.rascunho) return true;
+      if (m === DS.existente) return false;
       if (m === MK.existente) return false;
       return modoAtual() !== 'aula' || m.classList.contains('visivel');
     }
@@ -1092,6 +1103,7 @@
       document.querySelectorAll('.apostila svg.tinta, .apostila .tinta-html').forEach(s => s.replaceChildren());
       const lista = [...document.querySelectorAll('.apostila .marca')];
       if (MK.rascunho) lista.push(MK.rascunho);
+      if (DS.rascunho) lista.push(DS.rascunho);
       // a marcação em edição (ou sob o mouse, no modo edição) fica em destaque; as outras, apagadas
       MK.formas = [];
       if (document.body.classList.contains('editando') && !document.body.classList.contains('escolhendo')) garantirPontos();
@@ -1163,6 +1175,7 @@
         const p = k => (x - 11 * Math.cos(ang + k)).toFixed(1) + ',' + (y - 11 * Math.sin(ang + k)).toFixed(1);
         traco(s, `M${p(.45)} L${x.toFixed(1)},${y.toFixed(1)} L${p(-.45)}`);
       };
+      if (tipo === 'desenho') return desenharDesenho(m, anima, estado);
       if (tipo === 'liga') {   // seta ligando o primeiro termo ao segundo
         const [A, B] = nomes.map(n => alvosDe(n).flatMap(caixasDe)[0]);
         if (!A || !B || A.pag !== B.pag) return;
@@ -1508,6 +1521,213 @@
     $('pm-cancelar').onclick = fecharPainel;
     $('pm-apagar').onclick = () => { const m = MK.existente; m.remove(); fecharPainel(); sujo(true); };
 
+    // ---------- desenho: camada de traços livres na página ----------
+    // <span class="fragment marca" data-tipo="desenho" data-tracos="..."> no ponto do texto em que aparece.
+    // Cada traço: "ferramenta cor espessura: x,y x,y ...", separados por ";". x é medido a partir da
+    // esquerda da página e y a partir do alto do bloco em que está a âncora, em px de uma página de 860 px:
+    // se o texto de cima muda, o desenho acompanha o parágrafo.
+    const DS_CORES = { preto: '#111111', azul: '#3333cc', laranja: '#ff8000', vermelho: '#d01c1c', verde: '#1b8a3a', roxo: '#8e24aa', amarelo: '#ffe600' };
+    const DS_CORES_ESCURO = Object.assign({}, MK_CORES_TEXTO_ESCURO, { amarelo: '#ffe600' });
+    const DS_FERR = ['livre', 'marca', 'linha', 'seta', 'ret', 'elipse'];
+    function lerTracos(t) {
+      return (t || '').split(';').map(x => x.trim()).filter(Boolean).map(x => {
+        const k = x.indexOf(':'); if (k < 0) return null;
+        const [ferr, cor, esp] = x.slice(0, k).trim().split(/\s+/);
+        const pts = x.slice(k + 1).trim().split(/\s+/).map(p => p.split(',').map(Number)).filter(p => p.length === 2 && p.every(isFinite));
+        return DS_FERR.includes(ferr) && pts.length ? { ferr, cor: cor || 'vermelho', esp: +esp || 2.6, pts } : null;
+      }).filter(Boolean);
+    }
+    const escreverTracos = l => l.map(t => `${t.ferr} ${t.cor} ${t.esp}: ` + t.pts.map(p => p.map(v => Math.round(v * 10) / 10).join(',')).join(' ')).join('; ');
+    function simplificar(pts, eps) {   // Ramer-Douglas-Peucker
+      if (pts.length < 3) return pts;
+      const [a, b] = [pts[0], pts[pts.length - 1]], dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy) || 1;
+      let im = 0, dm = 0;
+      for (let i = 1; i < pts.length - 1; i++) { const d = Math.abs(dy * pts[i][0] - dx * pts[i][1] + b[0] * a[1] - b[1] * a[0]) / L; if (d > dm) { dm = d; im = i; } }
+      if (dm <= eps) return [a, b];
+      return simplificar(pts.slice(0, im + 1), eps).slice(0, -1).concat(simplificar(pts.slice(im), eps));
+    }
+    // referência do desenho: página, esquerda da página e alto do bloco da âncora (em px da tela) e escala
+    function refDesenho(m) {
+      const ancora = m.isConnected ? m : null;
+      const bloco = ancora ? (ancora.closest(BLOCOS) || ancora.closest('section.pagina')) : DS.bloco;
+      const pag = bloco && bloco.closest('section.pagina'); if (!pag) return null;
+      const P = pag.getBoundingClientRect(), B = bloco.getBoundingClientRect();
+      return { pag, P, x0: 0, y0: B.top - P.top, k: P.width / 860 };
+    }
+    // geometria de um traço, em px da página
+    function formaDoTraco(t, R) {
+      const q = t.pts.map(([x, y]) => [R.x0 + x * R.k, R.y0 + y * R.k]), e = t.esp * Math.max(R.k, .5);
+      const f = n => n.toFixed(1);
+      let d;
+      if (t.ferr === 'livre' || t.ferr === 'marca') {
+        if (q.length === 1) d = `M${f(q[0][0])},${f(q[0][1])} l0.01,0`;
+        else { d = `M${f(q[0][0])},${f(q[0][1])}`; for (let i = 1; i < q.length - 1; i++) d += ` Q${f(q[i][0])},${f(q[i][1])} ${f((q[i][0] + q[i + 1][0]) / 2)},${f((q[i][1] + q[i + 1][1]) / 2)}`; const z = q[q.length - 1]; d += ` L${f(z[0])},${f(z[1])}`; }
+      } else {
+        const [a, b] = [q[0], q[q.length - 1]];
+        if (t.ferr === 'linha') d = `M${f(a[0])},${f(a[1])} L${f(b[0])},${f(b[1])}`;
+        else if (t.ferr === 'seta') {
+          const ang = Math.atan2(b[1] - a[1], b[0] - a[0]), c = 7 + 2.2 * e, p = k => f(b[0] - c * Math.cos(ang + k)) + ',' + f(b[1] - c * Math.sin(ang + k));
+          d = `M${f(a[0])},${f(a[1])} L${f(b[0])},${f(b[1])} M${p(.45)} L${f(b[0])},${f(b[1])} L${p(-.45)}`;
+        } else if (t.ferr === 'ret') { const x = Math.min(a[0], b[0]), y = Math.min(a[1], b[1]), w = Math.abs(b[0] - a[0]), h = Math.abs(b[1] - a[1]); d = `M${f(x)},${f(y)} h${f(w)} v${f(h)} h${f(-w)} Z`; }
+        else { const cx = (a[0] + b[0]) / 2, cy = (a[1] + b[1]) / 2, rx = Math.abs(b[0] - a[0]) / 2 || .5, ry = Math.abs(b[1] - a[1]) / 2 || .5; d = `M${f(cx - rx)},${f(cy)} A${f(rx)},${f(ry)} 0 1 0 ${f(cx + rx)},${f(cy)} A${f(rx)},${f(ry)} 0 1 0 ${f(cx - rx)},${f(cy)}`; }
+      }
+      return { d, e: t.ferr === 'marca' ? Math.max(12, e * 4) : e, q };
+    }
+    function pontosDaForma(t, R) {   // pontos para medir a distância (borracha) e a caixa
+      const { q } = formaDoTraco(t, R);
+      if (t.ferr === 'ret' || t.ferr === 'elipse') {
+        const [a, b] = [q[0], q[q.length - 1]], l = [];
+        if (t.ferr === 'ret') return [[a[0], a[1]], [b[0], a[1]], [b[0], b[1]], [a[0], b[1]], [a[0], a[1]]];
+        const cx = (a[0] + b[0]) / 2, cy = (a[1] + b[1]) / 2, rx = Math.abs(b[0] - a[0]) / 2, ry = Math.abs(b[1] - a[1]) / 2;
+        for (let i = 0; i <= 36; i++) l.push([cx + rx * Math.cos(i / 36 * 2 * Math.PI), cy + ry * Math.sin(i / 36 * 2 * Math.PI)]);
+        return l;
+      }
+      return q;
+    }
+    function desenharDesenho(m, anima, estado) {
+      const R = refDesenho(m); if (!R) return;
+      const s = tinta(R.pag), paleta = Strata.temaEscuro() ? DS_CORES_ESCURO : DS_CORES;
+      const tracos = lerTracos(m.dataset.tracos); if (!tracos.length) return;
+      let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity, atraso = 0;
+      tracos.forEach(t => {
+        const { d, e } = formaDoTraco(t, R);
+        const el = svgEl('path', { d, class: 'traco' + (t.ferr === 'marca' ? ' marca-livre' : '') + (anima ? ' anima' : '') + (estado === 'apagada' ? ' apagada' : ''), stroke: paleta[t.cor] || paleta.vermelho, pathLength: 1 }, s);
+        el.style.strokeWidth = e;
+        const pts = pontosDaForma(t, R);
+        let L = 0; for (let i = 1; i < pts.length; i++) L += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+        if (anima) { const dur = Math.min(1.2, Math.max(.25, L / 700)); el.style.animationDuration = dur + 's'; el.style.animationDelay = atraso + 's'; atraso += dur * .8; }
+        pts.forEach(([x, y]) => { x0 = Math.min(x0, x - e); y0 = Math.min(y0, y - e); x1 = Math.max(x1, x + e); y1 = Math.max(y1, y + e); });
+      });
+      MK.formas.push({ m, pag: R.pag, x: x0 - 4, y: y0 - 4, w: x1 - x0 + 8, h: y1 - y0 + 8 });
+      if (estado === 'foco' && m !== DS.rascunho) svgEl('rect', { x: x0 - 6, y: y0 - 6, width: x1 - x0 + 12, height: y1 - y0 + 12, rx: 4, class: 'moldura' }, s);
+    }
+
+    // modo desenho: a página deixa de ser editável e o mouse (caneta, dedo) desenha
+    function abrirDesenho(existente) {
+      if (document.body.classList.contains('escolhendo') || DS.rascunho) return;
+      lerCursor();
+      if (!existente && !ED.range) return avisar('Clique no texto, no ponto em que o desenho deve aparecer');
+      DS.existente = existente || null; DS.desfeitos = [];
+      DS.rascunho = document.createElement('span'); DS.rascunho.dataset.tipo = 'desenho';
+      if (existente) { DS.rascunho.dataset.tracos = existente.dataset.tracos || ''; DS.bloco = existente.closest(BLOCOS) || existente.closest('section.pagina'); existente.classList.add('editando-agora'); }
+      else { DS.range = ED.range.cloneRange(); DS.rascunho.dataset.tracos = ''; const n = noDe(DS.range.startContainer); DS.bloco = n.closest(BLOCOS) || n.closest('section.pagina'); }
+      document.body.classList.add('desenhando');
+      document.querySelectorAll('section.pagina').forEach(s => s.setAttribute('contenteditable', 'false'));
+      getSelection().removeAllRanges();
+      $('editor-eq').hidden = true; $('pd-apagar').style.display = existente ? '' : 'none';
+      $('painel-desenho').hidden = false; mostrarDesenho(); desenharMarcas();
+    }
+    function fecharDesenho() {
+      if (DS.existente) DS.existente.classList.remove('editando-agora');
+      DS.rascunho = null; DS.existente = null; DS.range = null; DS.bloco = null; DS.vivo = null;
+      document.body.classList.remove('desenhando'); $('painel-desenho').hidden = true;
+      if (document.body.classList.contains('editando')) document.querySelectorAll('section.pagina').forEach(s => s.setAttribute('contenteditable', 'true'));
+      desenharMarcas(); histAgendar();
+    }
+    function concluirDesenho() {
+      const t = DS.rascunho.dataset.tracos;
+      if (!t.trim()) { if (DS.existente) { DS.existente.remove(); sujo(true); iconesCamada(); } return fecharDesenho(); }
+      let m = DS.existente;
+      if (!m) {
+        m = document.createElement('span'); m.className = 'fragment marca'; m.dataset.tipo = 'desenho';
+        prepararIcone(m); const r = DS.range; r.collapse(false);
+        // depois do <br> que fecha o bloco, a âncora cairia numa linha vazia: entra antes dele
+        let ant = r.startContainer.nodeType === 1 ? r.startContainer.childNodes[r.startOffset - 1] : (r.startOffset === 0 ? r.startContainer.previousSibling : null);
+        while (ant && ant.nodeType === 3 && !ant.data.replace(/\u200B/g, '')) ant = ant.previousSibling;
+        if (ant && ant.nodeName === 'BR' && !(ant.nextSibling && ant.nextSibling.textContent.replace(/[\s\u200B]/g, ''))) r.setStartBefore(ant);
+        r.insertNode(m);
+      }
+      m.dataset.tracos = t;
+      iconesCamada(); sujo(true); fecharDesenho();
+      const r = document.createRange(); r.setStartAfter(m); r.collapse(true); const sec = m.closest('section.pagina'); if (sec) { sec.focus({ preventScroll: true }); getSelection().removeAllRanges(); getSelection().addRange(r); lerCursor(); }
+    }
+    function mostrarDesenho() {
+      document.querySelectorAll('#painel-desenho [data-ferr]').forEach(b => b.classList.toggle('ativo', b.dataset.ferr === DS.ferr));
+      document.querySelectorAll('#painel-desenho [data-dcor]').forEach(b => b.classList.toggle('ativo', b.dataset.dcor === DS.cor));
+      document.querySelectorAll('#painel-desenho [data-esp]').forEach(b => b.classList.toggle('ativo', b.dataset.esp === DS.esp));
+      $('pd-desfazer').disabled = !lerTracos(DS.rascunho && DS.rascunho.dataset.tracos).length;
+    }
+    try { const g = JSON.parse(lembrar('strata-desenho') || '{}'); if (DS_FERR.includes(g.ferr) || g.ferr === 'borracha') DS.ferr = g.ferr; if (DS_CORES[g.cor]) DS.cor = g.cor; if (['1.6', '2.6', '4.5'].includes(g.esp)) DS.esp = g.esp; } catch (e) {}
+    const guardarEscolha = () => lembrar('strata-desenho', JSON.stringify({ ferr: DS.ferr, cor: DS.cor, esp: DS.esp }));
+    document.querySelectorAll('#painel-desenho [data-ferr]').forEach(b => b.onclick = () => {
+      DS.ferr = b.dataset.ferr;
+      if (DS.ferr === 'marca' && !['amarelo', 'verde', 'azul', 'laranja'].includes(DS.cor)) DS.cor = 'amarelo';   // marca-texto: cor clara
+      else if (DS.ferr !== 'marca' && DS.ferr !== 'borracha' && DS.cor === 'amarelo') DS.cor = 'vermelho';
+      guardarEscolha(); mostrarDesenho();
+    });
+    document.querySelectorAll('#painel-desenho [data-dcor]').forEach(b => b.onclick = () => { DS.cor = b.dataset.dcor; if (DS.ferr === 'borracha') DS.ferr = 'livre'; guardarEscolha(); mostrarDesenho(); });
+    document.querySelectorAll('#painel-desenho [data-esp]').forEach(b => b.onclick = () => { DS.esp = b.dataset.esp; if (DS.ferr === 'borracha') DS.ferr = 'livre'; guardarEscolha(); mostrarDesenho(); });
+    document.querySelectorAll('#painel-desenho button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
+    function desfazerTraco() {
+      const l = lerTracos(DS.rascunho.dataset.tracos); if (!l.length) return;
+      l.pop(); DS.rascunho.dataset.tracos = escreverTracos(l); mostrarDesenho(); desenharMarcas();
+    }
+    $('b-desenho').onclick = () => abrirDesenho(null);
+    $('pd-ok').onclick = concluirDesenho;
+    $('pd-cancelar').onclick = fecharDesenho;
+    $('pd-desfazer').onclick = desfazerTraco;
+    $('pd-apagar').onclick = () => { const m = DS.existente; fecharDesenho(); if (m) { m.remove(); sujo(true); iconesCamada(); desenharMarcas(); } };
+    // traçar
+    function pontoDe(ev) {
+      const R = refDesenho(DS.rascunho); if (!R) return null;
+      return { R, x: (ev.clientX - R.P.left - R.x0) / R.k, y: (ev.clientY - R.P.top - R.y0) / R.k };
+    }
+    function apagarEm(ev) {
+      const R = refDesenho(DS.rascunho); if (!R) return;
+      const X = ev.clientX - R.P.left, Y = ev.clientY - R.P.top, l = lerTracos(DS.rascunho.dataset.tracos);
+      const dist = (p, a, b) => { const dx = b[0] - a[0], dy = b[1] - a[1], L2 = dx * dx + dy * dy; let u = L2 ? ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / L2 : 0; u = Math.max(0, Math.min(1, u)); return Math.hypot(p[0] - a[0] - u * dx, p[1] - a[1] - u * dy); };
+      const resto = l.filter(t => { const q = pontosDaForma(t, R), e = formaDoTraco(t, R).e / 2 + 6; if (q.length === 1) return Math.hypot(X - q[0][0], Y - q[0][1]) > e; for (let i = 1; i < q.length; i++) if (dist([X, Y], q[i - 1], q[i]) <= e) return false; return true; });
+      if (resto.length !== l.length) { DS.rascunho.dataset.tracos = escreverTracos(resto); mostrarDesenho(); desenharMarcas(); }
+    }
+    function desenharVivo() {
+      const v = DS.vivo; if (!v) return;
+      const R = refDesenho(DS.rascunho); if (!R) return;
+      if (!v.el || !v.el.isConnected) { v.el = svgEl('path', { class: 'traco' + (v.t.ferr === 'marca' ? ' marca-livre' : '') }, tinta(R.pag)); }
+      const { d, e } = formaDoTraco(v.t, R);
+      v.el.setAttribute('d', d); v.el.setAttribute('stroke', (Strata.temaEscuro() ? DS_CORES_ESCURO : DS_CORES)[v.t.cor]); v.el.style.strokeWidth = e;
+    }
+    const naPagina = ev => DS.rascunho && document.body.classList.contains('desenhando') && ev.target.closest && ev.target.closest('section.pagina');
+    addEventListener('pointerdown', ev => {
+      const pag = naPagina(ev); if (!pag) return;
+      ev.preventDefault(); ev.stopPropagation();
+      if (ev.button !== 0 && ev.pointerType === 'mouse') return;
+      const R = refDesenho(DS.rascunho);
+      if (!R || R.pag !== pag) return avisar('Desenhe na mesma página da âncora');
+      try { pag.setPointerCapture(ev.pointerId); } catch (e) {}
+      if (DS.ferr === 'borracha') { DS.vivo = { borracha: true, id: ev.pointerId }; apagarEm(ev); return; }
+      const p = pontoDe(ev);
+      DS.vivo = { id: ev.pointerId, t: { ferr: DS.ferr, cor: DS.cor, esp: +DS.esp, pts: [[p.x, p.y]] } };
+      desenharVivo();
+    }, true);
+    addEventListener('pointermove', ev => {
+      const v = DS.vivo; if (!v || ev.pointerId !== v.id) return;
+      ev.preventDefault();
+      if (v.borracha) return apagarEm(ev);
+      const p = pontoDe(ev); if (!p) return;
+      if (v.t.ferr === 'livre' || v.t.ferr === 'marca') { const u = v.t.pts[v.t.pts.length - 1]; if (Math.hypot(p.x - u[0], p.y - u[1]) < 1) return; v.t.pts.push([p.x, p.y]); }
+      else v.t.pts[1] = [p.x, p.y];
+      desenharVivo();
+    }, true);
+    const soltarTraco = ev => {
+      const v = DS.vivo; if (!v || ev.pointerId !== v.id) return;
+      DS.vivo = null; if (v.borracha) return;
+      const t = v.t;
+      if (t.ferr === 'livre' || t.ferr === 'marca') t.pts = simplificar(t.pts, .6);
+      else if (t.pts.length < 2 || Math.hypot(t.pts[1][0] - t.pts[0][0], t.pts[1][1] - t.pts[0][1]) < 3) { if (v.el) v.el.remove(); return; }   // clique sem arrastar
+      const l = lerTracos(DS.rascunho.dataset.tracos); l.push(t);
+      DS.rascunho.dataset.tracos = escreverTracos(l); mostrarDesenho(); desenharMarcas();
+    };
+    addEventListener('pointerup', soltarTraco, true); addEventListener('pointercancel', soltarTraco, true);
+    // enquanto desenha, os cliques na página não chegam ao editor
+    ['mousedown', 'mouseup', 'click', 'dblclick', 'dragstart', 'contextmenu'].forEach(k => addEventListener(k, ev => { if (naPagina(ev)) { ev.preventDefault(); ev.stopPropagation(); } }, true));
+    addEventListener('keydown', ev => {
+      if (!DS.rascunho) return;
+      const k = ev.key.toLowerCase(), mod = ev.ctrlKey || ev.metaKey;
+      if (ev.key === 'Escape') { ev.preventDefault(); ev.stopPropagation(); fecharDesenho(); }
+      else if (ev.key === 'Enter') { ev.preventDefault(); ev.stopPropagation(); concluirDesenho(); }
+      else if (mod && k === 'z') { ev.preventDefault(); ev.stopPropagation(); desfazerTraco(); }
+      else if (!(mod && k === 's')) { ev.stopPropagation(); if (!mod) ev.preventDefault(); }
+    }, true);
     // Escolher termos numa fórmula: arrastar de um termo a outro, como numa seleção de texto (um clique
     // escolhe o termo sob o mouse). A seleção segue a estrutura do LaTeX: sair de um expoente leva a base junto.
     function caixaTermo(it, no) { const g = it.el.querySelector('svg .tk-' + no.id); return g ? g.getBoundingClientRect() : null; }
@@ -1698,7 +1918,7 @@
       if (document.body.classList.contains('escolhendo')) fecharPainel();
       $('editor-eq').hidden = true;
       desselecionarCamada();
-      if (!mesma) abrirPainel(m);
+      if (!mesma) { if (m.dataset.tipo === 'desenho') abrirDesenho(m); else abrirPainel(m); }
     });
     document.addEventListener('dragstart', ev => {
       const m = ev.target.closest && ev.target.closest('.apostila .marca');

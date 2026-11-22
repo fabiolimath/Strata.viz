@@ -88,6 +88,13 @@ salva como `novo_documento.html`.
     termo ao 2º), `check` e `texto` (`data-texto="..."`, fórmulas entre `$...$`).
   - Cores: `amarelo`, `verde`, `laranja`, `azul`, `rosa`, `vermelho` (no
     `texto`: `preto`, `azul`, `laranja`, `vermelho`, `verde`, `roxo`).
+- **Desenho**: `<span class="fragment marca" data-tipo="desenho" data-tracos="..."></span>`
+  no ponto do texto em que o desenho aparece. Cada traço é
+  `ferramenta cor espessura: x,y x,y ...`, separados por `;`. Ferramentas:
+  `livre`, `marca` (marca-texto), `linha`, `seta`, `ret`, `elipse`; cores:
+  `preto`, `azul`, `laranja`, `vermelho`, `verde`, `roxo`, `amarelo`. x conta da
+  esquerda da página e y do alto do bloco em que está a âncora, em px de uma
+  página de 860 px: o desenho acompanha esse parágrafo quando o texto de cima muda.
 - **Cores do texto**: `rotulo` (laranja), `cor-azul`, `cor-vermelho`,
   `cor-verde`, `cor-roxo`. Cor de uma fórmula:
   `<span class="eq-cor cor-verde">\(...\)</span>`.
@@ -154,6 +161,10 @@ MathJax (como o `fol.js` do site, que traz as macros do
   laranja; clique e use Camada para juntá-la à anterior, ou arraste-a.
 - **Marcar**: clique no ponto do texto em que a marcação deve aparecer, escolha
   o tipo e arraste de termo a termo na fórmula (no texto, selecione o trecho).
+- **Desenhar**: clique no ponto do texto em que o desenho deve aparecer e
+  desenhe na página (caneta, marca-texto, linha, seta, retângulo, elipse,
+  borracha que apaga o traço inteiro). Enter conclui, Esc cancela, Ctrl+Z desfaz
+  o último traço. Clique na âncora para mudar o desenho.
 - Olho (Ctrl+Q): recolhe as âncoras. Ctrl+Z / Ctrl+Y desfazem e refazem.
 - Barra de texto: estilos (Parágrafo, Título 1, Subtítulo, Título 2–4,
   Equação, Pré-formatado, Citação), negrito, itálico, cor, link (Ctrl+K),

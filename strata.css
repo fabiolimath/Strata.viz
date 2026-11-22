@@ -250,6 +250,7 @@ body.editando .apostila .marca[data-cor="laranja"] { background: #ffd9b0; border
 body.editando .apostila .marca[data-cor="azul"] { background: #c4eeff; border-color: #09c; }
 body.editando .apostila .marca[data-cor="rosa"] { background: #ffc8f2; border-color: #d0a; }
 body.editando .apostila .marca[data-cor="vermelho"] { background: #ffd6d6; border-color: #d00; }
+body.editando .apostila .marca[data-tipo="desenho"] { background: #f1e4fa; border-color: #8e24aa; color: #6a1b8a; }
 body.editando .apostila .marca.editando-agora { outline: 2px solid #ff8000; }
 body.editando .apostila [data-mk] { text-decoration: underline dotted #d9a400; }
 /* escolhendo os termos de uma marcação */
@@ -267,27 +268,37 @@ body.escolhendo .apostila .eq span.marca, body.escolhendo .apostila .eq span.anc
 .alca-marca.dir::after { bottom: -7px; }
 .alca-marca:hover::before { width: 3px; }
 #retangulo[hidden] { display: none; }
-#painel-marca { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 70;
+#painel-marca, #painel-desenho { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 70;
   width: min(680px, calc(100vw - 32px)); box-sizing: border-box;
   background: #fff; border: 1px solid #bbb; border-radius: 8px; box-shadow: 0 6px 30px rgba(0,0,0,.25);
   padding: 10px 12px; font: 14px system-ui, sans-serif; color: #333; }
-#painel-marca[hidden] { display: none; }
-#painel-marca .pm-linha[hidden] { display: none; }
-#painel-marca .pm-linha { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 4px 0; }
-#painel-marca .pm-rot { width: 54px; color: #666; }
-#painel-marca .pm-dica { color: #777; font-size: 13px; }
-#painel-marca button { font: inherit; border: 1px solid #ccc; background: #fff; border-radius: 5px; padding: 4px 10px; cursor: pointer; }
-#painel-marca button:hover { background: #eef; }
-#painel-marca button.ativo { background: #ffe2c4; border-color: #ff8000; }
-#painel-marca .pm-cor { width: 28px; height: 28px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
-#painel-marca .pm-cor::before { content: ""; width: 16px; height: 16px; border-radius: 3px; background: var(--c); }
-#painel-marca .pm-termo { display: inline-flex; align-items: center; gap: 4px; background: #f3f3f6; border: 1px solid #ddd;
+#painel-marca[hidden], #painel-desenho[hidden] { display: none; }
+#painel-marca .pm-linha[hidden], #painel-desenho .pm-linha[hidden] { display: none; }
+#painel-marca .pm-linha, #painel-desenho .pm-linha { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 4px 0; }
+#painel-marca .pm-rot, #painel-desenho .pm-rot { width: 54px; color: #666; }
+#painel-marca .pm-dica, #painel-desenho .pm-dica { color: #777; font-size: 13px; }
+#painel-marca button, #painel-desenho button { font: inherit; border: 1px solid #ccc; background: #fff; border-radius: 5px; padding: 4px 10px; cursor: pointer; }
+#painel-marca button:hover, #painel-desenho button:hover { background: #eef; }
+#painel-marca button.ativo, #painel-desenho button.ativo { background: #ffe2c4; border-color: #ff8000; }
+#painel-marca .pm-cor, #painel-desenho .pm-cor { width: 28px; height: 28px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+#painel-marca .pm-cor::before, #painel-desenho .pm-cor::before { content: ""; width: 16px; height: 16px; border-radius: 3px; background: var(--c); }
+#painel-marca .pm-termo, #painel-desenho .pm-termo { display: inline-flex; align-items: center; gap: 4px; background: #f3f3f6; border: 1px solid #ddd;
   border-radius: 4px; padding: 2px 4px 2px 8px; font: 13px ui-monospace, Consolas, monospace; }
-#painel-marca .pm-termo button { border: 0; background: none; padding: 0 4px; color: #a00; }
-#painel-marca .ee-botoes { display: flex; gap: 6px; justify-content: flex-end; margin-top: 8px; }
+#painel-marca .pm-termo button, #painel-desenho .pm-termo button { border: 0; background: none; padding: 0 4px; color: #a00; }
+#painel-marca .ee-botoes, #painel-desenho .ee-botoes { display: flex; gap: 6px; justify-content: flex-end; margin-top: 8px; }
 #pm-ok { background: #2a6 !important; color: #fff; border-color: #2a6 !important; }
 #pm-apagar { margin-right: auto; color: #a00; }
-@media print { #painel-marca, #retangulo { display: none !important; } }
+/* desenho */
+.apostila svg.tinta .traco.marca-livre { opacity: .42; stroke-linecap: butt; }
+.apostila svg.tinta .traco.marca-livre.anima { animation-name: mk-traco; }
+#painel-desenho button[data-ferr], #painel-desenho button[data-esp] { width: 34px; height: 30px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+#painel-desenho button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+#painel-desenho button:disabled { opacity: .45; cursor: default; }
+#pd-ok { background: #2a6 !important; color: #fff; border-color: #2a6 !important; }
+#pd-apagar { margin-right: auto; color: #a00; }
+body.desenhando section.pagina { cursor: crosshair; touch-action: none; user-select: none; -webkit-user-select: none; }
+body.desenhando #barra { pointer-events: none; opacity: .45; }
+@media print { #painel-marca, #painel-desenho, #retangulo { display: none !important; } }
 body.editando .apostila .marca svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .apostila svg.tinta .apagada { opacity: .15; }
 .apostila svg.tinta .pinta.apagada { opacity: .12; }
@@ -308,15 +319,15 @@ body.editando .apostila .ancora-camada:hover { background: #ffd9b0; }
 /* camada selecionada: só o conteúdo dela fica destacado (texto e fórmulas), não a linha toda */
 ::highlight(camada-foco) { background-color: #ffdcb4; }
 body.editando .apostila mjx-container.na-camada > svg { background-image: linear-gradient(#ffdcb4, #ffdcb4); background-repeat: no-repeat; }
-#painel-marca [data-tipo="risca"], body.editando .apostila .marca[data-tipo="risca"] { color: #222; }
-#painel-marca [data-tipo="seta"], body.editando .apostila .marca[data-tipo="seta"] { color: #e01010; }
-#painel-marca [data-tipo="check"], body.editando .apostila .marca[data-tipo="check"] { color: #16a32e; }
-#painel-marca [data-tipo="caixa"], body.editando .apostila .marca[data-tipo="caixa"] { color: #ff7a00; }
-#painel-marca [data-tipo="circula"], body.editando .apostila .marca[data-tipo="circula"] { color: #0a9bd8; }
-#painel-marca [data-tipo="liga"], body.editando .apostila .marca[data-tipo="liga"] { color: #e020b0; }
+#painel-marca [data-tipo="risca"], body.editando .apostila .marca[data-tipo="risca"], #painel-desenho [data-tipo="risca"] { color: #222; }
+#painel-marca [data-tipo="seta"], body.editando .apostila .marca[data-tipo="seta"], #painel-desenho [data-tipo="seta"] { color: #e01010; }
+#painel-marca [data-tipo="check"], body.editando .apostila .marca[data-tipo="check"], #painel-desenho [data-tipo="check"] { color: #16a32e; }
+#painel-marca [data-tipo="caixa"], body.editando .apostila .marca[data-tipo="caixa"], #painel-desenho [data-tipo="caixa"] { color: #ff7a00; }
+#painel-marca [data-tipo="circula"], body.editando .apostila .marca[data-tipo="circula"], #painel-desenho [data-tipo="circula"] { color: #0a9bd8; }
+#painel-marca [data-tipo="liga"], body.editando .apostila .marca[data-tipo="liga"], #painel-desenho [data-tipo="liga"] { color: #e020b0; }
 body.editando .apostila .camada-foco > .ancora-camada { background: #ff8000; color: #fff; }
-#painel-marca [data-tipo], #pm-apagar { width: 36px; height: 32px; padding: 0 !important; display: inline-flex; align-items: center; justify-content: center; }
-#painel-marca [data-tipo] svg, #pm-apagar svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+#painel-marca [data-tipo], #pm-apagar, #painel-desenho [data-tipo] { width: 36px; height: 32px; padding: 0 !important; display: inline-flex; align-items: center; justify-content: center; }
+#painel-marca [data-tipo] svg, #pm-apagar svg, #painel-desenho [data-tipo] svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 /* barra: botões com ícone e menus (combo) */
 #barra .b-icone { width: 32px; height: 32px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
 #barra .b-icone svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
@@ -390,8 +401,8 @@ body.editando .apostila .marca.pairada { outline: 2px solid #ff8000; outline-off
 .apostila .tinta-html .mk-texto.apagada { opacity: .2; }
 .apostila .tinta-html .mk-texto.foco { outline: 1.5px dashed #ff8000; outline-offset: 3px; border-radius: 3px; }
 @keyframes mk-surge { from { opacity: 0; } to { opacity: 1; } }
-#painel-marca #pm-linha-texto input { flex: 1; min-width: 200px; font: 15px "Times New Roman", serif; padding: 4px 6px; border: 1px solid #bbb; border-radius: 4px; }
-#painel-marca [data-tipo="texto"], #barra [data-tipo="texto"] .ci, #barra #b-marcar[data-tipo="texto"], body.editando .apostila .marca[data-tipo="texto"] { color: #e01010; }
+#painel-marca #pm-linha-texto input, #painel-desenho #pm-linha-texto input { flex: 1; min-width: 200px; font: 15px "Times New Roman", serif; padding: 4px 6px; border: 1px solid #bbb; border-radius: 4px; }
+#painel-marca [data-tipo="texto"], #barra [data-tipo="texto"] .ci, #barra #b-marcar[data-tipo="texto"], body.editando .apostila .marca[data-tipo="texto"], #painel-desenho [data-tipo="texto"] { color: #e01010; }
 
 /* ---------- menu (☰) ---------- */
 .menu-strata { position: relative; display: inline-flex; }
@@ -466,10 +477,10 @@ html.strata-escuro #b-tema .sol { display: none; }
   /* interface */
   html.strata-escuro #modos button, html.strata-escuro #b-sumario, html.strata-escuro #passos,
   html.strata-escuro #barra button, html.strata-escuro #passos button, html.strata-escuro .painel-mini button,
-  html.strata-escuro #editor-eq button, html.strata-escuro #painel-marca button {
+  html.strata-escuro #editor-eq button, html.strata-escuro #painel-marca button, html.strata-escuro #painel-desenho button {
     background: var(--ui-fundo); color: var(--ui-texto); border-color: var(--ui-borda); }
   html.strata-escuro #modos button:hover, html.strata-escuro #b-sumario:hover, html.strata-escuro #barra button:hover,
-  html.strata-escuro .painel-mini button:hover, html.strata-escuro #painel-marca button:hover { background: var(--ui-fundo2); }
+  html.strata-escuro .painel-mini button:hover, html.strata-escuro #painel-marca button:hover, html.strata-escuro #painel-desenho button:hover { background: var(--ui-fundo2); }
   html.strata-escuro #modos button.ativo, html.strata-escuro #barra .ativo-fmt, html.strata-escuro #barra #b-camada.ligada,
   html.strata-escuro #painel-marca button.ativo, html.strata-escuro #editor-eq .ee-cor.ativo,
   html.strata-escuro #barra .combo-menu button.ativo, html.strata-escuro #barra .combo-menu button.ativo-fmt {
@@ -482,7 +493,7 @@ html.strata-escuro #b-tema .sol { display: none; }
   html.strata-escuro #sumario a:hover { background: var(--ui-fundo2); }
   html.strata-escuro #sumario a.atual { background: var(--ui-ativo); color: #fff; }
   html.strata-escuro #barra .combo-menu, html.strata-escuro #menu-strata, html.strata-escuro .painel-mini,
-  html.strata-escuro #editor-eq, html.strata-escuro #painel-marca {
+  html.strata-escuro #editor-eq, html.strata-escuro #painel-marca, html.strata-escuro #painel-desenho {
     background: var(--ui-fundo); border-color: var(--ui-borda); color: var(--ui-texto); }
   html.strata-escuro #barra #c-estilo .combo-menu .ci, html.strata-escuro #barra #c-estilo .combo-menu button { color: var(--ui-texto); }
   html.strata-escuro #menu-strata a { color: var(--ui-texto); }
@@ -505,12 +516,12 @@ html.strata-escuro #b-tema .sol { display: none; }
   html.strata-escuro #barra .sep, html.strata-escuro #modos .sep { background: var(--ui-borda); }
   html.strata-escuro #barra .combo-seta { color: var(--ui-suave); }
   html.strata-escuro #ee-previa { background: #17181d; color: var(--tinta); }
-  html.strata-escuro #editor-eq textarea, html.strata-escuro .painel-mini input, html.strata-escuro #painel-marca input {
+  html.strata-escuro #editor-eq textarea, html.strata-escuro .painel-mini input, html.strata-escuro #painel-marca input, html.strata-escuro #painel-desenho input {
     background: #17181d; color: var(--ui-texto); border-color: var(--ui-borda); }
   html.strata-escuro .painel-mini .rot, html.strata-escuro #pb-conta, html.strata-escuro #painel-marca .pm-rot,
-  html.strata-escuro #painel-marca .pm-dica, html.strata-escuro #ee-cores span { color: var(--ui-suave); }
-  html.strata-escuro #painel-marca .pm-termo { background: var(--ui-fundo2); border-color: var(--ui-borda); }
-  html.strata-escuro #painel-marca [data-tipo="risca"], html.strata-escuro body.editando .apostila .marca[data-tipo="risca"] { color: var(--ui-texto); }
+  html.strata-escuro #painel-marca .pm-dica, html.strata-escuro #ee-cores span, html.strata-escuro #painel-desenho .pm-dica { color: var(--ui-suave); }
+  html.strata-escuro #painel-marca .pm-termo, html.strata-escuro #painel-desenho .pm-termo { background: var(--ui-fundo2); border-color: var(--ui-borda); }
+  html.strata-escuro #painel-marca [data-tipo="risca"], html.strata-escuro body.editando .apostila .marca[data-tipo="risca"], html.strata-escuro #painel-desenho [data-tipo="risca"] { color: var(--ui-texto); }
   html.strata-escuro body.editando mjx-container:hover { background: #2a2f45; outline-color: #556; }
   html.strata-escuro body.editando .apostila mjx-container.eq-sel > svg { background: #24406b; }
   html.strata-escuro body.editando .apostila .ancora-camada { background: #3a2a1a; }
