@@ -39,7 +39,13 @@
 
   // ---------- tema (claro/escuro): preferência de quem lê, guardada no navegador ----------
   Strata.temaEscuro = () => document.documentElement.classList.contains('strata-escuro');
-  try { if (localStorage.getItem('strata-tema') === 'escuro') document.documentElement.classList.add('strata-escuro'); } catch (e) {}
+  // sem escolha guardada, segue o sistema (ou data-theme="light|dark" no <html>, dos arquivos antigos)
+  (() => {
+    let t = null; try { t = localStorage.getItem('strata-tema'); } catch (e) {}
+    const h = document.documentElement, dt = h.getAttribute('data-theme');
+    const escuro = t ? t === 'escuro' : dt ? dt === 'dark' : !!(window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+    h.classList.toggle('strata-escuro', escuro);
+  })();
 
   // ---------- folha de estilos (se a página não a pôs) ----------
   if (Strata.base && !document.querySelector('link[rel="stylesheet"][href*="strata.css"]')) {
@@ -97,9 +103,9 @@
   <button type="button" id="m-leitura" data-modo="leitura" title="Modo leitura" aria-label="Modo leitura"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5C5.5 4.3 8.5 4.3 12 6c3.5-1.7 6.5-1.7 9-.5V19c-2.5-1.2-5.5-1.2-9 .5-3.5-1.7-6.5-1.7-9-.5z"></path><path d="M12 6v13.5"></path></svg></button>
   <button type="button" id="m-aula" data-modo="aula" title="Modo apresentação (camadas). Clique de novo para voltar ao modo anterior" aria-label="Modo apresentação"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"></rect><path d="M12 16v3M8 21l4-2 4 2"></path><path d="M10 7.8v4.4l3.8-2.2z"></path></svg></button>
   <button type="button" id="m-edicao" data-modo="edicao" title="Modo edição. Clique de novo para voltar ao modo anterior (Ctrl+\)" aria-label="Modo edição"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9a2.1 2.1 0 0 0-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg></button>
-  <button type="button" id="b-tema" title="Modo escuro / modo claro (só nesta tela; o arquivo não muda)" aria-label="Modo escuro ou claro"><svg class="lua" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg><svg class="sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"></path></svg></button>
+  <button type="button" id="b-tema" title="Tema claro (clique para o escuro; só nesta tela, o arquivo não muda)" aria-label="Tema claro ou escuro"><svg class="lua" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg><svg class="sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"></path></svg></button>
   <span class="menu-strata"><button type="button" id="b-menu" title="Menu" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h16"></path></svg></button>
-    <span id="menu-strata" role="menu" hidden><a role="menuitem" href="https://fabiolimath.github.io/Strata.viz/" target="_blank" rel="noopener">Sobre o Strata.viz</a></span></span>
+    <span id="menu-strata" role="menu" hidden><button type="button" role="menuitem" id="mi-macros">Macros LaTeX…</button><a role="menuitem" href="https://fabiolimath.github.io/Strata.viz/" target="_blank" rel="noopener">Sobre o Strata.viz</a></span></span>
 </div>
 <div id="barra">
   <span class="combo" id="c-estilo"><button type="button" id="b-estilo" class="b-icone" title="Estilo do parágrafo: Parágrafo" aria-label="Estilo do parágrafo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4v16M17 4v16M19.5 4H10.5a4.5 4.5 0 0 0 0 9H13"/></svg></button><button type="button" class="combo-seta" title="Estilo do parágrafo: escolher" aria-label="Estilo do parágrafo: escolher">▾</button>
@@ -131,6 +137,13 @@
 <div id="painel-link" class="painel-mini" hidden="">
   <div class="linha"><span class="rot">Link</span><input type="url" id="pl-url" placeholder="https://..." spellcheck="false"></div>
   <div class="linha" style="justify-content:flex-end"><button type="button" id="pl-remover">Remover link</button><button type="button" id="pl-cancelar">Cancelar</button><button type="button" id="pl-ok" style="background:#2a6;color:#fff;border-color:#2a6">OK</button></div>
+</div>
+<div id="painel-macros" class="painel-mini" hidden="" role="dialog" aria-label="Macros LaTeX do documento">
+  <div class="linha"><b>Macros LaTeX do documento</b></div>
+  <div class="pmc-dica">Uma por linha, com <code>\newcommand</code>. Valem para todas as fórmulas e são gravadas no arquivo.<br>Já prontas: <code>\red</code> <code>\blue</code> <code>\Imp</code> <code>\ee</code> <code>\sen</code> <code>\tg</code> <code>\mt</code> <code>\mk</code>.</div>
+  <textarea id="pmc-tex" rows="7" spellcheck="false" placeholder="\newcommand{\R}{\mathbb{R}}&#10;\newcommand{\dd}[1]{\frac{d}{d#1}}"></textarea>
+  <div id="pmc-erro"></div>
+  <div class="linha" style="justify-content:flex-end"><button type="button" id="pmc-cancelar">Cancelar</button><button type="button" id="pmc-ok" style="background:#2a6;color:#fff;border-color:#2a6">Aplicar</button></div>
 </div>
 <div id="painel-busca" class="painel-mini" hidden="">
   <div class="linha"><span class="rot">Localizar</span><input type="text" id="pb-busca" spellcheck="false"><span id="pb-conta"></span></div>
@@ -2363,11 +2376,63 @@
     });
 
     // ---------- tema e menu ----------
+    const tituloTema = () => $('b-tema').title = Strata.temaEscuro()
+      ? 'Tema escuro (clique para o claro; só nesta tela, o arquivo não muda)'
+      : 'Tema claro (clique para o escuro; só nesta tela, o arquivo não muda)';
+    tituloTema();
     $('b-tema').onclick = () => {
       const escuro = document.documentElement.classList.toggle('strata-escuro');
       try { localStorage.setItem('strata-tema', escuro ? 'escuro' : 'claro'); } catch (e) {}
-      desenharMarcas();
+      tituloTema(); desenharMarcas();
     };
+
+    // ---------- macros LaTeX do documento (menu ☰) ----------
+    // ficam num <script type="text/x-tex-macros"> do <head>, que vai para o arquivo salvo
+    const blocoMacros = () => document.querySelector('script[type="text/x-tex-macros"]');
+    function abrirMacros() {
+      const b = blocoMacros();
+      $('pmc-tex').value = b ? b.textContent.replace(/^\n+|\s+$/g, '') : '';
+      $('pmc-erro').textContent = '';
+      $('painel-macros').hidden = false; $('pmc-tex').focus();
+    }
+    const fecharMacros = () => { $('painel-macros').hidden = true; };
+    async function aplicarMacros() {
+      const t = $('pmc-tex').value.trim();
+      if (t) {   // define (e confere) antes de gravar
+        let n; try { n = await MathJax.tex2svgPromise(t, { display: false }); } catch (e) { $('pmc-erro').textContent = 'Erro: ' + e.message; return; }
+        const er = n && n.querySelector('[data-mjx-error]');
+        if (er) { $('pmc-erro').textContent = 'Erro: ' + er.getAttribute('data-mjx-error'); return; }
+      }
+      let b = blocoMacros();
+      if (!t) { if (b) b.remove(); }
+      else {
+        if (!b) {
+          b = document.createElement('script'); b.type = 'text/x-tex-macros';
+          const s = document.querySelector('head script[src*="strata.js"]');
+          if (s) s.after(b); else document.head.append(b);
+          b.before(document.createTextNode('\n'));
+        }
+        b.textContent = '\n' + t + '\n';
+      }
+      fecharMacros();
+      // fórmulas desenhadas de novo com as macros novas
+      for (const c of [...document.querySelectorAll('.apostila mjx-container[data-tex]')]) {
+        try {
+          const n = await renderTex(c.dataset.tex, c.dataset.display === '1');
+          if (c.classList.contains('eq-sel')) n.classList.add('eq-sel');
+          c.replaceWith(n);
+        } catch (e) {}
+      }
+      sujo(true); montarSumario(); desenharMarcas();
+      avisar('Macros aplicadas');
+    }
+    $('mi-macros').onclick = abrirMacros;
+    $('pmc-cancelar').onclick = fecharMacros;
+    $('pmc-ok').onclick = aplicarMacros;
+    $('pmc-tex').addEventListener('keydown', e => {
+      if (e.key === 'Escape') { e.stopPropagation(); fecharMacros(); }
+      else if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); aplicarMacros(); }
+    });
     const fecharMenu = () => { $('menu-strata').hidden = true; $('b-menu').setAttribute('aria-expanded', 'false'); };
     $('b-menu').onclick = e => { e.stopPropagation(); const abrir = $('menu-strata').hidden; $('menu-strata').hidden = !abrir; $('b-menu').setAttribute('aria-expanded', String(abrir)); };
     document.addEventListener('click', e => { if (!e.target.closest('.menu-strata')) fecharMenu(); });

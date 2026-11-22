@@ -21,8 +21,10 @@ trocados pelos ícones do canto superior direito, sem recarregar:
 - **Edição** (`?editar`, ou Ctrl+\\): edita o texto no próprio navegador. O
   disquete (ou Ctrl+S) grava o arquivo.
 
-Ao lado dos modos ficam o botão de **tema** (sol e lua: claro ou escuro, só na
-tela de quem lê; o arquivo não muda) e o **menu** ☰, com o link para o site.
+Ao lado dos modos ficam o botão de **tema** (o ícone mostra o tema atual, sol
+no claro e lua no escuro; na 1ª vez segue o sistema; vale só na tela de quem lê,
+o arquivo não muda) e o **menu** ☰, com as **Macros LaTeX** do documento e o
+link para o site.
 
 Exemplo: [`exemplos/exemplo3.html`](exemplos/exemplo3.html) (um exemplo
 resolvido de EDOs de 2ª ordem: camadas, marcações sobre termos já escritos,
@@ -96,8 +98,9 @@ como `novo_documento.html`.
 ### Macros LaTeX
 
 Já definidas: `\red`, `\blue`, `\Imp`, `\ee`, `\mt`, `\sen`, `\tg` e `\mk`.
-Para outras, ponha no `<head>` do documento um bloco com `\newcommand`, que vale
-antes da primeira fórmula:
+Para outras, use o menu ☰ → **Macros LaTeX…** (um `\newcommand` por linha;
+as fórmulas são redesenhadas na hora), ou ponha no `<head>` do documento um
+bloco com `\newcommand`, que vale antes da primeira fórmula:
 
 ```html
 <script type="text/x-tex-macros">

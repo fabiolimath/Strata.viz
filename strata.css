@@ -10,12 +10,7 @@
   --fundo: #ffffff;
   --mesa: #e9e9ec;
 }
-/* A apostila é "papel branco"; o tema escuro só vale se tirar data-theme="light" do <html>. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --fundo: #17191e; --tinta: #eeeeee; --azul: #a5b0ff; --mesa: #0d0e11; --vermelho: #ff7070; --verde: #5fd17f; --roxo: #d58cf0; }
-}
-:root[data-theme="dark"] { --fundo: #17191e; --tinta: #eeeeee; --azul: #a5b0ff; --mesa: #0d0e11; --vermelho: #ff7070; --verde: #5fd17f; --roxo: #d58cf0; }
-
+/* tema escuro: classe strata-escuro no <html>, posta pelo strata.js (escolha de quem lê ou o sistema) */
 html, body { background: var(--mesa); margin: 0; }
 .apostila { padding: 24px 16px 80px; }
 .apostila section.pagina {
@@ -385,11 +380,19 @@ body.editando .apostila .marca.pairada { outline: 2px solid #ff8000; outline-off
 #menu-strata[hidden] { display: none; }
 #menu-strata a { display: block; padding: 7px 10px; border-radius: 5px; color: #333; text-decoration: none; white-space: nowrap; }
 #menu-strata a:hover { background: #ffe2c4; color: #000; }
+#modos #menu-strata button { display: block; height: auto; min-width: 0; width: 100%; text-align: left; font: inherit; padding: 7px 10px; border: 0; border-radius: 5px; background: none; color: #333; cursor: pointer; white-space: nowrap; }
+#modos #menu-strata button:hover { background: #ffe2c4; color: #000; }
+#painel-macros { top: 64px; right: 16px; width: min(480px, calc(100vw - 32px)); z-index: 75; }
+#painel-macros .pmc-dica { color: #666; font-size: 13px; line-height: 1.5; margin: 2px 0 6px; }
+#painel-macros code { font-size: 12px; background: #f2f2f4; padding: 0 3px; border-radius: 3px; }
+#pmc-tex { box-sizing: border-box; width: 100%; font: 13px/1.45 ui-monospace, Consolas, monospace; padding: 6px 8px; border: 1px solid #bbb; border-radius: 4px; resize: vertical; }
+#pmc-erro { color: #c00; font-size: 13px; min-height: 1em; }
 
 /* ---------- modo escuro (botão sol/lua; só na tela, não vai para o arquivo nem para a impressão) ---------- */
-#b-tema .sol { display: none; }
-html.strata-escuro #b-tema .sol { display: block; }
-html.strata-escuro #b-tema .lua { display: none; }
+/* o ícone mostra o tema atual: sol no claro, lua no escuro */
+#b-tema .lua { display: none; }
+html.strata-escuro #b-tema .lua { display: block; }
+html.strata-escuro #b-tema .sol { display: none; }
 @media screen {
   html.strata-escuro {
     --fundo: #1e2026; --mesa: #111216; --tinta: #e8e8ea; --azul: #9aa6ff; --laranja: #ff9a3c;
@@ -436,6 +439,12 @@ html.strata-escuro #b-tema .lua { display: none; }
   html.strata-escuro #barra #c-estilo .combo-menu .ci, html.strata-escuro #barra #c-estilo .combo-menu button { color: var(--ui-texto); }
   html.strata-escuro #menu-strata a { color: var(--ui-texto); }
   html.strata-escuro #menu-strata a:hover { background: var(--ui-ativo); color: #fff; }
+  html.strata-escuro #modos #menu-strata button { color: var(--ui-texto); }
+  html.strata-escuro #modos #menu-strata button:hover { background: var(--ui-ativo); color: #fff; }
+  html.strata-escuro #painel-macros .pmc-dica { color: var(--ui-suave); }
+  html.strata-escuro #painel-macros code { background: var(--ui-fundo2); color: var(--ui-texto); }
+  html.strata-escuro #pmc-tex { background: #17191e; color: var(--ui-texto); border-color: var(--ui-borda); }
+  html.strata-escuro #pmc-erro { color: #ff6b6b; }
   html.strata-escuro #barra .sep, html.strata-escuro #modos .sep { background: var(--ui-borda); }
   html.strata-escuro #barra .combo-seta { color: var(--ui-suave); }
   html.strata-escuro #ee-previa { background: #17181d; color: var(--tinta); }
