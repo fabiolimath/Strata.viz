@@ -2,6 +2,11 @@
 
 ## Próxima versão
 
+- Desenho: nova camada (botão Desenhar, ao lado de Marcar) com caneta livre,
+  marca-texto, linha, seta, retângulo, elipse e borracha; 7 cores e 3
+  espessuras. Fica em `span.marca[data-tipo="desenho"]` com `data-tracos`, na
+  posição do bloco da âncora. Na apresentação, os traços aparecem sendo
+  desenhados, um depois do outro.
 - Tabelas: botão Tabela (diálogo com linhas, colunas e cabeçalho) e menu ao lado
   para inserir linha acima/abaixo, coluna à esquerda/direita, excluir linha ou
   coluna, mesclar e separar células, ligar/desligar o cabeçalho e excluir a
