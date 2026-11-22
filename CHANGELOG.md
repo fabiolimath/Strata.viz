@@ -1,5 +1,11 @@
 # Mudanças
 
+## Próxima versão
+
+- Site do Strata (pasta `site/`), publicado com o exemplo no GitHub Pages.
+- Painel de marcação: a dica fala em arrastar de termo a termo (o retângulo
+  já não existia).
+
 ## 0.1.0 (2026-11-22)
 
 - Primeira versão separada das aulas: o editor da aula 3.1 (EDOs de 2ª ordem,
