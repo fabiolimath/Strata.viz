@@ -31,6 +31,21 @@ jobs:
           cp -r site/. _site/
           cp strata.js strata.css _site/
           cp -r exemplos _site/
+      - name: Montar o pacote offline (strata-offline.zip)
+        run: |
+          d=_offline/strata-offline
+          mkdir -p "$d/mathjax"
+          cp strata.js strata.css "$d/"
+          cp offline/LEIAME.txt "$d/"
+          npm pack mathjax@3.2.2 --silent
+          tar xzf mathjax-3.2.2.tgz
+          cp package/es5/tex-svg-full.js package/LICENSE "$d/mathjax/"
+          # o exemplo, com os endereços da pasta e o MathJax local
+          sed -e 's#href="\.\./strata\.css"#href="strata.css"#' \
+              -e 's#<script src="\.\./strata\.js"></script>#<script src="strata.js"></script>\n<script src="mathjax/tex-svg-full.js"></script>#' \
+              exemplos/exemplo3.html > "$d/exemplo3.html"
+          grep -q 'mathjax/tex-svg-full.js' "$d/exemplo3.html"
+          (cd _offline && zip -qr ../_site/strata-offline.zip strata-offline)
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

@@ -9,8 +9,17 @@
   marcações e interface se adaptam; a escolha fica no navegador (`localStorage`,
   `strata-tema`) e não vai para o arquivo salvo nem para a impressão.
 - Menu ☰ ao lado dos modos, com "Macros LaTeX…" e "Sobre o Strata.viz".
-- Diálogo Adicionar macros LaTeX (menu ☰): começa vazio, com link para as macros
-  pré-carregadas; acrescenta ao `<script type="text/x-tex-macros">` do documento
+- Menu ☰ → Salvar para usar offline: arquivo único com o Strata e o MathJax
+  (`tex-svg-full.js`) dentro. O menu aparece em todos os modos; Adicionar macros
+  e Enter cria camada só na edição.
+- Pacote `strata-offline.zip` no site (pasta com Strata, MathJax e o exemplo).
+- Novo documento: o arquivo salvo aponta para o `strata.js` e o `strata.css` por
+  endereço absoluto (antes, partindo do exemplo, ficava `../strata.js` e o
+  arquivo salvo em outra pasta abria sem o editor).
+- Novo documento só no modo edição; o menu ☰ fica no canto esquerdo da barra de texto na edição.
+  A opção "Enter cria camada" tem caixa de marcar.
+- Diálogo Adicionar macros LaTeX (menu ☰): começa vazio, com link para o
+  `fol-MathJax.sty` do Preambulo (arquivo com todas as macros); acrescenta ao `<script type="text/x-tex-macros">` do documento
   (cria se não houver), confere os erros e redesenha as fórmulas.
 - Opção "Enter cria camada" (menu ☰, guardada em `localStorage`,
   `strata-enter-camada`): na edição, cada Enter no texto começa uma camada nova.

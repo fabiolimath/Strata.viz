@@ -97,17 +97,16 @@
 <nav id="sumario" aria-label="Sumário"><div class="sum-titulo">Sumário</div><ol id="sum-lista"></ol></nav>
 <div id="modos">
   <span id="aviso"></span>
-  <button type="button" id="b-novo" title="Novo documento: abre, numa nova aba, uma página em branco com o mesmo editor" aria-label="Novo documento"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h8l5 5v6"></path><path d="M13 3v5h5"></path><path d="M5 3v18h8"></path><path d="M18 16v6M15 19h6"></path></svg></button>
   <button type="button" id="b-salvar" title="Salvar (Ctrl+S): há alterações não salvas" aria-label="Salvar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h11l4 4v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path><path d="M8 3v5h7V3"></path><rect x="7" y="13" width="10" height="6" rx="1"></rect></svg></button>
   <span class="sep"></span>
   <button type="button" id="m-leitura" data-modo="leitura" title="Modo leitura" aria-label="Modo leitura"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5C5.5 4.3 8.5 4.3 12 6c3.5-1.7 6.5-1.7 9-.5V19c-2.5-1.2-5.5-1.2-9 .5-3.5-1.7-6.5-1.7-9-.5z"></path><path d="M12 6v13.5"></path></svg></button>
   <button type="button" id="m-aula" data-modo="aula" title="Modo apresentação (camadas). Clique de novo para voltar ao modo anterior" aria-label="Modo apresentação"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"></rect><path d="M12 16v3M8 21l4-2 4 2"></path><path d="M10 7.8v4.4l3.8-2.2z"></path></svg></button>
   <button type="button" id="m-edicao" data-modo="edicao" title="Modo edição. Clique de novo para voltar ao modo anterior (Ctrl+\)" aria-label="Modo edição"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9a2.1 2.1 0 0 0-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg></button>
   <button type="button" id="b-tema" title="Tema claro (clique para o escuro; só nesta tela, o arquivo não muda)" aria-label="Tema claro ou escuro"><svg class="lua" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg><svg class="sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"></path></svg></button>
-  <span class="menu-strata"><button type="button" id="b-menu" title="Menu" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h16"></path></svg></button>
-    <span id="menu-strata" role="menu" hidden><button type="button" role="menuitem" id="mi-macros"><span class="mi-check" aria-hidden="true"></span>Adicionar macros LaTeX…</button><button type="button" role="menuitemcheckbox" id="mi-enter-camada" aria-checked="false" title="Na edição, cada Enter no texto começa uma camada nova (preferência desta tela; o arquivo não muda)"><span class="mi-check" aria-hidden="true"></span>Enter cria camada</button><a role="menuitem" href="https://fabiolimath.github.io/Strata.viz/" target="_blank" rel="noopener"><span class="mi-check" aria-hidden="true"></span>Sobre o Strata.viz</a></span></span>
 </div>
 <div id="barra">
+  <span class="barra-esq"><span class="menu-strata"><button type="button" id="b-menu" class="b-icone" title="Menu" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h16"></path></svg></button>
+    <span id="menu-strata" role="menu" hidden><button type="button" role="menuitem" id="mi-macros" class="so-edicao"><span class="mi-check" aria-hidden="true"></span>Adicionar macros LaTeX…</button><button type="button" role="menuitemcheckbox" id="mi-enter-camada" class="so-edicao" aria-checked="false" title="Na edição, cada Enter no texto começa uma camada nova (preferência desta tela; o arquivo não muda)"><span class="mi-check" aria-hidden="true"></span>Enter cria camada</button><button type="button" role="menuitem" id="mi-offline" title="Baixa este documento num arquivo só, com o Strata e o MathJax dentro, que abre sem internet"><span class="mi-check" aria-hidden="true"></span>Salvar para usar offline</button><a role="menuitem" href="https://fabiolimath.github.io/Strata.viz/" target="_blank" rel="noopener"><span class="mi-check" aria-hidden="true"></span>Sobre o Strata.viz</a></span></span><button type="button" id="b-novo" class="b-icone" title="Novo documento: abre, numa nova aba, uma página em branco com o mesmo editor" aria-label="Novo documento"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h8l5 5v6"></path><path d="M13 3v5h5"></path><path d="M5 3v18h8"></path><path d="M18 16v6M15 19h6"></path></svg></button></span>
   <span class="combo" id="c-estilo"><button type="button" id="b-estilo" class="b-icone" title="Estilo do parágrafo: Parágrafo" aria-label="Estilo do parágrafo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4v16M17 4v16M19.5 4H10.5a4.5 4.5 0 0 0 0 9H13"/></svg></button><button type="button" class="combo-seta" title="Estilo do parágrafo: escolher" aria-label="Estilo do parágrafo: escolher">▾</button>
     <span class="combo-menu" hidden=""><button type="button" data-estilo="p" style="font: 15px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4v16M17 4v16M19.5 4H10.5a4.5 4.5 0 0 0 0 9H13"/></svg></span>Parágrafo</button><button type="button" data-estilo="h1" style="font: bold 25px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">1</text></svg></span>Título 1</button><button type="button" data-estilo="subtitulo" style="font: 17px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16" stroke-width="3"/><path d="M7 15h10M9 19h6"/></svg></span>Subtítulo</button><button type="button" data-estilo="h2" style="font: bold 23px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">2</text></svg></span>Título 2</button><button type="button" data-estilo="h3" style="font: bold 21px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">3</text></svg></span>Título 3</button><button type="button" data-estilo="h4" style="font: bold 18px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">4</text></svg></span>Título 4</button><button type="button" data-estilo="eq" style="font: 15px system-ui, sans-serif" title="Linha de equação: fórmulas sem recuo; alinhada à esquerda vira linha de igualdades (Enter no fim cria a próxima linha)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="5" y="18.5" font-family="Times New Roman, serif" font-style="italic" font-weight="bold" font-size="17">x</text><text x="14" y="10.5" font-family="Times New Roman, serif" font-weight="bold" font-size="10">2</text></svg></span>Equação</button><button type="button" data-estilo="pre" style="font: 14px ui-monospace, Consolas, monospace"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 7L3.5 12l5 5M15.5 7l5 5-5 5M13.5 5l-3 14"/></svg></span>Pré-formatado</button><button type="button" data-estilo="blockquote" style="font: 15px system-ui, sans-serif; color: #666"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7c-3.2.6-5 2.8-5 6v4h5v-5H7.2c.2-1.6 1.2-2.7 2.8-3.1zM19 7c-3.2.6-5 2.8-5 6v4h5v-5h-2.8c.2-1.6 1.2-2.7 2.8-3.1z" fill="currentColor" stroke="none"/></svg></span>Bloco de citação</button></span></span>
   <span class="combo grupo" id="c-fmt"><button type="button" id="b-fmt" class="b-icone" title="Formatação do texto" aria-label="Formatação do texto"></button><button type="button" class="combo-seta" title="Formatação do texto: escolher" aria-label="Formatação do texto: escolher">▾</button>
@@ -140,7 +139,7 @@
 </div>
 <div id="painel-macros" class="painel-mini" hidden="" role="dialog" aria-label="Macros LaTeX do documento">
   <div class="linha"><b>Adicionar macros LaTeX</b></div>
-  <div class="pmc-dica">Acrescente macros a este documento, um <code>\newcommand</code> por linha. Elas são gravadas no arquivo. <a href="https://fabiolimath.github.io/Strata.viz/#macros" target="_blank" rel="noopener">Macros pré-carregadas</a></div>
+  <div class="pmc-dica">Acrescente macros a este documento, um <code>\newcommand</code> por linha. Elas são gravadas no arquivo. <a href="https://github.com/fabiolimath/Preambulo/blob/HEAD/fol-MathJax.sty" target="_blank" rel="noopener">Todas as macros (fol-MathJax.sty, no Preambulo)</a></div>
   <textarea id="pmc-tex" rows="6" spellcheck="false"></textarea>
   <div id="pmc-erro"></div>
   <div class="linha" style="justify-content:flex-end"><button type="button" id="pmc-cancelar">Cancelar</button><button type="button" id="pmc-ok" style="background:#2a6;color:#fff;border-color:#2a6">Aplicar</button></div>
@@ -207,6 +206,13 @@
     if (new URLSearchParams(location.search).has('novo')) {
       document.querySelector('main.apostila').innerHTML = '<section class="pagina"><p><br></p><div class="rodape">1</div></section>';
       document.title = 'Novo documento';
+      // o arquivo novo vai ser salvo em outra pasta: os endereços do Strata viram absolutos
+      // (no exemplo eles são relativos, ../strata.js, e não achariam nada a partir de Downloads)
+      // (numa pasta do computador, como a do pacote offline, ficam relativos: o arquivo novo é salvo junto)
+      if (/^https?:$/.test(location.protocol)) {
+        document.querySelectorAll('head script[src*="strata.js"], head script[src*="mathjax"]').forEach(e => e.setAttribute('src', e.src));
+        document.querySelectorAll('head link[rel="stylesheet"][href*="strata.css"]').forEach(e => e.setAttribute('href', e.href));
+      }
     }
 
     // ---------- modo leitura (padrão) x modo apresentação (?aula) x edição (?editar) ----------
@@ -287,6 +293,13 @@
       const r = e.getBoundingClientRect();
       return r.height > 0 && r.bottom > 64 && r.top < window.innerHeight;
     }
+    // o menu ☰ fica à esquerda da barra na edição; nos outros modos, ao lado dos modos (só com os itens de quem lê)
+    function posicionarMenu(modo) {
+      const m = document.querySelector('.menu-strata'); if (!m) return;
+      const alvo = modo === 'edicao' ? document.querySelector('#barra .barra-esq') : document.getElementById('modos');
+      if (alvo && m.parentElement !== alvo) { if (modo === 'edicao') alvo.prepend(m); else alvo.append(m); }
+      const b = document.getElementById('b-menu'); if (b) b.classList.toggle('b-icone', modo === 'edicao');
+    }
     function modoAtual() { return document.body.classList.contains('editando') ? 'edicao' : emAula() ? 'aula' : 'leitura'; }
     var MODO_ANT = null;   // modo de antes: clicar de novo no botão do modo atual volta para ele
     function cursorNoFimDe(el) {
@@ -326,6 +339,7 @@
         if (ref) mostrarAte(ref, !!cursor); else { AULA.k = 0; atualizarContador(); }
       }
       document.querySelectorAll('#modos [data-modo]').forEach(b => b.classList.toggle('ativo', b.dataset.modo === novo));
+      posicionarMenu(novo);
       try { history.replaceState(null, '', location.pathname + (novo === 'aula' ? '?aula' : novo === 'edicao' ? '?editar' : '') + location.hash); } catch (e) {}
       desenharMarcas();
       restaurar(a);
@@ -950,6 +964,32 @@
         catch (e2) { avisar('Erro ao salvar'); }
       }
     }
+    // ---------- salvar para usar offline: um arquivo só, com o Strata e o MathJax dentro ----------
+    // O <script>/<link> do Strata viram <script id="strata-js">/<style id="strata-css"> com o código,
+    // e entra o MathJax completo (tex-svg-full.js, que não busca extensões na internet).
+    const emLinha = t => t.replace(/<\/(script|style)/gi, '<\\/$1').replace(/<!--/g, '<\\!--');
+    async function salvarOffline() {
+      const nome = (new URLSearchParams(location.search).has('novo') ? 'novo_documento' : (decodeURIComponent(location.pathname.split('/').pop() || '').replace(/\.html?$/i, '') || 'documento')).replace(/-offline$/, '') + '-offline.html';
+      const html = gerarHTML();
+      if (document.getElementById('strata-js')) { baixar(html, nome); avisar('Baixado ✓'); return; }   // já é offline
+      avisar('Preparando a cópia offline…');
+      let js, css, mj;
+      try {
+        const pegar = u => fetch(u).then(r => { if (!r.ok) throw new Error(r.status + ' ' + u); return r.text(); });
+        [js, css, mj] = await Promise.all([pegar(Strata.base + 'strata.js'), pegar(Strata.base + 'strata.css'), pegar(Strata.mathjax.replace(/tex-svg\.js$/, 'tex-svg-full.js'))]);
+      } catch (e) { console.warn('[strata] cópia offline:', e); avisar('Não deu para baixar o Strata e o MathJax (precisa de internet)'); return; }
+      const d = new DOMParser().parseFromString(html, 'text/html');
+      const sc = d.querySelector('head script[src*="strata.js"]'), ln = d.querySelector('head link[rel="stylesheet"][href*="strata.css"]');
+      const st = d.createElement('style'); st.id = 'strata-css'; st.textContent = '\n' + emLinha(css) + '\n';
+      const s1 = d.createElement('script'); s1.id = 'strata-js'; s1.textContent = '\n' + emLinha(js) + '\n';
+      const s2 = d.createElement('script'); s2.id = 'strata-mathjax'; s2.textContent = '\n' + emLinha(mj) + '\n';
+      if (ln) ln.replaceWith(st); else d.head.append(st);
+      if (sc) sc.replaceWith(s1); else d.head.append(s1);
+      s1.after(s2); s2.before(d.createTextNode('\n'));
+      baixar('<!doctype html>\n' + d.documentElement.outerHTML.replace(/^(<html[^>]*>)<head>/, '$1\n<head>') + '\n', nome);
+      avisar('Baixado ✓');
+    }
+    $('mi-offline').onclick = salvarOffline;
     $('b-salvar').onclick = salvar;
     $('b-novo').onclick = () => window.open(location.pathname + '?novo', '_blank');
     $('b-salvar').addEventListener('mousedown', e => e.preventDefault());

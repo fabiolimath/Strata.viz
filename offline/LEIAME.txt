@@ -1,0 +1,19 @@
+Strata.viz offline
+==================
+
+Esta pasta tem tudo o que o Strata precisa para funcionar sem internet:
+
+  strata.js, strata.css        o editor
+  mathjax/tex-svg-full.js      o MathJax 3.2.2 completo (desenha as fórmulas)
+  exemplo3.html                um documento de exemplo, feito no Strata
+
+Abra o exemplo3.html no navegador (dois cliques). Para começar um documento
+novo, entre no modo edição (lápis) e clique em Novo documento, no canto
+esquerdo da barra. Salve os documentos novos nesta mesma pasta: eles buscam
+o strata.js, o strata.css e o MathJax aqui.
+
+Para levar um documento sozinho, sem a pasta, use o menu ☰ → Salvar para usar
+offline: sai um arquivo único, com o Strata e o MathJax dentro.
+
+Site: https://fabiolimath.github.io/Strata.viz/
+MathJax: Apache License 2.0 (mathjax/LICENSE)

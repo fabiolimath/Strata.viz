@@ -155,7 +155,7 @@ body.editando #b-sumario { top: calc(var(--barra, 47px) + 7px); }
 #barra { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 60;
   background: #fafafa; border-bottom: 1px solid #ccc; padding: 6px 10px; gap: 6px; flex-wrap: wrap;
   justify-content: center; align-items: center; font: 14px system-ui, sans-serif; color: #333; }
-body.editando #barra { display: flex; padding-left: 10px; padding-right: 160px; gap: 4px; }
+body.editando #barra { display: flex; padding-left: 90px; padding-right: 160px; gap: 4px; }
 body.editando .apostila { padding-top: calc(var(--barra, 48px) + 16px); }
 #barra .b-txt { min-width: 32px; height: 32px; padding: 0 6px; font: 17px "Times New Roman", serif; }
 #barra .ativo-fmt { background: #ffe2c4; border-color: #ff8000; }
@@ -374,17 +374,23 @@ body.editando .apostila .marca.pairada { outline: 2px solid #ff8000; outline-off
 #painel-marca [data-tipo="texto"], #barra [data-tipo="texto"] .ci, #barra #b-marcar[data-tipo="texto"], body.editando .apostila .marca[data-tipo="texto"] { color: #e01010; }
 
 /* ---------- menu (☰) ---------- */
-#modos .menu-strata { position: relative; display: inline-flex; }
-#menu-strata { position: absolute; top: calc(100% + 6px); right: 0; z-index: 90; min-width: 190px; display: flex; flex-direction: column;
+#barra .barra-esq { position: absolute; left: 10px; top: 6px; display: inline-flex; gap: 4px; }
+.menu-strata { position: relative; display: inline-flex; }
+#modos #menu-strata { left: auto; right: 0; }
+body:not(.editando) #menu-strata .so-edicao { display: none; }
+body:has(#menu-strata:not([hidden])) #b-sumario { z-index: 59; }   /* o menu aberto fica por cima do botão Sumário */
+#menu-strata { position: absolute; top: calc(100% + 6px); left: 0; z-index: 90; min-width: 190px; display: flex; flex-direction: column;
   background: #fff; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,.18); padding: 4px; }
 #menu-strata[hidden] { display: none; }
 #menu-strata a { display: block; padding: 7px 10px; border-radius: 5px; color: #333; text-decoration: none; white-space: nowrap; }
 #menu-strata a:hover { background: #ffe2c4; color: #000; }
-#modos #menu-strata button { display: block; height: auto; min-width: 0; width: 100%; text-align: left; font: inherit; padding: 7px 10px; border: 0; border-radius: 5px; background: none; color: #333; cursor: pointer; white-space: nowrap; }
-#modos #menu-strata button:hover { background: #ffe2c4; color: #000; }
-#menu-strata .mi-check { display: inline-block; width: 1.2em; }
-#menu-strata [aria-checked="true"] .mi-check::before { content: "✓"; color: #e07000; font-weight: bold; }
-#menu-strata [role="menuitemcheckbox"] .mi-check, #menu-strata #mi-macros { padding-left: 0; }
+.menu-strata #menu-strata button { display: block; height: auto; min-width: 0; width: 100%; text-align: left; font: inherit; padding: 7px 10px; border: 0; border-radius: 5px; background: none; color: #333; cursor: pointer; white-space: nowrap; }
+.menu-strata #menu-strata button:hover { background: #ffe2c4; color: #000; }
+#menu-strata .mi-check { display: inline-block; width: 22px; vertical-align: -2px; }
+#menu-strata [role="menuitemcheckbox"] .mi-check::before { content: ""; display: block; box-sizing: border-box; width: 14px; height: 14px;
+  border: 1.5px solid #888; border-radius: 3px; background: #fff; }
+#menu-strata [aria-checked="true"] .mi-check::before { content: "✓"; border-color: #ff8000; background: #ff8000; color: #fff;
+  font: bold 11px/11px system-ui, sans-serif; text-align: center; }
 #painel-macros .pmc-dica a { color: #c05f00; }
 #painel-macros { top: 64px; right: 16px; width: min(480px, calc(100vw - 32px)); z-index: 75; }
 #painel-macros .pmc-dica { color: #666; font-size: 13px; line-height: 1.5; margin: 2px 0 6px; }
@@ -442,9 +448,10 @@ html.strata-escuro #b-tema .sol { display: none; }
     background: var(--ui-fundo); border-color: var(--ui-borda); color: var(--ui-texto); }
   html.strata-escuro #barra #c-estilo .combo-menu .ci, html.strata-escuro #barra #c-estilo .combo-menu button { color: var(--ui-texto); }
   html.strata-escuro #menu-strata a { color: var(--ui-texto); }
+  html.strata-escuro #menu-strata [role="menuitemcheckbox"]:not([aria-checked="true"]) .mi-check::before { background: transparent; border-color: var(--ui-suave); }
   html.strata-escuro #menu-strata a:hover { background: var(--ui-ativo); color: #fff; }
-  html.strata-escuro #modos #menu-strata button { color: var(--ui-texto); }
-  html.strata-escuro #modos #menu-strata button:hover { background: var(--ui-ativo); color: #fff; }
+  html.strata-escuro .menu-strata #menu-strata button { color: var(--ui-texto); }
+  html.strata-escuro .menu-strata #menu-strata button:hover { background: var(--ui-ativo); color: #fff; }
   html.strata-escuro #painel-macros .pmc-dica { color: var(--ui-suave); }
   html.strata-escuro #painel-macros code { background: var(--ui-fundo2); color: var(--ui-texto); }
   html.strata-escuro #pmc-tex { background: #17191e; color: var(--ui-texto); border-color: var(--ui-borda); }
