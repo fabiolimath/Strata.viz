@@ -8,7 +8,13 @@
 - Tema escuro: botão de sol e lua ao lado dos modos. Papel, texto, fórmulas,
   marcações e interface se adaptam; a escolha fica no navegador (`localStorage`,
   `strata-tema`) e não vai para o arquivo salvo nem para a impressão.
-- Menu ☰ ao lado dos modos, por enquanto com "Sobre o Strata.viz".
+- Menu ☰ ao lado dos modos, com "Macros LaTeX…" e "Sobre o Strata.viz".
+- Diálogo Macros LaTeX (menu ☰): edita o `<script type="text/x-tex-macros">` do
+  documento (cria se não houver), confere os erros e redesenha as fórmulas.
+- Tema: o ícone mostra o tema atual (sol no claro, lua no escuro). Sem escolha
+  guardada, segue o sistema. Corrigido: com o sistema em modo escuro, o tema
+  claro deixava o papel e o texto escuros (regras `prefers-color-scheme` e
+  `data-theme` antigas do CSS, agora tratadas pelo `strata.js`).
 - Site e README: o Strata como editor de textos técnicos apresentáveis (a sala
   de aula fica como analogia); animação das camadas e seção das macros LaTeX.
 
