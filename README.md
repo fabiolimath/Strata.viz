@@ -144,6 +144,20 @@ MathJax (como o `fol.js` do site, que traz as macros do
   arquivo para sobrescrever); em outros navegadores, ou dentro de um iframe
   (como num ambiente virtual de aprendizagem), baixa uma cópia.
 
+## Sem internet
+
+- Menu ☰ → **Salvar para usar offline**: baixa o documento aberto num arquivo
+  único, com o `strata.js`, o `strata.css` e o MathJax completo
+  (`tex-svg-full.js`) dentro (`<style id="strata-css">`,
+  `<script id="strata-js">`, `<script id="strata-mathjax">`). Abre sem internet
+  e pode ser editado e salvo de novo.
+- [`strata-offline.zip`](https://fabiolimath.github.io/Strata.viz/strata-offline.zip)
+  (montado pelo workflow do Pages): uma pasta com o `strata.js`, o `strata.css`,
+  o `mathjax/tex-svg-full.js` e o exemplo apontando para eles. Documentos novos
+  salvos nessa pasta usam esses arquivos. Para usar o MathJax local num
+  documento, basta um `<script src=".../tex-svg-full.js">` logo depois do
+  `strata.js`: o Strata vê que ele já está na página e não busca o da internet.
+
 ## Versões
 
 Cada documento carrega o Strata de um endereço fixo. Num site que use o Strata

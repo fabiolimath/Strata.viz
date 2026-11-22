@@ -136,7 +136,7 @@
   <div class="duas" style="margin-top:28px">
     <div>
       <h3>Tema escuro e menu</h3>
-      <p class="lead" style="margin:0">Ao lado dos modos, o botão do tema mostra o tema atual (sol no claro, lua no escuro) e, clicado, troca para o outro: o papel, o texto, as fórmulas e as cores das marcações se adaptam. Na primeira vez, o Strata segue o tema do sistema; depois, a escolha fica lembrada no navegador, só na sua tela, e o arquivo não muda. No modo edição, o canto esquerdo da barra tem o menu <b>☰</b>, com o diálogo para adicionar macros LaTeX, a opção <b>Enter cria camada</b> (ligada, cada Enter no texto começa uma camada nova; vale só para quem edita, no navegador) e o link para esta página, e o botão de <b>Novo documento</b>.</p>
+      <p class="lead" style="margin:0">Ao lado dos modos, o botão do tema mostra o tema atual (sol no claro, lua no escuro) e, clicado, troca para o outro: o papel, o texto, as fórmulas e as cores das marcações se adaptam. Na primeira vez, o Strata segue o tema do sistema; depois, a escolha fica lembrada no navegador, só na sua tela, e o arquivo não muda. No modo edição, o canto esquerdo da barra tem o menu <b>☰</b> (nos outros modos ele fica ao lado do tema, com Salvar para usar offline e o link para esta página), com o diálogo para adicionar macros LaTeX, a opção <b>Enter cria camada</b> (ligada, cada Enter no texto começa uma camada nova; vale só para quem edita, no navegador) e o link para esta página, e o botão de <b>Novo documento</b>.</p>
     </div>
     <figure><a href="img/escuro.webp"><img src="img/escuro.webp" alt="O exemplo no modo apresentação com o tema escuro: papel cinza-escuro, texto claro e destaques coloridos" loading="lazy"></a></figure>
   </div>
@@ -239,7 +239,7 @@
   <h2>Começar</h2>
   <div class="duas">
     <ol class="passos">
-      <li>Abra o <a href="exemplos/exemplo3.html">exemplo</a> , entre no modo edição (lápis) e clique em <b>Novo documento</b>, no canto esquerdo da barra. Abre uma página em branco, já no modo edição, com as mesmas macros do exemplo (o bloco do Preambulo).</li>
+      <li>Abra o <a href="exemplos/exemplo3.html">exemplo</a>, entre no modo edição (lápis) e clique em <b>Novo documento</b>, no canto esquerdo da barra. Abre uma página em branco, já no modo edição, com as mesmas macros do exemplo (o bloco do Preambulo).</li>
       <li>Escreva o texto e salve com <kbd>Ctrl</kbd>+<kbd>S</kbd>. No Chrome e no Edge, escolha onde gravar; nos outros navegadores, o arquivo é baixado.</li>
       <li>Para continuar depois, abra o arquivo no navegador (dois cliques) e clique no lápis. Para publicar, ponha o arquivo em qualquer site ou plataforma que aceite HTML, inclusive dentro de um iframe.</li>
     </ol>
@@ -249,6 +249,12 @@
       <p style="margin:0">A estrutura do HTML está descrita no <a href="https://github.com/fabiolimath/Strata.viz#readme">README</a>, para quem quiser escrever à mão.</p>
     </div>
   </div>
+  <h3 style="margin-top:28px">Sem internet</h3>
+  <p class="lead">O editor e o MathJax vêm da internet. Para trabalhar sem ela, há dois caminhos:</p>
+  <ul class="lead">
+    <li><b>Um documento só</b>: no menu <b>☰</b> de qualquer documento, <b>Salvar para usar offline</b> baixa um arquivo único, com o Strata e o MathJax dentro (cerca de 2,5 MB). Abre sem internet, nos três modos, e pode ser editado e salvo de novo.</li>
+    <li><b>Uma pasta para escrever</b>: o <a href="strata-offline.zip">pacote offline</a> (.zip) traz o <code>strata.js</code>, o <code>strata.css</code>, o MathJax e o exemplo. Os documentos novos, salvos na mesma pasta, usam esses arquivos.</li>
+  </ul>
 </section>
 </main>
 

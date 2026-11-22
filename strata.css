@@ -375,15 +375,17 @@ body.editando .apostila .marca.pairada { outline: 2px solid #ff8000; outline-off
 
 /* ---------- menu (☰) ---------- */
 #barra .barra-esq { position: absolute; left: 10px; top: 6px; display: inline-flex; gap: 4px; }
-#barra .menu-strata { position: relative; display: inline-flex; }
+.menu-strata { position: relative; display: inline-flex; }
+#modos #menu-strata { left: auto; right: 0; }
+body:not(.editando) #menu-strata .so-edicao { display: none; }
 body:has(#menu-strata:not([hidden])) #b-sumario { z-index: 59; }   /* o menu aberto fica por cima do botão Sumário */
 #menu-strata { position: absolute; top: calc(100% + 6px); left: 0; z-index: 90; min-width: 190px; display: flex; flex-direction: column;
   background: #fff; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,.18); padding: 4px; }
 #menu-strata[hidden] { display: none; }
 #menu-strata a { display: block; padding: 7px 10px; border-radius: 5px; color: #333; text-decoration: none; white-space: nowrap; }
 #menu-strata a:hover { background: #ffe2c4; color: #000; }
-#barra #menu-strata button { display: block; height: auto; min-width: 0; width: 100%; text-align: left; font: inherit; padding: 7px 10px; border: 0; border-radius: 5px; background: none; color: #333; cursor: pointer; white-space: nowrap; }
-#barra #menu-strata button:hover { background: #ffe2c4; color: #000; }
+.menu-strata #menu-strata button { display: block; height: auto; min-width: 0; width: 100%; text-align: left; font: inherit; padding: 7px 10px; border: 0; border-radius: 5px; background: none; color: #333; cursor: pointer; white-space: nowrap; }
+.menu-strata #menu-strata button:hover { background: #ffe2c4; color: #000; }
 #menu-strata .mi-check { display: inline-block; width: 22px; vertical-align: -2px; }
 #menu-strata [role="menuitemcheckbox"] .mi-check::before { content: ""; display: block; box-sizing: border-box; width: 14px; height: 14px;
   border: 1.5px solid #888; border-radius: 3px; background: #fff; }
@@ -448,8 +450,8 @@ html.strata-escuro #b-tema .sol { display: none; }
   html.strata-escuro #menu-strata a { color: var(--ui-texto); }
   html.strata-escuro #menu-strata [role="menuitemcheckbox"]:not([aria-checked="true"]) .mi-check::before { background: transparent; border-color: var(--ui-suave); }
   html.strata-escuro #menu-strata a:hover { background: var(--ui-ativo); color: #fff; }
-  html.strata-escuro #barra #menu-strata button { color: var(--ui-texto); }
-  html.strata-escuro #barra #menu-strata button:hover { background: var(--ui-ativo); color: #fff; }
+  html.strata-escuro .menu-strata #menu-strata button { color: var(--ui-texto); }
+  html.strata-escuro .menu-strata #menu-strata button:hover { background: var(--ui-ativo); color: #fff; }
   html.strata-escuro #painel-macros .pmc-dica { color: var(--ui-suave); }
   html.strata-escuro #painel-macros code { background: var(--ui-fundo2); color: var(--ui-texto); }
   html.strata-escuro #pmc-tex { background: #17191e; color: var(--ui-texto); border-color: var(--ui-borda); }
