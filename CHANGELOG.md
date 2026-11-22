@@ -2,6 +2,20 @@
 
 ## Próxima versão
 
+- Tabelas: botão Tabela (diálogo com linhas, colunas e cabeçalho) e menu ao lado
+  para inserir linha acima/abaixo, coluna à esquerda/direita, excluir linha ou
+  coluna, mesclar e separar células, ligar/desligar o cabeçalho e excluir a
+  tabela. Os botões de alinhamento alinham as células escolhidas. Enter na célula
+  quebra a linha; Tab e Shift+Tab andam entre as células.
+- Imagens: botão na barra (ao lado do link) com diálogo para colar, arrastar,
+  escolher arquivo ou dar um link. Na edição, colar uma imagem (Ctrl+V) ou
+  arrastar um arquivo direto no texto também insere no ponto do cursor. A imagem
+  vai dentro do arquivo (`data:`); no tema escuro ganha fundo branco.
+- Redimensionar imagem: clicar nela mostra alças nos cantos; a largura fica em %
+  do bloco (numa coluna, % da coluna) e encaixa em 25, 33, 50, 67, 75 e 100%.
+  Dois cliques na alça voltam ao natural; Delete apaga a imagem selecionada.
+- Duas colunas (menu de alinhamento, abaixo de Justificado): `<div class="duas-colunas">`
+  em volta dos blocos; clicar de novo dentro dele volta a uma coluna.
 - Site do Strata (pasta `site/`), publicado com o exemplo no GitHub Pages.
 - Painel de marcação: a dica fala em arrastar de termo a termo (o retângulo
   já não existia).

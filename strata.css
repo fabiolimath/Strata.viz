@@ -86,6 +86,14 @@ body.editando .apostila mjx-container[display="true"] { display: inline-block !i
 .apostila table.tabela { border-collapse: collapse; margin: .3em auto .8em; color: var(--tinta); font-size: .85em; }
 .apostila table.tabela th, .apostila table.tabela td { border: 1px solid #bbb; padding: .2em .55em; text-align: center; font-weight: normal; }
 .apostila table.tabela th { color: var(--laranja); }
+.apostila table.tabela .alinha-esq { text-align: left; }
+.apostila table.tabela .alinha-centro { text-align: center; }
+.apostila table.tabela .alinha-dir { text-align: right; }
+.apostila table.tabela .alinha-just { text-align: justify; }
+body.editando .apostila table.tabela td, body.editando .apostila table.tabela th { min-width: 2.5em; }
+.apostila .duas-colunas table.tabela { max-width: 100%; }
+#painel-tabela { width: min(360px, calc(100vw - 32px)); }
+#painel-tabela input[type=number] { width: 64px; font: inherit; padding: 4px 6px; border: 1px solid #bbb; border-radius: 4px; }
 .apostila .rodape { position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; font-size: .7em; color: #999; }
 
 /* modo apresentação: camadas */
@@ -110,6 +118,13 @@ body.aula #passos { display: flex; }
   body.aula .fragment { visibility: visible; opacity: 1; }
   #passos { display: none !important; }
 }
+
+/* ---------- duas colunas (div.duas-colunas em volta dos blocos) ---------- */
+.apostila .duas-colunas { columns: 2; column-gap: 2.4em; margin: .6em 0; }
+.apostila .duas-colunas > :first-child { margin-top: 0; }
+.apostila .duas-colunas > div.eq, .apostila .duas-colunas > .caixa, .apostila .duas-colunas > table, .apostila .duas-colunas > svg { break-inside: avoid; }
+.apostila .duas-colunas mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+body.editando .apostila .duas-colunas { outline: 1px dashed #ffb366; outline-offset: 6px; column-rule: 1px dashed #ffd2a6; }
 
 /* ---------- ícones dos modos e salvar (canto superior direito) ---------- */
 #modos { position: fixed; top: 8px; right: 12px; z-index: 65; display: flex; gap: 6px; align-items: center;
@@ -395,6 +410,25 @@ body:has(#menu-strata:not([hidden])) #b-sumario { z-index: 59; }   /* o menu abe
   border: 1.5px solid #888; border-radius: 3px; background: #fff; }
 #menu-strata [aria-checked="true"] .mi-check::before { content: "✓"; border-color: #ff8000; background: #ff8000; color: #fff;
   font: bold 11px/11px system-ui, sans-serif; text-align: center; }
+/* imagens no texto */
+.apostila img { max-width: 100%; height: auto; vertical-align: middle; }
+#img-sel { position: fixed; z-index: 55; outline: 2px solid #c05f00; outline-offset: 1px; pointer-events: none; }
+#img-sel[hidden] { display: none; }
+#img-sel .img-alca { position: absolute; width: 12px; height: 12px; background: #fff; border: 2px solid #c05f00; border-radius: 2px; pointer-events: auto; box-sizing: border-box; }
+#img-sel .img-alca[data-canto=nw] { left: -7px; top: -7px; cursor: nwse-resize; }
+#img-sel .img-alca[data-canto=ne] { right: -7px; top: -7px; cursor: nesw-resize; }
+#img-sel .img-alca[data-canto=sw] { left: -7px; bottom: -7px; cursor: nesw-resize; }
+#img-sel .img-alca[data-canto=se] { right: -7px; bottom: -7px; cursor: nwse-resize; }
+#img-tam { position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%); background: rgba(0,0,0,.7); color: #fff; font: 12px system-ui, sans-serif; padding: 1px 6px; border-radius: 4px; }
+#img-tam:empty { display: none; }
+body.editando section.pagina img { cursor: pointer; }
+#painel-imagem { width: min(440px, calc(100vw - 32px)); }
+#pi-zona { border: 2px dashed #bbb; border-radius: 8px; padding: 18px 12px; margin: 6px 0; text-align: center; color: #555; outline: none; display: grid; gap: 10px; justify-items: center; }
+#pi-zona:focus { border-color: #2a6; background: #f3fbf6; }
+#pi-zona.sobre { border-color: #c05f00; background: #fff6ec; }
+#pi-url { flex: 1; min-width: 0; }
+#pi-erro { color: #b00; font-size: 13px; min-height: 1em; }
+#painel-imagem .pmc-dica { color: #666; font-size: 13px; }
 #painel-macros .pmc-dica a { color: #c05f00; }
 #painel-macros { top: 64px; right: 16px; width: min(480px, calc(100vw - 32px)); z-index: 75; }
 #painel-macros .pmc-dica { color: #666; font-size: 13px; line-height: 1.5; margin: 2px 0 6px; }
@@ -456,6 +490,13 @@ html.strata-escuro #b-tema .sol { display: none; }
   html.strata-escuro #menu-strata a:hover { background: var(--ui-ativo); color: #fff; }
   html.strata-escuro .menu-strata #menu-strata button { color: var(--ui-texto); }
   html.strata-escuro .menu-strata #menu-strata button:hover { background: var(--ui-ativo); color: #fff; }
+  html.strata-escuro .apostila img { background: #fff; }   /* imagem com fundo transparente continua legível */
+  html.strata-escuro #pi-zona { border-color: var(--ui-borda, #555); color: var(--ui-suave); }
+  html.strata-escuro #pi-zona:focus { background: rgba(34,170,102,.12); border-color: #2a6; }
+  html.strata-escuro #pi-zona.sobre { background: rgba(192,95,0,.15); }
+  html.strata-escuro #painel-tabela input[type=number] { background: var(--ui-fundo2); color: var(--ui-texto); border-color: var(--ui-borda); }
+  html.strata-escuro #painel-imagem .pmc-dica { color: var(--ui-suave); }
+  html.strata-escuro #pi-erro { color: #f77; }
   html.strata-escuro #painel-macros .pmc-dica { color: var(--ui-suave); }
   html.strata-escuro #painel-macros code { background: var(--ui-fundo2); color: var(--ui-texto); }
   html.strata-escuro #pmc-tex { background: #17191e; color: var(--ui-texto); border-color: var(--ui-borda); }
