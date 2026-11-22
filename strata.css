@@ -377,3 +377,82 @@ body.editando .apostila .marca.pairada { outline: 2px solid #ff8000; outline-off
 @keyframes mk-surge { from { opacity: 0; } to { opacity: 1; } }
 #painel-marca #pm-linha-texto input { flex: 1; min-width: 200px; font: 15px "Times New Roman", serif; padding: 4px 6px; border: 1px solid #bbb; border-radius: 4px; }
 #painel-marca [data-tipo="texto"], #barra [data-tipo="texto"] .ci, #barra #b-marcar[data-tipo="texto"], body.editando .apostila .marca[data-tipo="texto"] { color: #e01010; }
+
+/* ---------- menu (☰) ---------- */
+#modos .menu-strata { position: relative; display: inline-flex; }
+#menu-strata { position: absolute; top: calc(100% + 6px); right: 0; z-index: 90; min-width: 190px; display: flex; flex-direction: column;
+  background: #fff; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,.18); padding: 4px; }
+#menu-strata[hidden] { display: none; }
+#menu-strata a { display: block; padding: 7px 10px; border-radius: 5px; color: #333; text-decoration: none; white-space: nowrap; }
+#menu-strata a:hover { background: #ffe2c4; color: #000; }
+
+/* ---------- modo escuro (botão sol/lua; só na tela, não vai para o arquivo nem para a impressão) ---------- */
+#b-tema .sol { display: none; }
+html.strata-escuro #b-tema .sol { display: block; }
+html.strata-escuro #b-tema .lua { display: none; }
+@media screen {
+  html.strata-escuro {
+    --fundo: #1e2026; --mesa: #111216; --tinta: #e8e8ea; --azul: #9aa6ff; --laranja: #ff9a3c;
+    --vermelho: #ff6b6b; --verde: #5fd17f; --roxo: #d58cf0;
+    --ui-fundo: #24262d; --ui-fundo2: #2c2f37; --ui-borda: #42454f; --ui-texto: #dcdce2; --ui-suave: #a0a3ad; --ui-ativo: #4a3418;
+    color-scheme: dark;
+  }
+  html.strata-escuro .apostila section.pagina { box-shadow: 0 2px 14px rgba(0,0,0,.6); }
+  html.strata-escuro .apostila .rodape { color: #7d808a; }
+  html.strata-escuro .apostila .cor-amarelo { color: #f0cc3a; }
+  html.strata-escuro .apostila .cor-rosa { color: #ff6fd8; }
+  /* \blue e \red do LaTeX (cores fixas do MathJax) */
+  html.strata-escuro .apostila mjx-container [fill="blue"] { fill: #8fa0ff; }
+  html.strata-escuro .apostila mjx-container [stroke="blue"] { stroke: #8fa0ff; }
+  html.strata-escuro .apostila mjx-container [fill="red"] { fill: #ff6b6b; }
+  html.strata-escuro .apostila mjx-container [stroke="red"] { stroke: #ff6b6b; }
+  html.strata-escuro .apostila .grafico .eixo { stroke: #8a8d96; }
+  html.strata-escuro .apostila table.tabela th, html.strata-escuro .apostila table.tabela td { border-color: #555; }
+  /* marcações: o marca-texto clareia (screen) em vez de escurecer (multiply) */
+  html.strata-escuro .apostila svg.tinta { mix-blend-mode: screen; }
+  html.strata-escuro .apostila svg.tinta .pinta { opacity: .42; }
+  html.strata-escuro .apostila svg.tinta .apagada { opacity: .2; }
+  /* interface */
+  html.strata-escuro #modos button, html.strata-escuro #b-sumario, html.strata-escuro #passos,
+  html.strata-escuro #barra button, html.strata-escuro #passos button, html.strata-escuro .painel-mini button,
+  html.strata-escuro #editor-eq button, html.strata-escuro #painel-marca button {
+    background: var(--ui-fundo); color: var(--ui-texto); border-color: var(--ui-borda); }
+  html.strata-escuro #modos button:hover, html.strata-escuro #b-sumario:hover, html.strata-escuro #barra button:hover,
+  html.strata-escuro .painel-mini button:hover, html.strata-escuro #painel-marca button:hover { background: var(--ui-fundo2); }
+  html.strata-escuro #modos button.ativo, html.strata-escuro #barra .ativo-fmt, html.strata-escuro #barra #b-camada.ligada,
+  html.strata-escuro #painel-marca button.ativo, html.strata-escuro #editor-eq .ee-cor.ativo,
+  html.strata-escuro #barra .combo-menu button.ativo, html.strata-escuro #barra .combo-menu button.ativo-fmt {
+    background: var(--ui-ativo); border-color: #ff9a3c; color: #ffc48a; }
+  html.strata-escuro #modos #b-salvar, html.strata-escuro #ee-aplicar, html.strata-escuro #pm-ok { background: #2a6 !important; border-color: #2a6 !important; color: #fff; }
+  html.strata-escuro #aviso { background: var(--ui-fundo); color: #5fd17f; }
+  html.strata-escuro #barra, html.strata-escuro #sumario { background: #1a1c21; border-color: var(--ui-borda); color: var(--ui-texto); }
+  html.strata-escuro #sumario a { color: var(--ui-texto); }
+  html.strata-escuro #sumario a.nivel-3 { color: var(--ui-suave); }
+  html.strata-escuro #sumario a:hover { background: var(--ui-fundo2); }
+  html.strata-escuro #sumario a.atual { background: var(--ui-ativo); color: #fff; }
+  html.strata-escuro #barra .combo-menu, html.strata-escuro #menu-strata, html.strata-escuro .painel-mini,
+  html.strata-escuro #editor-eq, html.strata-escuro #painel-marca {
+    background: var(--ui-fundo); border-color: var(--ui-borda); color: var(--ui-texto); }
+  html.strata-escuro #barra #c-estilo .combo-menu .ci, html.strata-escuro #barra #c-estilo .combo-menu button { color: var(--ui-texto); }
+  html.strata-escuro #menu-strata a { color: var(--ui-texto); }
+  html.strata-escuro #menu-strata a:hover { background: var(--ui-ativo); color: #fff; }
+  html.strata-escuro #barra .sep, html.strata-escuro #modos .sep { background: var(--ui-borda); }
+  html.strata-escuro #barra .combo-seta { color: var(--ui-suave); }
+  html.strata-escuro #ee-previa { background: #17181d; color: var(--tinta); }
+  html.strata-escuro #editor-eq textarea, html.strata-escuro .painel-mini input, html.strata-escuro #painel-marca input {
+    background: #17181d; color: var(--ui-texto); border-color: var(--ui-borda); }
+  html.strata-escuro .painel-mini .rot, html.strata-escuro #pb-conta, html.strata-escuro #painel-marca .pm-rot,
+  html.strata-escuro #painel-marca .pm-dica, html.strata-escuro #ee-cores span { color: var(--ui-suave); }
+  html.strata-escuro #painel-marca .pm-termo { background: var(--ui-fundo2); border-color: var(--ui-borda); }
+  html.strata-escuro #painel-marca [data-tipo="risca"], html.strata-escuro body.editando .apostila .marca[data-tipo="risca"] { color: var(--ui-texto); }
+  html.strata-escuro body.editando mjx-container:hover { background: #2a2f45; outline-color: #556; }
+  html.strata-escuro body.editando .apostila mjx-container.eq-sel > svg { background: #24406b; }
+  html.strata-escuro body.editando .apostila .ancora-camada { background: #3a2a1a; }
+  html.strata-escuro body.editando .apostila .ancora-camada:hover { background: #5a3a18; }
+  html.strata-escuro ::highlight(camada-foco) { background-color: #4a3418; }
+  html.strata-escuro body.editando .apostila mjx-container.na-camada > svg { background-image: linear-gradient(#4a3418, #4a3418); }
+  html.strata-escuro ::highlight(busca) { background-color: #6b5d00; }
+  html.strata-escuro ::highlight(busca-atual) { background-color: #8a4a00; }
+  html.strata-escuro body.editando.ancoras-recolhidas .apostila .ancora-camada > svg,
+  html.strata-escuro body.editando.ancoras-recolhidas .apostila .marca > svg { background: var(--ui-fundo); }
+}
