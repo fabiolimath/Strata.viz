@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EDOs de 2ª Ordem</title>
+<!-- Aula feita com o Strata.viz (github.com/fabiolimath/Strata.viz): abra no navegador e clique no lápis para editar. -->
+<link rel="stylesheet" href="../strata.css">
+<script src="../strata.js"></script>
+<!-- Macros LaTeX desta aula: trecho entre "Início/Fim do bloco MathJax" do fol-MathJax.sty
+     (github.com/fabiolimath/Preambulo, versão b27b4a5). -->
+<script type="text/x-tex-macros">
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%     Comandos para modo Matemático     %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\mt}[1]{{\:\mbox{#1}}\:}	% Texto no modo math
+
+% \pm redefinido: "mais ou menos" em que o + não encosta no - (como no \pm
+% original): o - é a linha do \underline, um pouco abaixo do +, e o \vcenter
+% centraliza o conjunto na altura do + e do - à volta. Esta forma do \vcenter
+% é a do MathJax; o fol-LaTeX.sty a redefine para o LaTeX.
+% \Pm é sinônimo, para textos antigos.
+\renewcommand{\pm}{\mathbin{\vcenter{\mkern1mu\underline{\mkern-1mu+\mkern-1mu}\mkern1mu}}}
+\newcommand{\Pm}{\pm}
+
+%%%%%%% Forçar \displaystyle dentro do \frac
+ % By Mico at https://tex.stackexchange.com/questions/173899/fractions-with-large-elements
+\newcommand{\ddfrac}[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+\newcommand{\ffrac}[2]{\frac{\displaystyle #1}{\displaystyle #2}}	% Igual ao \ddfrac
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%        Funções    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\md}[1]{\mathop{\overline{\!#1}\,}\nolimits}	% Média
+
+\newcommand{\sen}{\operatorname{sen}}		% Função Seno
+\newcommand{\tg}{\operatorname{tg}}			% Função Tangente
+\newcommand{\s}{\sen}						% Versão curta para seno
+\newcommand{\q}{\cos}						% Versão curta para cosseno
+\newcommand{\senh}{\operatorname{senh}}		% Função seno hiperbólico
+\newcommand{\cotg}{\operatorname{cotg}}		% Função cotangente
+\newcommand{\arctg}{\operatorname{arc\,tg}}	% Função arco tangente
+\newcommand{\arcsen}{\operatorname{arc\,sen}}	% Função arco seno
+
+\newcommand{\ee}{\operatorname{e}}		% Função exponencial
+\newcommand{\ii}{\mathbf{i}}			% Número imaginário, sem o itálico do modo math
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Setas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Lo}{\longrightarrow}		% Seta para direita longa (usado em def. funções)
+\newcommand{\sss}{\Leftrightarrow}		% Seta de se e somente se (ou equivalente)
+\newcommand{\SSS}{\Longleftrightarrow}	% Seta Longa de se e somente se (ou equivalente)
+\newcommand{\imp}{\ \Rightarrow\ \ }	% Seta de se ... então (ou implica em)
+\newcommand{\Imp}{\quad\Rightarrow\quad}	% Seta de Implicação com espaços
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% Conjuntos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\vazio}{\varnothing}		% Conjunto Vazio (mais bacana e mais usual)
+\newcommand{\menosconj}{\smallsetminus}	% Menos para conjuntos (mais bacana)
+\newcommand{\Leq}{\leqslant}			% Menor ou Igual (mais bacana)
+\newcommand{\Geq}{\geqslant}			% Maior ou Igual (mais bacana)
+
+\newcommand{\scC}{\mathscr{C}}	% script - C - Conjunto das Funções Contínuas
+\renewcommand{\L}{\mathcal{L}}	% Call   - L - Transformada de Laplace
+\newcommand{\bbC}{\mathbb{C}}	% Duplo  - C - Numeros Complexos
+\newcommand{\bbR}{\mathbb{R}}	% Duplo  - R - Numeros Reais
+\newcommand{\bbZ}{\mathbb{Z}}	% Duplo  - Z - Numeros Inteiros
+\newcommand{\bbN}{\mathbb{N}}	% Duplo  - N - Numeros Naturais
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%   Cores em modo matemático   %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Os nomes do xcolor e do CSS (usado pelo MathJax) nem sempre dão a mesma
+% cor. Estas definições repetem os valores do xcolor, para que o MathJax
+% mostre as mesmas cores do PDF (no LaTeX não mudam nada).
+\definecolor{brown}{rgb}{0.75,0.5,0.25}
+\definecolor{orange}{rgb}{1,0.5,0}
+\definecolor{purple}{rgb}{0.75,0,0.25}
+\definecolor{violet}{rgb}{0.5,0,0.5}
+\definecolor{lightgray}{rgb}{0.75,0.75,0.75}
+
+\newcommand{\red}[1]{{\textcolor{red}{#1}}}           % Vermelho
+\newcommand{\blue}[1]{{\textcolor{blue}{#1}}}         % Azul
+\newcommand{\cyan}[1]{{\textcolor{cyan}{#1}}}         % Azul claro
+\newcommand{\green}[1]{{\textcolor{teal}{#1}}}        % Verde azulado
+\newcommand{\olive}[1]{{\textcolor{olive}{#1}}}       % Verde escuro
+\newcommand{\orange}[1]{{\textcolor{orange}{#1}}}     % Laranja
+\newcommand{\magenta}[1]{{\textcolor{magenta}{#1}}}   % vermelho-rosado
+\newcommand{\brown}[1]{{\textcolor{brown}{#1}}}       % Marron
+\newcommand{\gray}[1]{{\textcolor{gray}{#1}}}         % Cinza
+\newcommand{\lgray}[1]{{\textcolor{lightgray}{#1}}}   % Cinza claro
+\newcommand{\purple}[1]{{\textcolor{purple}{#1}}}     % Roxo (parece vermelho escuro)
+\newcommand{\violet}[1]{{\textcolor{violet}{#1}}}     % Violeta (parece roxo)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%             Cálculo         %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\dd}[1]{\frac{d}{d #1}}					% Derivada escalar
+\newcommand{\pp}[1][x]{\frac{\partial}{\partial #1}}	% Derivada parcial (padrão: x)
+\newcommand{\Int}{\int\limits}						% Integral com Domínio escrito abaixo
+\newcommand{\II}{\iint\limits}						% Integral Dupla com Domínio escrito abaixo
+\newcommand{\III}{\iiint\limits}					% Integral Tripla com Domínio escrito abaixo
+
+% Seta vermelha cortando a expressão e apontando para o valor dela, por
+% padrão 0. Ex.: \zer{\cos(2\theta)}   \zer[1]{\frac{x^2}{x^2}}
+% A seta sobe da esquerda para a direita (é o \cancelto do pacote cancel).
+% As versões antigas, em TikZ (seta descendo, cor e tamanho opcionais), são
+% \Zer e \Zerup, no fol-LaTeX.sty.
+\newcommand{\zer}[2][0]{\textcolor{red}{\cancelto{\scriptstyle #1}{\textcolor{black}{#2}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%     CÁLCULO VETORIAL    %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Vetores Canônicos
+\newcommand{\ci}{\boldsymbol{\stackrel{\rightarrow}{i}}}
+\newcommand{\cj}{\boldsymbol{\stackrel{\rightarrow}{j}}}
+\newcommand{\ck}{\boldsymbol{\stackrel{\rightarrow}{k}}}
+
+\newcommand{\bbi}{\boldsymbol{\:i}}
+\newcommand{\bbj}{\boldsymbol{\:j}}
+\newcommand{\bbk}{\boldsymbol{\:k}}
+
+
+% Vetor por extenso. Ex.: \lv{1, 2, 3}
+\newcommand{\lv}[1]{\left\langle #1 \right\rangle}
+
+\newcommand{\vt}[1]{\stackrel{\rightarrow}{#1}}						% Vetor
+\newcommand{\Vt}[1]{\stackrel{\longrightarrow}{#1}}					% Vetor com seta maior, para segmentos.
+\newcommand{\esc}[2]{\vt{#1}\cdot\vt{#2}}							% Produto Interno ou Escalar
+\newcommand{\vet}[2]{\,\vt{#1} \!\!\times\! \vt{#2}}				% Produto Vetorial
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}						% Módulo do vetor
+\newcommand{\curl}[1]{\nabla \times \vt{#1}}						% Rotacional
+\newcommand{\dr}{\!\cdot \, d \! \stackrel{\rightarrow}{r}\,}		% Diferencial Vetorial de linha dr
+\newcommand{\dvt}[1]{\, \cdot \, \stackrel{}{d} \stackrel{\rightarrow}{#1}}	% Diferencial Vetorial personalizável
+\newcommand{\dS}{\cdot\stackrel{}{d} \stackrel{\rightarrow}{S}\,}	% Diferencial Vetorial de superfície dS
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%              Ambientes      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Bloco de equações com Chave à esquerda
+% Deve ser chamado dentro do modo matemático
+% Opção padrão: até 9 colunas alinhadas à esquerda
+\newenvironment{ea}[1][lllllllll]{\left\{\begin{array}{#1}}{\end{array}\right.}
+
+\newcommand{\Det}[1]{\left|\begin{array}{cccccccc} #1 \end{array}\right|}
+\newcommand{\Mat}[1]{\left(\begin{array}{cccccccc} #1 \end{array}\right)}
+\newcommand{\Sis}[1]{\left\{\begin{array}{rrrrrrr} #1 \end{array}\right.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+</script>
+</head>
+<body>
+<main class="apostila"><section class="pagina"><h1><span class="rotulo">3.1 - EDOs de 2ª Ordem</span><br></h1><p class="subtitulo">Teste: marcações sobre camadas anteriores</p><h3><span class="rotulo">Exemplo 3:</span> Verifique que&nbsp;\(y=e^{ax}[\cos(bx)+\sen(bx)]\) é solução de&nbsp;\([(D-a)^2+b^2]y=0\).<br></h3><p class="fragment">Primeiro, para organizar os cálculos, seja&nbsp;\(v(x) = \cos (bx) + \sen(bx)\). Assim,<br></p><div class="eq fragment">\(\displaystyle v'(x) = b[ - \sen(bx)+\cos (bx)]\)<span class="fragment"><span class="cor-azul"> e</span>&nbsp;\(\displaystyle v''(x) = b^2[-\cos(bx)-\sen(bx)] = \mk{m11}{-b^2v(x)}.\)</span></div><p class="fragment sem-recuo">Além disso,&nbsp;\(\mk{m1}{y}=\mk{m12}{\ee^{ax}[v(x)]}\).&nbsp;<span class="fragment" data-junto="j1">Logo,<br></span></p><div class="eq fragment" data-junto="j1">\(\displaystyle y'=a\mk{m2}{e^{ax}v} + e^{ax}v'\)<span class="fragment marca" data-marca="m1 m2" data-tipo="destaque" data-cor="rosa"></span><span class="fragment">&nbsp;\(\displaystyle {}= \mk{m4}{ay+ e^{ax}v'}.\)</span></div><p class="fragment sem-recuo">Além disso,<br></p><div class="eq fragment">\[ [(D-a)^2+b^2]y=0 \Imp (D-a)^2y=-b^2y. \]</div><p class="fragment sem-recuo">Então, vamos desenvolver&nbsp;\((D-a)^2y\) e mostrar que é igual à&nbsp;\(\mk{m15}{-b^2y}\).<br></p><div class="eq fragment passo">\(\displaystyle (D-a)^2[y] = (D-a)(D-a)[y] = (D-a)[Dy - ay] = (D-a)[\mk{m3}{y'-ay}]\)<span class="fragment marca" data-marca="m3 m4" data-tipo="destaque" data-cor="amarelo"></span><span class="fragment marca" data-marca="m4" data-tipo="texto" data-cor="vermelho" data-texto="$\imp y' -ay= e^{ax}v'$"></span></div><div class="eq fragment passo">\(\displaystyle \phantom{(D-a)^2[y]} = (D-a)[\mk{m5}{e^{ax}v'}]\)<span class="fragment marca" data-marca="m5" data-tipo="destaque" data-cor="amarelo"></span></div><div class="eq fragment passo">\(\displaystyle \phantom{(D-a)^2[y]} = \mk{m6}{D[e^{ax}v']} - a[e^{ax}v']\)<span class="fragment"><span class="cor-azul">, aplicando a <span data-mk="m7">Regra do Produto</span>, temos</span></span><span class="fragment marca" data-marca="m6 m7" data-tipo="destaque" data-cor="verde"></span></div><div class="eq fragment passo">\(\displaystyle \phantom{(D-a)^2[y]} = a\ee^{ax}v'+\ee^{ax}v'' - ae^{ax}v'\)<span class="fragment"><span class="cor-azul">, colocando</span>&nbsp;\(\ee^{ax}\)<span class="cor-azul"> em evidência,</span></span></div><div class="eq fragment passo">\(\displaystyle \phantom{(D-a)^2[y]} = e^{ax}[\mk{m8}{av'}+\mk{m10}{v''} - \mk{m9}{av'}]\)<span class="fragment marca" data-marca="m8 m9" data-tipo="risca" data-cor="vermelho"></span><span class="fragment marca" data-marca="m10 m11" data-tipo="destaque" data-cor="laranja"></span><span class="fragment">&nbsp;\(\displaystyle {}= \mk{m13}{e^{ax}[-b^2v]}\)<span class="fragment marca" data-marca="m12 m13 m14" data-tipo="destaque" data-cor="azul"></span></span></div><div class="eq fragment passo">\(\displaystyle \phantom{(D-a)^2[y]} = \mk{m16}{-b^2\mk{m14}{y}}\)<span class="fragment marca" data-marca="m15 m16" data-tipo="seta" data-cor="vermelho"></span><span class="fragment fim-exemplo">◼</span></div><div class="rodape">8</div></section></main>
+</body>
+</html>
