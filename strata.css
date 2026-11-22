@@ -86,6 +86,14 @@ body.editando .apostila mjx-container[display="true"] { display: inline-block !i
 .apostila table.tabela { border-collapse: collapse; margin: .3em auto .8em; color: var(--tinta); font-size: .85em; }
 .apostila table.tabela th, .apostila table.tabela td { border: 1px solid #bbb; padding: .2em .55em; text-align: center; font-weight: normal; }
 .apostila table.tabela th { color: var(--laranja); }
+.apostila table.tabela .alinha-esq { text-align: left; }
+.apostila table.tabela .alinha-centro { text-align: center; }
+.apostila table.tabela .alinha-dir { text-align: right; }
+.apostila table.tabela .alinha-just { text-align: justify; }
+body.editando .apostila table.tabela td, body.editando .apostila table.tabela th { min-width: 2.5em; }
+.apostila .duas-colunas table.tabela { max-width: 100%; }
+#painel-tabela { width: min(360px, calc(100vw - 32px)); }
+#painel-tabela input[type=number] { width: 64px; font: inherit; padding: 4px 6px; border: 1px solid #bbb; border-radius: 4px; }
 .apostila .rodape { position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; font-size: .7em; color: #999; }
 
 /* modo apresentação: camadas */
@@ -486,6 +494,7 @@ html.strata-escuro #b-tema .sol { display: none; }
   html.strata-escuro #pi-zona { border-color: var(--ui-borda, #555); color: var(--ui-suave); }
   html.strata-escuro #pi-zona:focus { background: rgba(34,170,102,.12); border-color: #2a6; }
   html.strata-escuro #pi-zona.sobre { background: rgba(192,95,0,.15); }
+  html.strata-escuro #painel-tabela input[type=number] { background: var(--ui-fundo2); color: var(--ui-texto); border-color: var(--ui-borda); }
   html.strata-escuro #painel-imagem .pmc-dica { color: var(--ui-suave); }
   html.strata-escuro #pi-erro { color: #f77; }
   html.strata-escuro #painel-macros .pmc-dica { color: var(--ui-suave); }

@@ -117,6 +117,8 @@
     <span class="combo-menu" hidden=""><button type="button" class="b-cor" data-cor="cor-preto" style="--c: #111111" title="Preto">Preto</button><button type="button" class="b-cor" data-cor="cor-azul" style="--c: #3333cc" title="Azul">Azul</button><button type="button" class="b-cor" data-cor="rotulo" style="--c: #ff8000" title="Laranja">Laranja</button><button type="button" class="b-cor" data-cor="cor-vermelho" style="--c: #d01c1c" title="Vermelho">Vermelho</button><button type="button" class="b-cor" data-cor="cor-verde" style="--c: #1b8a3a" title="Verde">Verde</button><button type="button" class="b-cor" data-cor="cor-roxo" style="--c: #8e24aa" title="Roxo">Roxo</button></span></span>
   <button type="button" id="b-link" class="b-icone" title="Inserir ou editar link (Ctrl+K)" aria-label="Link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></button>
   <button type="button" id="b-imagem" class="b-icone" title="Inserir imagem: colar, arrastar, arquivo ou link" aria-label="Imagem"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg></button>
+  <span class="combo" id="c-tabela"><button type="button" id="b-tabela" class="b-icone" title="Inserir tabela" aria-label="Inserir tabela"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M3 15h18M9 4v16M15 4v16"/></svg></button><button type="button" class="combo-seta" title="Tabela: linhas, colunas, mesclar" aria-label="Tabela: linhas, colunas, mesclar">▾</button>
+    <span class="combo-menu" hidden=""><button type="button" data-tab="linha-acima" title="Inserir linha acima"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="9" rx="1"/><path d="M3 15.5h18M9 11v9M15 11v9M12 2.5v6M9 5.5h6"/></svg></span>Inserir linha acima</button><button type="button" data-tab="linha-abaixo" title="Inserir linha abaixo"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="9" rx="1"/><path d="M3 8.5h18M9 4v9M15 4v9M12 15.5v6M9 18.5h6"/></svg></span>Inserir linha abaixo</button><button type="button" data-tab="col-esq" title="Inserir coluna à esquerda"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="11" y="3" width="9" height="18" rx="1"/><path d="M15.5 3v18M11 9h9M11 15h9M2.5 12h6M5.5 9v6"/></svg></span>Inserir coluna à esquerda</button><button type="button" data-tab="col-dir" title="Inserir coluna à direita"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="9" height="18" rx="1"/><path d="M8.5 3v18M4 9h9M4 15h9M15.5 12h6M18.5 9v6"/></svg></span>Inserir coluna à direita</button><button type="button" data-tab="del-linha" title="Excluir linha"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="8" rx="1"/><path d="M9 8v8M15 8v8"/><path d="M8 3l8 18" stroke="#d01c1c"/></svg></span>Excluir linha</button><button type="button" data-tab="del-col" title="Excluir coluna"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="3" width="8" height="18" rx="1"/><path d="M8 9h8M8 15h8"/><path d="M3 8l18 8" stroke="#d01c1c"/></svg></span>Excluir coluna</button><button type="button" data-tab="mesclar" title="Mesclar células (selecione duas ou mais)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 12h10M14 9l3 3-3 3M10 9l-3 3 3 3"/></svg></span>Mesclar células</button><button type="button" data-tab="separar" title="Separar célula mesclada"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M12 5v14M4.5 12h5M7 9.5L9.5 12 7 14.5M19.5 12h-5M17 9.5L14.5 12l2.5 2.5"/></svg></span>Separar célula mesclada</button><button type="button" data-tab="cabecalho" title="1ª linha como cabeçalho (liga/desliga)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><rect x="3" y="4" width="18" height="5" fill="#ff8000" stroke="none" opacity=".7"/><path d="M3 9h18M3 14.5h18M12 4v16"/></svg></span>1ª linha como cabeçalho</button><button type="button" data-tab="del-tabela" title="Excluir tabela"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M3 15h18M9 4v16M15 4v16"/><path d="M4 21L20 3" stroke="#d01c1c"/></svg></span>Excluir tabela</button></span></span>
   <span class="sep"></span>
   <span class="combo grupo" id="c-alinha"><button type="button" id="b-alinha" class="b-icone" title="Alinhamento" aria-label="Alinhamento"></button><button type="button" class="combo-seta" title="Alinhamento: escolher" aria-label="Alinhamento: escolher">▾</button>
     <span class="combo-menu" hidden=""><button type="button" id="b-al-esq" data-alinha="alinha-esq" title="Alinhar à esquerda" aria-label="Alinhar à esquerda"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h10M4 14h16M4 18h10"/></svg></span>À esquerda</button><button type="button" id="b-al-centro" data-alinha="alinha-centro" title="Centralizar" aria-label="Centralizar"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 10h10M4 14h16M7 18h10"/></svg></span>Centralizado</button><button type="button" id="b-al-dir" data-alinha="alinha-dir" title="Alinhar à direita" aria-label="Alinhar à direita"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M10 10h10M4 14h16M10 18h10"/></svg></span>À direita</button><button type="button" id="b-al-just" data-alinha="alinha-just" title="Justificado (com hifenização automática)" aria-label="Justificado"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h16M4 14h16M4 18h10"/></svg></span>Justificado</button><button type="button" id="b-colunas" title="Duas colunas: os blocos selecionados (ou o atual) ficam em duas colunas. Clique de novo para voltar a uma." aria-label="Duas colunas"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h7.5M3 10h7.5M3 14h7.5M3 18h5M13.5 6H21M13.5 10H21M13.5 14H21M13.5 18h5"/></svg></span>Duas colunas</button><button type="button" id="b-nota" title="Nota lateral vermelha (*:) ao lado do parágrafo atual" aria-label="Nota lateral"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="12" height="17" rx="1"></rect><path d="M5.5 8h6M5.5 11.5h6M5.5 15h4"></path><path d="M19.5 6.5v6M16.9 8l5.2 3M22.1 8l-5.2 3" stroke="#d01c1c"></path></svg></span>Nota lateral</button><button type="button" id="b-qed" title="Quod erat demonstrandum (Q.E.D.): ◼ laranja à direita, no fim do bloco atual, numa camada própria. Clique de novo no mesmo bloco para tirar." aria-label="Quod erat demonstrandum (Q.E.D.)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11M3 12h11M3 17h8"/><rect x="15" y="13" width="6" height="6" fill="#ff8000" stroke="none"/></svg></span>Quod erat demonstrandum (Q.E.D.)</button></span></span>
@@ -147,6 +149,12 @@
   <div id="pi-erro"></div>
   <div class="pmc-dica">Dica: no modo edição também dá para colar ou arrastar a imagem direto no texto.</div>
   <div class="linha" style="justify-content:flex-end"><button type="button" id="pi-cancelar">Cancelar</button></div>
+</div>
+<div id="painel-tabela" class="painel-mini" hidden="" role="dialog" aria-label="Inserir tabela">
+  <div class="linha"><b>Inserir tabela</b></div>
+  <div class="linha"><span class="rot">Linhas</span><input type="number" id="pt-linhas" min="1" max="60" value="3"><span class="rot" style="width:auto;margin-left:10px">Colunas</span><input type="number" id="pt-colunas" min="1" max="20" value="3"></div>
+  <div class="linha"><label><input type="checkbox" id="pt-cab" checked=""> 1ª linha como cabeçalho</label></div>
+  <div class="linha" style="justify-content:flex-end"><button type="button" id="pt-cancelar">Cancelar</button><button type="button" id="pt-ok" style="background:#2a6;color:#fff;border-color:#2a6">Inserir</button></div>
 </div>
 <div id="painel-macros" class="painel-mini" hidden="" role="dialog" aria-label="Macros LaTeX do documento">
   <div class="linha"><b>Adicionar macros LaTeX</b></div>
@@ -2269,6 +2277,192 @@
       e.preventDefault();
       const r = faixaAtual(); if (r) imagemDeArquivo(f, r.cloneRange());
     });
+    // ---------- tabelas: <table class="tabela"> ----------
+    // grade: posição de cada célula levando em conta rowspan/colspan
+    function grade(t) {
+      const L = [...t.rows], G = L.map(() => []), pos = new Map();
+      L.forEach((tr, r) => {
+        let c = 0;
+        for (const cel of tr.cells) {
+          while (G[r][c]) c++;
+          const rs = Math.max(1, cel.rowSpan), cs = Math.max(1, cel.colSpan);
+          pos.set(cel, { r, c, rs, cs });
+          for (let i = 0; i < rs && r + i < L.length; i++) for (let j = 0; j < cs; j++) G[r + i][c + j] = cel;
+          c += cs;
+        }
+      });
+      const nc = Math.max(0, ...G.map(l => l.length));
+      return { L, G, pos, nl: L.length, nc };
+    }
+    const celulaVazia = tag => { const c = document.createElement(tag || 'td'); c.innerHTML = '<br>'; return c; };
+    // põe a célula na linha tr, antes da primeira célula que começa numa coluna >= c
+    function porNaLinha(g, tr, cel, c) {
+      const dep = [...tr.cells].find(x => x !== cel && g.pos.get(x) && g.pos.get(x).c >= c);
+      tr.insertBefore(cel, dep || null);
+    }
+    function celulaDoCursor() {
+      const r = faixaAtual(); if (!r) return null;
+      return noDe(r.startContainer).closest('section.pagina table td, section.pagina table th');
+    }
+    // células escolhidas: o retângulo entre a célula do início e a do fim da seleção (inclui as mescladas inteiras)
+    function celulasDaSelecao() {
+      const sel = getSelection(); if (!sel.rangeCount) return null;
+      const cels = [];
+      for (let i = 0; i < sel.rangeCount; i++) { const r = sel.getRangeAt(i); [r.startContainer, r.endContainer].forEach(n => { const c = noDe(n).closest('td, th'); if (c) cels.push(c); }); }
+      if (!cels.length) return null;
+      const t = cels[0].closest('table'); if (cels.some(c => c.closest('table') !== t)) return null;
+      const g = grade(t);
+      let r0 = Infinity, c0 = Infinity, r1 = -1, c1 = -1;
+      const cobre = c => { const p = g.pos.get(c); r0 = Math.min(r0, p.r); c0 = Math.min(c0, p.c); r1 = Math.max(r1, p.r + p.rs - 1); c1 = Math.max(c1, p.c + p.cs - 1); };
+      cels.forEach(cobre);
+      for (let mudou = true; mudou;) {   // cresce até não cortar nenhuma célula mesclada
+        mudou = false; const a = [r0, c0, r1, c1];
+        for (let r = r0; r <= r1; r++) for (let c = c0; c <= c1; c++) { const x = g.G[r] && g.G[r][c]; if (x) cobre(x); }
+        if (a.join() !== [r0, c0, r1, c1].join()) mudou = true;
+      }
+      const lista = []; for (let r = r0; r <= r1; r++) for (let c = c0; c <= c1; c++) { const x = g.G[r][c]; if (x && !lista.includes(x)) lista.push(x); }
+      return { t, g, r0, c0, r1, c1, lista };
+    }
+    function abrirTabela() {
+      if (!faixaAtual()) return avisar('Clique no texto');
+      if (noDe(ED.range.startContainer).closest('table')) return avisar('O cursor já está numa tabela');
+      ED.rangeTabela = ED.range.cloneRange();
+      const b = $('b-tabela').getBoundingClientRect(), P = $('painel-tabela');
+      P.hidden = false; P.style.left = Math.max(8, Math.min(b.left, innerWidth - P.offsetWidth - 8)) + 'px'; P.style.top = b.bottom + 8 + 'px';
+      $('pt-linhas').focus(); $('pt-linhas').select();
+    }
+    function fecharTabela(voltar) {
+      $('painel-tabela').hidden = true;
+      const r = ED.rangeTabela;
+      if (voltar && r && r.startContainer.isConnected) { const sec = noDe(r.startContainer).closest('section.pagina'); if (sec) sec.focus({ preventScroll: true }); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+    }
+    function inserirTabela() {
+      const nl = Math.max(1, Math.min(60, parseInt($('pt-linhas').value, 10) || 1)), nc = Math.max(1, Math.min(20, parseInt($('pt-colunas').value, 10) || 1));
+      const cab = $('pt-cab').checked, r = ED.rangeTabela;
+      fecharTabela(true);
+      if (!r || !r.startContainer.isConnected) return;
+      const n = noDe(r.startContainer), sec = n.closest('section.pagina'); if (!sec) return;
+      let b = n.closest(BLOCOS); if (b && b.closest('li')) b = b.closest('ul, ol');
+      while (b && b.parentElement !== sec && !b.parentElement.matches('.duas-colunas')) b = b.parentElement;
+      const t = document.createElement('table'); t.className = 'tabela';
+      const tb = document.createElement('tbody'); t.append(tb);
+      for (let i = 0; i < nl; i++) { const tr = document.createElement('tr'); for (let j = 0; j < nc; j++) tr.append(celulaVazia(cab && i === 0 ? 'th' : 'td')); tb.append(tr); }
+      const vazio = b && b.matches('p') && !b.textContent.replace(/[\s​]/g, '') && !b.querySelector('mjx-container, img, .marca');
+      if (vazio) { if (b.classList.contains('fragment')) t.classList.add('fragment'); b.replaceWith(t); }
+      else if (b) b.after(t); else sec.append(t);
+      if (!t.nextElementSibling || t.nextElementSibling.matches('.rodape')) { const p = document.createElement('p'); p.innerHTML = '<br>'; t.after(p); }   // para o cursor sair da tabela
+      sec.focus({ preventScroll: true }); cursorEm(t.rows[0].cells[0]);
+      lerCursor(); sujo(true); iconesCamada(); desenharMarcas(); montarSumario();
+    }
+    $('b-tabela').onclick = () => $('painel-tabela').hidden ? abrirTabela() : fecharTabela(true);
+    $('pt-ok').onclick = inserirTabela;
+    $('pt-cancelar').onclick = () => fecharTabela(true);
+    ['pt-linhas', 'pt-colunas'].forEach(id => $(id).addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); inserirTabela(); } else if (e.key === 'Escape') { e.preventDefault(); fecharTabela(true); } }));
+    document.querySelectorAll('#painel-tabela button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
+    document.addEventListener('mousedown', e => { const P = $('painel-tabela'); if (!P.hidden && !P.contains(e.target) && !e.target.closest('#b-tabela')) fecharTabela(false); }, true);
+
+    function opTabela(op) {
+      const x = celulasDaSelecao();
+      if (!x || !x.t.closest('section.pagina')) return avisar('Clique numa célula da tabela');
+      const { t } = x; let g = x.g, foco = null;
+      const tagViz = (r, c) => { const v = g.G[r] && g.G[r][c]; return v ? v.tagName.toLowerCase() : 'td'; };
+      if (op === 'linha-acima' || op === 'linha-abaixo') {
+        const R = op === 'linha-acima' ? x.r0 : x.r1 + 1, ref = g.L[Math.min(R, g.nl - 1)], tr = document.createElement('tr');
+        const base = op === 'linha-acima' ? R : R - 1;
+        const tag = c => (op === 'linha-acima' && tagViz(base, c) === 'th') ? 'th' : (op === 'linha-abaixo' && tagViz(base, c) === 'th' && R < g.nl) ? 'th' : 'td';
+        const feitos = new Set();
+        for (let c = 0; c < g.nc; c++) {
+          const a = R > 0 ? g.G[R - 1][c] : null, b = R < g.nl ? g.G[R][c] : null;
+          if (a && a === b) { if (!feitos.has(a)) { a.rowSpan = a.rowSpan + 1; feitos.add(a); } continue; }   // mesclada atravessando: só cresce
+          tr.append(celulaVazia(op === 'linha-abaixo' && R === g.nl ? 'td' : tag(c)));
+        }
+        if (R < g.nl) ref.before(tr); else ref.after(tr);
+        foco = tr.cells[0];
+      } else if (op === 'col-esq' || op === 'col-dir') {
+        const C = op === 'col-esq' ? x.c0 : x.c1 + 1, feitos = new Set();
+        g.L.forEach((tr, r) => {
+          const a = C > 0 ? g.G[r][C - 1] : null, b = g.G[r][C];
+          if (a && a === b) { if (!feitos.has(a)) { a.colSpan = a.colSpan + 1; feitos.add(a); } return; }
+          const nova = celulaVazia(tagViz(r, op === 'col-esq' ? C : C - 1));
+          porNaLinha(g, tr, nova, C);
+          if (r === x.r0) foco = nova;
+        });
+      } else if (op === 'del-linha') {
+        for (let R = x.r1; R >= x.r0; R--) {
+          g = grade(t); const tr = g.L[R]; if (!tr) continue;
+          const feitos = new Set();
+          for (let c = 0; c < g.nc; c++) {
+            const cel = g.G[R][c]; if (!cel || feitos.has(cel)) continue; feitos.add(cel);
+            const p = g.pos.get(cel);
+            if (p.rs > 1) {
+              if (p.r === R) { cel.rowSpan = p.rs - 1; porNaLinha(g, g.L[R + 1], cel, p.c); }   // desce para a linha de baixo
+              else cel.rowSpan = p.rs - 1;
+            }
+          }
+          tr.remove();
+        }
+        g = grade(t); foco = g.L[Math.min(x.r0, g.nl - 1)] && g.L[Math.min(x.r0, g.nl - 1)].cells[0];
+      } else if (op === 'del-col') {
+        const feitos = new Set();
+        for (let r = 0; r < g.nl; r++) for (let c = x.c0; c <= x.c1; c++) {
+          const cel = g.G[r][c]; if (!cel || feitos.has(cel)) continue; feitos.add(cel);
+          const p = g.pos.get(cel), dentro = Math.min(p.c + p.cs - 1, x.c1) - Math.max(p.c, x.c0) + 1;
+          if (dentro >= p.cs) cel.remove(); else cel.colSpan = p.cs - dentro;
+        }
+        g = grade(t); const tr = g.L[Math.min(x.r0, g.nl - 1)]; foco = tr && (tr.cells[Math.min(x.c0, tr.cells.length - 1)] || tr.cells[0]);
+      } else if (op === 'mesclar') {
+        if (x.lista.length < 2) return avisar('Selecione duas ou mais células para mesclar');
+        const [alvo, ...resto] = x.lista;
+        const limpo = c => !c.textContent.replace(/[\s​]/g, '') && !c.querySelector('mjx-container, img, .marca');
+        if (limpo(alvo)) alvo.innerHTML = '';
+        resto.forEach(c => { if (!limpo(c)) { if (alvo.childNodes.length) alvo.append(' '); alvo.append(...c.childNodes); } c.remove(); });
+        if (!alvo.childNodes.length) alvo.innerHTML = '<br>';
+        alvo.rowSpan = x.r1 - x.r0 + 1; alvo.colSpan = x.c1 - x.c0 + 1;
+        foco = alvo;
+      } else if (op === 'separar') {
+        const alvos = x.lista.filter(c => c.rowSpan > 1 || c.colSpan > 1);
+        if (!alvos.length) return avisar('Essa célula não está mesclada');
+        alvos.forEach(cel => {
+          g = grade(t); const p = g.pos.get(cel), tag = cel.tagName.toLowerCase();
+          cel.removeAttribute('rowspan'); cel.removeAttribute('colspan');
+          for (let i = 0; i < p.rs; i++) {
+            const tr = g.L[p.r + i]; if (!tr) continue;
+            for (let j = p.cs - 1; j >= 0; j--) { if (i === 0 && j === 0) continue; const nova = celulaVazia(tag); if (i === 0) cel.after(nova); else porNaLinha(g, tr, nova, p.c + j); }
+          }
+        });
+        foco = alvos[0];
+      } else if (op === 'cabecalho') {
+        const tr = g.L[0], th = [...tr.cells].every(c => c.tagName === 'TH');
+        [...tr.cells].forEach(c => { const n = document.createElement(th ? 'td' : 'th'); [...c.attributes].forEach(a => n.setAttribute(a.name, a.value)); n.append(...c.childNodes); c.replaceWith(n); });
+        foco = tr.cells[0];
+      } else if (op === 'del-tabela') {
+        const p = document.createElement('p'); p.innerHTML = '<br>'; t.replaceWith(p); foco = p;
+      }
+      if (!t.isConnected || !t.rows.length || !t.querySelector('td, th')) { if (t.isConnected) { const p = document.createElement('p'); p.innerHTML = '<br>'; t.replaceWith(p); foco = p; } }
+      else [...t.rows].forEach(tr => { if (!tr.cells.length) tr.remove(); });   // linha que ficou sem células (mesclagem de linhas inteiras)
+      if (foco && foco.isConnected) { const sec = foco.closest('section.pagina'); sec.focus({ preventScroll: true }); cursorEm(foco); }
+      lerCursor(); sujo(true); iconesCamada(); desenharMarcas(); mostrarFormatos();
+    }
+    combo('c-tabela', b => opTabela(b.dataset.tab));
+    document.querySelectorAll('#c-tabela button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
+    // dentro da célula: Enter quebra a linha; Tab/Shift+Tab andam entre as células (Tab na última cria uma linha)
+    document.addEventListener('keydown', ev => {
+      if (!document.body.classList.contains('editando') || (ev.key !== 'Enter' && ev.key !== 'Tab') || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+      const sel = getSelection(); if (!sel.rangeCount) return;
+      const cel = noDe(sel.getRangeAt(0).startContainer).closest('section.pagina td, section.pagina th'); if (!cel) return;
+      ev.preventDefault(); ev.stopImmediatePropagation();
+      if (ev.key === 'Enter') {
+        if (!cel.textContent.replace(/[\s\u200B]/g, '') && !cel.querySelector('mjx-container, img, .marca')) cel.innerHTML = '';   // só o <br> de célula vazia
+        const r = cel.innerHTML ? sel.getRangeAt(0) : (() => { const q = document.createRange(); q.setStart(cel, 0); return q; })(); r.deleteContents();
+        const br = document.createElement('br'); r.insertNode(br);
+        if (!br.nextSibling || (br.nextSibling.nodeType === 3 && !br.nextSibling.data && !br.nextSibling.nextSibling)) br.after(document.createElement('br'));   // no fim, o navegador precisa de dois
+        const q = document.createRange(); q.setStartAfter(br); q.collapse(true); sel.removeAllRanges(); sel.addRange(q); sujo(true); return;
+      }
+      const todas = [...cel.closest('table').querySelectorAll('td, th')], i = todas.indexOf(cel);
+      let alvo = todas[i + (ev.shiftKey ? -1 : 1)];
+      if (!alvo && !ev.shiftKey) { opTabela('linha-abaixo'); return; }
+      if (alvo) { const q = document.createRange(); q.selectNodeContents(alvo); sel.removeAllRanges(); sel.addRange(q); lerCursor(); }
+    }, true);
     // ---------- redimensionar imagem: clicar seleciona, alças nos cantos ----------
     // a largura fica em % do bloco (style="width: 48%"), então acompanha a página ou a coluna
     const ISEL = { img: null };
@@ -2335,6 +2529,11 @@
     // alinhamento: clicar de novo no alinhamento atual volta ao padrão
     const ALINHAS = ['alinha-esq', 'alinha-centro', 'alinha-dir', 'alinha-just'];
     document.querySelectorAll('#barra [data-alinha]').forEach(b => b.onclick = () => {
+      const tc = faixaAtual() && noDe(ED.range.startContainer).closest('section.pagina td, section.pagina th');
+      if (tc) {   // na tabela: alinha o conteúdo das células escolhidas
+        const x = celulasDaSelecao(), cels = x ? x.lista : [tc], k = b.dataset.alinha, tira = cels.every(c => c.classList.contains(k));
+        return depoisDe(() => cels.forEach(c => { c.classList.remove(...ALINHAS); if (!tira) c.classList.add(k); if (!c.classList.length) c.removeAttribute('class'); }));
+      }
       const bl = blocosDa(faixaAtual(), BLOCOS); if (!bl.length) return avisar('Clique num parágrafo');
       // equação alinhada à esquerda = linha de um desenvolvimento (classe passo: à esquerda e com pouco espaço entre as linhas)
       const k = b.dataset.alinha, cl = e => e.matches('div.eq') && k === 'alinha-esq' ? 'passo' : k, tira = bl.every(e => e.classList.contains(cl(e)));
@@ -2437,10 +2636,11 @@
     function mostrarFormatos() {
       if (!document.body.classList.contains('editando')) return;
       const r = ED.range, b = r && r.startContainer.isConnected ? noDe(r.startContainer).closest(BLOCOS) : null;
+      const tcel = r && r.startContainer.isConnected ? noDe(r.startContainer).closest('td, th') : null;
       let q = (k) => { try { return document.queryCommandState(k); } catch (e) { return false; } };
       $('b-negrito').classList.toggle('ativo-fmt', !!r && q('bold'));
       $('b-italico').classList.toggle('ativo-fmt', !!r && q('italic'));
-      document.querySelectorAll('#barra [data-alinha]').forEach(x => x.classList.toggle('ativo-fmt', !!b && (b.classList.contains(x.dataset.alinha) || (x.dataset.alinha === 'alinha-esq' && b.matches('div.eq.passo')))));
+      document.querySelectorAll('#barra [data-alinha]').forEach(x => x.classList.toggle('ativo-fmt', tcel ? tcel.classList.contains(x.dataset.alinha) : !!b && (b.classList.contains(x.dataset.alinha) || (x.dataset.alinha === 'alinha-esq' && b.matches('div.eq.passo')))));
       $('b-colunas').classList.toggle('ativo-fmt', !!b && !!b.closest('.duas-colunas'));
       const li = b && b.matches('li') ? tipoDaLista(b.parentElement) : '';
       [['b-lista', 'ul'], ['b-lista-num', 'ol'], ['b-lista-rom', 'ol:i'], ['b-lista-alfa', 'ol:a']].forEach(([id, t]) => $(id).classList.toggle('ativo-fmt', li === t));

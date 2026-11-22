@@ -103,6 +103,12 @@ salva como `novo_documento.html`.
   por link, fica só o endereço. Tamanho: `style="width: 48%"` (% do bloco, ou da
   coluna). No editor, clicar na imagem mostra alças nos cantos para arrastar;
   dois cliques numa alça voltam ao tamanho natural; Delete apaga.
+- **Tabelas**: `<table class="tabela">` com `<th>` no cabeçalho e `<td>`; mescladas
+  com `rowspan`/`colspan`; alinhamento da célula com `alinha-esq|centro|dir`
+  (padrão: centro). No editor: botão Tabela (pergunta linhas e colunas) e o menu ▾
+  ao lado (inserir/excluir linha e coluna, mesclar, separar, cabeçalho, excluir
+  tabela). Na célula, Enter quebra a linha e Tab/Shift+Tab andam entre as células
+  (Tab na última cria uma linha).
 - **Outros**: `class="caixa"` (caixa de destaque), `p.subtitulo`,
   `class="sem-recuo"`, `alinha-esq|centro|dir|just`, `recuo-1..4`,
   `<span class="fragment fim-exemplo">◼</span>` (Q.E.D.), `table.tabela`,

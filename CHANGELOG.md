@@ -2,6 +2,11 @@
 
 ## Próxima versão
 
+- Tabelas: botão Tabela (diálogo com linhas, colunas e cabeçalho) e menu ao lado
+  para inserir linha acima/abaixo, coluna à esquerda/direita, excluir linha ou
+  coluna, mesclar e separar células, ligar/desligar o cabeçalho e excluir a
+  tabela. Os botões de alinhamento alinham as células escolhidas. Enter na célula
+  quebra a linha; Tab e Shift+Tab andam entre as células.
 - Imagens: botão na barra (ao lado do link) com diálogo para colar, arrastar,
   escolher arquivo ou dar um link. Na edição, colar uma imagem (Ctrl+V) ou
   arrastar um arquivo direto no texto também insere no ponto do cursor. A imagem
