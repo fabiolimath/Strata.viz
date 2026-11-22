@@ -23,9 +23,10 @@ trocados pelos ícones do canto superior direito, sem recarregar:
 
 Ao lado dos modos ficam o botão de **tema** (o ícone mostra o tema atual, sol
 no claro e lua no escuro; na 1ª vez segue o sistema; vale só na tela de quem lê,
-o arquivo não muda) e o **menu** ☰, com **Adicionar macros LaTeX**, a opção
-**Enter cria camada** (cada Enter no texto começa uma camada nova; preferência
-de quem edita, guardada no navegador) e o link para o site.
+o arquivo não muda). No modo edição, o canto esquerdo da barra tem o **menu** ☰,
+com **Adicionar macros LaTeX**, a opção **Enter cria camada** (cada Enter no
+texto começa uma camada nova; preferência de quem edita, guardada no navegador)
+e o link para o site, e o botão **Novo documento**.
 
 Exemplo: [`exemplos/exemplo3.html`](exemplos/exemplo3.html) (um exemplo
 resolvido de EDOs de 2ª ordem: camadas, marcações sobre termos já escritos,
@@ -60,9 +61,10 @@ O `strata.js` põe a interface, carrega o MathJax 3.2.2 e liga o editor. Ao
 salvar, sai de novo só o conteúdo: a interface não fica gravada no arquivo, então
 uma versão nova do Strata vale para todos os documentos que o carregam.
 
-O jeito mais simples de começar um documento é o botão **Novo documento** (canto
-superior direito): abre uma página em branco com o mesmo editor, que se salva
-como `novo_documento.html`.
+O jeito mais simples de começar um documento é o botão **Novo documento** (modo
+edição, canto esquerdo da barra): abre uma página em branco com o mesmo editor e
+o mesmo `<head>` do documento de onde saiu (inclusive o bloco de macros), que se
+salva como `novo_documento.html`.
 
 ## Convenções do HTML
 

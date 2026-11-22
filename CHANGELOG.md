@@ -9,6 +9,8 @@
   marcações e interface se adaptam; a escolha fica no navegador (`localStorage`,
   `strata-tema`) e não vai para o arquivo salvo nem para a impressão.
 - Menu ☰ ao lado dos modos, com "Macros LaTeX…" e "Sobre o Strata.viz".
+- Menu ☰ e Novo documento só no modo edição, no canto esquerdo da barra de texto.
+  A opção "Enter cria camada" tem caixa de marcar.
 - Diálogo Adicionar macros LaTeX (menu ☰): começa vazio, com link para o
   `fol-MathJax.sty` do Preambulo (arquivo com todas as macros); acrescenta ao `<script type="text/x-tex-macros">` do documento
   (cria se não houver), confere os erros e redesenha as fórmulas.
