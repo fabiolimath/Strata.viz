@@ -206,6 +206,10 @@
     if (new URLSearchParams(location.search).has('novo')) {
       document.querySelector('main.apostila').innerHTML = '<section class="pagina"><p><br></p><div class="rodape">1</div></section>';
       document.title = 'Novo documento';
+      // o arquivo novo vai ser salvo em outra pasta: os endereços do Strata viram absolutos
+      // (no exemplo eles são relativos, ../strata.js, e não achariam nada a partir de Downloads)
+      document.querySelectorAll('head script[src*="strata.js"]').forEach(e => e.setAttribute('src', e.src));
+      document.querySelectorAll('head link[rel="stylesheet"][href*="strata.css"]').forEach(e => e.setAttribute('href', e.href));
     }
 
     // ---------- modo leitura (padrão) x modo apresentação (?aula) x edição (?editar) ----------
