@@ -2,6 +2,10 @@
 
 ## Próxima versão
 
+- Imagens: botão na barra (ao lado do link) com diálogo para colar, arrastar,
+  escolher arquivo ou dar um link. Na edição, colar uma imagem (Ctrl+V) ou
+  arrastar um arquivo direto no texto também insere no ponto do cursor. A imagem
+  vai dentro do arquivo (`data:`); no tema escuro ganha fundo branco.
 - Duas colunas (menu de alinhamento, abaixo de Justificado): `<div class="duas-colunas">`
   em volta dos blocos; clicar de novo dentro dele volta a uma coluna.
 - Site do Strata (pasta `site/`), publicado com o exemplo no GitHub Pages.

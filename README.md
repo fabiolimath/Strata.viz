@@ -96,6 +96,11 @@ salva como `novo_documento.html`.
 - **Duas colunas**: `<div class="duas-colunas">` em volta dos blocos (no editor,
   Alinhamento → Duas colunas). O texto passa da 1ª para a 2ª coluna onde o
   navegador equilibrar; as camadas seguem a ordem do texto.
+- **Imagens**: `<img src="..." alt="">` no meio do texto (largura máxima = a da
+  página). No editor: botão Imagem (colar, arrastar, escolher arquivo ou link),
+  ou colar/arrastar direto no texto. Colada, arrastada ou de arquivo, a imagem vai
+  dentro do HTML (`data:`), reduzida se passar de 1600 px e ficar menor assim;
+  por link, fica só o endereço.
 - **Outros**: `class="caixa"` (caixa de destaque), `p.subtitulo`,
   `class="sem-recuo"`, `alinha-esq|centro|dir|just`, `recuo-1..4`,
   `<span class="fragment fim-exemplo">◼</span>` (Q.E.D.), `table.tabela`,

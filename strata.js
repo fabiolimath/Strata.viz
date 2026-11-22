@@ -116,6 +116,7 @@
   <span class="combo" id="c-cor"><button type="button" id="b-cor" class="b-icone" title="Cor do texto: preto (clique de novo na mesma cor para remover)" aria-label="Cor do texto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 16L12 4l5 12M8.8 12h6.4"></path><rect class="barra-cor" x="4" y="18.5" width="16" height="3.5" rx="1" stroke="none"></rect></svg></button><button type="button" class="combo-seta" title="Escolher a cor" aria-label="Escolher a cor">▾</button>
     <span class="combo-menu" hidden=""><button type="button" class="b-cor" data-cor="cor-preto" style="--c: #111111" title="Preto">Preto</button><button type="button" class="b-cor" data-cor="cor-azul" style="--c: #3333cc" title="Azul">Azul</button><button type="button" class="b-cor" data-cor="rotulo" style="--c: #ff8000" title="Laranja">Laranja</button><button type="button" class="b-cor" data-cor="cor-vermelho" style="--c: #d01c1c" title="Vermelho">Vermelho</button><button type="button" class="b-cor" data-cor="cor-verde" style="--c: #1b8a3a" title="Verde">Verde</button><button type="button" class="b-cor" data-cor="cor-roxo" style="--c: #8e24aa" title="Roxo">Roxo</button></span></span>
   <button type="button" id="b-link" class="b-icone" title="Inserir ou editar link (Ctrl+K)" aria-label="Link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></button>
+  <button type="button" id="b-imagem" class="b-icone" title="Inserir imagem: colar, arrastar, arquivo ou link" aria-label="Imagem"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg></button>
   <span class="sep"></span>
   <span class="combo grupo" id="c-alinha"><button type="button" id="b-alinha" class="b-icone" title="Alinhamento" aria-label="Alinhamento"></button><button type="button" class="combo-seta" title="Alinhamento: escolher" aria-label="Alinhamento: escolher">▾</button>
     <span class="combo-menu" hidden=""><button type="button" id="b-al-esq" data-alinha="alinha-esq" title="Alinhar à esquerda" aria-label="Alinhar à esquerda"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h10M4 14h16M4 18h10"/></svg></span>À esquerda</button><button type="button" id="b-al-centro" data-alinha="alinha-centro" title="Centralizar" aria-label="Centralizar"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 10h10M4 14h16M7 18h10"/></svg></span>Centralizado</button><button type="button" id="b-al-dir" data-alinha="alinha-dir" title="Alinhar à direita" aria-label="Alinhar à direita"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M10 10h10M4 14h16M10 18h10"/></svg></span>À direita</button><button type="button" id="b-al-just" data-alinha="alinha-just" title="Justificado (com hifenização automática)" aria-label="Justificado"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h16M4 14h16M4 18h10"/></svg></span>Justificado</button><button type="button" id="b-colunas" title="Duas colunas: os blocos selecionados (ou o atual) ficam em duas colunas. Clique de novo para voltar a uma." aria-label="Duas colunas"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h7.5M3 10h7.5M3 14h7.5M3 18h5M13.5 6H21M13.5 10H21M13.5 14H21M13.5 18h5"/></svg></span>Duas colunas</button><button type="button" id="b-nota" title="Nota lateral vermelha (*:) ao lado do parágrafo atual" aria-label="Nota lateral"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="12" height="17" rx="1"></rect><path d="M5.5 8h6M5.5 11.5h6M5.5 15h4"></path><path d="M19.5 6.5v6M16.9 8l5.2 3M22.1 8l-5.2 3" stroke="#d01c1c"></path></svg></span>Nota lateral</button><button type="button" id="b-qed" title="Quod erat demonstrandum (Q.E.D.): ◼ laranja à direita, no fim do bloco atual, numa camada própria. Clique de novo no mesmo bloco para tirar." aria-label="Quod erat demonstrandum (Q.E.D.)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11M3 12h11M3 17h8"/><rect x="15" y="13" width="6" height="6" fill="#ff8000" stroke="none"/></svg></span>Quod erat demonstrandum (Q.E.D.)</button></span></span>
@@ -138,6 +139,14 @@
 <div id="painel-link" class="painel-mini" hidden="">
   <div class="linha"><span class="rot">Link</span><input type="url" id="pl-url" placeholder="https://..." spellcheck="false"></div>
   <div class="linha" style="justify-content:flex-end"><button type="button" id="pl-remover">Remover link</button><button type="button" id="pl-cancelar">Cancelar</button><button type="button" id="pl-ok" style="background:#2a6;color:#fff;border-color:#2a6">OK</button></div>
+</div>
+<div id="painel-imagem" class="painel-mini" hidden="" role="dialog" aria-label="Inserir imagem">
+  <div class="linha"><b>Inserir imagem</b></div>
+  <div id="pi-zona" tabindex="0" title="Clique aqui e cole (Ctrl+V)"><div>Cole aqui (Ctrl+V) ou arraste uma imagem</div><button type="button" id="pi-arquivo-b">Escolher arquivo…</button><input type="file" id="pi-arquivo" accept="image/*" hidden=""></div>
+  <div class="linha"><span class="rot">Link</span><input type="url" id="pi-url" placeholder="https://.../figura.png" spellcheck="false"><button type="button" id="pi-ok">Inserir</button></div>
+  <div id="pi-erro"></div>
+  <div class="pmc-dica">Dica: no modo edição também dá para colar ou arrastar a imagem direto no texto.</div>
+  <div class="linha" style="justify-content:flex-end"><button type="button" id="pi-cancelar">Cancelar</button></div>
 </div>
 <div id="painel-macros" class="painel-mini" hidden="" role="dialog" aria-label="Macros LaTeX do documento">
   <div class="linha"><b>Adicionar macros LaTeX</b></div>
@@ -174,7 +183,7 @@
 <div id="retangulo" hidden=""></div>
 <div id="passos"><button id="ant" title="Camada anterior (←)">◀</button><span id="contador"></span><button id="prox" title="Próxima camada (→)">▶</button></div>
 `;
-  const IDS_UI = ['b-sumario', 'sumario', 'modos', 'barra', 'painel-link', 'painel-busca', 'editor-eq', 'painel-marca', 'retangulo', 'passos'];
+  const IDS_UI = ['b-sumario', 'sumario', 'modos', 'barra', 'painel-link', 'painel-imagem', 'painel-busca', 'editor-eq', 'painel-marca', 'retangulo', 'passos'];
   function porInterface() {
     // arquivo antigo, com a interface gravada nele: troca pela desta versão
     IDS_UI.forEach(id => { const e = document.getElementById(id); if (e) e.remove(); });
@@ -2155,6 +2164,121 @@
     $('pl-cancelar').onclick = () => fecharLink(true);
     $('pl-remover').onclick = () => { const a = LINK.a; fecharLink(true); if (a) depoisDe(() => a.replaceWith(...a.childNodes)); };
     $('pl-url').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); aplicarLink(); } else if (e.key === 'Escape') { e.preventDefault(); fecharLink(true); } });
+
+    // ---------- imagens: colar, arrastar, arquivo ou link ----------
+    // a imagem entra no ponto do cursor como <img>; colada/arrastada/arquivo vira data: (o HTML continua um arquivo só)
+    const IMG = { r: null };
+    const IMG_MAX = 1600;   // lado maior, em pixels; acima disso a imagem é reduzida
+    function lerImagem(f) {
+      return new Promise((ok, falha) => {
+        const fr = new FileReader();
+        fr.onerror = () => falha(new Error('não foi possível ler o arquivo'));
+        fr.onload = () => {
+          const url = fr.result;
+          if (/^image\/(svg|gif)/.test(f.type)) return ok(url);   // vetor e animação ficam como estão
+          const im = new Image();
+          im.onerror = () => falha(new Error('formato de imagem não reconhecido'));
+          im.onload = () => {
+            const k = Math.min(1, IMG_MAX / Math.max(im.naturalWidth, im.naturalHeight));
+            if (k === 1 && f.size < 1.5e6) return ok(url);
+            const c = document.createElement('canvas');
+            c.width = Math.round(im.naturalWidth * k); c.height = Math.round(im.naturalHeight * k);
+            c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
+            const png = f.type === 'image/png' || f.type === 'image/webp';
+            let u = png ? c.toDataURL('image/png') : c.toDataURL('image/jpeg', 0.9);
+            if (png && u.length > 3e6) u = c.toDataURL('image/webp', 0.92);   // foto colada como PNG: fica bem menor
+            ok(u.length < url.length ? u : url);
+          };
+          im.src = url;
+        };
+        fr.readAsDataURL(f);
+      });
+    }
+    function inserirImagem(src, r) {
+      if (!r || !r.startContainer.isConnected || !noDe(r.startContainer).closest('section.pagina')) return avisar('Clique no texto');
+      const im = document.createElement('img'); im.src = src; im.alt = '';
+      const f = noDe(r.startContainer).closest('mjx-container');   // nunca dentro de uma fórmula
+      if (!r.collapsed) r.deleteContents();
+      if (f) f.after(im); else r.insertNode(im);
+      const sec = im.closest('section.pagina'); sec.focus({ preventScroll: true });
+      const q = document.createRange(); q.setStartAfter(im); q.collapse(true);
+      const sel = getSelection(); sel.removeAllRanges(); sel.addRange(q);
+      lerCursor(); sujo(true); iconesCamada(); desenharMarcas();
+      const conf = () => desenharMarcas(); if (!im.complete) im.addEventListener('load', conf, { once: true });   // a altura muda quando carrega
+      return im;
+    }
+    const arquivoDeImagem = dt => {
+      if (!dt) return null;
+      for (const f of dt.files || []) if (/^image\//.test(f.type)) return f;
+      for (const it of dt.items || []) if (it.kind === 'file' && /^image\//.test(it.type)) return it.getAsFile();
+      return null;
+    };
+    async function imagemDeArquivo(f, r) {
+      try { const u = await lerImagem(f); fecharImagem(); inserirImagem(u, r); }
+      catch (e) { if (!$('painel-imagem').hidden) $('pi-erro').textContent = 'Erro: ' + e.message; else avisar('Imagem: ' + e.message); }
+    }
+    function abrirImagem() {
+      const r = faixaAtual(); if (!r) return avisar('Clique no texto');
+      IMG.r = r.cloneRange();
+      $('pi-url').value = ''; $('pi-erro').textContent = '';
+      const b = $('b-imagem').getBoundingClientRect(), P = $('painel-imagem');
+      P.hidden = false; P.style.left = Math.max(8, Math.min(b.left, innerWidth - P.offsetWidth - 8)) + 'px'; P.style.top = b.bottom + 8 + 'px';
+      $('pi-zona').focus();
+    }
+    function fecharImagem(voltar) {
+      $('painel-imagem').hidden = true; $('pi-zona').classList.remove('sobre');
+      if (voltar && IMG.r && IMG.r.startContainer.isConnected) { const sec = noDe(IMG.r.startContainer).closest('section.pagina'); if (sec) sec.focus({ preventScroll: true }); const s = getSelection(); s.removeAllRanges(); s.addRange(IMG.r); }
+    }
+    function imagemDoLink() {
+      let url = $('pi-url').value.trim(); if (!url) return;
+      if (!/^[a-z][\w+.-]*:|^[#\/.]/i.test(url)) url = 'https://' + url;
+      const t = new Image();
+      t.onload = () => { fecharImagem(); inserirImagem(url, IMG.r); };
+      t.onerror = () => { $('pi-erro').textContent = 'Não consegui abrir uma imagem nesse link.'; };
+      $('pi-erro').textContent = 'Carregando…'; t.src = url;
+    }
+    $('b-imagem').onclick = () => $('painel-imagem').hidden ? abrirImagem() : fecharImagem(true);
+    $('pi-cancelar').onclick = () => fecharImagem(true);
+    $('pi-ok').onclick = imagemDoLink;
+    $('pi-arquivo-b').onclick = () => $('pi-arquivo').click();
+    $('pi-arquivo').onchange = () => { const f = $('pi-arquivo').files[0]; $('pi-arquivo').value = ''; if (f) imagemDeArquivo(f, IMG.r); };
+    $('pi-url').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); imagemDoLink(); } else if (e.key === 'Escape') { e.preventDefault(); fecharImagem(true); } });
+    $('pi-zona').addEventListener('keydown', e => { if (e.key === 'Escape') { e.preventDefault(); fecharImagem(true); } });
+    const zona = $('pi-zona');
+    zona.addEventListener('dragover', e => { e.preventDefault(); zona.classList.add('sobre'); });
+    zona.addEventListener('dragleave', () => zona.classList.remove('sobre'));
+    zona.addEventListener('drop', e => {
+      e.preventDefault(); e.stopPropagation(); zona.classList.remove('sobre');
+      const f = arquivoDeImagem(e.dataTransfer); if (f) return imagemDeArquivo(f, IMG.r);
+      const u = (e.dataTransfer.getData('text/uri-list') || '').split('\n').find(l => l && l[0] !== '#');   // imagem arrastada de outra página
+      if (u) { $('pi-url').value = u.trim(); imagemDoLink(); } else $('pi-erro').textContent = 'Isso não é uma imagem.';
+    });
+    document.querySelectorAll('#painel-imagem button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
+    // fecha ao clicar fora (sem inserir nada)
+    document.addEventListener('mousedown', e => { const P = $('painel-imagem'); if (!P.hidden && !P.contains(e.target) && !e.target.closest('#b-imagem')) fecharImagem(false); }, true);
+    // colar: no painel, ou direto no texto (modo edição) quando a área de transferência tem só imagem
+    document.addEventListener('paste', e => {
+      const dt = e.clipboardData, f = arquivoDeImagem(dt); if (!f) return;
+      if (!$('painel-imagem').hidden) { e.preventDefault(); return imagemDeArquivo(f, IMG.r); }
+      if (!document.body.classList.contains('editando')) return;
+      const t = e.target.closest ? e.target : e.target.parentElement;
+      if (!t || !t.closest('section.pagina') || t.closest('#editor-eq')) return;
+      if ((dt.getData('text/plain') || '').trim()) return;   // texto copiado (de um editor de texto, p. ex.) cola como texto
+      e.preventDefault();
+      const r = faixaAtual(); if (r) imagemDeArquivo(f, r.cloneRange());
+    });
+    // arrastar um arquivo de imagem direto para o texto
+    const temArquivo = dt => dt && [...(dt.types || [])].includes('Files');
+    document.addEventListener('dragover', ev => { if (document.body.classList.contains('editando') && !MK.arrasto && !MK.arrastoCamada && temArquivo(ev.dataTransfer) && ev.target.closest && ev.target.closest('section.pagina')) ev.preventDefault(); });
+    document.addEventListener('drop', ev => {
+      if (MK.arrasto || MK.arrastoCamada || !document.body.classList.contains('editando')) return;
+      const f = arquivoDeImagem(ev.dataTransfer); if (!f) return;
+      let r = null;
+      if (document.caretRangeFromPoint) r = document.caretRangeFromPoint(ev.clientX, ev.clientY);
+      else if (document.caretPositionFromPoint) { const p = document.caretPositionFromPoint(ev.clientX, ev.clientY); if (p) { r = document.createRange(); r.setStart(p.offsetNode, p.offset); } }
+      if (!r || !noDe(r.startContainer).closest('section.pagina')) return;
+      ev.preventDefault(); imagemDeArquivo(f, r);
+    });
     // alinhamento: clicar de novo no alinhamento atual volta ao padrão
     const ALINHAS = ['alinha-esq', 'alinha-centro', 'alinha-dir', 'alinha-just'];
     document.querySelectorAll('#barra [data-alinha]').forEach(b => b.onclick = () => {
