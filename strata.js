@@ -181,6 +181,7 @@
   <div class="ee-botoes"><button type="button" id="pm-apagar" title="Apagar marcação"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"></path></svg></button><button type="button" id="pm-cancelar">Cancelar</button><button type="button" id="pm-ok">Pronto</button></div>
 </div>
 <div id="retangulo" hidden=""></div>
+<div id="img-sel" hidden=""><span class="img-alca" data-canto="nw"></span><span class="img-alca" data-canto="ne"></span><span class="img-alca" data-canto="sw"></span><span class="img-alca" data-canto="se"></span><span id="img-tam"></span></div>
 <div id="passos"><button id="ant" title="Camada anterior (←)">◀</button><span id="contador"></span><button id="prox" title="Próxima camada (→)">▶</button></div>
 `;
   const IDS_UI = ['b-sumario', 'sumario', 'modos', 'barra', 'painel-link', 'painel-imagem', 'painel-busca', 'editor-eq', 'painel-marca', 'retangulo', 'passos'];
@@ -2204,7 +2205,8 @@
       const q = document.createRange(); q.setStartAfter(im); q.collapse(true);
       const sel = getSelection(); sel.removeAllRanges(); sel.addRange(q);
       lerCursor(); sujo(true); iconesCamada(); desenharMarcas();
-      const conf = () => desenharMarcas(); if (!im.complete) im.addEventListener('load', conf, { once: true });   // a altura muda quando carrega
+      const conf = () => { desenharMarcas(); posImagem(); }; if (!im.complete) im.addEventListener('load', conf, { once: true });
+      ISEL.img = im; posImagem();   // a altura muda quando carrega
       return im;
     }
     const arquivoDeImagem = dt => {
@@ -2266,6 +2268,57 @@
       if ((dt.getData('text/plain') || '').trim()) return;   // texto copiado (de um editor de texto, p. ex.) cola como texto
       e.preventDefault();
       const r = faixaAtual(); if (r) imagemDeArquivo(f, r.cloneRange());
+    });
+    // ---------- redimensionar imagem: clicar seleciona, alças nos cantos ----------
+    // a largura fica em % do bloco (style="width: 48%"), então acompanha a página ou a coluna
+    const ISEL = { img: null };
+    try { document.execCommand('enableObjectResizing', false, false); } catch (e) {}   // Firefox: sem as alças nativas
+    function larguraDoPai(img) {
+      const p = img.parentElement, cs = getComputedStyle(p);
+      return p.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    }
+    function posImagem() {
+      const P = $('img-sel'), im = ISEL.img;
+      if (!im || !im.isConnected || !document.body.classList.contains('editando')) { P.hidden = true; ISEL.img = null; return; }
+      const b = im.getBoundingClientRect();
+      P.hidden = false; Object.assign(P.style, { left: b.left + 'px', top: b.top + 'px', width: b.width + 'px', height: b.height + 'px' });
+    }
+    function selecionarImagem(im) { ISEL.img = im; posImagem(); }
+    document.addEventListener('mousedown', e => {
+      if (e.target.closest && e.target.closest('#img-sel')) return;
+      const im = document.body.classList.contains('editando') && e.target.closest && e.target.closest('section.pagina img');
+      if (im) {
+        e.preventDefault(); selecionarImagem(im);
+        const sec = im.closest('section.pagina'); sec.focus({ preventScroll: true });
+        const r = document.createRange(); r.setStartAfter(im); r.collapse(true); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); lerCursor();
+      } else if (ISEL.img) { ISEL.img = null; posImagem(); }
+    }, true);
+    addEventListener('scroll', posImagem, true); addEventListener('resize', posImagem);
+    document.addEventListener('input', () => { if (ISEL.img) posImagem(); });
+    // apagar a imagem selecionada; outra tecla tira a seleção
+    document.addEventListener('keydown', e => {
+      if (!ISEL.img) return;
+      if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); e.stopImmediatePropagation(); const im = ISEL.img; ISEL.img = null; posImagem(); im.remove(); sujo(true); iconesCamada(); desenharMarcas(); }
+      else if (!['Shift', 'Control', 'Alt', 'Meta'].includes(e.key)) { ISEL.img = null; posImagem(); }
+    }, true);
+    document.querySelectorAll('#img-sel .img-alca').forEach(a => {
+      a.addEventListener('mousedown', e => {
+        e.preventDefault(); e.stopPropagation();
+        const im = ISEL.img; if (!im) return;
+        const x0 = e.clientX, w0 = im.getBoundingClientRect().width, W = larguraDoPai(im), esq = /w/.test(a.dataset.canto);
+        const tam = $('img-tam');
+        const mover = ev => {
+          const w = Math.max(24, Math.min(W, w0 + (esq ? x0 - ev.clientX : ev.clientX - x0)));
+          let pc = Math.round(w / W * 1000) / 10;
+          for (const m of [25, 33.3, 50, 66.7, 75, 100]) if (Math.abs(pc - m) < 1.2) pc = m;   // encaixa nas frações comuns
+          im.style.width = pc + '%'; tam.textContent = (pc === 100 ? 100 : pc) + '%'; posImagem(); desenharMarcas();
+        };
+        const soltar = () => { removeEventListener('mousemove', mover); removeEventListener('mouseup', soltar); tam.textContent = ''; $('img-sel').classList.remove('mexendo'); sujo(true); desenharMarcas(); posImagem(); };
+        $('img-sel').classList.add('mexendo');
+        addEventListener('mousemove', mover); addEventListener('mouseup', soltar);
+      });
+      // dois cliques numa alça: volta ao tamanho natural (limitado à largura do bloco)
+      a.addEventListener('dblclick', e => { e.preventDefault(); const im = ISEL.img; if (!im) return; im.style.removeProperty('width'); if (!im.getAttribute('style')) im.removeAttribute('style'); sujo(true); desenharMarcas(); posImagem(); });
     });
     // arrastar um arquivo de imagem direto para o texto
     const temArquivo = dt => dt && [...(dt.types || [])].includes('Files');

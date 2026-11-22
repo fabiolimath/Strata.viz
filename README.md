@@ -100,7 +100,9 @@ salva como `novo_documento.html`.
   página). No editor: botão Imagem (colar, arrastar, escolher arquivo ou link),
   ou colar/arrastar direto no texto. Colada, arrastada ou de arquivo, a imagem vai
   dentro do HTML (`data:`), reduzida se passar de 1600 px e ficar menor assim;
-  por link, fica só o endereço.
+  por link, fica só o endereço. Tamanho: `style="width: 48%"` (% do bloco, ou da
+  coluna). No editor, clicar na imagem mostra alças nos cantos para arrastar;
+  dois cliques numa alça voltam ao tamanho natural; Delete apaga.
 - **Outros**: `class="caixa"` (caixa de destaque), `p.subtitulo`,
   `class="sem-recuo"`, `alinha-esq|centro|dir|just`, `recuo-1..4`,
   `<span class="fragment fim-exemplo">◼</span>` (Q.E.D.), `table.tabela`,

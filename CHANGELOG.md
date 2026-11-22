@@ -6,6 +6,9 @@
   escolher arquivo ou dar um link. Na edição, colar uma imagem (Ctrl+V) ou
   arrastar um arquivo direto no texto também insere no ponto do cursor. A imagem
   vai dentro do arquivo (`data:`); no tema escuro ganha fundo branco.
+- Redimensionar imagem: clicar nela mostra alças nos cantos; a largura fica em %
+  do bloco (numa coluna, % da coluna) e encaixa em 25, 33, 50, 67, 75 e 100%.
+  Dois cliques na alça voltam ao natural; Delete apaga a imagem selecionada.
 - Duas colunas (menu de alinhamento, abaixo de Justificado): `<div class="duas-colunas">`
   em volta dos blocos; clicar de novo dentro dele volta a uma coluna.
 - Site do Strata (pasta `site/`), publicado com o exemplo no GitHub Pages.

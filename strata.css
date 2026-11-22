@@ -404,6 +404,16 @@ body:has(#menu-strata:not([hidden])) #b-sumario { z-index: 59; }   /* o menu abe
   font: bold 11px/11px system-ui, sans-serif; text-align: center; }
 /* imagens no texto */
 .apostila img { max-width: 100%; height: auto; vertical-align: middle; }
+#img-sel { position: fixed; z-index: 55; outline: 2px solid #c05f00; outline-offset: 1px; pointer-events: none; }
+#img-sel[hidden] { display: none; }
+#img-sel .img-alca { position: absolute; width: 12px; height: 12px; background: #fff; border: 2px solid #c05f00; border-radius: 2px; pointer-events: auto; box-sizing: border-box; }
+#img-sel .img-alca[data-canto=nw] { left: -7px; top: -7px; cursor: nwse-resize; }
+#img-sel .img-alca[data-canto=ne] { right: -7px; top: -7px; cursor: nesw-resize; }
+#img-sel .img-alca[data-canto=sw] { left: -7px; bottom: -7px; cursor: nesw-resize; }
+#img-sel .img-alca[data-canto=se] { right: -7px; bottom: -7px; cursor: nwse-resize; }
+#img-tam { position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%); background: rgba(0,0,0,.7); color: #fff; font: 12px system-ui, sans-serif; padding: 1px 6px; border-radius: 4px; }
+#img-tam:empty { display: none; }
+body.editando section.pagina img { cursor: pointer; }
 #painel-imagem { width: min(440px, calc(100vw - 32px)); }
 #pi-zona { border: 2px dashed #bbb; border-radius: 8px; padding: 18px 12px; margin: 6px 0; text-align: center; color: #555; outline: none; display: grid; gap: 10px; justify-items: center; }
 #pi-zona:focus { border-color: #2a6; background: #f3fbf6; }
