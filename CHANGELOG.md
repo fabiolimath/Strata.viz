@@ -9,8 +9,11 @@
   marcações e interface se adaptam; a escolha fica no navegador (`localStorage`,
   `strata-tema`) e não vai para o arquivo salvo nem para a impressão.
 - Menu ☰ ao lado dos modos, com "Macros LaTeX…" e "Sobre o Strata.viz".
-- Diálogo Macros LaTeX (menu ☰): edita o `<script type="text/x-tex-macros">` do
-  documento (cria se não houver), confere os erros e redesenha as fórmulas.
+- Diálogo Adicionar macros LaTeX (menu ☰): começa vazio, com link para as macros
+  pré-carregadas; acrescenta ao `<script type="text/x-tex-macros">` do documento
+  (cria se não houver), confere os erros e redesenha as fórmulas.
+- Opção "Enter cria camada" (menu ☰, guardada em `localStorage`,
+  `strata-enter-camada`): na edição, cada Enter no texto começa uma camada nova.
 - Tema: o ícone mostra o tema atual (sol no claro, lua no escuro). Sem escolha
   guardada, segue o sistema. Corrigido: com o sistema em modo escuro, o tema
   claro deixava o papel e o texto escuros (regras `prefers-color-scheme` e

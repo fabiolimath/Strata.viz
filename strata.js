@@ -105,7 +105,7 @@
   <button type="button" id="m-edicao" data-modo="edicao" title="Modo edição. Clique de novo para voltar ao modo anterior (Ctrl+\)" aria-label="Modo edição"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9a2.1 2.1 0 0 0-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg></button>
   <button type="button" id="b-tema" title="Tema claro (clique para o escuro; só nesta tela, o arquivo não muda)" aria-label="Tema claro ou escuro"><svg class="lua" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg><svg class="sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"></path></svg></button>
   <span class="menu-strata"><button type="button" id="b-menu" title="Menu" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h16"></path></svg></button>
-    <span id="menu-strata" role="menu" hidden><button type="button" role="menuitem" id="mi-macros">Macros LaTeX…</button><a role="menuitem" href="https://fabiolimath.github.io/Strata.viz/" target="_blank" rel="noopener">Sobre o Strata.viz</a></span></span>
+    <span id="menu-strata" role="menu" hidden><button type="button" role="menuitem" id="mi-macros"><span class="mi-check" aria-hidden="true"></span>Adicionar macros LaTeX…</button><button type="button" role="menuitemcheckbox" id="mi-enter-camada" aria-checked="false" title="Na edição, cada Enter no texto começa uma camada nova (preferência desta tela; o arquivo não muda)"><span class="mi-check" aria-hidden="true"></span>Enter cria camada</button><a role="menuitem" href="https://fabiolimath.github.io/Strata.viz/" target="_blank" rel="noopener"><span class="mi-check" aria-hidden="true"></span>Sobre o Strata.viz</a></span></span>
 </div>
 <div id="barra">
   <span class="combo" id="c-estilo"><button type="button" id="b-estilo" class="b-icone" title="Estilo do parágrafo: Parágrafo" aria-label="Estilo do parágrafo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4v16M17 4v16M19.5 4H10.5a4.5 4.5 0 0 0 0 9H13"/></svg></button><button type="button" class="combo-seta" title="Estilo do parágrafo: escolher" aria-label="Estilo do parágrafo: escolher">▾</button>
@@ -139,9 +139,9 @@
   <div class="linha" style="justify-content:flex-end"><button type="button" id="pl-remover">Remover link</button><button type="button" id="pl-cancelar">Cancelar</button><button type="button" id="pl-ok" style="background:#2a6;color:#fff;border-color:#2a6">OK</button></div>
 </div>
 <div id="painel-macros" class="painel-mini" hidden="" role="dialog" aria-label="Macros LaTeX do documento">
-  <div class="linha"><b>Macros LaTeX do documento</b></div>
-  <div class="pmc-dica">Uma por linha, com <code>\newcommand</code>. Valem para todas as fórmulas e são gravadas no arquivo.<br>Já prontas: <code>\red</code> <code>\blue</code> <code>\Imp</code> <code>\ee</code> <code>\sen</code> <code>\tg</code> <code>\mt</code> <code>\mk</code>.</div>
-  <textarea id="pmc-tex" rows="7" spellcheck="false" placeholder="\newcommand{\R}{\mathbb{R}}&#10;\newcommand{\dd}[1]{\frac{d}{d#1}}"></textarea>
+  <div class="linha"><b>Adicionar macros LaTeX</b></div>
+  <div class="pmc-dica">Acrescente macros a este documento, um <code>\newcommand</code> por linha. Elas são gravadas no arquivo. <a href="https://fabiolimath.github.io/Strata.viz/#macros" target="_blank" rel="noopener">Macros pré-carregadas</a></div>
+  <textarea id="pmc-tex" rows="6" spellcheck="false"></textarea>
   <div id="pmc-erro"></div>
   <div class="linha" style="justify-content:flex-end"><button type="button" id="pmc-cancelar">Cancelar</button><button type="button" id="pmc-ok" style="background:#2a6;color:#fff;border-color:#2a6">Aplicar</button></div>
 </div>
@@ -788,7 +788,7 @@
     // linhas novas: clicar abaixo do último bloco da página cria um parágrafo;
     // Enter no fim de uma equação ou título cria um parágrafo comum (não uma cópia da equação)
     function cursorEm(el) { const r = document.createRange(); r.selectNodeContents(el); r.collapse(true); getSelection().removeAllRanges(); getSelection().addRange(r); }
-    function novoParagrafo(depois) { const p = document.createElement('p'); p.innerHTML = '<br>'; depois.after(p); cursorEm(p); sujo(true); return p; }
+    function novoParagrafo(depois, enter) { const p = document.createElement('p'); p.innerHTML = '<br>'; if (enter && ED.enterCamada) p.className = 'fragment'; depois.after(p); cursorEm(p); sujo(true); if (enter && ED.enterCamada) iconesCamada(); return p; }
     document.addEventListener('mousedown', ev => {
       if (!document.body.classList.contains('editando') || document.body.classList.contains('escolhendo')) return;
       const sec = ev.target;
@@ -816,9 +816,9 @@
       if (b.matches('div.eq.passo')) {
         const vazia = !b.textContent.replace(/[\s\u200B]/g, '') && !b.querySelector('mjx-container, .marca');
         if (vazia) { const p = trocarTag(b, 'p'); p.classList.remove('eq', 'passo'); if (!p.classList.length) p.removeAttribute('class'); p.innerHTML = '<br>'; cursorEm(p); sujo(true); iconesCamada(); return; }
-        const d = document.createElement('div'); d.className = 'eq passo'; d.innerHTML = '<br>'; b.after(d); cursorEm(d); sujo(true); return;
+        const d = document.createElement('div'); d.className = 'eq passo' + (ED.enterCamada ? ' fragment' : ''); d.innerHTML = '<br>'; b.after(d); cursorEm(d); sujo(true); if (ED.enterCamada) iconesCamada(); return;
       }
-      novoParagrafo(b);
+      novoParagrafo(b, true);
     });
     // nova página, logo depois da página atual
     $('b-pagina').onclick = () => {
@@ -1746,6 +1746,11 @@
       const sel = getSelection(); if (!sel.rangeCount) return;
       const n = sel.getRangeAt(0).startContainer, B = (n.nodeType === 1 ? n : n.parentElement).closest('section.pagina > *, li');
       const A = B && B.previousElementSibling; if (!A) return;
+      if (ED.enterCamada && !B.matches('.rodape')) {   // opção "Enter cria camada": a linha de baixo é uma camada nova
+        B.classList.add('fragment'); B.removeAttribute('data-junto');
+        B.querySelectorAll('span.fragment:not(.marca)').forEach(x => { if (!x.querySelector('.ancora-camada')) { x.classList.remove('fragment'); x.removeAttribute('data-junto'); if (!x.classList.length) x.removeAttribute('class'); } });
+        iconesCamada(); return;
+      }
       const par = (a, b) => { if (!a || !b || !b.classList.contains('fragment')) return; const j = a.dataset.junto || b.dataset.junto || novoJunto(); a.dataset.junto = j; b.dataset.junto = j; };
       const semAncora = e => !e.querySelector(':scope > .ancora-camada');
       if (B.classList.contains('fragment') && A.classList.contains('fragment')) {
@@ -2390,8 +2395,7 @@
     // ficam num <script type="text/x-tex-macros"> do <head>, que vai para o arquivo salvo
     const blocoMacros = () => document.querySelector('script[type="text/x-tex-macros"]');
     function abrirMacros() {
-      const b = blocoMacros();
-      $('pmc-tex').value = b ? b.textContent.replace(/^\n+|\s+$/g, '') : '';
+      $('pmc-tex').value = '';
       $('pmc-erro').textContent = '';
       $('painel-macros').hidden = false; $('pmc-tex').focus();
     }
@@ -2403,16 +2407,17 @@
         const er = n && n.querySelector('[data-mjx-error]');
         if (er) { $('pmc-erro').textContent = 'Erro: ' + er.getAttribute('data-mjx-error'); return; }
       }
+      if (!t) { fecharMacros(); return; }
       let b = blocoMacros();
-      if (!t) { if (b) b.remove(); }
-      else {
+      {
         if (!b) {
           b = document.createElement('script'); b.type = 'text/x-tex-macros';
           const s = document.querySelector('head script[src*="strata.js"]');
           if (s) s.after(b); else document.head.append(b);
           b.before(document.createTextNode('\n'));
         }
-        b.textContent = '\n' + t + '\n';
+        const ant = b.textContent.replace(/^\n+|\s+$/g, '');   // só acrescenta: as macros que já estavam continuam
+        b.textContent = '\n' + (ant ? ant + '\n' : '') + t + '\n';
       }
       fecharMacros();
       // fórmulas desenhadas de novo com as macros novas
@@ -2427,6 +2432,15 @@
       avisar('Macros aplicadas');
     }
     $('mi-macros').onclick = abrirMacros;
+    // preferência de quem edita: cada Enter no texto começa uma camada nova
+    const marcarEnterCamada = () => $('mi-enter-camada').setAttribute('aria-checked', String(ED.enterCamada));
+    try { ED.enterCamada = localStorage.getItem('strata-enter-camada') === '1'; } catch (e) { ED.enterCamada = false; }
+    marcarEnterCamada();
+    $('mi-enter-camada').onclick = () => {
+      ED.enterCamada = !ED.enterCamada; marcarEnterCamada();
+      try { localStorage.setItem('strata-enter-camada', ED.enterCamada ? '1' : '0'); } catch (e) {}
+      avisar(ED.enterCamada ? 'Enter cria camada: ligado' : 'Enter cria camada: desligado');
+    };
     $('pmc-cancelar').onclick = fecharMacros;
     $('pmc-ok').onclick = aplicarMacros;
     $('pmc-tex').addEventListener('keydown', e => {
