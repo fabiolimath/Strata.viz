@@ -124,6 +124,11 @@ body.aula #passos { display: flex; }
 body.sujo #modos #b-salvar { display: inline-flex; }
 #modos .sep { width: 1px; height: 24px; background: #ccc; margin: 0 2px; display: none; }
 body.sujo #modos .sep { display: block; }
+/* modos: coluna flutuante à direita, sempre no mesmo lugar (leitura, apresentação, edição) */
+#modos-v { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 6px; }
+#modos-v button { box-shadow: 0 1px 6px rgba(0,0,0,.12); }
+/* Novo documento só na edição, mas o lugar fica reservado: o ☰ não se move */
+body:not(.editando) #modos #b-novo { visibility: hidden; }
 #aviso { color: #2a6; background: #fff; border-radius: 4px; padding: 0 4px; }
 #aviso:empty { display: none; }
 @media print { #modos { display: none !important; } }
@@ -155,7 +160,7 @@ body.editando #b-sumario { top: calc(var(--barra, 47px) + 7px); }
 #barra { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 60;
   background: #fafafa; border-bottom: 1px solid #ccc; padding: 6px 10px; gap: 6px; flex-wrap: wrap;
   justify-content: center; align-items: center; font: 14px system-ui, sans-serif; color: #333; }
-body.editando #barra { display: flex; padding-left: 90px; padding-right: 160px; gap: 4px; }
+body.editando #barra { display: flex; padding-left: 10px; padding-right: 200px; gap: 4px; }
 body.editando .apostila { padding-top: calc(var(--barra, 48px) + 16px); }
 #barra .b-txt { min-width: 32px; height: 32px; padding: 0 6px; font: 17px "Times New Roman", serif; }
 #barra .ativo-fmt { background: #ffe2c4; border-color: #ff8000; }
@@ -374,7 +379,6 @@ body.editando .apostila .marca.pairada { outline: 2px solid #ff8000; outline-off
 #painel-marca [data-tipo="texto"], #barra [data-tipo="texto"] .ci, #barra #b-marcar[data-tipo="texto"], body.editando .apostila .marca[data-tipo="texto"] { color: #e01010; }
 
 /* ---------- menu (☰) ---------- */
-#barra .barra-esq { position: absolute; left: 10px; top: 6px; display: inline-flex; gap: 4px; }
 .menu-strata { position: relative; display: inline-flex; }
 #modos #menu-strata { left: auto; right: 0; }
 body:not(.editando) #menu-strata .so-edicao { display: none; }

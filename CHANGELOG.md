@@ -16,7 +16,9 @@
 - Novo documento: o arquivo salvo aponta para o `strata.js` e o `strata.css` por
   endereço absoluto (antes, partindo do exemplo, ficava `../strata.js` e o
   arquivo salvo em outra pasta abria sem o editor).
-- Novo documento só no modo edição; o menu ☰ fica no canto esquerdo da barra de texto na edição.
+- Modos numa coluna flutuante à direita (leitura, apresentação, edição); tema e
+  menu ☰ fixos no canto superior direito, em todos os modos; Novo documento à
+  direita do ☰, só na edição (o lugar fica reservado, nada se move).
   A opção "Enter cria camada" tem caixa de marcar.
 - Diálogo Adicionar macros LaTeX (menu ☰): começa vazio, com link para o
   `fol-MathJax.sty` do Preambulo (arquivo com todas as macros); acrescenta ao `<script type="text/x-tex-macros">` do documento

@@ -11,7 +11,8 @@ apresenta o revela em camadas.
 
 O motor é um `strata.js` e um `strata.css`. O documento é um HTML só com
 conteúdo (texto, fórmulas LaTeX e camadas). O mesmo arquivo tem três modos,
-trocados pelos ícones do canto superior direito, sem recarregar:
+trocados pela coluna de ícones à direita da tela (de cima para baixo: leitura,
+apresentação, edição), sem recarregar:
 
 - **Leitura** (padrão): páginas A4 em rolagem, tudo visível. O zoom do
   navegador funciona normalmente.
@@ -21,12 +22,13 @@ trocados pelos ícones do canto superior direito, sem recarregar:
 - **Edição** (`?editar`, ou Ctrl+\\): edita o texto no próprio navegador. O
   disquete (ou Ctrl+S) grava o arquivo.
 
-Ao lado dos modos ficam o botão de **tema** (o ícone mostra o tema atual, sol
-no claro e lua no escuro; na 1ª vez segue o sistema; vale só na tela de quem lê,
-o arquivo não muda). No modo edição, o canto esquerdo da barra tem o **menu** ☰,
-com **Adicionar macros LaTeX**, a opção **Enter cria camada** (cada Enter no
-texto começa uma camada nova; preferência de quem edita, guardada no navegador)
-e o link para o site, e o botão **Novo documento**.
+No canto superior direito ficam o botão de **tema** (o ícone mostra o tema
+atual, sol no claro e lua no escuro; na 1ª vez segue o sistema; vale só na tela
+de quem lê, o arquivo não muda), o **menu** ☰ e, no modo edição, o botão
+**Novo documento**. O menu tem, em todos os modos, **Salvar para usar offline**
+e o link para o site; na edição, também **Adicionar macros LaTeX** e a opção
+**Enter cria camada** (cada Enter no texto começa uma camada nova; preferência
+de quem edita, guardada no navegador).
 
 Exemplo: [`exemplos/exemplo3.html`](exemplos/exemplo3.html) (um exemplo
 resolvido de EDOs de 2ª ordem: camadas, marcações sobre termos já escritos,
@@ -62,7 +64,7 @@ salvar, sai de novo só o conteúdo: a interface não fica gravada no arquivo, e
 uma versão nova do Strata vale para todos os documentos que o carregam.
 
 O jeito mais simples de começar um documento é o botão **Novo documento** (modo
-edição, canto esquerdo da barra): abre uma página em branco com o mesmo editor e
+edição, à direita do menu ☰): abre uma página em branco com o mesmo editor e
 o mesmo `<head>` do documento de onde saiu (inclusive o bloco de macros), que se
 salva como `novo_documento.html`.
 
