@@ -136,7 +136,7 @@
   <div class="duas" style="margin-top:28px">
     <div>
       <h3>Tema escuro e menu</h3>
-      <p class="lead" style="margin:0">Ao lado dos modos, o botão do tema mostra o tema atual (sol no claro, lua no escuro) e, clicado, troca para o outro: o papel, o texto, as fórmulas e as cores das marcações se adaptam. Na primeira vez, o Strata segue o tema do sistema; depois, a escolha fica lembrada no navegador, só na sua tela, e o arquivo não muda. O menu <b>☰</b> tem as macros LaTeX do documento e o link para esta página.</p>
+      <p class="lead" style="margin:0">Ao lado dos modos, o botão do tema mostra o tema atual (sol no claro, lua no escuro) e, clicado, troca para o outro: o papel, o texto, as fórmulas e as cores das marcações se adaptam. Na primeira vez, o Strata segue o tema do sistema; depois, a escolha fica lembrada no navegador, só na sua tela, e o arquivo não muda. O menu <b>☰</b> tem o diálogo para adicionar macros LaTeX, a opção <b>Enter cria camada</b> (ligada, cada Enter no texto começa uma camada nova; vale só para quem edita, no navegador) e o link para esta página.</p>
     </div>
     <figure><a href="img/escuro.webp"><img src="img/escuro.webp" alt="O exemplo no modo apresentação com o tema escuro: papel cinza-escuro, texto claro e destaques coloridos" loading="lazy"></a></figure>
   </div>
@@ -225,8 +225,8 @@
     <tr><td><code>\mk{nome}{...}</code></td><td>\(\mk{m1}{y'} = ay\)</td><td>Rótulo de um termo para as marcações. Não muda a aparência, e o editor o escreve sozinho quando você marca um termo.</td></tr>
   </table>
   <h3 style="margin-top:28px">Suas próprias macros</h3>
-  <p class="lead">O jeito mais simples é pelo próprio Strata: no menu <b>☰</b>, escolha <b>Macros LaTeX…</b>, escreva um <code>\newcommand</code> por linha e clique em Aplicar. As fórmulas são redesenhadas na hora e as macros vão junto quando você salva o arquivo.</p>
-  <figure class="cap" style="margin:18px 0"><img src="img/macros.webp" alt="Diálogo Macros LaTeX, aberto pelo menu do Strata, com dois \newcommand" loading="lazy" width="550" height="330" style="max-width:550px"></figure>
+  <p class="lead">O jeito mais simples é pelo próprio Strata: no menu <b>☰</b>, escolha <b>Adicionar macros LaTeX…</b>, escreva um <code>\newcommand</code> por linha e clique em Aplicar. Elas se somam às que o documento já tem, as fórmulas são redesenhadas na hora e as macros vão junto quando você salva o arquivo.</p>
+  <figure class="cap" style="margin:18px 0"><img src="img/macros.webp" alt="Diálogo Adicionar macros LaTeX, aberto pelo menu do Strata, com dois \newcommand" loading="lazy" width="550" height="300" style="max-width:550px"></figure>
   <p class="lead">Por baixo, elas ficam num bloco no <code>&lt;head&gt;</code> do documento, que também pode ser escrito à mão. Ele vale antes da primeira fórmula, nos três modos e no editor de fórmulas:</p>
 <pre class="codigo">&lt;script type="text/x-tex-macros"&gt;
 \newcommand{\dd}[1]{\frac{d}{d#1}}

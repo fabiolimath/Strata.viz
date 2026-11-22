@@ -23,8 +23,9 @@ trocados pelos ícones do canto superior direito, sem recarregar:
 
 Ao lado dos modos ficam o botão de **tema** (o ícone mostra o tema atual, sol
 no claro e lua no escuro; na 1ª vez segue o sistema; vale só na tela de quem lê,
-o arquivo não muda) e o **menu** ☰, com as **Macros LaTeX** do documento e o
-link para o site.
+o arquivo não muda) e o **menu** ☰, com **Adicionar macros LaTeX**, a opção
+**Enter cria camada** (cada Enter no texto começa uma camada nova; preferência
+de quem edita, guardada no navegador) e o link para o site.
 
 Exemplo: [`exemplos/exemplo3.html`](exemplos/exemplo3.html) (um exemplo
 resolvido de EDOs de 2ª ordem: camadas, marcações sobre termos já escritos,
@@ -98,8 +99,8 @@ como `novo_documento.html`.
 ### Macros LaTeX
 
 Já definidas: `\red`, `\blue`, `\Imp`, `\ee`, `\mt`, `\sen`, `\tg` e `\mk`.
-Para outras, use o menu ☰ → **Macros LaTeX…** (um `\newcommand` por linha;
-as fórmulas são redesenhadas na hora), ou ponha no `<head>` do documento um
+Para outras, use o menu ☰ → **Adicionar macros LaTeX…** (um `\newcommand` por
+linha, somados aos do documento; as fórmulas são redesenhadas na hora), ou ponha no `<head>` do documento um
 bloco com `\newcommand`, que vale antes da primeira fórmula:
 
 ```html
