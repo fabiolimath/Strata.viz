@@ -93,6 +93,9 @@ salva como `novo_documento.html`.
   `<span class="eq-cor cor-verde">\(...\)</span>`.
 - **Notas laterais** (vermelhas, como as "*:" do Xournal++):
   `<aside class="nota">*: texto</aside>`, logo antes do parágrafo a que se referem.
+- **Duas colunas**: `<div class="duas-colunas">` em volta dos blocos (no editor,
+  Alinhamento → Duas colunas). O texto passa da 1ª para a 2ª coluna onde o
+  navegador equilibrar; as camadas seguem a ordem do texto.
 - **Outros**: `class="caixa"` (caixa de destaque), `p.subtitulo`,
   `class="sem-recuo"`, `alinha-esq|centro|dir|just`, `recuo-1..4`,
   `<span class="fragment fim-exemplo">◼</span>` (Q.E.D.), `table.tabela`,

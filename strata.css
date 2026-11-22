@@ -111,6 +111,13 @@ body.aula #passos { display: flex; }
   #passos { display: none !important; }
 }
 
+/* ---------- duas colunas (div.duas-colunas em volta dos blocos) ---------- */
+.apostila .duas-colunas { columns: 2; column-gap: 2.4em; margin: .6em 0; }
+.apostila .duas-colunas > :first-child { margin-top: 0; }
+.apostila .duas-colunas > div.eq, .apostila .duas-colunas > .caixa, .apostila .duas-colunas > table, .apostila .duas-colunas > svg { break-inside: avoid; }
+.apostila .duas-colunas mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+body.editando .apostila .duas-colunas { outline: 1px dashed #ffb366; outline-offset: 6px; column-rule: 1px dashed #ffd2a6; }
+
 /* ---------- ícones dos modos e salvar (canto superior direito) ---------- */
 #modos { position: fixed; top: 8px; right: 12px; z-index: 65; display: flex; gap: 6px; align-items: center;
   font: 14px system-ui, sans-serif; }

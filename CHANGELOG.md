@@ -2,6 +2,8 @@
 
 ## Próxima versão
 
+- Duas colunas (menu de alinhamento, abaixo de Justificado): `<div class="duas-colunas">`
+  em volta dos blocos; clicar de novo dentro dele volta a uma coluna.
 - Site do Strata (pasta `site/`), publicado com o exemplo no GitHub Pages.
 - Painel de marcação: a dica fala em arrastar de termo a termo (o retângulo
   já não existia).
