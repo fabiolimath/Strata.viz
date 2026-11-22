@@ -37,6 +37,10 @@
   Strata.base = (script && script.src || '').replace(/[^\/?#]*([?#].*)?$/, '');
   Strata.mathjax = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js';
 
+  // ---------- tema (claro/escuro): preferência de quem lê, guardada no navegador ----------
+  Strata.temaEscuro = () => document.documentElement.classList.contains('strata-escuro');
+  try { if (localStorage.getItem('strata-tema') === 'escuro') document.documentElement.classList.add('strata-escuro'); } catch (e) {}
+
   // ---------- folha de estilos (se a página não a pôs) ----------
   if (Strata.base && !document.querySelector('link[rel="stylesheet"][href*="strata.css"]')) {
     const l = document.createElement('link');
@@ -93,6 +97,9 @@
   <button type="button" id="m-leitura" data-modo="leitura" title="Modo leitura" aria-label="Modo leitura"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5C5.5 4.3 8.5 4.3 12 6c3.5-1.7 6.5-1.7 9-.5V19c-2.5-1.2-5.5-1.2-9 .5-3.5-1.7-6.5-1.7-9-.5z"></path><path d="M12 6v13.5"></path></svg></button>
   <button type="button" id="m-aula" data-modo="aula" title="Modo apresentação (camadas). Clique de novo para voltar ao modo anterior" aria-label="Modo apresentação"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"></rect><path d="M12 16v3M8 21l4-2 4 2"></path><path d="M10 7.8v4.4l3.8-2.2z"></path></svg></button>
   <button type="button" id="m-edicao" data-modo="edicao" title="Modo edição. Clique de novo para voltar ao modo anterior (Ctrl+\)" aria-label="Modo edição"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9a2.1 2.1 0 0 0-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg></button>
+  <button type="button" id="b-tema" title="Modo escuro / modo claro (só nesta tela; o arquivo não muda)" aria-label="Modo escuro ou claro"><svg class="lua" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg><svg class="sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"></path></svg></button>
+  <span class="menu-strata"><button type="button" id="b-menu" title="Menu" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h16"></path></svg></button>
+    <span id="menu-strata" role="menu" hidden><a role="menuitem" href="https://fabiolimath.github.io/Strata.viz/" target="_blank" rel="noopener">Sobre o Strata.viz</a></span></span>
 </div>
 <div id="barra">
   <span class="combo" id="c-estilo"><button type="button" id="b-estilo" class="b-icone" title="Estilo do parágrafo: Parágrafo" aria-label="Estilo do parágrafo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4v16M17 4v16M19.5 4H10.5a4.5 4.5 0 0 0 0 9H13"/></svg></button><button type="button" class="combo-seta" title="Estilo do parágrafo: escolher" aria-label="Estilo do parágrafo: escolher">▾</button>
@@ -847,6 +854,7 @@
       doc.querySelectorAll('.apostila span.' + CORES.join(', .apostila span.')).forEach(e => { if (!e.textContent.replace(/[\u200B]/g, '') && !e.children.length) e.remove(); });
       doc.querySelectorAll('[class=""]').forEach(e => e.removeAttribute('class'));
       doc.querySelector('body').removeAttribute('class');
+      doc.classList.remove('strata-escuro'); if (!doc.getAttribute('class')) doc.removeAttribute('class');
       doc.querySelector('#editor-eq').hidden = true;
       doc.querySelector('#ee-previa').innerHTML = '';
       doc.querySelector('#ee-remover').removeAttribute('style');
@@ -944,6 +952,7 @@
     // data-tipo="destaque" data-cor="amarelo"></span>, no ponto do texto em que ela aparece.
     const MK_CORES = { amarelo: '#ffe600', verde: '#2ee82e', laranja: '#ff9a2e', azul: '#22c3ff', rosa: '#ff3fd5', vermelho: '#e01010' };
     const MK_TRACOS = { amarelo: '#e0b800', verde: '#16a32e', laranja: '#ff7a00', azul: '#0a9bd8', rosa: '#e020b0', vermelho: '#e01010' };   // traços: tons mais escuros
+    const MK_CORES_TEXTO_ESCURO = { preto: '#e8e8ea', azul: '#9aa6ff', laranja: '#ff9a3c', vermelho: '#ff6b6b', verde: '#5fd17f', roxo: '#d58cf0' };
     const MK_CORES_TEXTO = { preto: '#111111', azul: '#3333cc', laranja: '#ff8000', vermelho: '#d01c1c', verde: '#1b8a3a', roxo: '#8e24aa' };   // marcador de texto: cores do texto
     const MK_PADRAO = { destaque: 'amarelo', risca: 'vermelho', circula: 'azul', caixa: 'laranja', seta: 'vermelho', liga: 'rosa', check: 'verde', texto: 'vermelho' };
     // ícones dos tipos (botões do painel e âncoras das marcações no modo edição)
@@ -1079,7 +1088,7 @@
     }
     function desenharUma(m, anima, estado) {
       const tipo = m.dataset.tipo || 'destaque';
-      const paleta = tipo === 'destaque' ? MK_CORES : tipo === 'texto' ? MK_CORES_TEXTO : MK_TRACOS;
+      const paleta = tipo === 'destaque' ? MK_CORES : tipo === 'texto' ? (Strata.temaEscuro() ? MK_CORES_TEXTO_ESCURO : MK_CORES_TEXTO) : MK_TRACOS;
       const cor = paleta[m.dataset.cor] || paleta[MK_PADRAO[tipo]] || '#e01010';
       const nomes = (m.dataset.marca || '').split(/\s+/).filter(Boolean);
       const a = (anima ? ' anima' : '') + (estado ? ' ' + estado : '');
@@ -2352,6 +2361,19 @@
       if (document.body.classList.contains('escolhendo') && f !== null && !mod) return;
       lerCursor(); f();
     });
+
+    // ---------- tema e menu ----------
+    $('b-tema').onclick = () => {
+      const escuro = document.documentElement.classList.toggle('strata-escuro');
+      try { localStorage.setItem('strata-tema', escuro ? 'escuro' : 'claro'); } catch (e) {}
+      desenharMarcas();
+    };
+    const fecharMenu = () => { $('menu-strata').hidden = true; $('b-menu').setAttribute('aria-expanded', 'false'); };
+    $('b-menu').onclick = e => { e.stopPropagation(); const abrir = $('menu-strata').hidden; $('menu-strata').hidden = !abrir; $('b-menu').setAttribute('aria-expanded', String(abrir)); };
+    document.addEventListener('click', e => { if (!e.target.closest('.menu-strata')) fecharMenu(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharMenu(); });
+    $('menu-strata').addEventListener('click', fecharMenu);
+    ['b-tema', 'b-menu'].forEach(id => $(id).addEventListener('mousedown', e => e.preventDefault()));
 
     if (MODO_AULA) mudarModo('aula', true);
     else if (new URLSearchParams(location.search).has('editar') || new URLSearchParams(location.search).has('novo')) mudarModo('edicao', true);

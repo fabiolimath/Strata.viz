@@ -3,23 +3,32 @@ Strata: a visual HTML text editor for documents intended to be presented. Build 
 
 Site: https://fabiolimath.github.io/Strata.viz/
 
-O Strata é o motor das aulas: um `strata.js` e um `strata.css`. A aula é um
-HTML só com conteúdo (texto, fórmulas LaTeX e camadas). O mesmo arquivo tem
-três modos, trocados pelos ícones do canto superior direito, sem recarregar:
+O Strata é um editor visual de HTML para textos técnicos que também serão
+apresentados: notas, demonstrações, exemplos resolvidos. A ideia vem da sala de
+aula, onde uma conta é escrita no quadro linha por linha e, depois, fica inteira
+no caderno. Aqui é o mesmo documento: quem lê vê o texto corrido, e quem
+apresenta o revela em camadas.
 
-- **Leitura** (padrão): páginas A4 em rolagem, tudo visível. É o que os alunos
-  veem. O zoom do navegador funciona normalmente.
+O motor é um `strata.js` e um `strata.css`. O documento é um HTML só com
+conteúdo (texto, fórmulas LaTeX e camadas). O mesmo arquivo tem três modos,
+trocados pelos ícones do canto superior direito, sem recarregar:
+
+- **Leitura** (padrão): páginas A4 em rolagem, tudo visível. O zoom do
+  navegador funciona normalmente.
 - **Apresentação** (`?aula` no endereço): as camadas aparecem uma a uma, como
-  no quadro. `→`, Espaço, PageDown avançam; `←`, PageUp voltam (funciona com
-  passador de slides).
+  uma explicação no quadro. `→`, Espaço, PageDown avançam; `←`, PageUp voltam
+  (funciona com passador de slides).
 - **Edição** (`?editar`, ou Ctrl+\\): edita o texto no próprio navegador. O
   disquete (ou Ctrl+S) grava o arquivo.
 
-Exemplo: [`exemplos/exemplo3.html`](exemplos/exemplo3.html) (Exemplo 3 da aula
-3.1, EDOs de 2ª ordem: camadas, marcações sobre termos já escritos, linhas de
-igualdades e Q.E.D.).
+Ao lado dos modos ficam o botão de **tema** (sol e lua: claro ou escuro, só na
+tela de quem lê; o arquivo não muda) e o **menu** ☰, com o link para o site.
 
-## Uma aula
+Exemplo: [`exemplos/exemplo3.html`](exemplos/exemplo3.html) (um exemplo
+resolvido de EDOs de 2ª ordem: camadas, marcações sobre termos já escritos,
+linhas de igualdades e Q.E.D.).
+
+## Um documento
 
 ```html
 <!doctype html>
@@ -27,7 +36,7 @@ igualdades e Q.E.D.).
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Título da aula</title>
+<title>Título</title>
 <link rel="stylesheet" href="https://SITE/strata/strata.css">
 <script src="https://SITE/strata/strata.js"></script>
 </head>
@@ -46,9 +55,9 @@ igualdades e Q.E.D.).
 
 O `strata.js` põe a interface, carrega o MathJax 3.2.2 e liga o editor. Ao
 salvar, sai de novo só o conteúdo: a interface não fica gravada no arquivo, então
-uma versão nova do Strata vale para todas as aulas que o carregam.
+uma versão nova do Strata vale para todos os documentos que o carregam.
 
-O jeito mais simples de começar uma aula é o botão **Novo documento** (canto
+O jeito mais simples de começar um documento é o botão **Novo documento** (canto
 superior direito): abre uma página em branco com o mesmo editor, que se salva
 como `novo_documento.html`.
 
@@ -87,7 +96,7 @@ como `novo_documento.html`.
 ### Macros LaTeX
 
 Já definidas: `\red`, `\blue`, `\Imp`, `\ee`, `\mt`, `\sen`, `\tg` e `\mk`.
-Para outras, ponha no `<head>` da aula um bloco com `\newcommand`, que vale
+Para outras, ponha no `<head>` do documento um bloco com `\newcommand`, que vale
 antes da primeira fórmula:
 
 ```html
@@ -108,9 +117,9 @@ MathJax (como o `fol.js` do site, que traz as macros do
 - Elemento com `data-strata-temp` não é gravado (a interface, o MathJax,
   figuras geradas).
 - Elemento com `data-strata-limpar` é gravado vazio (um gráfico desenhado por
-  um script da própria aula). Os antigos `svg[data-fourier-quadrada]` e
+  um script do próprio documento). Os antigos `svg[data-fourier-quadrada]` e
   `svg[data-tipo]` também.
-- Um `<script>` da aula, no `<body>` depois do `<main>`, roda antes do
+- Um `<script>` do documento, no `<body>` depois do `<main>`, roda antes do
   editor e é gravado como está.
 
 ## Edição visual (resumo)
@@ -127,12 +136,13 @@ MathJax (como o `fol.js` do site, que traz as macros do
   alinhamento, Q.E.D., listas, recuo, localizar e substituir (Ctrl+H).
 - Salvar: no Chrome/Edge, na 1ª vez pergunta onde salvar (escolha o próprio
   arquivo para sobrescrever); em outros navegadores, ou dentro de um iframe
-  (Moodle), baixa uma cópia.
+  (como num ambiente virtual de aprendizagem), baixa uma cópia.
 
 ## Versões
 
-Cada aula carrega o Strata de um endereço fixo. No site das aulas, ele entra
-como submodule fixado num commit e só muda quando um PR atualiza o submodule.
+Cada documento carrega o Strata de um endereço fixo. Num site que use o Strata
+(como fabiolimath.github.io), ele pode entrar como submodule fixado num commit
+e só muda quando um PR atualiza o submodule.
 Funções novas mantêm funcionando os arquivos já salvos; mudanças no HTML
 salvo ficam no [CHANGELOG](CHANGELOG.md).
 

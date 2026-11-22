@@ -5,6 +5,12 @@
 - Site do Strata (pasta `site/`), publicado com o exemplo no GitHub Pages.
 - Painel de marcação: a dica fala em arrastar de termo a termo (o retângulo
   já não existia).
+- Tema escuro: botão de sol e lua ao lado dos modos. Papel, texto, fórmulas,
+  marcações e interface se adaptam; a escolha fica no navegador (`localStorage`,
+  `strata-tema`) e não vai para o arquivo salvo nem para a impressão.
+- Menu ☰ ao lado dos modos, por enquanto com "Sobre o Strata.viz".
+- Site e README: o Strata como editor de textos técnicos apresentáveis (a sala
+  de aula fica como analogia); animação das camadas e seção das macros LaTeX.
 
 ## 0.1.0 (2026-11-22)
 
