@@ -1,6 +1,8 @@
 # Strata.viz
 Strata: a visual HTML text editor for documents intended to be presented. Build a single self-contained HTML document, which can be read as regular text, but in show mode it reveals itself step by step like a presentation.
 
+Site: https://fabiolimath.github.io/Strata.viz/
+
 O Strata é o motor das aulas: um `strata.js` e um `strata.css`. A aula é um
 HTML só com conteúdo (texto, fórmulas LaTeX e camadas). O mesmo arquivo tem
 três modos, trocados pelos ícones do canto superior direito, sem recarregar:
@@ -136,5 +138,7 @@ salvo ficam no [CHANGELOG](CHANGELOG.md).
 
 ## Publicação deste repositório
 
-`.github/workflows/pages.yml` publica `strata.js`, `strata.css` e os exemplos
-no GitHub Pages a cada push na `main` (Settings → Pages → Source: GitHub Actions).
+`.github/workflows/pages.yml` publica no GitHub Pages, a cada push na `main`, o
+site do Strata (pasta `site/`: apresentação para quem usa), `strata.js`,
+`strata.css` e os exemplos, em https://fabiolimath.github.io/Strata.viz/
+(Settings → Pages → Source: GitHub Actions).
