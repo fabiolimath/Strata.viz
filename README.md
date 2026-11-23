@@ -131,9 +131,10 @@ salva como `novo_documento.html`.
   dois cliques numa alça voltam ao tamanho natural; Delete apaga.
 - **Tabelas**: `<table class="tabela">` com `<th>` no cabeçalho e `<td>`; mescladas
   com `rowspan`/`colspan`; alinhamento da célula com `alinha-esq|centro|dir`
-  (padrão: centro). No editor: botão Tabela (pergunta linhas e colunas) e o menu ▾
-  ao lado (inserir/excluir linha e coluna, mesclar, separar, cabeçalho, excluir
-  tabela). Na célula, Enter quebra a linha e Tab/Shift+Tab andam entre as células
+  (padrão: centro). A tabela inteira fica no centro da página (ou da coluna);
+  `tab-esq`/`tab-dir` a encostam à esquerda/direita. No editor: botão Tabela (pergunta linhas e colunas) e o menu ▾
+  ao lado (inserir/excluir linha e coluna, mesclar, separar, cabeçalho, posição na página,
+  excluir tabela). Na célula, Enter quebra a linha e Tab/Shift+Tab andam entre as células
   (Tab na última cria uma linha).
 - **Outros**: `class="caixa"` (caixa de destaque), `p.subtitulo`,
   `class="sem-recuo"`, `alinha-esq|centro|dir|just`, `recuo-1..4`,
