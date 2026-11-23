@@ -4,12 +4,14 @@
 
 - Cor base do texto: preto (branco no tema escuro), em vez de azul. Texto azul
   precisa de cor explícita (`cor-azul`).
-- Tabela em linha própria (`div.linha-tabela`): no modo edição, pontos antes e
-  depois da tabela para camada, marcação e desenho, como na equação destacada.
-  Âncoras depois da tabela vão para a margem direita; a camada no ponto de antes
-  é a da linha inteira. Texto ou Enter nesses pontos vão para um parágrafo novo;
-  Backspace/Delete não juntam parágrafos à linha da tabela. Tabelas antigas (e as
-  que eram camada) são embrulhadas ao entrar na edição.
+- Pontos antes e depois de tabelas, vídeos e imagens (sozinhas no parágrafo), para
+  camada, marcação e desenho, como na equação destacada; as âncoras ficam coladas ao
+  objeto sem tirá-lo do lugar. Tabela e vídeo ficam numa linha própria
+  (`div.linha-objeto`); a camada no ponto de antes é a da linha inteira. Texto ou
+  Enter nesses pontos vão para um parágrafo novo; Backspace/Delete não juntam
+  parágrafos à linha. Tabelas e vídeos antigos (e os que eram camada) são
+  embrulhados ao entrar na edição. A imagem conta como um caractere só para as
+  setas e o Backspace/Delete.
 - Tabela: → na última célula e ← na primeira levam o cursor para o bloco
   vizinho (antes ele ficava solto na página, fora de qualquer parágrafo, e o
   texto digitado ali saía sem recuo e na cor da página); → e ← a partir do

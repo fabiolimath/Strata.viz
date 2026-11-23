@@ -457,17 +457,17 @@
     function sujo(v) { ED.sujo = v; document.body.classList.toggle('sujo', v); if (v) histAgendar(); else apagarRascunho(); }
     const $ = id => document.getElementById(id);
     const BLOCOS = 'p, div.eq, div.caixa, h1, h2, h3, h4, h5, h6, pre, blockquote, aside.nota, li, .subtitulo';
-    // a tabela fica numa linha própria (div.linha-tabela): os pontos antes e depois dela recebem âncoras
+    // tabela e vídeo ficam numa linha própria (div.linha-objeto): os pontos antes e depois deles recebem âncoras
     // de camada, marcação e desenho, como na equação destacada
-    const LINHA_TAB = 'div.linha-tabela';
-    const BLOCOS_L = BLOCOS + ', ' + LINHA_TAB;
-    function embrulharTabelas() {
+    const LINHA_OBJ = 'div.linha-objeto';
+    const BLOCOS_L = BLOCOS + ', ' + LINHA_OBJ;
+    function embrulharObjetos() {
       let mudou = false;
-      document.querySelectorAll('section.pagina table.tabela').forEach(t => {
+      document.querySelectorAll('section.pagina table.tabela, section.pagina div.video').forEach(t => {
         const pai = t.parentElement;
-        if (pai.matches(LINHA_TAB) || pai.closest('td, th, ' + BLOCOS)) return;
-        const d = document.createElement('div'); d.className = 'linha-tabela';
-        if (t.classList.contains('fragment')) {   // tabela que era camada: a camada passa a ser a linha
+        if (pai.matches(LINHA_OBJ) || pai.closest('td, th, ' + BLOCOS)) return;
+        const d = document.createElement('div'); d.className = 'linha-objeto';
+        if (t.classList.contains('fragment')) {   // tabela (ou vídeo) que era camada: a camada passa a ser a linha
           d.classList.add('fragment'); t.classList.remove('fragment', 'visivel', 'camada-foco');
           if (t.dataset.junto) { d.dataset.junto = t.dataset.junto; delete t.dataset.junto; }
           t.querySelectorAll(':scope > .ancora-camada, :scope > tbody > .ancora-camada').forEach(a => a.remove());
@@ -498,7 +498,7 @@
       document.querySelectorAll('section.pagina').forEach(s => s.setAttribute('contenteditable', 'true'));
       document.querySelectorAll('section.pagina > .rodape').forEach(r => r.setAttribute('contenteditable', 'false'));   // número da página: automático
       document.querySelectorAll('.apostila .marca').forEach(prepararIcone);
-      soltasParaDentro(); embrulharTabelas();
+      soltasParaDentro(); embrulharObjetos();
       iconesCamada(); garantirPontos();
       montarSumario();
       HIST.atual = null;
@@ -516,8 +516,8 @@
     // não deixa pôr o cursor antes ou depois. No modo edição ganham um espaço invisível (U+200B).
     const ZW = '\u200B';
     function garantirPontos() {
-      if (embrulharTabelas()) iconesCamada();
-      document.querySelectorAll('section.pagina').forEach(sec => sec.querySelectorAll('mjx-container, .marca, .ancora-camada, ' + LINHA_TAB + ' > table').forEach(e => {
+      if (embrulharObjetos()) iconesCamada();
+      document.querySelectorAll('section.pagina').forEach(sec => sec.querySelectorAll('mjx-container, .marca, .ancora-camada, ' + LINHA_OBJ + ' > *, img:not(span.figura > img), span.figura').forEach(e => {
         if (!e.parentElement || e.parentElement.closest('mjx-container, .tinta-html')) return;
         if (e.parentElement.matches('table, tbody, thead, tr')) {   // âncora de tabela: texto solto aí vira célula fantasma
           [...e.parentElement.childNodes].forEach(n => { if (n.nodeType === 3) n.remove(); }); return;
@@ -530,13 +530,14 @@
     // Cursor e espaços invisíveis: para o teclado e o mouse, cada fórmula (ou âncora) é um
     // "caractere" só; os espaços invisíveis ao lado dela não contam.
     const NAO_EDIT = 'mjx-container, .marca, .ancora-camada';
+    const OBJETOS = 'img, span.figura';   // imagens: um "caractere" só, como as fórmulas
     function itensDoBloco(b) {   // lista plana: caracteres de texto e elementos não editáveis
       const it = [];
       (function rec(n) {
         for (const f of n.childNodes) {
           if (f.nodeType === 3) for (let i = 0; i < f.data.length; i++) it.push({ no: f, i, zw: f.data[i] === ZW });
           else if (f.nodeType === 1) {
-            if (f.matches(NAO_EDIT) || (f.matches('table') && n.matches(LINHA_TAB))) it.push({ el: f });
+            if (f.matches(NAO_EDIT + ', ' + OBJETOS) || (f.matches('table, div.video') && n.matches(LINHA_OBJ))) it.push({ el: f });
             else if (!f.matches('.tinta-html, svg.tinta, aside.nota, .rodape')) rec(f);
           }
         }
@@ -561,7 +562,7 @@
       r.collapse(true); const s = getSelection(); s.removeAllRanges(); s.addRange(r);
     }
     function sairDaTabela(tab, dir) {
-      if (tab.parentElement.matches(LINHA_TAB)) {   // para o ponto logo depois (ou antes) da tabela, na linha dela
+      if (tab.parentElement.matches(LINHA_OBJ)) {   // para o ponto logo depois (ou antes) da tabela, na linha dela
         const it = itensDoBloco(tab.parentElement), k = it.findIndex(t => t.el === tab);
         return porCursor(it, dir > 0 ? k + 1 : k);
       }
@@ -593,7 +594,7 @@
         const fimDaCel = !it.slice(k).some(t => !t.zw), iniDaCel = !it.slice(0, k).some(t => !t.zw);
         if (ev.key === 'ArrowRight' && fimDaCel && b === cels[cels.length - 1]) { ev.preventDefault(); sairDaTabela(tab, 1); return; }
         if (ev.key === 'ArrowLeft' && iniDaCel && b === cels[0]) { ev.preventDefault(); sairDaTabela(tab, -1); return; }
-      } else if (b.matches(LINHA_TAB)) {   // nos pontos da linha da tabela: a seta que encontra a tabela entra nela
+      } else if (b.matches(LINHA_OBJ)) {   // nos pontos da linha da tabela: a seta que encontra a tabela entra nela
         let j = k;
         if (ev.key === 'ArrowRight') { while (j < it.length && it[j].zw) j++; } else { while (j > 0 && it[j - 1].zw) j--; }
         const t = ev.key === 'ArrowRight' ? it[j] : it[j - 1];
@@ -639,7 +640,7 @@
       if (!document.body.classList.contains('editando') || !/^(insertText|insertParagraph|insertLineBreak|insertFromPaste|insertReplacementText)$/.test(ev.inputType)) return;
       const sel = getSelection(); if (!sel.rangeCount) return;
       const r = sel.getRangeAt(0), n = noDe(r.startContainer); if (!n) return;
-      const L = n.closest(LINHA_TAB + ', td, th'); if (!L || !L.matches(LINHA_TAB)) return;
+      const L = n.closest(LINHA_OBJ + ', td, th'); if (!L || !L.matches(LINHA_OBJ)) return;
       const tab = L.querySelector(':scope > table'); if (!tab) return;
       ev.preventDefault();
       const antes = r.comparePoint(tab, 0) > 0;   // cursor antes da tabela
@@ -659,6 +660,7 @@
         if (w && w.matches('span.eq-cor') && !w.textContent.replace(/[\s\u200B]/g, '') && !w.querySelector('mjx-container')) w.remove();
       } else if (el.matches('.marca')) { el.remove(); MK.limpeza = limparRotulos(); }
       else if (el.matches('.ancora-camada')) { const f = el.parentElement; removerCamada(f); iconesCamada(); focarCamada(null); }
+      else if (el.matches(OBJETOS)) el.remove();
       sujo(true); desenharMarcas();
     }
     document.addEventListener('keydown', ev => {
@@ -674,7 +676,7 @@
       if (b.matches(BLOCOS) && !b.closest('td, th')) {
         const viz = ev.key === 'Backspace' ? b.previousElementSibling : b.nextElementSibling;
         const borda = ev.key === 'Backspace' ? !it.slice(0, k).some(t => !t.zw) : !it.slice(k).some(t => !t.zw);
-        if (borda && viz && viz.matches(LINHA_TAB)) {
+        if (borda && viz && viz.matches(LINHA_OBJ)) {
           ev.preventDefault();
           const vazio = !it.some(t => !t.zw) && !b.querySelector('img, table');
           if (vazio) { b.remove(); sujo(true); }
@@ -683,10 +685,10 @@
           return;
         }
       }
-      if (b.matches(LINHA_TAB) && (ev.key === 'Backspace' ? !it.slice(0, k).some(t => !t.zw) : !it.slice(k).some(t => !t.zw))) { ev.preventDefault(); return; }
+      if (b.matches(LINHA_OBJ) && (ev.key === 'Backspace' ? !it.slice(0, k).some(t => !t.zw) : !it.slice(k).some(t => !t.zw))) { ev.preventDefault(); return; }
       if (ev.key === 'Backspace') {
         while (k > 0 && it[k - 1].zw) k--;
-        if (k > 0 && it[k - 1].el && it[k - 1].el.matches('table')) { ev.preventDefault(); return; }   // a tabela sai pelo menu dela
+        if (k > 0 && it[k - 1].el && it[k - 1].el.matches('table, div.video')) { ev.preventDefault(); return; }   // a tabela sai pelo menu dela; o vídeo, selecionado
         if (k > 0 && it[k - 1].el) {
           ev.preventDefault();
           const el = it[k - 1].el, depois = it[k0] || null;
@@ -698,7 +700,7 @@
         if (k !== k0) porCursor(it, k);   // só espaços invisíveis antes: o Backspace age no que vem antes deles
       } else {
         while (k < it.length && it[k].zw) k++;
-        if (k < it.length && it[k].el && it[k].el.matches('table')) { ev.preventDefault(); return; }
+        if (k < it.length && it[k].el && it[k].el.matches('table, div.video')) { ev.preventDefault(); return; }
         if (k < it.length && it[k].el) {
           ev.preventDefault();
           const antes = it[k0 - 1] || null;
@@ -1322,18 +1324,29 @@
       document.querySelectorAll('.apostila .marca, .apostila span.fragment > .ancora-camada').forEach(a => { const b = a.closest(BLOCOS_L); if (b && b.closest('section.pagina')) blocos.add(b); });
       const anc = t => t.el && t.el.matches('.marca, span.fragment > .ancora-camada');
       const vazio = t => t.zw || (!t.el && /\s/.test(t.no.data[t.i]));
-      const destacada = t => t && t.el && t.el.matches('mjx-container[display="true"], ' + LINHA_TAB + ' > table');
+      const destacada = t => t && t.el && t.el.matches('mjx-container[display="true"]');
+      const objeto = t => t && t.el && t.el.matches(OBJETOS + ', table, div.video');
       const larg = g => g.reduce((t, a) => { const cs = getComputedStyle(a); return t + a.getBoundingClientRect().width + (parseFloat(cs.marginLeft) || 0) + (parseFloat(cs.marginRight) || 0); }, 0);
-      const mudar = [];
+      const mudar = [], objs = [];
       for (const b of blocos) {
         const it = itensDoBloco(b), feitos = new Set();
         const juntar = (k, passo) => { const g = []; for (; k >= 0 && k < it.length; k += passo) { const t = it[k]; if (vazio(t)) continue; if (anc(t) && !feitos.has(t.el)) { g.push(t.el); feitos.add(t.el); } else break; } return g; };
+        // linha só com um objeto (tabela, vídeo, imagem): as âncoras encostam nele e saem para fora, sem ocupar
+        // lugar (margem negativa do tamanho do grupo); o objeto fica onde estava
+        const cheios = it.map((t, k) => k).filter(k => !vazio(it[k]) && !anc(it[k]));
+        if (cheios.length === 1 && objeto(it[cheios[0]])) {
+          const k = cheios[0], antes = juntar(k - 1, -1), depois = juntar(k + 1, 1);
+          if (antes.length) objs.push({ e: antes[antes.length - 1], lado: 'marginLeft', w: larg(antes) });
+          if (depois.length) objs.push({ e: depois[depois.length - 1], lado: 'marginRight', w: larg(depois) });
+          continue;
+        }
         let wl = 0, wr = 0; const eqs = [];
         for (let k = 0; k < it.length; k++) if (destacada(it[k])) { eqs.push(it[k].el); wl = Math.max(wl, larg(juntar(k - 1, -1))); wr = Math.max(wr, larg(juntar(k + 1, 1))); }
         wr = Math.max(wr, larg(juntar(it.length - 1, -1)));
         if (wl || wr) mudar.push({ b, wl, wr, eqs, cs: getComputedStyle(b) });
       }
       // medir tudo antes de mudar (mudar um bloco não mexe na largura das âncoras dos outros)
+      for (const { e, lado, w } of objs) { e.classList.add('no-fim'); e.style[lado] = (-w) + 'px'; }
       for (const { b, wl, wr, eqs, cs } of mudar) {
         const ml = parseFloat(cs.marginLeft) || 0, mr = parseFloat(cs.marginRight) || 0;
         b.classList.add('no-fim');
@@ -2770,7 +2783,7 @@
       const t = document.createElement('table'); t.className = 'tabela'; if (cab && TAB.cabCor) t.dataset.cabCor = TAB.cabCor;
       const tb = document.createElement('tbody'); t.append(tb);
       for (let i = 0; i < nl; i++) { const tr = document.createElement('tr'); for (let j = 0; j < nc; j++) tr.append(celulaVazia(cab && i === 0 ? 'th' : 'td')); tb.append(tr); }
-      const L = document.createElement('div'); L.className = 'linha-tabela'; L.append(t);
+      const L = document.createElement('div'); L.className = 'linha-objeto'; L.append(t);
       const vazio = b && b.matches('p') && !b.textContent.replace(/[\s​]/g, '') && !b.querySelector('mjx-container, img, .marca');
       if (vazio) { if (b.classList.contains('fragment')) L.classList.add('fragment'); b.replaceWith(L); }
       else if (b) b.after(L); else sec.append(L);
@@ -2876,9 +2889,9 @@
         const a = op === 'sel-linha' ? g.G[x.r0][0] : g.G[0][x.c0], b = op === 'sel-linha' ? g.G[x.r1][g.nc - 1] : g.G[g.nl - 1][x.c1];
         selecionarCelulas(a, b); return;
       } else if (op === 'del-tabela') {
-        const p = document.createElement('p'); p.innerHTML = '<br>'; (t.closest(LINHA_TAB) || t).replaceWith(p); foco = p;
+        const p = document.createElement('p'); p.innerHTML = '<br>'; (t.closest(LINHA_OBJ) || t).replaceWith(p); foco = p;
       }
-      if (!t.isConnected || !t.rows.length || !t.querySelector('td, th')) { if (t.isConnected) { const p = document.createElement('p'); p.innerHTML = '<br>'; (t.closest(LINHA_TAB) || t).replaceWith(p); foco = p; } }
+      if (!t.isConnected || !t.rows.length || !t.querySelector('td, th')) { if (t.isConnected) { const p = document.createElement('p'); p.innerHTML = '<br>'; (t.closest(LINHA_OBJ) || t).replaceWith(p); foco = p; } }
       else [...t.rows].forEach(tr => { if (!tr.cells.length) tr.remove(); });   // linha que ficou sem células (mesclagem de linhas inteiras)
       if (foco && foco.isConnected) { const sec = foco.closest('section.pagina'); sec.focus({ preventScroll: true }); cursorEm(foco); }
       lerCursor(); sujo(true); iconesCamada(); desenharMarcas(); mostrarFormatos();
@@ -2952,7 +2965,7 @@
     // apagar a imagem selecionada; outra tecla tira a seleção
     document.addEventListener('keydown', e => {
       if (!ISEL.img) return;
-      if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); e.stopImmediatePropagation(); const im = ISEL.img; ISEL.img = null; posImagem(); (figuraDe(im) || im).remove(); sujo(true); iconesCamada(); desenharMarcas(); }
+      if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); e.stopImmediatePropagation(); const im = ISEL.img; ISEL.img = null; posImagem(); const L = im.closest(LINHA_OBJ); (figuraDe(im) || im).remove(); if (L && !L.querySelector('table, div.video')) { const p = document.createElement('p'); p.innerHTML = '<br>'; L.replaceWith(p); cursorEm(p); } sujo(true); iconesCamada(); desenharMarcas(); }
       else if (!['Shift', 'Control', 'Alt', 'Meta'].includes(e.key)) { ISEL.img = null; posImagem(); }
     }, true);
     document.querySelectorAll('#img-sel .img-alca').forEach(a => {
