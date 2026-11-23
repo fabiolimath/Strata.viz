@@ -121,7 +121,7 @@
   <span class="combo grupo" id="c-midia"><button type="button" id="b-midia" class="b-icone" title="Imagem, vídeo e símbolos" aria-label="Imagem, vídeo e símbolos"></button><button type="button" class="combo-seta" title="Imagem, vídeo e símbolos: escolher" aria-label="Imagem, vídeo e símbolos: escolher">▾</button>
     <span class="combo-menu" hidden=""><button type="button" id="b-imagem" title="Inserir imagem: colar, arrastar, arquivo ou link"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg></span>Imagem</button><button type="button" id="b-video" title="Inserir vídeo ou conteúdo embutido (YouTube, Vimeo, GeoGebra, código de incorporação)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></span>Vídeo</button><button type="button" id="b-simbolos" title="Símbolos e caracteres especiais"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="18" text-anchor="middle" font-size="16" font-family="Times New Roman, serif" fill="currentColor" stroke="none">Ω</text></svg></span>Símbolos</button></span></span>
   <span class="combo" id="c-tabela"><button type="button" id="b-tabela" class="b-icone" title="Inserir tabela" aria-label="Inserir tabela"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M3 15h18M9 4v16M15 4v16"/></svg></button><button type="button" class="combo-seta" title="Tabela: linhas, colunas, mesclar" aria-label="Tabela: linhas, colunas, mesclar">▾</button>
-    <span class="combo-menu" hidden=""><button type="button" data-tab="linha-acima" title="Inserir linha acima"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="9" rx="1"/><path d="M3 15.5h18M9 11v9M15 11v9M12 2.5v6M9 5.5h6"/></svg></span>Inserir linha acima</button><button type="button" data-tab="linha-abaixo" title="Inserir linha abaixo"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="9" rx="1"/><path d="M3 8.5h18M9 4v9M15 4v9M12 15.5v6M9 18.5h6"/></svg></span>Inserir linha abaixo</button><button type="button" data-tab="col-esq" title="Inserir coluna à esquerda"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="11" y="3" width="9" height="18" rx="1"/><path d="M15.5 3v18M11 9h9M11 15h9M2.5 12h6M5.5 9v6"/></svg></span>Inserir coluna à esquerda</button><button type="button" data-tab="col-dir" title="Inserir coluna à direita"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="9" height="18" rx="1"/><path d="M8.5 3v18M4 9h9M4 15h9M15.5 12h6M18.5 9v6"/></svg></span>Inserir coluna à direita</button><button type="button" data-tab="del-linha" title="Excluir linha"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="8" rx="1"/><path d="M9 8v8M15 8v8"/><path d="M8 3l8 18" stroke="#d01c1c"/></svg></span>Excluir linha</button><button type="button" data-tab="del-col" title="Excluir coluna"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="3" width="8" height="18" rx="1"/><path d="M8 9h8M8 15h8"/><path d="M3 8l18 8" stroke="#d01c1c"/></svg></span>Excluir coluna</button><button type="button" data-tab="mesclar" title="Mesclar células (selecione duas ou mais)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 12h10M14 9l3 3-3 3M10 9l-3 3 3 3"/></svg></span>Mesclar células</button><button type="button" data-tab="separar" title="Separar célula mesclada"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M12 5v14M4.5 12h5M7 9.5L9.5 12 7 14.5M19.5 12h-5M17 9.5L14.5 12l2.5 2.5"/></svg></span>Separar célula mesclada</button><button type="button" data-tab="cabecalho" title="1ª linha como cabeçalho (liga/desliga)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><rect x="3" y="4" width="18" height="5" fill="#ff8000" stroke="none" opacity=".7"/><path d="M3 9h18M3 14.5h18M12 4v16"/></svg></span>1ª linha como cabeçalho</button><button type="button" data-tab="del-tabela" title="Excluir tabela"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M3 15h18M9 4v16M15 4v16"/><path d="M4 21L20 3" stroke="#d01c1c"/></svg></span>Excluir tabela</button></span></span>
+    <span class="combo-menu" hidden=""><button type="button" data-tab="sel-linha" title="Selecionar a linha inteira (ou as linhas da seleção)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><rect x="3" y="9.5" width="18" height="5" fill="#3366ff" stroke="none" opacity=".45"/><path d="M3 9.5h18M3 14.5h18M9 4v16M15 4v16"/></svg></span>Selecionar linha</button><button type="button" data-tab="sel-col" title="Selecionar a coluna inteira (ou as colunas da seleção)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><rect x="9" y="4" width="6" height="16" fill="#3366ff" stroke="none" opacity=".45"/><path d="M3 9.5h18M3 14.5h18M9 4v16M15 4v16"/></svg></span>Selecionar coluna</button><button type="button" data-tab="linha-acima" title="Inserir linha acima"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="9" rx="1"/><path d="M3 15.5h18M9 11v9M15 11v9M12 2.5v6M9 5.5h6"/></svg></span>Inserir linha acima</button><button type="button" data-tab="linha-abaixo" title="Inserir linha abaixo"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="9" rx="1"/><path d="M3 8.5h18M9 4v9M15 4v9M12 15.5v6M9 18.5h6"/></svg></span>Inserir linha abaixo</button><button type="button" data-tab="col-esq" title="Inserir coluna à esquerda"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="11" y="3" width="9" height="18" rx="1"/><path d="M15.5 3v18M11 9h9M11 15h9M2.5 12h6M5.5 9v6"/></svg></span>Inserir coluna à esquerda</button><button type="button" data-tab="col-dir" title="Inserir coluna à direita"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="9" height="18" rx="1"/><path d="M8.5 3v18M4 9h9M4 15h9M15.5 12h6M18.5 9v6"/></svg></span>Inserir coluna à direita</button><button type="button" data-tab="del-linha" title="Excluir linha"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="8" rx="1"/><path d="M9 8v8M15 8v8"/><path d="M8 3l8 18" stroke="#d01c1c"/></svg></span>Excluir linha</button><button type="button" data-tab="del-col" title="Excluir coluna"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="3" width="8" height="18" rx="1"/><path d="M8 9h8M8 15h8"/><path d="M3 8l18 8" stroke="#d01c1c"/></svg></span>Excluir coluna</button><button type="button" data-tab="mesclar" title="Mesclar células (selecione duas ou mais)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 12h10M14 9l3 3-3 3M10 9l-3 3 3 3"/></svg></span>Mesclar células</button><button type="button" data-tab="separar" title="Separar célula mesclada"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M12 5v14M4.5 12h5M7 9.5L9.5 12 7 14.5M19.5 12h-5M17 9.5L14.5 12l2.5 2.5"/></svg></span>Separar célula mesclada</button><button type="button" data-tab="cabecalho" title="1ª linha como cabeçalho (liga/desliga)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><rect x="3" y="4" width="18" height="5" fill="#ff8000" stroke="none" opacity=".7"/><path d="M3 9h18M3 14.5h18M12 4v16"/></svg></span>1ª linha como cabeçalho</button><span class="tab-cores" title="Cor do texto do cabeçalho"><span class="tab-cores-rot">Cor do cabeçalho</span><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="" style="--c: #ff8000" title="Laranja (padrão)" aria-label="Laranja (padrão)"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-preto" style="--c: #111111" title="Preto" aria-label="Preto"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-azul" style="--c: #3333cc" title="Azul" aria-label="Azul"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-vermelho" style="--c: #d01c1c" title="Vermelho" aria-label="Vermelho"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-verde" style="--c: #1b8a3a" title="Verde" aria-label="Verde"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-roxo" style="--c: #8e24aa" title="Roxo" aria-label="Roxo"></button></span><button type="button" data-tab="del-tabela" title="Excluir tabela"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M3 15h18M9 4v16M15 4v16"/><path d="M4 21L20 3" stroke="#d01c1c"/></svg></span>Excluir tabela</button></span></span>
   <span class="sep"></span>
   <span class="combo grupo" id="c-alinha"><button type="button" id="b-alinha" class="b-icone" title="Alinhamento" aria-label="Alinhamento"></button><button type="button" class="combo-seta" title="Alinhamento: escolher" aria-label="Alinhamento: escolher">▾</button>
     <span class="combo-menu" hidden=""><button type="button" id="b-al-esq" data-alinha="alinha-esq" title="Alinhar à esquerda" aria-label="Alinhar à esquerda"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h10M4 14h16M4 18h10"/></svg></span>À esquerda</button><button type="button" id="b-al-centro" data-alinha="alinha-centro" title="Centralizar" aria-label="Centralizar"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 10h10M4 14h16M7 18h10"/></svg></span>Centralizado</button><button type="button" id="b-al-dir" data-alinha="alinha-dir" title="Alinhar à direita" aria-label="Alinhar à direita"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M10 10h10M4 14h16M10 18h10"/></svg></span>À direita</button><button type="button" id="b-al-just" data-alinha="alinha-just" title="Justificado (com hifenização automática)" aria-label="Justificado"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h16M4 14h16M4 18h10"/></svg></span>Justificado</button><button type="button" id="b-colunas" title="Duas colunas: os blocos selecionados (ou o atual) ficam em duas colunas. Clique de novo para voltar a uma." aria-label="Duas colunas"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h7.5M3 10h7.5M3 14h7.5M3 18h5M13.5 6H21M13.5 10H21M13.5 14H21M13.5 18h5"/></svg></span>Duas colunas</button><button type="button" id="b-nota" title="Nota lateral vermelha (*:) ao lado do parágrafo atual" aria-label="Nota lateral"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="12" height="17" rx="1"></rect><path d="M5.5 8h6M5.5 11.5h6M5.5 15h4"></path><path d="M19.5 6.5v6M16.9 8l5.2 3M22.1 8l-5.2 3" stroke="#d01c1c"></path></svg></span>Nota lateral</button><button type="button" id="b-nota-rodape" title="Nota de rodapé: número no ponto do cursor e o texto no pé da página" aria-label="Nota de rodapé"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="2.5" width="15" height="19" rx="1"/><path d="M7.5 6.5h9M7.5 10h9"/><path d="M7.5 17.5h7" stroke-width="1.3"/><path d="M7.5 15h9" stroke-dasharray="2 1.5" stroke-width="1"/><text x="15.5" y="9" font-size="6" fill="#d01c1c" stroke="none">1</text></svg></span>Nota de rodapé</button><button type="button" id="b-qed" title="Quod erat demonstrandum (Q.E.D.): ◼ laranja à direita, no fim do bloco atual, numa camada própria. Clique de novo no mesmo bloco para tirar." aria-label="Quod erat demonstrandum (Q.E.D.)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11M3 12h11M3 17h8"/><rect x="15" y="13" width="6" height="6" fill="#ff8000" stroke="none"/></svg></span>Quod erat demonstrandum (Q.E.D.)</button></span></span>
@@ -159,6 +159,7 @@
   <div class="linha"><b>Inserir tabela</b></div>
   <div class="linha"><span class="rot">Linhas</span><input type="number" id="pt-linhas" min="1" max="60" value="3"><span class="rot" style="width:auto;margin-left:10px">Colunas</span><input type="number" id="pt-colunas" min="1" max="20" value="3"></div>
   <div class="linha"><label><input type="checkbox" id="pt-cab" checked=""> 1ª linha como cabeçalho</label></div>
+  <div class="linha" id="pt-cores"><span class="rot">Cabeçalho</span><button type="button" class="pt-cor" data-cab-cor="" style="--c: #ff8000" title="Laranja (padrão)" aria-label="Laranja (padrão)"></button><button type="button" class="pt-cor" data-cab-cor="cor-preto" style="--c: #111111" title="Preto" aria-label="Preto"></button><button type="button" class="pt-cor" data-cab-cor="cor-azul" style="--c: #3333cc" title="Azul" aria-label="Azul"></button><button type="button" class="pt-cor" data-cab-cor="cor-vermelho" style="--c: #d01c1c" title="Vermelho" aria-label="Vermelho"></button><button type="button" class="pt-cor" data-cab-cor="cor-verde" style="--c: #1b8a3a" title="Verde" aria-label="Verde"></button><button type="button" class="pt-cor" data-cab-cor="cor-roxo" style="--c: #8e24aa" title="Roxo" aria-label="Roxo"></button></div>
   <div class="linha" style="justify-content:flex-end"><button type="button" id="pt-cancelar">Cancelar</button><button type="button" id="pt-ok" style="background:#2a6;color:#fff;border-color:#2a6">Inserir</button></div>
 </div>
 <div id="aviso-rascunho" hidden="" role="alert"><span id="ar-texto"></span><button type="button" id="ar-recuperar">Recuperar</button><button type="button" id="ar-baixar" title="Baixa o rascunho como um arquivo à parte">Baixar</button><button type="button" id="ar-descartar">Descartar</button></div>
@@ -170,8 +171,8 @@
   <div class="linha" style="justify-content:flex-end"><button type="button" id="pv-cancelar">Cancelar</button><button type="button" id="pv-ok" style="background:#2a6;color:#fff;border-color:#2a6">Inserir</button></div>
 </div>
 <div id="painel-simbolos" class="painel-mini" hidden="" role="dialog" aria-label="Símbolos">
-  <div class="linha"><b>Símbolos</b><span class="pmc-dica" style="margin-left:auto">clique para inserir no texto</span><button type="button" id="ps-fechar" title="Fechar (Esc)">✕</button></div>
-  <div class="ps-grupo"><span class="ps-rot">Gregas</span><button type="button" data-s="α">α</button><button type="button" data-s="β">β</button><button type="button" data-s="γ">γ</button><button type="button" data-s="δ">δ</button><button type="button" data-s="ε">ε</button><button type="button" data-s="ϵ">ϵ</button><button type="button" data-s="ζ">ζ</button><button type="button" data-s="η">η</button><button type="button" data-s="θ">θ</button><button type="button" data-s="ϑ">ϑ</button><button type="button" data-s="ι">ι</button><button type="button" data-s="κ">κ</button><button type="button" data-s="λ">λ</button><button type="button" data-s="μ">μ</button><button type="button" data-s="ν">ν</button><button type="button" data-s="ξ">ξ</button><button type="button" data-s="π">π</button><button type="button" data-s="ρ">ρ</button><button type="button" data-s="σ">σ</button><button type="button" data-s="τ">τ</button><button type="button" data-s="υ">υ</button><button type="button" data-s="φ">φ</button><button type="button" data-s="ϕ">ϕ</button><button type="button" data-s="χ">χ</button><button type="button" data-s="ψ">ψ</button><button type="button" data-s="ω">ω</button><button type="button" data-s="Γ">Γ</button><button type="button" data-s="Δ">Δ</button><button type="button" data-s="Θ">Θ</button><button type="button" data-s="Λ">Λ</button><button type="button" data-s="Ξ">Ξ</button><button type="button" data-s="Π">Π</button><button type="button" data-s="Σ">Σ</button><button type="button" data-s="Φ">Φ</button><button type="button" data-s="Ψ">Ψ</button><button type="button" data-s="Ω">Ω</button></div><div class="ps-grupo"><span class="ps-rot">Operadores</span><button type="button" data-s="±">±</button><button type="button" data-s="∓">∓</button><button type="button" data-s="×">×</button><button type="button" data-s="÷">÷</button><button type="button" data-s="·">·</button><button type="button" data-s="∘">∘</button><button type="button" data-s="√">√</button><button type="button" data-s="∞">∞</button><button type="button" data-s="∂">∂</button><button type="button" data-s="∇">∇</button><button type="button" data-s="∑">∑</button><button type="button" data-s="∏">∏</button><button type="button" data-s="∫">∫</button><button type="button" data-s="∮">∮</button><button type="button" data-s="′">′</button><button type="button" data-s="″">″</button><button type="button" data-s="°">°</button><button type="button" data-s="‰">‰</button><button type="button" data-s="%">%</button></div><div class="ps-grupo"><span class="ps-rot">Relações</span><button type="button" data-s="=">=</button><button type="button" data-s="≠">≠</button><button type="button" data-s="≈">≈</button><button type="button" data-s="≡">≡</button><button type="button" data-s="∼">∼</button><button type="button" data-s="≃">≃</button><button type="button" data-s="∝">∝</button><button type="button" data-s="<"><</button><button type="button" data-s=">">></button><button type="button" data-s="≤">≤</button><button type="button" data-s="≥">≥</button><button type="button" data-s="≪">≪</button><button type="button" data-s="≫">≫</button></div><div class="ps-grupo"><span class="ps-rot">Setas</span><button type="button" data-s="→">→</button><button type="button" data-s="←">←</button><button type="button" data-s="↔">↔</button><button type="button" data-s="⇒">⇒</button><button type="button" data-s="⇐">⇐</button><button type="button" data-s="⇔">⇔</button><button type="button" data-s="↑">↑</button><button type="button" data-s="↓">↓</button><button type="button" data-s="↦">↦</button><button type="button" data-s="⟶">⟶</button><button type="button" data-s="⟹">⟹</button></div><div class="ps-grupo"><span class="ps-rot">Conjuntos</span><button type="button" data-s="∈">∈</button><button type="button" data-s="∉">∉</button><button type="button" data-s="⊂">⊂</button><button type="button" data-s="⊆">⊆</button><button type="button" data-s="⊃">⊃</button><button type="button" data-s="⊇">⊇</button><button type="button" data-s="∪">∪</button><button type="button" data-s="∩">∩</button><button type="button" data-s="∅">∅</button><button type="button" data-s="∀">∀</button><button type="button" data-s="∃">∃</button><button type="button" data-s="∄">∄</button><button type="button" data-s="¬">¬</button><button type="button" data-s="∧">∧</button><button type="button" data-s="∨">∨</button><button type="button" data-s="ℕ">ℕ</button><button type="button" data-s="ℤ">ℤ</button><button type="button" data-s="ℚ">ℚ</button><button type="button" data-s="ℝ">ℝ</button><button type="button" data-s="ℂ">ℂ</button></div><div class="ps-grupo"><span class="ps-rot">Texto</span><button type="button" data-s="…">…</button><button type="button" data-s="–">–</button><button type="button" data-s="—">—</button><button type="button" data-s="«">«</button><button type="button" data-s="»">»</button><button type="button" data-s="“">“</button><button type="button" data-s="”">”</button><button type="button" data-s="‘">‘</button><button type="button" data-s="’">’</button><button type="button" data-s="•">•</button><button type="button" data-s="§">§</button><button type="button" data-s="¶">¶</button><button type="button" data-s="†">†</button><button type="button" data-s="‡">‡</button><button type="button" data-s="©">©</button><button type="button" data-s="®">®</button><button type="button" data-s="™">™</button><button type="button" data-s="€">€</button><button type="button" data-s="£">£</button><button type="button" data-s="¹">¹</button><button type="button" data-s="²">²</button><button type="button" data-s="³">³</button><button type="button" data-s="½">½</button><button type="button" data-s="¼">¼</button><button type="button" data-s="¾">¾</button></div>
+  <div class="linha"><b>Símbolos</b><select id="ps-secao" title="Seção de símbolos"><option value="0">Gregas</option><option value="1">Operadores</option><option value="2">Relações</option><option value="3">Setas</option><option value="4">Conjuntos</option><option value="5">Texto</option></select><span class="pmc-dica" style="margin-left:auto">clique para inserir no texto</span><button type="button" id="ps-fechar" title="Fechar (Esc)">✕</button></div>
+  <div class="ps-grupo" data-secao="0"><button type="button" data-s="α">α</button><button type="button" data-s="β">β</button><button type="button" data-s="γ">γ</button><button type="button" data-s="δ">δ</button><button type="button" data-s="ε">ε</button><button type="button" data-s="ϵ">ϵ</button><button type="button" data-s="ζ">ζ</button><button type="button" data-s="η">η</button><button type="button" data-s="θ">θ</button><button type="button" data-s="ϑ">ϑ</button><button type="button" data-s="ι">ι</button><button type="button" data-s="κ">κ</button><button type="button" data-s="λ">λ</button><button type="button" data-s="μ">μ</button><button type="button" data-s="ν">ν</button><button type="button" data-s="ξ">ξ</button><button type="button" data-s="π">π</button><button type="button" data-s="ρ">ρ</button><button type="button" data-s="σ">σ</button><button type="button" data-s="τ">τ</button><button type="button" data-s="υ">υ</button><button type="button" data-s="φ">φ</button><button type="button" data-s="ϕ">ϕ</button><button type="button" data-s="χ">χ</button><button type="button" data-s="ψ">ψ</button><button type="button" data-s="ω">ω</button><button type="button" data-s="Γ">Γ</button><button type="button" data-s="Δ">Δ</button><button type="button" data-s="Θ">Θ</button><button type="button" data-s="Λ">Λ</button><button type="button" data-s="Ξ">Ξ</button><button type="button" data-s="Π">Π</button><button type="button" data-s="Σ">Σ</button><button type="button" data-s="Φ">Φ</button><button type="button" data-s="Ψ">Ψ</button><button type="button" data-s="Ω">Ω</button></div><div class="ps-grupo" data-secao="1" hidden=""><button type="button" data-s="±">±</button><button type="button" data-s="∓">∓</button><button type="button" data-s="×">×</button><button type="button" data-s="÷">÷</button><button type="button" data-s="·">·</button><button type="button" data-s="∘">∘</button><button type="button" data-s="√">√</button><button type="button" data-s="∞">∞</button><button type="button" data-s="∂">∂</button><button type="button" data-s="∇">∇</button><button type="button" data-s="∑">∑</button><button type="button" data-s="∏">∏</button><button type="button" data-s="∫">∫</button><button type="button" data-s="∮">∮</button><button type="button" data-s="′">′</button><button type="button" data-s="″">″</button><button type="button" data-s="°">°</button><button type="button" data-s="‰">‰</button><button type="button" data-s="%">%</button></div><div class="ps-grupo" data-secao="2" hidden=""><button type="button" data-s="=">=</button><button type="button" data-s="≠">≠</button><button type="button" data-s="≈">≈</button><button type="button" data-s="≡">≡</button><button type="button" data-s="∼">∼</button><button type="button" data-s="≃">≃</button><button type="button" data-s="∝">∝</button><button type="button" data-s="<"><</button><button type="button" data-s=">">></button><button type="button" data-s="≤">≤</button><button type="button" data-s="≥">≥</button><button type="button" data-s="≪">≪</button><button type="button" data-s="≫">≫</button></div><div class="ps-grupo" data-secao="3" hidden=""><button type="button" data-s="→">→</button><button type="button" data-s="←">←</button><button type="button" data-s="↔">↔</button><button type="button" data-s="⇒">⇒</button><button type="button" data-s="⇐">⇐</button><button type="button" data-s="⇔">⇔</button><button type="button" data-s="↑">↑</button><button type="button" data-s="↓">↓</button><button type="button" data-s="↦">↦</button><button type="button" data-s="⟶">⟶</button><button type="button" data-s="⟹">⟹</button></div><div class="ps-grupo" data-secao="4" hidden=""><button type="button" data-s="∈">∈</button><button type="button" data-s="∉">∉</button><button type="button" data-s="⊂">⊂</button><button type="button" data-s="⊆">⊆</button><button type="button" data-s="⊃">⊃</button><button type="button" data-s="⊇">⊇</button><button type="button" data-s="∪">∪</button><button type="button" data-s="∩">∩</button><button type="button" data-s="∅">∅</button><button type="button" data-s="∀">∀</button><button type="button" data-s="∃">∃</button><button type="button" data-s="∄">∄</button><button type="button" data-s="¬">¬</button><button type="button" data-s="∧">∧</button><button type="button" data-s="∨">∨</button><button type="button" data-s="ℕ">ℕ</button><button type="button" data-s="ℤ">ℤ</button><button type="button" data-s="ℚ">ℚ</button><button type="button" data-s="ℝ">ℝ</button><button type="button" data-s="ℂ">ℂ</button></div><div class="ps-grupo" data-secao="5" hidden=""><button type="button" data-s="…">…</button><button type="button" data-s="–">–</button><button type="button" data-s="—">—</button><button type="button" data-s="«">«</button><button type="button" data-s="»">»</button><button type="button" data-s="“">“</button><button type="button" data-s="”">”</button><button type="button" data-s="‘">‘</button><button type="button" data-s="’">’</button><button type="button" data-s="•">•</button><button type="button" data-s="§">§</button><button type="button" data-s="¶">¶</button><button type="button" data-s="†">†</button><button type="button" data-s="‡">‡</button><button type="button" data-s="©">©</button><button type="button" data-s="®">®</button><button type="button" data-s="™">™</button><button type="button" data-s="€">€</button><button type="button" data-s="£">£</button><button type="button" data-s="¹">¹</button><button type="button" data-s="²">²</button><button type="button" data-s="³">³</button><button type="button" data-s="½">½</button><button type="button" data-s="¼">¼</button><button type="button" data-s="¾">¾</button></div>
 </div>
 <div id="painel-macros" class="painel-mini" hidden="" role="dialog" aria-label="Macros LaTeX do documento">
   <div class="linha"><b>Adicionar macros LaTeX</b></div>
@@ -683,6 +684,21 @@
       const n = r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement;
       if (!n || !n.closest('section.pagina')) return avisar('Selecione o texto');
       const span = n && n.closest(CORES.map(c => 'span.' + c).join(', '));
+      // várias células da tabela: a cor vale para o conteúdo de cada uma (sem atravessar a estrutura)
+      const xs = !r.collapsed && celulasDaSelecao();
+      if (xs && xs.lista.length > 1) {
+        const SEL = CORES.map(c => 'span.' + c).join(', ');
+        const so = c => { const f = [...c.childNodes].filter(k => !(k.nodeType === 3 && !k.data.replace(/[\s\u200B]/g, ''))); return f.length === 1 && f[0].nodeType === 1 && f[0].matches('span.' + cor); };
+        const tirar = xs.lista.every(so);
+        xs.lista.forEach(c => {
+          c.querySelectorAll(SEL).forEach(x => x.replaceWith(...x.childNodes));
+          if (tirar || !c.textContent.replace(/[\s\u200B]/g, '') && !c.querySelector('mjx-container')) return;
+          const sp = document.createElement('span'); sp.className = cor;
+          const nos = [...c.childNodes]; while (nos.length && nos[nos.length - 1].nodeName === 'BR') nos.pop();
+          nos[0] ? nos[0].before(sp) : c.append(sp); sp.append(...nos);
+        });
+        const L = xs.lista; selecionarCelulas(L[0], L[L.length - 1]); sujo(true); return;
+      }
       if (r.collapsed) {   // sem seleção: a cor vale para o que for digitado a partir do cursor
         let ponto = r; const mesma = span && span.classList.contains(cor);   // a mesma cor de novo: volta à cor do bloco
         if (span) {        // divide o trecho colorido no cursor e para entre as duas partes
@@ -957,6 +973,7 @@
       doc.querySelector('#ee-remover').removeAttribute('style');
       doc.querySelector('#b-camada').classList.remove('ligada');
       doc.querySelectorAll('.eq-sel').forEach(e => e.classList.remove('eq-sel'));
+      doc.querySelectorAll('.cel-sel, .com-sel').forEach(e => e.classList.remove('cel-sel', 'com-sel'));
       doc.querySelectorAll('.combo-menu').forEach(m => { m.hidden = true; });
       doc.querySelectorAll('#c-marcar .ci').forEach(e => { e.innerHTML = ''; });
       doc.querySelectorAll('#barra .ativo').forEach(e => e.classList.remove('ativo'));
@@ -2618,7 +2635,7 @@
       const n = noDe(r.startContainer), sec = n.closest('section.pagina'); if (!sec) return;
       let b = n.closest(BLOCOS); if (b && b.closest('li')) b = b.closest('ul, ol');
       while (b && b.parentElement !== sec && !b.parentElement.matches('.duas-colunas')) b = b.parentElement;
-      const t = document.createElement('table'); t.className = 'tabela';
+      const t = document.createElement('table'); t.className = 'tabela'; if (cab && TAB.cabCor) t.dataset.cabCor = TAB.cabCor;
       const tb = document.createElement('tbody'); t.append(tb);
       for (let i = 0; i < nl; i++) { const tr = document.createElement('tr'); for (let j = 0; j < nc; j++) tr.append(celulaVazia(cab && i === 0 ? 'th' : 'td')); tb.append(tr); }
       const vazio = b && b.matches('p') && !b.textContent.replace(/[\s​]/g, '') && !b.querySelector('mjx-container, img, .marca');
@@ -2629,6 +2646,11 @@
       lerCursor(); sujo(true); iconesCamada(); desenharMarcas(); montarSumario();
     }
     $('b-tabela').onclick = () => $('painel-tabela').hidden ? abrirTabela() : fecharTabela(true);
+    const TAB = { cabCor: CORES.includes(lembrar('strata-cab-cor')) ? lembrar('strata-cab-cor') : '' };
+    const mostrarCabCor = () => document.querySelectorAll('#pt-cores .pt-cor').forEach(b => b.classList.toggle('ativo', b.dataset.cabCor === TAB.cabCor));
+    document.querySelectorAll('#pt-cores .pt-cor').forEach(b => b.onclick = () => { TAB.cabCor = b.dataset.cabCor; lembrar('strata-cab-cor', TAB.cabCor); mostrarCabCor(); });
+    mostrarCabCor();
+    $('pt-cab').onchange = () => { $('pt-cores').hidden = !$('pt-cab').checked; };
     $('pt-ok').onclick = inserirTabela;
     $('pt-cancelar').onclick = () => fecharTabela(true);
     ['pt-linhas', 'pt-colunas'].forEach(id => $(id).addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); inserirTabela(); } else if (e.key === 'Escape') { e.preventDefault(); fecharTabela(true); } }));
@@ -2709,6 +2731,13 @@
         const tr = g.L[0], th = [...tr.cells].every(c => c.tagName === 'TH');
         [...tr.cells].forEach(c => { const n = document.createElement(th ? 'td' : 'th'); [...c.attributes].forEach(a => n.setAttribute(a.name, a.value)); n.append(...c.childNodes); c.replaceWith(n); });
         foco = tr.cells[0];
+      } else if (op === 'cab-cor') {
+        if (OPCOR) t.dataset.cabCor = OPCOR; else delete t.dataset.cabCor;
+        if (![...g.L[0].cells].some(c => c.tagName === 'TH')) avisar('A cor vale para o cabeçalho: ligue 1ª linha como cabeçalho');
+        return sujo(true);
+      } else if (op === 'sel-linha' || op === 'sel-col') {
+        const a = op === 'sel-linha' ? g.G[x.r0][0] : g.G[0][x.c0], b = op === 'sel-linha' ? g.G[x.r1][g.nc - 1] : g.G[g.nl - 1][x.c1];
+        selecionarCelulas(a, b); return;
       } else if (op === 'del-tabela') {
         const p = document.createElement('p'); p.innerHTML = '<br>'; t.replaceWith(p); foco = p;
       }
@@ -2717,7 +2746,25 @@
       if (foco && foco.isConnected) { const sec = foco.closest('section.pagina'); sec.focus({ preventScroll: true }); cursorEm(foco); }
       lerCursor(); sujo(true); iconesCamada(); desenharMarcas(); mostrarFormatos();
     }
-    combo('c-tabela', b => opTabela(b.dataset.tab));
+    let OPCOR = '';
+    combo('c-tabela', b => { OPCOR = b.dataset.cabCor || ''; opTabela(b.dataset.tab); });
+    // ---------- seleção de células em retângulo (como numa planilha) ----------
+    // Arrastar de uma célula a outra (ou Selecionar linha/coluna) marca o retângulo com .cel-sel;
+    // a seleção do navegador continua indo da primeira à última célula, e as operações usam o retângulo.
+    function selecionarCelulas(a, b) {
+      const sec = a.closest('section.pagina'); if (sec) sec.focus({ preventScroll: true });
+      const r = document.createRange(); r.setStart(a, 0); r.setEnd(b, b.childNodes.length);
+      const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); lerCursor(); marcarCelulas();
+    }
+    function marcarCelulas() {
+      const x = celulasDaSelecao(), varias = x && x.lista.length > 1 && x.t.closest('section.pagina');
+      document.querySelectorAll('.apostila .cel-sel').forEach(c => { if (!varias || !x.lista.includes(c)) c.classList.remove('cel-sel'); });
+      document.querySelectorAll('.apostila table.com-sel').forEach(t => { if (!varias || t !== x.t) t.classList.remove('com-sel'); });
+      if (varias) { x.lista.forEach(c => c.classList.add('cel-sel')); x.t.classList.add('com-sel'); }
+    }
+    document.addEventListener('selectionchange', () => { if (document.body.classList.contains('editando')) marcarCelulas(); });
+    // clicar dentro de células já selecionadas começa uma seleção nova (e não arrasta o texto selecionado)
+    document.addEventListener('mousedown', e => { if (e.button === 0 && !e.shiftKey && e.target.closest && e.target.closest('.apostila table.com-sel')) getSelection().removeAllRanges(); }, true);
     document.querySelectorAll('#c-tabela button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
     // dentro da célula: Enter quebra a linha; Tab/Shift+Tab andam entre as células (Tab na última cria uma linha)
     document.addEventListener('keydown', ev => {
@@ -2929,7 +2976,21 @@
       if (!L.children.length) L.remove();
     }
     // Lista numerada separada da anterior (do mesmo tipo) só por equações destacadas continua a numeração.
+    // marcador (1., •, i)) na cor do começo do texto do item: data-cor-marca = classe da cor
+    function corDosMarcadores() {
+      const SEL = CORES.map(c => 'span.' + c).join(', ');
+      document.querySelectorAll('.apostila section.pagina li').forEach(li => {
+        const w = document.createTreeWalker(li, NodeFilter.SHOW_TEXT); let t, cor = '';
+        while ((t = w.nextNode())) {
+          if (!t.data.replace(/[\s\u200B]/g, '') || t.parentElement.closest('.ancora-camada, .marca, mjx-container')) continue;
+          if (t.parentElement.closest('ul, ol') !== li.parentElement) break;
+          const sp = t.parentElement.closest(SEL); cor = sp && li.contains(sp) ? CORES.find(k => sp.classList.contains(k)) : ''; break;
+        }
+        if ((li.dataset.corMarca || '') !== cor) { if (cor) li.dataset.corMarca = cor; else delete li.dataset.corMarca; }
+      });
+    }
     function numerarListas() {
+      corDosMarcadores();
       document.querySelectorAll('.apostila section.pagina ol').forEach(L => {
         let a = L.previousElementSibling;
         while (a && (a.matches('div.eq, span.marca, aside.nota') || a.matches('svg.tinta, .tinta-html'))) a = a.previousElementSibling;
@@ -3243,7 +3304,7 @@
       if (!e || e.nodeType !== 1) return null;
       if (e.matches('span.eq-num')) return 'equacao';
       if (e.matches('span.figura')) return 'figura';
-      if (e.matches('table.tabela')) return 'tabela';
+      if (e.matches('table')) return e.querySelector(':scope > caption') ? 'tabela' : null;
       if (e.matches('.ambiente')) return AMBIENTES.includes(e.dataset.tipo) ? e.dataset.tipo : null;
       for (const k in TITULOS_NUM) if (e.matches(TITULOS_NUM[k] + '.' + k)) return k;
       return null;
@@ -3286,7 +3347,7 @@
       const els = [...document.querySelectorAll(SEL_NUM)], temCap = els.some(e => e.matches('h1.capitulo'));
       const cont = {}, vistos = new Set(); let cap = 0, sec = 0, sub = 0;
       for (const e of els) {
-        const t = tipoNum(e); if (!t) continue;
+        const t = tipoNum(e); if (!t) { if (e.dataset.num) delete e.dataset.num; continue; }
         if (!e.id || vistos.has(e.id)) e.id = labelAleatorio(NUM[t].pref);   // sem label, ou cópia (colar repete o id)
         vistos.add(e.id);
         const pre = temCap ? cap + '.' : '';
@@ -3360,7 +3421,7 @@
     // A figura é um <span> (pode ficar dentro do parágrafo, ao lado de outra); a largura passa da imagem para ele.
     function figuraDe(im) { return im && im.parentElement && im.parentElement.matches('span.figura') ? im.parentElement : null; }
     function editarLegenda(alvo) {
-      const ehFig = alvo.matches('img'), caixa = ehFig ? figuraDe(alvo) : (alvo.matches('table.tabela') ? alvo : null);
+      const ehFig = alvo.matches('img'), caixa = ehFig ? figuraDe(alvo) : (alvo.querySelector(':scope > caption') ? alvo : null);
       const leg = caixa && caixa.querySelector(ehFig ? ':scope > .legenda' : ':scope > caption');
       abrirRotulo({
         perto: alvo, titulo: ehFig ? 'Legenda da figura' : 'Legenda da tabela', rotTexto: 'Legenda', dica: ehFig ? 'Figura n: ...' : 'Tabela n: ...',
@@ -3385,7 +3446,7 @@
         },
         apagar: () => {
           if (ehFig) { const w = caixa.style.width; caixa.replaceWith(alvo); if (w) alvo.style.width = w; }
-          else { if (leg) leg.remove(); alvo.classList.remove('tabela'); alvo.removeAttribute('id'); delete alvo.dataset.num; if (!alvo.classList.length) alvo.removeAttribute('class'); }
+          else { if (leg) leg.remove(); alvo.removeAttribute('id'); delete alvo.dataset.num; }
         }
       });
     }
@@ -3615,6 +3676,10 @@
       P.hidden = false; P.style.left = Math.max(8, Math.min(b.left, innerWidth - P.offsetWidth - 8)) + 'px'; P.style.top = b.bottom + 8 + 'px';
     };
     $('ps-fechar').onclick = fecharSimbolos;
+    // uma seção por vez; a última escolhida volta na próxima abertura
+    function mostrarSecao(k) { document.querySelectorAll('#painel-simbolos .ps-grupo').forEach(gr => gr.hidden = gr.dataset.secao !== String(k)); $('ps-secao').value = String(k); }
+    $('ps-secao').onchange = () => { mostrarSecao($('ps-secao').value); lembrar('strata-simbolos', $('ps-secao').value); };
+    mostrarSecao(document.querySelector('#painel-simbolos .ps-grupo[data-secao="' + lembrar('strata-simbolos') + '"]') ? lembrar('strata-simbolos') : 0);
     document.querySelectorAll('#painel-simbolos button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
     document.querySelectorAll('#painel-simbolos [data-s]').forEach(b => b.onclick = () => {
       const s = getSelection(); if (!s.rangeCount || !noDe(s.getRangeAt(0).startContainer).closest('section.pagina')) { if (ED.range && ED.range.startContainer.isConnected) { s.removeAllRanges(); s.addRange(ED.range); } else return avisar('Clique no texto'); }
@@ -3677,7 +3742,7 @@
     // ---------- rascunho automático ----------
     // Com alterações não salvas, uma cópia do documento vai para o navegador (localStorage) a cada 20 s
     // e ao fechar a aba. Ao abrir de novo o mesmo arquivo, o Strata oferece recuperar. Salvar apaga a cópia.
-    const RASC = { chave: 'strata-rascunho:' + location.pathname + location.search, ultimo: '', avisado: false };
+    const RASC = { chave: 'strata-rascunho:' + location.pathname, ultimo: '', avisado: false };
     const lerRascunho = () => { try { return JSON.parse(localStorage.getItem(RASC.chave) || 'null'); } catch (e) { return null; } };
     function apagarRascunho() { RASC.ultimo = ''; try { localStorage.removeItem(RASC.chave); } catch (e) {} }
     function guardarRascunho() {
@@ -3717,6 +3782,9 @@
       contarCamadas(); montarSumario(); desenharMarcas();
       if (modo === 'edicao') mudarModo('edicao');
       sujo(true); avisar('Rascunho recuperado (salve para gravar no arquivo)');
+      // conteúdo trocado: o foco e a seleção antigos apontavam para nós que saíram; põe o cursor de novo
+      getSelection().removeAllRanges(); if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+      if (modo === 'edicao') requestAnimationFrame(() => { const b = document.querySelector('.apostila section.pagina p, .apostila section.pagina h1'); if (!b) return; b.closest('section').focus({ preventScroll: true }); cursorEm(b); lerCursor(); });
     };
     document.querySelectorAll('#aviso-rascunho button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
     // ---------- macros LaTeX do documento (menu ☰) ----------

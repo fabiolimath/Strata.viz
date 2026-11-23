@@ -584,6 +584,30 @@ body.editando .apostila sup.ref-nota { cursor: default; background: #fde8e8; bor
 #pr-cores .pr-cor { width: 22px; height: 22px; padding: 0; border-radius: 50%; border: 2px solid #ccc; background: var(--c); }
 #pr-cores .pr-cor[data-cor=""] { background: linear-gradient(135deg, #fff 45%, #d01c1c 45%, #d01c1c 55%, #fff 55%); }
 #pr-cores .pr-cor.ativo { border-color: #222; box-shadow: 0 0 0 2px #fff inset; }
+/* tabela: cor do cabeçalho e seleção em retângulo */
+.apostila table[data-cab-cor="cor-preto"] th { color: var(--tinta); }
+.apostila table[data-cab-cor="cor-azul"] th { color: var(--azul); }
+.apostila table[data-cab-cor="rotulo"] th { color: var(--laranja); }
+.apostila table[data-cab-cor="cor-vermelho"] th { color: var(--vermelho); }
+.apostila table[data-cab-cor="cor-verde"] th { color: var(--verde); }
+.apostila table[data-cab-cor="cor-roxo"] th { color: var(--roxo); }
+body.editando .apostila td.cel-sel, body.editando .apostila th.cel-sel { background: rgba(51, 102, 255, .18); }
+body.editando .apostila table.com-sel ::selection { background: transparent; }
+#pt-cores[hidden] { display: none; }
+.pt-cor { width: 20px; height: 20px; padding: 0 !important; border-radius: 50% !important; border: 2px solid #ccc !important; background: var(--c) !important; }
+.pt-cor.ativo { border-color: #222 !important; box-shadow: 0 0 0 2px #fff inset; }
+#c-tabela .tab-cores { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 4px 8px 6px; }
+#c-tabela .tab-cores-rot { width: 100%; font: 12px system-ui, sans-serif; color: #777; }
+#barra #c-tabela .tab-cores .pt-cor { flex: none; width: 20px; height: 20px; min-width: 0; margin: 0; }
+/* marcador da lista na cor do começo do texto do item */
+.apostila li[data-cor-marca="cor-preto"]::marker, .apostila li[data-cor-marca="cor-preto"]::before { color: var(--tinta); }
+.apostila li[data-cor-marca="cor-azul"]::marker, .apostila li[data-cor-marca="cor-azul"]::before { color: var(--azul); }
+.apostila li[data-cor-marca="rotulo"]::marker, .apostila li[data-cor-marca="rotulo"]::before { color: var(--laranja); }
+.apostila li[data-cor-marca="cor-vermelho"]::marker, .apostila li[data-cor-marca="cor-vermelho"]::before { color: var(--vermelho); }
+.apostila li[data-cor-marca="cor-verde"]::marker, .apostila li[data-cor-marca="cor-verde"]::before { color: var(--verde); }
+.apostila li[data-cor-marca="cor-roxo"]::marker, .apostila li[data-cor-marca="cor-roxo"]::before { color: var(--roxo); }
+#ps-secao { margin-left: 10px; font: inherit; padding: 2px 4px; border: 1px solid #bbb; border-radius: 4px; background: #fff; }
+#painel-simbolos .ps-grupo[hidden] { display: none; }
 /* numeração automática */
 .apostila span.eq-num { display: block; position: relative; padding-right: 3.2em; }
 .apostila span.eq-num::after { content: "(" attr(data-num) ")"; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
@@ -639,7 +663,7 @@ body.editando .apostila .video iframe { pointer-events: none; }
 #pl-destino { flex: 1; min-width: 0; font: inherit; padding: 3px 4px; border: 1px solid #bbb; border-radius: 4px; background: #fff; }
 @media screen {
   html.strata-escuro #painel-simbolos .ps-rot, html.strata-escuro #painel-video .pmc-dica, html.strata-escuro #painel-simbolos .pmc-dica { color: var(--ui-suave); }
-  html.strata-escuro #pl-destino { background: var(--ui-fundo2); color: var(--ui-texto); border-color: var(--ui-borda); }
+  html.strata-escuro #pl-destino, html.strata-escuro #ps-secao { background: var(--ui-fundo2); color: var(--ui-texto); border-color: var(--ui-borda); }
 }
 /* PDF: cada página da tela vira uma página do PDF, na mesma proporção (A4) */
 @media print {

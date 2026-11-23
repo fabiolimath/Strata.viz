@@ -107,7 +107,8 @@ salva como `novo_documento.html`.
     id="teo:k3x9p" data-nome="Pitágoras">`, título gerado (Teorema 1 (Pitágoras):);
   - equação destacada: `<span class="eq-num" id="eq:...">\[ ... \]</span>`, número à direita;
   - figura: `<span class="figura" id="fig:..." style="width: 48%"><img><span class="legenda">texto</span></span>`;
-  - tabela: `<table class="tabela" id="tab:..."><caption>texto</caption>...`.
+  - tabela com legenda: `<table class="tabela" id="tab:..."><caption>texto</caption>...`
+    (cor do cabeçalho: `data-cab-cor="cor-azul"`).
   Referência: `<a class="ref" href="#teo:k3x9p"></a>` mostra o número atual
   (Teorema 1, (3), Figura 2); label inexistente vira ??.
 - **Vídeo / conteúdo embutido**: `<div class="video"><iframe src="..."></iframe></div>`
