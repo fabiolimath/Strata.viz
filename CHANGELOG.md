@@ -2,6 +2,15 @@
 
 ## Próxima versão
 
+- Enter no fim de uma camada em linha não cria mais uma linha com duas camadas:
+  a linha nova entra junto com a camada do cursor.
+- Ao salvar, sai o `<br>` que o navegador deixa no fim de blocos com texto;
+  exemplo regravado pela versão atual.
+- Tabela: setas e Delete/Backspace tratam a célula como bloco (antes podiam
+  pular para o parágrafo seguinte); a âncora de uma tabela-camada não deixa
+  mais texto solto dentro da tabela.
+- Desenho: a barra fica opaca (só os botões apagados); enquanto a ferramenta
+  está ativa, nada da página reage ao mouse; ícone novo (pena de caneta).
 - Símbolos: uma seção por vez, escolhida num menu (a última volta na próxima vez).
 - Rascunho: a chave não depende mais de ?editar/?aula na URL; ao recuperar,
   o cursor é recolocado no texto.
