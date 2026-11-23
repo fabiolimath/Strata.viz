@@ -212,7 +212,7 @@
   <div class="pm-linha"><b>Desenho</b> <span class="pm-dica">Desenhe na página. Tudo o que fizer aqui é uma camada só. Enter conclui, Esc cancela, Ctrl+Z desfaz o último traço.</span></div>
   <div class="pm-linha"><span class="pm-rot">Ferram.</span><button type="button" data-ferr="livre" title="Caneta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17c3-5 5-7 6.5-7 2 0 .5 6 3 6s3.5-7 8-10"/></svg></button><button type="button" data-ferr="marca" title="Marca-texto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21.5h10" stroke="#f0c000" stroke-width="3.2"/><path d="M14.2 3.6l6.2 6.2-8.3 8.3-6.2-6.2z"/><path d="M5.9 11.9l-1.6 4.4 3.4 3.4 4.4-1.6"/></svg></button><button type="button" data-ferr="linha" title="Linha"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20L20 4"/></svg></button><button type="button" data-ferr="seta" title="Seta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20L19 5M11 5h8v8"/></svg></button><button type="button" data-ferr="ret" title="Retângulo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6" width="17" height="12" rx="1"/></svg></button><button type="button" data-ferr="elipse" title="Elipse"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="9" ry="6.5"/></svg></button><button type="button" data-ferr="borracha" title="Borracha (apaga o traço inteiro)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 20h12M5.5 14.5l8-8a2 2 0 0 1 2.8 0l2.2 2.2a2 2 0 0 1 0 2.8L12 18H9z"/><path d="M9.5 10.5l5 5"/></svg></button></div>
   <div class="pm-linha"><span class="pm-rot">Cor</span><button type="button" class="pm-cor" data-dcor="preto" style="--c:#111111" title="preto"></button><button type="button" class="pm-cor" data-dcor="azul" style="--c:#3333cc" title="azul"></button><button type="button" class="pm-cor" data-dcor="laranja" style="--c:#ff8000" title="laranja"></button><button type="button" class="pm-cor" data-dcor="vermelho" style="--c:#d01c1c" title="vermelho"></button><button type="button" class="pm-cor" data-dcor="verde" style="--c:#1b8a3a" title="verde"></button><button type="button" class="pm-cor" data-dcor="roxo" style="--c:#8e24aa" title="roxo"></button><button type="button" class="pm-cor" data-dcor="amarelo" style="--c:#ffe600" title="amarelo"></button><span class="pm-rot" style="width:auto;margin-left:12px">Traço</span><button type="button" data-esp="1.6" title="Fino"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16" stroke-width="1.4"/></svg></button><button type="button" data-esp="2.6" title="Médio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16" stroke-width="2.6"/></svg></button><button type="button" data-esp="4.5" title="Grosso"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16" stroke-width="4.4"/></svg></button></div>
-  <div class="ee-botoes"><button type="button" id="pd-apagar">Apagar desenho</button><button type="button" id="pd-desfazer" title="Desfazer o último traço (Ctrl+Z)">Desfazer traço</button><button type="button" id="pd-cancelar">Cancelar</button><button type="button" id="pd-ok">Concluir</button></div>
+  <div class="ee-botoes"><button type="button" id="pd-apagar">Apagar desenhos</button><button type="button" id="pd-desfazer" title="Desfazer o último traço (Ctrl+Z)">Desfazer traço</button><button type="button" id="pd-cancelar">Cancelar</button><button type="button" id="pd-ok">Concluir</button></div>
 </div>
 <div id="painel-rotulo" class="painel-mini" hidden="" role="dialog" aria-label="Legenda e label">
   <div class="linha"><b id="pr-titulo">Legenda</b></div>
@@ -1794,8 +1794,9 @@
       const R = refDesenho(m); if (!R) return;
       const s = tinta(R.pag), paleta = Strata.temaEscuro() ? DS_CORES_ESCURO : DS_CORES;
       const tracos = lerTracos(m.dataset.tracos); if (!tracos.length) return;
-      let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity, atraso = 0;
+      let atraso = 0;
       tracos.forEach(t => {
+        let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
         const { d, e } = formaDoTraco(t, R);
         const el = svgEl('path', { d, class: 'traco' + (t.ferr === 'marca' ? ' marca-livre' : '') + (anima ? ' anima' : '') + (estado === 'apagada' ? ' apagada' : ''), stroke: paleta[t.cor] || paleta.vermelho, pathLength: 1 }, s);
         el.style.strokeWidth = e;
@@ -1803,9 +1804,10 @@
         let L = 0; for (let i = 1; i < pts.length; i++) L += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
         if (anima) { const dur = Math.min(1.2, Math.max(.25, L / 700)); el.style.animationDuration = dur + 's'; el.style.animationDelay = atraso + 's'; atraso += dur * .8; }
         pts.forEach(([x, y]) => { x0 = Math.min(x0, x - e); y0 = Math.min(y0, y - e); x1 = Math.max(x1, x + e); y1 = Math.max(y1, y + e); });
+        // cada traço tem a sua área (pairar) e a sua moldura (destaque), como as marcações
+        MK.formas.push({ m, pag: R.pag, x: x0 - 4, y: y0 - 4, w: x1 - x0 + 8, h: y1 - y0 + 8 });
+        if (estado === 'foco' && m !== DS.rascunho) svgEl('rect', { x: x0 - 6, y: y0 - 6, width: x1 - x0 + 12, height: y1 - y0 + 12, rx: 4, class: 'moldura' }, s);
       });
-      MK.formas.push({ m, pag: R.pag, x: x0 - 4, y: y0 - 4, w: x1 - x0 + 8, h: y1 - y0 + 8 });
-      if (estado === 'foco' && m !== DS.rascunho) svgEl('rect', { x: x0 - 6, y: y0 - 6, width: x1 - x0 + 12, height: y1 - y0 + 12, rx: 4, class: 'moldura' }, s);
     }
 
     // modo desenho: a página deixa de ser editável e o mouse (caneta, dedo) desenha
