@@ -1323,7 +1323,7 @@
       const blocos = new Set();
       document.querySelectorAll('.apostila .marca, .apostila span.fragment > .ancora-camada').forEach(a => { const b = a.closest(BLOCOS_L); if (b && b.closest('section.pagina')) blocos.add(b); });
       const anc = t => t.el && t.el.matches('.marca, span.fragment > .ancora-camada');
-      const vazio = t => t.zw || (!t.el && /\s/.test(t.no.data[t.i]));
+      const vazio = t => t.zw || (!t.el && /\s/.test(t.no.data[t.i])) || (t.el && t.el.matches('.fragment:not(span) > .ancora-camada'));   // a âncora da camada do bloco fica na margem
       const destacada = t => t && t.el && t.el.matches('mjx-container[display="true"]');
       const objeto = t => t && t.el && t.el.matches(OBJETOS + ', table, div.video');
       const larg = g => g.reduce((t, a) => { const cs = getComputedStyle(a); return t + a.getBoundingClientRect().width + (parseFloat(cs.marginLeft) || 0) + (parseFloat(cs.marginRight) || 0); }, 0);
