@@ -99,14 +99,20 @@ salva como `novo_documento.html`.
   e `<div class="notas-rodape"><p class="nota-rodape" id="nr-1" data-n="1">...</p></div>`
   no pé da página (numeradas pela ordem das chamadas; na apresentação, a nota
   aparece junto com a chamada).
-- **Ambientes**: `<div class="ambiente" data-tipo="definicao|teorema|exemplo|observacao">`
-  em volta dos blocos; o título é texto comum (`<span class="rotulo amb-titulo">Teorema:</span>`).
-- **Equação numerada**: `\tag{1}` no fim do LaTeX da equação destacada
-  (`\tag*{...}` sem parênteses). No editor, campo Número no diálogo da fórmula.
+- **Numeração automática** (como no LaTeX): na ordem do documento, refeita a
+  cada mudança. Cada item tem um label (o `id`), sorteado e editável:
+  - capítulo, seção, subseção: `<h1 class="capitulo">`, `<h2 class="secao">`,
+    `<h3 class="subsecao">` (com capítulos, tudo vira 2.1, 2.2, ...);
+  - ambientes: `<div class="ambiente" data-tipo="definicao|teorema|exemplo|observacao"
+    id="teo:k3x9p" data-nome="Pitágoras">`, título gerado (Teorema 1 (Pitágoras):);
+  - equação destacada: `<span class="eq-num" id="eq:...">\[ ... \]</span>`, número à direita;
+  - figura: `<span class="figura" id="fig:..." style="width: 48%"><img><span class="legenda">texto</span></span>`;
+  - tabela: `<table class="tabela" id="tab:..."><caption>texto</caption>...`.
+  Referência: `<a class="ref" href="#teo:k3x9p"></a>` mostra o número atual
+  (Teorema 1, (3), Figura 2); label inexistente vira ??.
 - **Vídeo / conteúdo embutido**: `<div class="video"><iframe src="..."></iframe></div>`
   (16:9; largura em % com `style="width: 60%"`).
-- **Links internos**: `<a href="#id">` para títulos, ambientes e equações
-  numeradas (o editor cria o `id`).
+- **Links internos**: `<a href="#id">` para títulos; para itens numerados, `a.ref` (acima).
 - **Cores do texto**: `rotulo` (laranja), `cor-azul`, `cor-vermelho`,
   `cor-verde`, `cor-roxo`. Cor de uma fórmula:
   `<span class="eq-cor cor-verde">\(...\)</span>`.

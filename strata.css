@@ -569,9 +569,37 @@ body.editando .apostila sup.ref-nota { cursor: default; background: #fde8e8; bor
 .apostila .ambiente[data-tipo="teorema"] > p { font-style: italic; }
 .apostila .ambiente[data-tipo="teorema"] .amb-titulo { font-style: normal; }
 @media print { .apostila .ambiente { break-inside: avoid; } }
-#ee-tag-l { display: inline-flex; gap: 6px; align-items: center; margin-right: 14px; }
-#ee-tag-l[hidden] { display: none; }
-#ee-tag { width: 90px; font: inherit; padding: 2px 6px; border: 1px solid #bbb; border-radius: 4px; }
+.apostila .ambiente .amb-titulo { font-weight: bold; color: var(--amb); }
+#ee-num-l { display: inline-flex; gap: 6px; align-items: center; margin-right: 14px; }
+#ee-num-l[hidden], #ee-label-l[hidden] { display: none; }
+#ee-label { width: 120px; font: inherit; padding: 2px 6px; border: 1px solid #bbb; border-radius: 4px; }
+/* numeração automática */
+.apostila span.eq-num { display: block; position: relative; padding-right: 3.2em; }
+.apostila span.eq-num::after { content: "(" attr(data-num) ")"; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+.apostila h1.capitulo { text-align: left; }
+.apostila h1.capitulo::before { content: "Capítulo " attr(data-num); display: block; font-size: .55em; margin-bottom: .2em; opacity: .85; }
+.apostila h2.secao::before, .apostila h3.subsecao::before { content: attr(data-num) "\2002"; }
+.apostila span.figura { display: inline-block; vertical-align: top; max-width: 100%; text-indent: 0; }
+.apostila span.figura > img { display: block; width: 100%; max-width: 100%; margin: 0 auto; }
+.apostila span.figura > .legenda { display: block; font-size: .9em; text-align: center; margin-top: .3em; line-height: 1.3; }
+.apostila span.figura > .legenda::before { content: "Figura " attr(data-num) ": "; font-weight: bold; }
+.apostila span.figura > .legenda:empty::before { content: "Figura " attr(data-num); }
+.apostila table.tabela > caption { font-size: .9em; padding: 0 0 .35em; text-align: center; caption-side: top; }
+.apostila table.tabela > caption::before { content: "Tabela " attr(data-num) ": "; font-weight: bold; }
+.apostila table.tabela > caption:empty::before { content: "Tabela " attr(data-num); }
+.apostila a.ref { text-decoration: none; }
+body.editando .apostila span.figura > .legenda, body.editando .apostila table.tabela > caption, body.editando .apostila .ambiente .amb-titulo { cursor: pointer; }
+body.editando .apostila span.figura > .legenda:hover, body.editando .apostila table.tabela > caption:hover, body.editando .apostila .ambiente .amb-titulo:hover { outline: 1px dashed #c05f00; outline-offset: 2px; }
+#painel-rotulo { width: min(400px, calc(100vw - 32px)); }
+#painel-rotulo #pr-texto { flex: 1; min-width: 0; }
+#painel-rotulo #pr-label { width: 150px; font-family: ui-monospace, Consolas, monospace; font-size: 13px; }
+#pr-erro { color: #b00; font-size: 13px; }
+#pr-erro:empty { display: none; }
+#b-rotulo, #img-legenda { position: fixed; z-index: 54; font: 12px system-ui, sans-serif; padding: 2px 8px; border: 1px solid #c05f00; color: #c05f00; background: #fff; border-radius: 4px; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,.15); }
+#img-legenda { position: absolute; left: 50%; top: 8px; transform: translateX(-50%); pointer-events: auto; white-space: nowrap; }
+#b-rotulo:hover, #img-legenda:hover { background: #fff3e6; }
+#b-rotulo[hidden], #img-legenda[hidden] { display: none; }
+body:not(.editando) #b-rotulo { display: none; }
 @media screen {
   html.strata-escuro .apostila .notas-rodape { border-top-color: #555; }
   html.strata-escuro body.editando .apostila sup.ref-nota { background: #4a2424; }
@@ -579,7 +607,7 @@ body.editando .apostila sup.ref-nota { cursor: default; background: #fde8e8; bor
   html.strata-escuro .apostila .ambiente[data-tipo="teorema"] { --amb-fundo: #22243a; --amb: #7f86ff; }
   html.strata-escuro .apostila .ambiente[data-tipo="exemplo"] { --amb-fundo: #2e2418; }
   html.strata-escuro .apostila .ambiente[data-tipo="observacao"] { --amb-fundo: #26272b; }
-  html.strata-escuro #ee-tag { background: var(--ui-fundo2); color: var(--ui-texto); border-color: var(--ui-borda); }
+  html.strata-escuro #ee-label, html.strata-escuro #b-rotulo, html.strata-escuro #img-legenda { background: var(--ui-fundo2); color: var(--ui-texto); border-color: var(--ui-borda); }
 }
 
 /* vídeo e conteúdo embutido */
@@ -606,5 +634,5 @@ body.editando .apostila .video iframe { pointer-events: none; }
 @media print {
   @page { size: 860px 1216px; margin: 0; }
   .apostila section.pagina { min-height: 1216px; max-width: none; width: 860px; }
-  #img-sel, #painel-video, #painel-simbolos, #painel-imagem, #painel-tabela, #aviso-rascunho { display: none !important; }
+  #img-sel, #painel-video, #painel-simbolos, #painel-imagem, #painel-tabela, #painel-rotulo, #b-rotulo, #aviso-rascunho { display: none !important; }
 }
