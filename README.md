@@ -95,6 +95,24 @@ salva como `novo_documento.html`.
   `preto`, `azul`, `laranja`, `vermelho`, `verde`, `roxo`, `amarelo`. x conta da
   esquerda da página e y do alto do bloco em que está a âncora, em px de uma
   página de 860 px: o desenho acompanha esse parágrafo quando o texto de cima muda.
+- **Notas de rodapé**: chamada `<sup class="ref-nota" data-nota="nr-1">1</sup>` no texto
+  e `<div class="notas-rodape"><p class="nota-rodape" id="nr-1" data-n="1">...</p></div>`
+  no pé da página (numeradas pela ordem das chamadas; na apresentação, a nota
+  aparece junto com a chamada).
+- **Numeração automática** (como no LaTeX): na ordem do documento, refeita a
+  cada mudança. Cada item tem um label (o `id`), sorteado e editável:
+  - capítulo, seção, subseção: `<h1 class="capitulo">`, `<h2 class="secao">`,
+    `<h3 class="subsecao">` (com capítulos, tudo vira 2.1, 2.2, ...);
+  - ambientes: `<div class="ambiente" data-tipo="definicao|teorema|exemplo|observacao"
+    id="teo:k3x9p" data-nome="Pitágoras">`, título gerado (Teorema 1 (Pitágoras):);
+  - equação destacada: `<span class="eq-num" id="eq:...">\[ ... \]</span>`, número à direita;
+  - figura: `<span class="figura" id="fig:..." style="width: 48%"><img><span class="legenda">texto</span></span>`;
+  - tabela: `<table class="tabela" id="tab:..."><caption>texto</caption>...`.
+  Referência: `<a class="ref" href="#teo:k3x9p"></a>` mostra o número atual
+  (Teorema 1, (3), Figura 2); label inexistente vira ??.
+- **Vídeo / conteúdo embutido**: `<div class="video"><iframe src="..."></iframe></div>`
+  (16:9; largura em % com `style="width: 60%"`).
+- **Links internos**: `<a href="#id">` para títulos; para itens numerados, `a.ref` (acima).
 - **Cores do texto**: `rotulo` (laranja), `cor-azul`, `cor-vermelho`,
   `cor-verde`, `cor-roxo`. Cor de uma fórmula:
   `<span class="eq-cor cor-verde">\(...\)</span>`.
@@ -165,6 +183,12 @@ MathJax (como o `fol.js` do site, que traz as macros do
   desenhe na página (caneta, marca-texto, linha, seta, retângulo, elipse,
   borracha que apaga o traço inteiro). Enter conclui, Esc cancela, Ctrl+Z desfaz
   o último traço. Clique na âncora para mudar o desenho.
+- Colar: texto do Word, PDF ou web entra limpo (só estrutura, negrito,
+  itálico, links e fórmulas do Strata); Ctrl+Shift+V cola como texto puro.
+- Alt+↑ / Alt+↓ movem o bloco do cursor (com as notas laterais dele).
+- Rascunho automático: com alterações não salvas, uma cópia fica no navegador;
+  ao abrir de novo o arquivo, o Strata oferece recuperar.
+- Menu ☰ → Exportar PDF: abre a impressão com as páginas no tamanho das da tela.
 - Olho (Ctrl+Q): recolhe as âncoras. Ctrl+Z / Ctrl+Y desfazem e refazem.
 - Barra de texto: estilos (Parágrafo, Título 1, Subtítulo, Título 2–4,
   Equação, Pré-formatado, Citação), negrito, itálico, cor, link (Ctrl+K),
