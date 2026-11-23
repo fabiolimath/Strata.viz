@@ -344,6 +344,13 @@ body.editando .apostila .camada-foco > .ancora-camada { background: #ff8000; col
 #barra .b-icone svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 #barra .combo { position: relative; display: inline-flex; }
 #barra .combo > .b-icone { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+/* Marcar e Desenhar: a ferramenta no botão, e um emblema no canto (marcador ou pena) */
+#barra .b-icone.com-emblema { position: relative; }
+#barra .b-icone.com-emblema > svg { width: 19px; height: 19px; margin: -3px 3px 0 -3px; }
+#barra .b-icone .emblema { position: absolute; right: 1px; bottom: 1px; width: 12px; height: 12px; display: flex; align-items: center; justify-content: center;
+  color: #222; background: #fff; border-radius: 3px; pointer-events: none; }
+#barra .b-icone .emblema svg { width: 11px; height: 11px; stroke-width: 2.2; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+#barra .b-icone .emblema svg circle { fill: none; }
 #barra .combo-seta { border-left: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; padding: 0 5px; font-size: 11px; color: #555; }
 #barra .combo-menu { position: absolute; top: calc(100% + 4px); left: 0; z-index: 75; display: flex; flex-direction: column; gap: 2px;
   background: #fff; border: 1px solid #bbb; border-radius: 6px; box-shadow: 0 6px 20px rgba(0,0,0,.2); padding: 4px; min-width: 170px; }
@@ -505,6 +512,7 @@ html.strata-escuro #b-tema .sol { display: none; }
   /* bolinhas de cor (tabela, legenda): no escuro, a cor escolhida ganha um anel laranja */
   html.strata-escuro .pt-cor, html.strata-escuro #pr-cores .pr-cor { border-color: var(--ui-borda) !important; }
   html.strata-escuro .pt-cor.ativo, html.strata-escuro #pr-cores .pr-cor.ativo { border-color: #1a1c21 !important; box-shadow: 0 0 0 2px #ff9a3c; }
+  html.strata-escuro #barra .b-icone .emblema { color: var(--ui-texto); background: var(--ui-fundo); }
   html.strata-escuro #sumario a.atual { background: var(--ui-ativo); color: #fff; }
   html.strata-escuro #barra .combo-menu, html.strata-escuro #menu-strata, html.strata-escuro .painel-mini,
   html.strata-escuro #editor-eq, html.strata-escuro #painel-marca, html.strata-escuro #painel-desenho {

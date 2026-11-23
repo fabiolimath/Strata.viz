@@ -2,6 +2,9 @@
 
 ## Próxima versão
 
+- Botões Marcar e Desenhar: mostram a última ferramenta usada, na cor usada, com
+  um emblema no canto (marcador na marcação, pena no desenho). Desenhar virou
+  combo: o ▾ escolhe a ferramenta e já abre o desenho.
 - Desenho: ao pairar, cada traço ganha a sua moldura (antes, um retângulo só
   envolvia todos); botão "Apagar desenhos".
 - Cor base do texto: preto (branco no tema escuro), em vez de azul. Texto azul
