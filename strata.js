@@ -540,6 +540,17 @@
       else return;
       r.collapse(true); const s = getSelection(); s.removeAllRanges(); s.addRange(r);
     }
+    function sairDaTabela(tab, dir) {
+      let v = dir > 0 ? tab.nextElementSibling : tab.previousElementSibling;
+      if (dir > 0 && (!v || v.matches('.rodape'))) { v = document.createElement('p'); v.innerHTML = '<br>'; tab.after(v); sujo(true); }
+      if (!v) return;
+      const it = itensDoBloco(v);
+      it.forEach(t => { if (t.el && t.el.matches('.fragment:not(span) > .ancora-camada')) t.zw = true; });
+      if (!it.length) { cursorEm(v); return; }
+      let k = dir > 0 ? 0 : it.length;
+      if (dir > 0) while (k < it.length && it[k].zw) k++; else while (k > 0 && it[k - 1].zw) k--;
+      porCursor(it, k);
+    }
     document.addEventListener('keydown', ev => {
       if ((ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') || ev.shiftKey || ev.ctrlKey || ev.metaKey || ev.altKey) return;
       if (!document.body.classList.contains('editando') || document.body.classList.contains('escolhendo')) return;
@@ -551,6 +562,26 @@
       // a âncora de uma camada de linha inteira fica na margem: as setas passam por ela sem parar
       it.forEach(t => { if (t.el && t.el.matches('.fragment:not(span) > .ancora-camada')) t.zw = true; });
       let k = posicaoNoBloco(it, r.startContainer, r.startOffset), pulou = false;
+      // saindo da tabela pela última (ou primeira) célula: o navegador deixaria o cursor solto
+      // na página, entre a tabela e o bloco vizinho; leva para dentro do bloco vizinho
+      if (b.matches('td, th')) {
+        const tab = b.closest('table'), cels = tab.querySelectorAll('td, th');
+        const fimDaCel = !it.slice(k).some(t => !t.zw), iniDaCel = !it.slice(0, k).some(t => !t.zw);
+        if (ev.key === 'ArrowRight' && fimDaCel && b === cels[cels.length - 1]) { ev.preventDefault(); sairDaTabela(tab, 1); return; }
+        if (ev.key === 'ArrowLeft' && iniDaCel && b === cels[0]) { ev.preventDefault(); sairDaTabela(tab, -1); return; }
+      } else if (!b.matches('section.pagina')) {   // e o caminho inverso: do bloco vizinho para dentro da tabela
+        const viz = ev.key === 'ArrowRight' ? b.nextElementSibling : b.previousElementSibling;
+        const borda = ev.key === 'ArrowRight' ? !it.slice(k).some(t => !t.zw) : !it.slice(0, k).some(t => !t.zw);
+        if (borda && viz && viz.matches('table')) {
+          const cels = viz.querySelectorAll('td, th'); if (!cels.length) return;
+          ev.preventDefault();
+          const c = ev.key === 'ArrowRight' ? cels[0] : cels[cels.length - 1], ic = itensDoBloco(c);
+          if (!ic.length) { cursorEm(c); return; }
+          let j = ev.key === 'ArrowRight' ? 0 : ic.length;
+          if (ev.key === 'ArrowRight') while (j < ic.length && ic[j].zw) j++; else while (j > 0 && ic[j - 1].zw) j--;
+          porCursor(ic, j); return;
+        }
+      }
       if (ev.key === 'ArrowRight') {
         while (k < it.length && it[k].zw) { k++; pulou = true; }
         if (k >= it.length) { if (pulou) porCursor(it, it.length); return; }

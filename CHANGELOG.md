@@ -2,6 +2,10 @@
 
 ## Próxima versão
 
+- Tabela: → na última célula e ← na primeira levam o cursor para o bloco
+  vizinho (antes ele ficava solto na página, fora de qualquer parágrafo, e o
+  texto digitado ali saía sem recuo e na cor da página); → e ← a partir do
+  bloco vizinho entram na tabela.
 - Tema escuro: as ferramentas, cores e espessuras escolhidas no desenho
   voltam a aparecer destacadas; a cor escolhida do cabeçalho da tabela e da
   legenda ganha um anel laranja.
