@@ -499,6 +499,9 @@
     function garantirPontos() {
       document.querySelectorAll('section.pagina').forEach(sec => sec.querySelectorAll('mjx-container, .marca, .ancora-camada').forEach(e => {
         if (!e.parentElement || e.parentElement.closest('mjx-container, .tinta-html')) return;
+        if (e.parentElement.matches('table, tbody, thead, tr')) {   // âncora de tabela: texto solto aí vira célula fantasma
+          [...e.parentElement.childNodes].forEach(n => { if (n.nodeType === 3) n.remove(); }); return;
+        }
         const ok = (n, fim) => n && n.nodeType === 3 && (fim ? /[^\s]$/.test(n.data) : /^[^\s]/.test(n.data));
         if (!ok(e.previousSibling, true)) e.before(ZW);
         if (!ok(e.nextSibling, false)) e.after(ZW);
@@ -543,7 +546,7 @@
       const sel = getSelection(); if (!sel.rangeCount || !sel.isCollapsed) return;
       const r = sel.getRangeAt(0), n = r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement;
       if (!n || !n.closest('section.pagina') || n.closest(NAO_EDIT)) return;
-      const b = n.closest(BLOCOS) || n.closest('section.pagina');
+      const b = n.closest('td, th, ' + BLOCOS) || n.closest('section.pagina');   // célula de tabela conta como bloco
       const it = itensDoBloco(b);
       // a âncora de uma camada de linha inteira fica na margem: as setas passam por ela sem parar
       it.forEach(t => { if (t.el && t.el.matches('.fragment:not(span) > .ancora-camada')) t.zw = true; });
@@ -580,7 +583,7 @@
       const sel = getSelection(); if (!sel.rangeCount || !sel.isCollapsed) return;
       const r = sel.getRangeAt(0), n = r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement;
       if (!n || !n.closest('section.pagina') || n.closest(NAO_EDIT)) return;
-      const b = n.closest(BLOCOS) || n.closest('section.pagina');
+      const b = n.closest('td, th, ' + BLOCOS) || n.closest('section.pagina');
       let it = itensDoBloco(b), k = posicaoNoBloco(it, r.startContainer, r.startOffset), k0 = k;
       if (ev.key === 'Backspace') {
         while (k > 0 && it[k - 1].zw) k--;
@@ -613,7 +616,7 @@
         const sel = getSelection(); if (!sel.rangeCount || !sel.isCollapsed) return;
         const r = sel.getRangeAt(0), n = r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement;
         if (!n || !n.closest('section.pagina') || n.closest(NAO_EDIT)) return;
-        const b = n.closest(BLOCOS) || n.closest('section.pagina');
+        const b = n.closest('td, th, ' + BLOCOS) || n.closest('section.pagina');
         const it = itensDoBloco(b);
         let k = posicaoNoBloco(it, r.startContainer, r.startOffset);
         while (k < it.length && it[k].zw) k++;
@@ -942,6 +945,7 @@
       });
       doc.querySelectorAll('[id^="MJX"], head style[type="text/css"], head script[src*="/extensions/"], head script[src*="/output/"], head script[src*="/input/"]').forEach(e => e.remove());
       tirarFimDeLinha(doc);
+      tirarBrFinal(doc);
       doc.querySelectorAll('section.pagina[style]').forEach(e => { e.style.removeProperty('padding-bottom'); });
       doc.querySelectorAll('.oculta, .piscando').forEach(e => e.classList.remove('oculta', 'piscando'));
       doc.querySelectorAll('[style=""]').forEach(e => e.removeAttribute('style'));
@@ -1190,6 +1194,23 @@
     // Âncoras no fim de um parágrafo (ou ao lado de uma equação destacada) passam da margem em vez de
     // quebrar a linha: o bloco ganha, só no modo edição, a largura delas para fora da margem. Assim as
     // âncoras continuam ocupando lugar e o cursor para antes e depois delas.
+    // <br> que o navegador deixa no fim de um bloco com texto (às vezes dentro da camada em linha do fim):
+    // não muda nada na tela e, dentro de um span.fragment, fazia o Enter levar uma cópia vazia da camada
+    function tirarBrFinal(raiz) {
+      raiz.querySelectorAll('.apostila p, .apostila h1, .apostila h2, .apostila h3, .apostila h4, .apostila h5, .apostila h6, .apostila li, .apostila blockquote, .apostila .subtitulo').forEach(b => {
+        if (!b.textContent.replace(/[\s\u200B]/g, '') && !b.querySelector('mjx-container, img, .marca')) return;   // linha vazia: o <br> a sustenta
+        let u = b.lastChild;
+        for (;;) {
+          while (u && u.nodeType === 3 && !u.data.replace(/[\s\u200B]/g, '')) u = u.previousSibling;
+          if (u && u.nodeType === 1 && u.matches('span') && !u.matches('.marca, .ancora-camada')) { u = u.lastChild; continue; }
+          break;
+        }
+        if (!u || u.nodeName !== 'BR') return;
+        let a = u.previousSibling; while (a && a.nodeType === 3 && !a.data.replace(/[\s\u200B]/g, '')) a = a.previousSibling;
+        if (a && a.nodeName === 'BR') return;   // <br><br>: quebra de linha de verdade no fim
+        u.remove();
+      });
+    }
     function tirarFimDeLinha(raiz) {
       raiz.querySelectorAll('.no-fim').forEach(e => { e.classList.remove('no-fim'); ['margin-right', 'margin-left', 'left', 'width'].forEach(k => e.style.removeProperty(k)); if (!e.getAttribute('style')) e.removeAttribute('style'); if (!e.classList.length) e.removeAttribute('class'); });
     }
@@ -2096,6 +2117,15 @@
       }
       const par = (a, b) => { if (!a || !b || !b.classList.contains('fragment')) return; const j = a.dataset.junto || b.dataset.junto || novoJunto(); a.dataset.junto = j; b.dataset.junto = j; };
       const semAncora = e => !e.querySelector(':scope > .ancora-camada');
+      // Enter no fim de uma camada em linha (span.fragment): o navegador leva para a linha nova uma cópia vazia
+      // do trecho. Ela sai, e a linha nova entra junto com essa camada (é onde o cursor estava).
+      const vazio = e => !e.textContent.replace(/[\s\u200B]/g, '') && !e.querySelector('mjx-container, img, .marca, table');
+      const sB0 = [...B.querySelectorAll('span.fragment:not(.marca)')].find(semAncora), sA0 = [...A.querySelectorAll('span.fragment:not(.marca)')].pop();
+      if (sB0 && sA0 && vazio(sB0)) {
+        sB0.replaceWith(...sB0.childNodes);
+        B.classList.add('fragment'); const j = sA0.dataset.junto || novoJunto(); sA0.dataset.junto = j; B.dataset.junto = j;
+        iconesCamada(); return;
+      }
       if (B.classList.contains('fragment') && A.classList.contains('fragment')) {
         if (semAncora(B)) par(A, B); else if (semAncora(A)) par(B, A);   // Enter no começo: a linha vazia fica em cima
       }

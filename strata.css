@@ -312,6 +312,7 @@ body.editando .apostila .ancora-camada { display: inline-flex; align-items: cent
   border: 1px solid #ff8000; border-radius: 4px; background: #fff1e0; color: #ff8000; cursor: pointer; user-select: none; text-indent: 0; }
 body.editando .apostila span.fragment > .ancora-camada { cursor: grab; }
 body.editando .apostila .fragment:not(span) > .ancora-camada { position: absolute; left: -30px; top: .25em; margin: 0; }
+body.editando .apostila table.fragment { position: relative; }
 /* em listas, a âncora fica à esquerda do número ou marcador */
 body.editando .apostila li.fragment > .ancora-camada { left: calc(-2.5em - 22px); }
 body.editando.ancoras-recolhidas .apostila li.fragment > .ancora-camada { left: calc(-2.5em - 6px); }
