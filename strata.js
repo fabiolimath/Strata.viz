@@ -138,7 +138,7 @@
   <button type="button" id="b-olho" class="b-icone" title="Mostra ou recolhe as âncoras. Recolhidas, cada âncora vira uma linha vertical, na cor dela, no ponto em que está; passe o mouse sobre a linha para ver o ícone. (Ctrl+Q)" aria-label="Mostrar ou recolher âncoras"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="olho-aberto" d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle class="olho-aberto" cx="12" cy="12" r="3"/><path class="olho-fechado" d="M2.5 10.5s3.5 4.5 9.5 4.5 9.5-4.5 9.5-4.5M5.2 13.4l-1.7 2.3M9.2 14.8l-.7 2.7M14.8 14.8l.7 2.7M18.8 13.4l1.7 2.3"/></svg></button>
   <span class="sep"></span>
   <span class="combo grupo" id="c-eq"><button type="button" id="b-eqs" class="b-icone" title="Equações" aria-label="Equações"></button><button type="button" class="combo-seta" title="Equações: escolher" aria-label="Equações: escolher">▾</button>
-    <span class="combo-menu" hidden=""><button type="button" id="b-inline" title="Fórmula no meio do texto, na posição do cursor (Alt+X)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="5" y="18.5" font-family="Times New Roman, serif" font-style="italic" font-weight="bold" font-size="17">x</text><text x="14" y="10.5" font-family="Times New Roman, serif" font-weight="bold" font-size="10">2</text></svg></span>Em linha (Alt+X)</button><button type="button" id="b-display" title="Equação destacada (centralizada), abaixo do parágrafo atual"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h20M2 21.5h20" stroke-width="1.3"/><g transform="translate(2.2 1.6) scale(.8)"><text x="6" y="18.5" font-family="Times New Roman, serif" font-style="italic" font-weight="bold" font-size="17">x</text><text x="15" y="10.5" font-family="Times New Roman, serif" font-weight="bold" font-size="10">2</text></g></svg></span>Destacada</button></span></span>
+    <span class="combo-menu" hidden=""><button type="button" id="b-inline" title="Fórmula no meio do texto, na posição do cursor (Alt+X)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="5" y="18.5" font-family="Times New Roman, serif" font-style="italic" font-weight="bold" font-size="17">x</text><text x="14" y="10.5" font-family="Times New Roman, serif" font-weight="bold" font-size="10">2</text></svg></span>Equação em linha (Alt+X)</button><button type="button" id="b-display" title="Equação destacada (centralizada), abaixo do parágrafo atual"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h20M2 21.5h20" stroke-width="1.3"/><g transform="translate(2.2 1.6) scale(.8)"><text x="6" y="18.5" font-family="Times New Roman, serif" font-style="italic" font-weight="bold" font-size="17">x</text><text x="15" y="10.5" font-family="Times New Roman, serif" font-weight="bold" font-size="10">2</text></g></svg></span>Equação destacada</button></span></span>
   <span class="sep"></span>
   <button type="button" id="b-pagina" class="b-icone" title="Nova página, depois da página atual" aria-label="Nova página"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M14 3v4h4"></path><path d="M12 11v6M9 14h6"></path></svg></button>
 </div>
@@ -457,6 +457,25 @@
     function sujo(v) { ED.sujo = v; document.body.classList.toggle('sujo', v); if (v) histAgendar(); else apagarRascunho(); }
     const $ = id => document.getElementById(id);
     const BLOCOS = 'p, div.eq, div.caixa, h1, h2, h3, h4, h5, h6, pre, blockquote, aside.nota, li, .subtitulo';
+    // tabela e vídeo ficam numa linha própria (div.linha-objeto): os pontos antes e depois deles recebem âncoras
+    // de camada, marcação e desenho, como na equação destacada
+    const LINHA_OBJ = 'div.linha-objeto';
+    const BLOCOS_L = BLOCOS + ', ' + LINHA_OBJ;
+    function embrulharObjetos() {
+      let mudou = false;
+      document.querySelectorAll('section.pagina table.tabela, section.pagina div.video').forEach(t => {
+        const pai = t.parentElement;
+        if (pai.matches(LINHA_OBJ) || pai.closest('td, th, ' + BLOCOS)) return;
+        const d = document.createElement('div'); d.className = 'linha-objeto';
+        if (t.classList.contains('fragment')) {   // tabela (ou vídeo) que era camada: a camada passa a ser a linha
+          d.classList.add('fragment'); t.classList.remove('fragment', 'visivel', 'camada-foco');
+          if (t.dataset.junto) { d.dataset.junto = t.dataset.junto; delete t.dataset.junto; }
+          t.querySelectorAll(':scope > .ancora-camada, :scope > tbody > .ancora-camada').forEach(a => a.remove());
+        }
+        t.before(d); d.append(t); mudou = true;
+      });
+      return mudou;
+    }
 
     function guardarTex() {
       for (const it of MathJax.startup.document.math) {
@@ -479,7 +498,7 @@
       document.querySelectorAll('section.pagina').forEach(s => s.setAttribute('contenteditable', 'true'));
       document.querySelectorAll('section.pagina > .rodape').forEach(r => r.setAttribute('contenteditable', 'false'));   // número da página: automático
       document.querySelectorAll('.apostila .marca').forEach(prepararIcone);
-      soltasParaDentro();
+      soltasParaDentro(); embrulharObjetos();
       iconesCamada(); garantirPontos();
       montarSumario();
       HIST.atual = null;
@@ -497,7 +516,8 @@
     // não deixa pôr o cursor antes ou depois. No modo edição ganham um espaço invisível (U+200B).
     const ZW = '\u200B';
     function garantirPontos() {
-      document.querySelectorAll('section.pagina').forEach(sec => sec.querySelectorAll('mjx-container, .marca, .ancora-camada').forEach(e => {
+      if (embrulharObjetos()) iconesCamada();
+      document.querySelectorAll('section.pagina').forEach(sec => sec.querySelectorAll('mjx-container, .marca, .ancora-camada, ' + LINHA_OBJ + ' > *, img:not(span.figura > img), span.figura').forEach(e => {
         if (!e.parentElement || e.parentElement.closest('mjx-container, .tinta-html')) return;
         if (e.parentElement.matches('table, tbody, thead, tr')) {   // âncora de tabela: texto solto aí vira célula fantasma
           [...e.parentElement.childNodes].forEach(n => { if (n.nodeType === 3) n.remove(); }); return;
@@ -510,13 +530,14 @@
     // Cursor e espaços invisíveis: para o teclado e o mouse, cada fórmula (ou âncora) é um
     // "caractere" só; os espaços invisíveis ao lado dela não contam.
     const NAO_EDIT = 'mjx-container, .marca, .ancora-camada';
+    const OBJETOS = 'img, span.figura';   // imagens: um "caractere" só, como as fórmulas
     function itensDoBloco(b) {   // lista plana: caracteres de texto e elementos não editáveis
       const it = [];
       (function rec(n) {
         for (const f of n.childNodes) {
           if (f.nodeType === 3) for (let i = 0; i < f.data.length; i++) it.push({ no: f, i, zw: f.data[i] === ZW });
           else if (f.nodeType === 1) {
-            if (f.matches(NAO_EDIT)) it.push({ el: f });
+            if (f.matches(NAO_EDIT + ', ' + OBJETOS) || (f.matches('table, div.video') && n.matches(LINHA_OBJ))) it.push({ el: f });
             else if (!f.matches('.tinta-html, svg.tinta, aside.nota, .rodape')) rec(f);
           }
         }
@@ -540,17 +561,65 @@
       else return;
       r.collapse(true); const s = getSelection(); s.removeAllRanges(); s.addRange(r);
     }
+    function sairDaTabela(tab, dir) {
+      if (tab.parentElement.matches(LINHA_OBJ)) {   // para o ponto logo depois (ou antes) da tabela, na linha dela
+        const it = itensDoBloco(tab.parentElement), k = it.findIndex(t => t.el === tab);
+        return porCursor(it, dir > 0 ? k + 1 : k);
+      }
+      let v = dir > 0 ? tab.nextElementSibling : tab.previousElementSibling;
+      if (dir > 0 && (!v || v.matches('.rodape'))) { v = document.createElement('p'); v.innerHTML = '<br>'; tab.after(v); sujo(true); }
+      if (!v) return;
+      const it = itensDoBloco(v);
+      it.forEach(t => { if (t.el && t.el.matches('.fragment:not(span) > .ancora-camada')) t.zw = true; });
+      if (!it.length) { cursorEm(v); return; }
+      let k = dir > 0 ? 0 : it.length;
+      if (dir > 0) while (k < it.length && it[k].zw) k++; else while (k > 0 && it[k - 1].zw) k--;
+      porCursor(it, k);
+    }
     document.addEventListener('keydown', ev => {
       if ((ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') || ev.shiftKey || ev.ctrlKey || ev.metaKey || ev.altKey) return;
       if (!document.body.classList.contains('editando') || document.body.classList.contains('escolhendo')) return;
       const sel = getSelection(); if (!sel.rangeCount || !sel.isCollapsed) return;
       const r = sel.getRangeAt(0), n = r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement;
       if (!n || !n.closest('section.pagina') || n.closest(NAO_EDIT)) return;
-      const b = n.closest('td, th, ' + BLOCOS) || n.closest('section.pagina');   // célula de tabela conta como bloco
+      const b = n.closest('td, th, ' + BLOCOS_L) || n.closest('section.pagina');   // célula de tabela conta como bloco
       const it = itensDoBloco(b);
       // a âncora de uma camada de linha inteira fica na margem: as setas passam por ela sem parar
       it.forEach(t => { if (t.el && t.el.matches('.fragment:not(span) > .ancora-camada')) t.zw = true; });
       let k = posicaoNoBloco(it, r.startContainer, r.startOffset), pulou = false;
+      // saindo da tabela pela última (ou primeira) célula: o navegador deixaria o cursor solto
+      // na página, entre a tabela e o bloco vizinho; leva para dentro do bloco vizinho
+      if (b.matches('td, th')) {
+        const tab = b.closest('table'), cels = tab.querySelectorAll('td, th');
+        const fimDaCel = !it.slice(k).some(t => !t.zw), iniDaCel = !it.slice(0, k).some(t => !t.zw);
+        if (ev.key === 'ArrowRight' && fimDaCel && b === cels[cels.length - 1]) { ev.preventDefault(); sairDaTabela(tab, 1); return; }
+        if (ev.key === 'ArrowLeft' && iniDaCel && b === cels[0]) { ev.preventDefault(); sairDaTabela(tab, -1); return; }
+      } else if (b.matches(LINHA_OBJ)) {   // nos pontos da linha da tabela: a seta que encontra a tabela entra nela
+        let j = k;
+        if (ev.key === 'ArrowRight') { while (j < it.length && it[j].zw) j++; } else { while (j > 0 && it[j - 1].zw) j--; }
+        const t = ev.key === 'ArrowRight' ? it[j] : it[j - 1];
+        if (t && t.el && t.el.matches('table')) {
+          const cels = t.el.querySelectorAll('td, th'); if (!cels.length) return;
+          ev.preventDefault();
+          const c = ev.key === 'ArrowRight' ? cels[0] : cels[cels.length - 1], ic = itensDoBloco(c);
+          if (!ic.length) { cursorEm(c); return; }
+          let q = ev.key === 'ArrowRight' ? 0 : ic.length;
+          if (ev.key === 'ArrowRight') while (q < ic.length && ic[q].zw) q++; else while (q > 0 && ic[q - 1].zw) q--;
+          porCursor(ic, q); return;
+        }
+      } else if (!b.matches('section.pagina')) {   // e o caminho inverso: do bloco vizinho para dentro da tabela
+        const viz = ev.key === 'ArrowRight' ? b.nextElementSibling : b.previousElementSibling;
+        const borda = ev.key === 'ArrowRight' ? !it.slice(k).some(t => !t.zw) : !it.slice(0, k).some(t => !t.zw);
+        if (borda && viz && viz.matches('table')) {
+          const cels = viz.querySelectorAll('td, th'); if (!cels.length) return;
+          ev.preventDefault();
+          const c = ev.key === 'ArrowRight' ? cels[0] : cels[cels.length - 1], ic = itensDoBloco(c);
+          if (!ic.length) { cursorEm(c); return; }
+          let j = ev.key === 'ArrowRight' ? 0 : ic.length;
+          if (ev.key === 'ArrowRight') while (j < ic.length && ic[j].zw) j++; else while (j > 0 && ic[j - 1].zw) j--;
+          porCursor(ic, j); return;
+        }
+      }
       if (ev.key === 'ArrowRight') {
         while (k < it.length && it[k].zw) { k++; pulou = true; }
         if (k >= it.length) { if (pulou) porCursor(it, it.length); return; }
@@ -566,6 +635,23 @@
       }
       ev.preventDefault(); porCursor(it, k);
     });
+    // texto digitado (ou Enter) nos pontos da linha da tabela: vai para um parágrafo novo, antes ou depois dela
+    document.addEventListener('beforeinput', ev => {
+      if (!document.body.classList.contains('editando') || !/^(insertText|insertParagraph|insertLineBreak|insertFromPaste|insertReplacementText)$/.test(ev.inputType)) return;
+      const sel = getSelection(); if (!sel.rangeCount) return;
+      const r = sel.getRangeAt(0), n = noDe(r.startContainer); if (!n) return;
+      const L = n.closest(LINHA_OBJ + ', td, th'); if (!L || !L.matches(LINHA_OBJ)) return;
+      const tab = L.querySelector(':scope > table'); if (!tab) return;
+      ev.preventDefault();
+      const antes = r.comparePoint(tab, 0) > 0;   // cursor antes da tabela
+      const p = document.createElement('p');
+      if (antes) L.before(p); else L.after(p);
+      const txt = ev.inputType === 'insertText' || ev.inputType === 'insertReplacementText' ? (ev.data || '') : ev.inputType === 'insertFromPaste' && ev.dataTransfer ? ev.dataTransfer.getData('text/plain') : '';
+      if (txt) p.textContent = txt; else p.innerHTML = '<br>';
+      const q = document.createRange(); q.selectNodeContents(p); q.collapse(!!txt ? false : true);
+      if (!txt) { sel.removeAllRanges(); sel.addRange(q); } else { sel.removeAllRanges(); sel.addRange(q); }
+      sujo(true); desenharMarcas();
+    });
     // Del / Backspace: fórmula ou âncora vizinha (pulando os espaços invisíveis) é apagada de uma vez.
     // Fórmula: some. Âncora de marcação: apaga a marcação. Âncora de camada: junta a camada à anterior.
     function apagarItem(el) {
@@ -574,6 +660,7 @@
         if (w && w.matches('span.eq-cor') && !w.textContent.replace(/[\s\u200B]/g, '') && !w.querySelector('mjx-container')) w.remove();
       } else if (el.matches('.marca')) { el.remove(); MK.limpeza = limparRotulos(); }
       else if (el.matches('.ancora-camada')) { const f = el.parentElement; removerCamada(f); iconesCamada(); focarCamada(null); }
+      else if (el.matches(OBJETOS)) el.remove();
       sujo(true); desenharMarcas();
     }
     document.addEventListener('keydown', ev => {
@@ -583,10 +670,25 @@
       const sel = getSelection(); if (!sel.rangeCount || !sel.isCollapsed) return;
       const r = sel.getRangeAt(0), n = r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement;
       if (!n || !n.closest('section.pagina') || n.closest(NAO_EDIT)) return;
-      const b = n.closest('td, th, ' + BLOCOS) || n.closest('section.pagina');
+      const b = n.closest('td, th, ' + BLOCOS_L) || n.closest('section.pagina');
       let it = itensDoBloco(b), k = posicaoNoBloco(it, r.startContainer, r.startOffset), k0 = k;
+      // na borda de um bloco vizinho à linha de uma tabela: o navegador juntaria o bloco à linha da tabela
+      if (b.matches(BLOCOS) && !b.closest('td, th')) {
+        const viz = ev.key === 'Backspace' ? b.previousElementSibling : b.nextElementSibling;
+        const borda = ev.key === 'Backspace' ? !it.slice(0, k).some(t => !t.zw) : !it.slice(k).some(t => !t.zw);
+        if (borda && viz && viz.matches(LINHA_OBJ)) {
+          ev.preventDefault();
+          const vazio = !it.some(t => !t.zw) && !b.querySelector('img, table');
+          if (vazio) { b.remove(); sujo(true); }
+          const iv = itensDoBloco(viz);
+          porCursor(iv, ev.key === 'Backspace' ? iv.length : 0);
+          return;
+        }
+      }
+      if (b.matches(LINHA_OBJ) && (ev.key === 'Backspace' ? !it.slice(0, k).some(t => !t.zw) : !it.slice(k).some(t => !t.zw))) { ev.preventDefault(); return; }
       if (ev.key === 'Backspace') {
         while (k > 0 && it[k - 1].zw) k--;
+        if (k > 0 && it[k - 1].el && it[k - 1].el.matches('table, div.video')) { ev.preventDefault(); return; }   // a tabela sai pelo menu dela; o vídeo, selecionado
         if (k > 0 && it[k - 1].el) {
           ev.preventDefault();
           const el = it[k - 1].el, depois = it[k0] || null;
@@ -598,6 +700,7 @@
         if (k !== k0) porCursor(it, k);   // só espaços invisíveis antes: o Backspace age no que vem antes deles
       } else {
         while (k < it.length && it[k].zw) k++;
+        if (k < it.length && it[k].el && it[k].el.matches('table, div.video')) { ev.preventDefault(); return; }
         if (k < it.length && it[k].el) {
           ev.preventDefault();
           const antes = it[k0 - 1] || null;
@@ -616,7 +719,7 @@
         const sel = getSelection(); if (!sel.rangeCount || !sel.isCollapsed) return;
         const r = sel.getRangeAt(0), n = r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement;
         if (!n || !n.closest('section.pagina') || n.closest(NAO_EDIT)) return;
-        const b = n.closest('td, th, ' + BLOCOS) || n.closest('section.pagina');
+        const b = n.closest('td, th, ' + BLOCOS_L) || n.closest('section.pagina');
         const it = itensDoBloco(b);
         let k = posicaoNoBloco(it, r.startContainer, r.startOffset);
         while (k < it.length && it[k].zw) k++;
@@ -657,7 +760,7 @@
       const n = r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement;
       if (!n || !n.closest('section.pagina') || n.closest('#editor-eq')) return;
       ED.range = r.cloneRange();
-      ED.bloco = n.closest(BLOCOS) || null;
+      ED.bloco = n.closest(BLOCOS_L) || null;
       if (CAMADA_SEL && camadaNoCursor(ED.range) !== CAMADA_SEL) focarCamada(null);
     });
     document.addEventListener('input', e => {
@@ -675,7 +778,7 @@
       const sel = getSelection(); if (!sel.rangeCount) return;
       const r = sel.getRangeAt(0), n = noDe(r.startContainer);
       if (!n || !n.closest('section.pagina') || n.closest('#editor-eq')) return;
-      ED.range = r.cloneRange(); ED.bloco = n.closest(BLOCOS) || null;
+      ED.range = r.cloneRange(); ED.bloco = n.closest(BLOCOS_L) || null;
     }
 
     // destaque colorido: envolve a seleção; clicar de novo na mesma cor remove, em outra cor troca
@@ -1015,7 +1118,7 @@
         }
       });
       doc.querySelectorAll('section.pagina[spellcheck]').forEach(e => e.removeAttribute('spellcheck'));
-      const azul = c => /^(rgb\(51, 51, 204\)|#3333cc)$/i.test(c || '');
+      const azul = c => /^(rgb\(51, 51, 204\)|#3333cc|rgb\(17, 17, 17\)|#111111)$/i.test(c || '');
       const desembrulhar = e => { e.replaceWith(...e.childNodes); };
       doc.querySelectorAll('section.pagina span:not([class])').forEach(s => {
         const props = [...s.style];
@@ -1218,28 +1321,39 @@
       tirarFimDeLinha(document);
       if (!document.body.classList.contains('editando')) return;
       const blocos = new Set();
-      document.querySelectorAll('.apostila .marca, .apostila span.fragment > .ancora-camada').forEach(a => { const b = a.closest(BLOCOS); if (b && b.closest('section.pagina')) blocos.add(b); });
+      document.querySelectorAll('.apostila .marca, .apostila span.fragment > .ancora-camada').forEach(a => { const b = a.closest(BLOCOS_L); if (b && b.closest('section.pagina')) blocos.add(b); });
       const anc = t => t.el && t.el.matches('.marca, span.fragment > .ancora-camada');
-      const vazio = t => t.zw || (!t.el && /\s/.test(t.no.data[t.i]));
+      const vazio = t => t.zw || (!t.el && /\s/.test(t.no.data[t.i])) || (t.el && t.el.matches('.fragment:not(span) > .ancora-camada'));   // a âncora da camada do bloco fica na margem
       const destacada = t => t && t.el && t.el.matches('mjx-container[display="true"]');
+      const objeto = t => t && t.el && t.el.matches(OBJETOS + ', table, div.video');
       const larg = g => g.reduce((t, a) => { const cs = getComputedStyle(a); return t + a.getBoundingClientRect().width + (parseFloat(cs.marginLeft) || 0) + (parseFloat(cs.marginRight) || 0); }, 0);
-      const mudar = [];
+      const mudar = [], objs = [];
       for (const b of blocos) {
         const it = itensDoBloco(b), feitos = new Set();
         const juntar = (k, passo) => { const g = []; for (; k >= 0 && k < it.length; k += passo) { const t = it[k]; if (vazio(t)) continue; if (anc(t) && !feitos.has(t.el)) { g.push(t.el); feitos.add(t.el); } else break; } return g; };
+        // linha só com um objeto (tabela, vídeo, imagem): as âncoras encostam nele e saem para fora, sem ocupar
+        // lugar (margem negativa do tamanho do grupo); o objeto fica onde estava
+        const cheios = it.map((t, k) => k).filter(k => !vazio(it[k]) && !anc(it[k]));
+        if (cheios.length === 1 && objeto(it[cheios[0]])) {
+          const k = cheios[0], antes = juntar(k - 1, -1), depois = juntar(k + 1, 1);
+          if (antes.length) objs.push({ e: antes[antes.length - 1], lado: 'marginLeft', w: larg(antes) });
+          if (depois.length) objs.push({ e: depois[depois.length - 1], lado: 'marginRight', w: larg(depois) });
+          continue;
+        }
         let wl = 0, wr = 0; const eqs = [];
         for (let k = 0; k < it.length; k++) if (destacada(it[k])) { eqs.push(it[k].el); wl = Math.max(wl, larg(juntar(k - 1, -1))); wr = Math.max(wr, larg(juntar(k + 1, 1))); }
         wr = Math.max(wr, larg(juntar(it.length - 1, -1)));
         if (wl || wr) mudar.push({ b, wl, wr, eqs, cs: getComputedStyle(b) });
       }
       // medir tudo antes de mudar (mudar um bloco não mexe na largura das âncoras dos outros)
+      for (const { e, lado, w } of objs) { e.classList.add('no-fim'); e.style[lado] = (-w) + 'px'; }
       for (const { b, wl, wr, eqs, cs } of mudar) {
         const ml = parseFloat(cs.marginLeft) || 0, mr = parseFloat(cs.marginRight) || 0;
         b.classList.add('no-fim');
         if (wl) b.style.marginLeft = (ml - wl - 2) + 'px';
         if (wr) b.style.marginRight = (mr - wr - 2) + 'px';
         // a equação destacada continua com a largura de antes, no mesmo lugar
-        eqs.forEach(e => { e.classList.add('no-fim'); e.style.width = 'calc(100% - ' + ((wl ? wl + 2 : 0) + (wr ? wr + 2 : 0)) + 'px)'; });
+        eqs.filter(e => e.matches('mjx-container')).forEach(e => { e.classList.add('no-fim'); e.style.width = 'calc(100% - ' + ((wl ? wl + 2 : 0) + (wr ? wr + 2 : 0)) + 'px)'; });
       }
     }
     // no modo edição, as âncoras logo depois do termo empurram a seta e o visto para a direita
@@ -1641,7 +1755,7 @@
     // referência do desenho: página, esquerda da página e alto do bloco da âncora (em px da tela) e escala
     function refDesenho(m) {
       const ancora = m.isConnected ? m : null;
-      const bloco = ancora ? (ancora.closest(BLOCOS) || ancora.closest('section.pagina')) : DS.bloco;
+      const bloco = ancora ? (ancora.closest(BLOCOS_L) || ancora.closest('section.pagina')) : DS.bloco;
       const pag = bloco && bloco.closest('section.pagina'); if (!pag) return null;
       const P = pag.getBoundingClientRect(), B = bloco.getBoundingClientRect();
       return { pag, P, x0: 0, y0: B.top - P.top, k: P.width / 860 };
@@ -1701,8 +1815,8 @@
       if (!existente && !ED.range) return avisar('Clique no texto, no ponto em que o desenho deve aparecer');
       DS.existente = existente || null; DS.desfeitos = [];
       DS.rascunho = document.createElement('span'); DS.rascunho.dataset.tipo = 'desenho';
-      if (existente) { DS.rascunho.dataset.tracos = existente.dataset.tracos || ''; DS.bloco = existente.closest(BLOCOS) || existente.closest('section.pagina'); existente.classList.add('editando-agora'); }
-      else { DS.range = ED.range.cloneRange(); DS.rascunho.dataset.tracos = ''; const n = noDe(DS.range.startContainer); DS.bloco = n.closest(BLOCOS) || n.closest('section.pagina'); }
+      if (existente) { DS.rascunho.dataset.tracos = existente.dataset.tracos || ''; DS.bloco = existente.closest(BLOCOS_L) || existente.closest('section.pagina'); existente.classList.add('editando-agora'); }
+      else { DS.range = ED.range.cloneRange(); DS.rascunho.dataset.tracos = ''; const n = noDe(DS.range.startContainer); DS.bloco = n.closest(BLOCOS_L) || n.closest('section.pagina'); }
       document.body.classList.add('desenhando'); pairar(null);
       document.querySelectorAll('section.pagina').forEach(s => s.setAttribute('contenteditable', 'false'));
       getSelection().removeAllRanges();
@@ -2073,10 +2187,10 @@
     function criarCamada(r) {
       const n = noDe(r.startContainer);
       if (n.closest('mjx-container')) return avisar('Clique fora da fórmula');
-      const cont = n.closest('span.fragment:not(.marca), ' + BLOCOS);
+      const cont = n.closest('span.fragment:not(.marca), ' + BLOCOS_L);
       if (!cont || !cont.closest('section.pagina')) return avisar('Clique no texto');
       const pre = document.createRange(); pre.setStart(cont, 0); pre.setEnd(r.startContainer, r.startOffset);
-      if (cont.matches(BLOCOS) && semConteudo(pre)) { cont.classList.add('fragment'); return cont; }
+      if (cont.matches(BLOCOS_L) && semConteudo(pre)) { cont.classList.add('fragment'); return cont; }
       const pos = document.createRange(); pos.setStart(r.startContainer, r.startOffset); pos.setEnd(cont, cont.childNodes.length);
       // nada depois do cursor: a camada nasce vazia, para receber o que for escrito
       const s = document.createElement('span'); s.className = 'fragment';
@@ -2664,15 +2778,17 @@
       fecharTabela(true);
       if (!r || !r.startContainer.isConnected) return;
       const n = noDe(r.startContainer), sec = n.closest('section.pagina'); if (!sec) return;
-      let b = n.closest(BLOCOS); if (b && b.closest('li')) b = b.closest('ul, ol');
+      let b = n.closest(BLOCOS_L); if (b && b.closest('li')) b = b.closest('ul, ol');
       while (b && b.parentElement !== sec && !b.parentElement.matches('.duas-colunas')) b = b.parentElement;
       const t = document.createElement('table'); t.className = 'tabela'; if (cab && TAB.cabCor) t.dataset.cabCor = TAB.cabCor;
       const tb = document.createElement('tbody'); t.append(tb);
       for (let i = 0; i < nl; i++) { const tr = document.createElement('tr'); for (let j = 0; j < nc; j++) tr.append(celulaVazia(cab && i === 0 ? 'th' : 'td')); tb.append(tr); }
+      const L = document.createElement('div'); L.className = 'linha-objeto'; L.append(t);
       const vazio = b && b.matches('p') && !b.textContent.replace(/[\s​]/g, '') && !b.querySelector('mjx-container, img, .marca');
-      if (vazio) { if (b.classList.contains('fragment')) t.classList.add('fragment'); b.replaceWith(t); }
-      else if (b) b.after(t); else sec.append(t);
-      if (!t.nextElementSibling || t.nextElementSibling.matches('.rodape')) { const p = document.createElement('p'); p.innerHTML = '<br>'; t.after(p); }   // para o cursor sair da tabela
+      if (vazio) { if (b.classList.contains('fragment')) L.classList.add('fragment'); b.replaceWith(L); }
+      else if (b) b.after(L); else sec.append(L);
+      if (!L.nextElementSibling || L.nextElementSibling.matches('.rodape')) { const p = document.createElement('p'); p.innerHTML = '<br>'; L.after(p); }   // para o cursor sair da tabela
+      garantirPontos();
       sec.focus({ preventScroll: true }); cursorEm(t.rows[0].cells[0]);
       lerCursor(); sujo(true); iconesCamada(); desenharMarcas(); montarSumario();
     }
@@ -2773,9 +2889,9 @@
         const a = op === 'sel-linha' ? g.G[x.r0][0] : g.G[0][x.c0], b = op === 'sel-linha' ? g.G[x.r1][g.nc - 1] : g.G[g.nl - 1][x.c1];
         selecionarCelulas(a, b); return;
       } else if (op === 'del-tabela') {
-        const p = document.createElement('p'); p.innerHTML = '<br>'; t.replaceWith(p); foco = p;
+        const p = document.createElement('p'); p.innerHTML = '<br>'; (t.closest(LINHA_OBJ) || t).replaceWith(p); foco = p;
       }
-      if (!t.isConnected || !t.rows.length || !t.querySelector('td, th')) { if (t.isConnected) { const p = document.createElement('p'); p.innerHTML = '<br>'; t.replaceWith(p); foco = p; } }
+      if (!t.isConnected || !t.rows.length || !t.querySelector('td, th')) { if (t.isConnected) { const p = document.createElement('p'); p.innerHTML = '<br>'; (t.closest(LINHA_OBJ) || t).replaceWith(p); foco = p; } }
       else [...t.rows].forEach(tr => { if (!tr.cells.length) tr.remove(); });   // linha que ficou sem células (mesclagem de linhas inteiras)
       if (foco && foco.isConnected) { const sec = foco.closest('section.pagina'); sec.focus({ preventScroll: true }); cursorEm(foco); }
       lerCursor(); sujo(true); iconesCamada(); desenharMarcas(); mostrarFormatos();
@@ -2849,7 +2965,7 @@
     // apagar a imagem selecionada; outra tecla tira a seleção
     document.addEventListener('keydown', e => {
       if (!ISEL.img) return;
-      if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); e.stopImmediatePropagation(); const im = ISEL.img; ISEL.img = null; posImagem(); (figuraDe(im) || im).remove(); sujo(true); iconesCamada(); desenharMarcas(); }
+      if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); e.stopImmediatePropagation(); const im = ISEL.img; ISEL.img = null; posImagem(); const L = im.closest(LINHA_OBJ); (figuraDe(im) || im).remove(); if (L && !L.querySelector('table, div.video')) { const p = document.createElement('p'); p.innerHTML = '<br>'; L.replaceWith(p); cursorEm(p); } sujo(true); iconesCamada(); desenharMarcas(); }
       else if (!['Shift', 'Control', 'Alt', 'Meta'].includes(e.key)) { ISEL.img = null; posImagem(); }
     }, true);
     document.querySelectorAll('#img-sel .img-alca').forEach(a => {
@@ -3679,7 +3795,7 @@
     // bloco novo no lugar de um parágrafo vazio, ou depois do bloco do cursor
     function inserirBloco(el, r) {
       const n = noDe(r.startContainer), sec = n.closest('section.pagina'); if (!sec) return false;
-      let b = n.closest(BLOCOS); if (b && b.closest('li')) b = b.closest('ul, ol');
+      let b = n.closest(BLOCOS_L); if (b && b.closest('li')) b = b.closest('ul, ol');
       while (b && b.parentElement !== sec && !b.parentElement.matches('.duas-colunas, .ambiente')) b = b.parentElement;
       const vazio = b && b.matches('p') && !b.textContent.replace(/[\s​]/g, '') && !b.querySelector('mjx-container, img, .marca, sup');
       if (vazio) { if (b.classList.contains('fragment')) el.classList.add('fragment'); b.replaceWith(el); }

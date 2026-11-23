@@ -135,7 +135,12 @@ salva como `novo_documento.html`.
   `tab-esq`/`tab-dir` a encostam à esquerda/direita. No editor: botão Tabela (pergunta linhas e colunas) e o menu ▾
   ao lado (inserir/excluir linha e coluna, mesclar, separar, cabeçalho, posição na página,
   excluir tabela). Na célula, Enter quebra a linha e Tab/Shift+Tab andam entre as células
-  (Tab na última cria uma linha).
+  (Tab na última cria uma linha). Tabela e vídeo ficam numa linha própria,
+  `<div class="linha-objeto">` (o editor embrulha os antigos). No modo edição,
+  tabela, vídeo e imagem sozinha num parágrafo têm um ponto antes e outro depois,
+  que recebem camada, marcação e desenho, como a equação destacada; as âncoras ficam
+  coladas ao objeto, sem tirá-lo do lugar. A camada no ponto de antes é a da linha
+  inteira (`div.linha-objeto.fragment`).
 - **Outros**: `class="caixa"` (caixa de destaque), `p.subtitulo`,
   `class="sem-recuo"`, `alinha-esq|centro|dir|just`, `recuo-1..4`,
   `<span class="fragment fim-exemplo">◼</span>` (Q.E.D.), `table.tabela`,

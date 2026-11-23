@@ -2,6 +2,24 @@
 
 ## Próxima versão
 
+- Cor base do texto: preto (branco no tema escuro), em vez de azul. Texto azul
+  precisa de cor explícita (`cor-azul`).
+- Pontos antes e depois de tabelas, vídeos e imagens (sozinhas no parágrafo), para
+  camada, marcação e desenho, como na equação destacada; as âncoras ficam coladas ao
+  objeto sem tirá-lo do lugar. Tabela e vídeo ficam numa linha própria
+  (`div.linha-objeto`); a camada no ponto de antes é a da linha inteira. Texto ou
+  Enter nesses pontos vão para um parágrafo novo; Backspace/Delete não juntam
+  parágrafos à linha. Tabelas e vídeos antigos (e os que eram camada) são
+  embrulhados ao entrar na edição. A imagem conta como um caractere só para as
+  setas e o Backspace/Delete.
+- Tabela: → na última célula e ← na primeira levam o cursor para o bloco
+  vizinho (antes ele ficava solto na página, fora de qualquer parágrafo, e o
+  texto digitado ali saía sem recuo e na cor da página); → e ← a partir do
+  bloco vizinho entram na tabela.
+- Tema escuro: as ferramentas, cores e espessuras escolhidas no desenho
+  voltam a aparecer destacadas; a cor escolhida do cabeçalho da tabela e da
+  legenda ganha um anel laranja.
+- Menu de equações: "Equação em linha" e "Equação destacada".
 - Cursor visível com o QuillBot ativo: a extensão deixava o cursor nativo
   transparente na página editável. Ao salvar, também saem os atributos
   `data-lpop-*` que ela deixa.

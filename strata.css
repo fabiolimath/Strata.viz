@@ -23,7 +23,7 @@ html, body { background: var(--mesa); margin: 0; }
 
 .apostila {
   font-family: "Times New Roman", "Liberation Serif", Times, serif;
-  color: var(--azul);
+  color: var(--tinta);
   font-size: 20px;
   line-height: 1.45;
 }
@@ -96,6 +96,11 @@ body.editando .apostila table.tabela td, body.editando .apostila table.tabela th
    de id para vencer a regra da extensão. */
 :is(#strata-caret, body.editando) .apostila .pagina, :is(#strata-caret, body.editando) .apostila .pagina * { caret-color: auto !important; }
 .apostila .duas-colunas table.tabela { max-width: 100%; }
+/* linha da tabela: no modo edição, pontos antes e depois dela (âncoras de camada, marcação, desenho) */
+body.editando .apostila div.linha-objeto { display: flex; align-items: flex-start; position: relative; }
+body.editando .apostila div.linha-objeto > table.tabela { flex: 0 1 auto; min-width: 0; }
+body.editando .apostila div.linha-objeto > div.video { flex: none; }
+body.editando .apostila div.linha-objeto > .ancora-camada, body.editando .apostila div.linha-objeto > .marca, body.editando .apostila div.linha-objeto > span.fragment { flex: none; margin-top: .3em; }
 #painel-tabela { width: min(360px, calc(100vw - 32px)); }
 #painel-tabela input[type=number] { width: 64px; font: inherit; padding: 4px 6px; border: 1px solid #bbb; border-radius: 4px; }
 .apostila .rodape { position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; font-size: .7em; color: #999; }
@@ -488,7 +493,7 @@ html.strata-escuro #b-tema .sol { display: none; }
   html.strata-escuro #modos button:hover, html.strata-escuro #b-sumario:hover, html.strata-escuro #barra button:hover,
   html.strata-escuro .painel-mini button:hover, html.strata-escuro #painel-marca button:hover, html.strata-escuro #painel-desenho button:hover { background: var(--ui-fundo2); }
   html.strata-escuro #modos button.ativo, html.strata-escuro #barra .ativo-fmt, html.strata-escuro #barra #b-camada.ligada,
-  html.strata-escuro #painel-marca button.ativo, html.strata-escuro #editor-eq .ee-cor.ativo,
+  html.strata-escuro #painel-marca button.ativo, html.strata-escuro #painel-desenho button.ativo, html.strata-escuro #editor-eq .ee-cor.ativo,
   html.strata-escuro #barra .combo-menu button.ativo, html.strata-escuro #barra .combo-menu button.ativo-fmt {
     background: var(--ui-ativo); border-color: #ff9a3c; color: #ffc48a; }
   html.strata-escuro #modos #b-salvar, html.strata-escuro #ee-aplicar, html.strata-escuro #pm-ok { background: #2a6 !important; border-color: #2a6 !important; color: #fff; }
@@ -497,6 +502,9 @@ html.strata-escuro #b-tema .sol { display: none; }
   html.strata-escuro #sumario a { color: var(--ui-texto); }
   html.strata-escuro #sumario a.nivel-3 { color: var(--ui-suave); }
   html.strata-escuro #sumario a:hover { background: var(--ui-fundo2); }
+  /* bolinhas de cor (tabela, legenda): no escuro, a cor escolhida ganha um anel laranja */
+  html.strata-escuro .pt-cor, html.strata-escuro #pr-cores .pr-cor { border-color: var(--ui-borda) !important; }
+  html.strata-escuro .pt-cor.ativo, html.strata-escuro #pr-cores .pr-cor.ativo { border-color: #1a1c21 !important; box-shadow: 0 0 0 2px #ff9a3c; }
   html.strata-escuro #sumario a.atual { background: var(--ui-ativo); color: #fff; }
   html.strata-escuro #barra .combo-menu, html.strata-escuro #menu-strata, html.strata-escuro .painel-mini,
   html.strata-escuro #editor-eq, html.strata-escuro #painel-marca, html.strata-escuro #painel-desenho {
