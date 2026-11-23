@@ -2,6 +2,11 @@
 
 ## Próxima versão
 
+- Tabela: posição na página (esquerda, centro, direita) no menu da tabela
+  (classes `tab-esq`/`tab-dir`); o botão marca a posição atual.
+- Duas colunas também funcionam com o cursor numa tabela, ou com uma seleção
+  que inclui tabelas (a tabela vai inteira).
+- Colar uma imagem copiada do próprio documento mantém a largura dela.
 - Enter no fim de uma camada em linha não cria mais uma linha com duas camadas:
   a linha nova entra junto com a camada do cursor.
 - Ao salvar, sai o `<br>` que o navegador deixa no fim de blocos com texto;
