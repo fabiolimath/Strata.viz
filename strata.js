@@ -1203,7 +1203,7 @@
     const MK_CORES_TEXTO_ESCURO = { preto: '#e8e8ea', azul: '#9aa6ff', laranja: '#ff9a3c', vermelho: '#ff6b6b', verde: '#5fd17f', roxo: '#d58cf0' };
     const MK_CORES_TEXTO = { preto: '#111111', azul: '#3333cc', laranja: '#ff8000', vermelho: '#d01c1c', verde: '#1b8a3a', roxo: '#8e24aa' };   // marcador de texto: cores do texto
     // emblemas dos botões Marcar e Desenhar: a ferramenta fica no botão, e o emblema diz de qual dos dois é
-    const EMB_MARCADOR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5L8.5 9 4.5 13.5V17h4.2l4.3-4.2"/><path d="M8.5 9l4.5 3.8 6-5.3"/></svg>';
+    const EMB_MARCADOR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4L9.7 10.6 4.3 16v1.7h9.4l7.2-6.8M9.7 10.6l6.9 5.2"/></svg>';
     const EMB_PENA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8L7 10.4a5.8 5.8 0 0 0 .4 6.1 4.6 4.6 0 0 1 1 2h7.2a4.6 4.6 0 0 1 1-2 5.8 5.8 0 0 0 .4-6.1z" stroke-linejoin="round"/><path d="M12 2.4v7.3"/><circle cx="12" cy="11.6" r="1.7"/><rect x="6.6" y="18.5" width="10.8" height="3.6" rx="1.8"/></svg>';
     const emblema = svg => '<span class="emblema">' + svg + '</span>';
     const MK_PADRAO = { destaque: 'amarelo', risca: 'vermelho', circula: 'azul', caixa: 'laranja', seta: 'vermelho', liga: 'rosa', check: 'verde', texto: 'vermelho' };
