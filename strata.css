@@ -296,7 +296,9 @@ body.escolhendo .apostila .eq span.marca, body.escolhendo .apostila .eq span.anc
 #pd-ok { background: #2a6 !important; color: #fff; border-color: #2a6 !important; }
 #pd-apagar { margin-right: auto; color: #a00; }
 body.desenhando section.pagina { cursor: crosshair; touch-action: none; user-select: none; -webkit-user-select: none; }
-body.desenhando #barra { pointer-events: none; opacity: .45; }
+body.desenhando #barra { pointer-events: none; }
+body.desenhando #barra > * { opacity: .4; }   /* a barra continua opaca; só os botões ficam apagados */
+body.desenhando section.pagina * { pointer-events: none !important; }   /* nada reage ao mouse (destaques, âncoras) */
 @media print { #painel-marca, #painel-desenho, #retangulo { display: none !important; } }
 body.editando .apostila .marca svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .apostila svg.tinta .apagada { opacity: .15; }

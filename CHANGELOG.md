@@ -2,6 +2,8 @@
 
 ## Próxima versão
 
+- Desenho: a barra fica opaca (só os botões apagados); enquanto a ferramenta
+  está ativa, nada da página reage ao mouse; ícone novo (pena de caneta).
 - Símbolos: uma seção por vez, escolhida num menu (a última volta na próxima vez).
 - Rascunho: a chave não depende mais de ?editar/?aula na URL; ao recuperar,
   o cursor é recolocado no texto.

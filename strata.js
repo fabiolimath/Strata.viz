@@ -134,7 +134,7 @@
   <button type="button" id="b-camada" class="b-icone" title="Insere camada de conteúdo. A camada começa no ponto do cursor (no início ou no meio da linha). Com o cursor logo depois de uma âncora de camada, junta essa camada à anterior. (Alt+C)" aria-label="Camada"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"></path><path d="M3 13l9 5 9-5"></path></svg></button>
   <span class="combo" id="c-marcar"><button type="button" id="b-marcar" class="b-icone" title="Insere camada de marcação. Marca termos já escritos (destaque, risco, círculo, seta...); a marcação aparece, no modo apresentação, no ponto do cursor." aria-label="Marcar"></button><button type="button" class="combo-seta" title="Escolher o tipo de marcação" aria-label="Escolher o tipo de marcação">▾</button>
     <span class="combo-menu" hidden=""><button type="button" data-tipo="destaque" title="Destaque (marca-texto)"><span class="ci"></span>Destaque (marca-texto)</button><button type="button" data-tipo="risca" title="Risco"><span class="ci"></span>Risco</button><button type="button" data-tipo="circula" title="Círculo"><span class="ci"></span>Círculo</button><button type="button" data-tipo="caixa" title="Retângulo"><span class="ci"></span>Retângulo</button><button type="button" data-tipo="seta" title="Seta apontando para cada termo"><span class="ci"></span>Seta apontando para cada termo</button><button type="button" data-tipo="liga" title="Seta ligando o 1º termo ao 2º"><span class="ci"></span>Seta ligando o 1º termo ao 2º</button><button type="button" data-tipo="check" title="Visto (✓)"><span class="ci"></span>Visto (✓)</button><button type="button" data-tipo="texto" title="Texto à direita do termo"><span class="ci"></span>Texto</button></span></span>
-  <button type="button" id="b-desenho" class="b-icone" title="Insere camada de desenho: caneta, marca-texto, linha, seta, retângulo e elipse, livres na página. O desenho aparece, no modo apresentação, no ponto do cursor, e acompanha o parágrafo em que está a âncora." aria-label="Desenhar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18c2.5-4 4.5-6 6-6 2 0 1 5 3 5s3-6 5-9"/><path d="M16.5 3.5l4 4L12 16l-5 1 1-5z" stroke-width="1.6"/></svg></button>
+  <button type="button" id="b-desenho" class="b-icone" title="Insere camada de desenho: caneta, marca-texto, linha, seta, retângulo e elipse, livres na página. O desenho aparece, no modo apresentação, no ponto do cursor, e acompanha o parágrafo em que está a âncora." aria-label="Desenhar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8L7 10.4a5.8 5.8 0 0 0 .4 6.1 4.6 4.6 0 0 1 1 2h7.2a4.6 4.6 0 0 1 1-2 5.8 5.8 0 0 0 .4-6.1z" stroke-linejoin="round"/><path d="M12 2.4v7.3"/><circle cx="12" cy="11.6" r="1.7"/><rect x="6.6" y="18.5" width="10.8" height="3.6" rx="1.8"/></svg></button>
   <button type="button" id="b-olho" class="b-icone" title="Mostra ou recolhe as âncoras. Recolhidas, cada âncora vira uma linha vertical, na cor dela, no ponto em que está; passe o mouse sobre a linha para ver o ícone. (Ctrl+Q)" aria-label="Mostrar ou recolher âncoras"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="olho-aberto" d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle class="olho-aberto" cx="12" cy="12" r="3"/><path class="olho-fechado" d="M2.5 10.5s3.5 4.5 9.5 4.5 9.5-4.5 9.5-4.5M5.2 13.4l-1.7 2.3M9.2 14.8l-.7 2.7M14.8 14.8l.7 2.7M18.8 13.4l1.7 2.3"/></svg></button>
   <span class="sep"></span>
   <span class="combo grupo" id="c-eq"><button type="button" id="b-eqs" class="b-icone" title="Equações" aria-label="Equações"></button><button type="button" class="combo-seta" title="Equações: escolher" aria-label="Equações: escolher">▾</button>
@@ -1104,7 +1104,7 @@
       seta: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12H4.5M10 6.5L4.5 12l5.5 5.5"/></svg>',
       liga: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="15.5" width="6" height="6"/><rect x="15.5" y="2.5" width="6" height="6"/><path d="M8.5 15.5l5.6-5.6"/><path d="M14.6 9.4l-4.2 1.1 3.1 3.1z" fill="currentColor"/></svg>',
       check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l5 5L20 6" stroke-width="2.4"/></svg>',
-      desenho: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18c2.5-4 4.5-6 6-6 2 0 1 5 3 5s3-6 5-9"/><path d="M16.5 3.5l4 4L12 16l-5 1 1-5z" stroke-width="1.6"/></svg>',
+      desenho: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8L7 10.4a5.8 5.8 0 0 0 .4 6.1 4.6 4.6 0 0 1 1 2h7.2a4.6 4.6 0 0 1 1-2 5.8 5.8 0 0 0 .4-6.1z" stroke-linejoin="round"/><path d="M12 2.4v7.3"/><circle cx="12" cy="11.6" r="1.7"/><rect x="6.6" y="18.5" width="10.8" height="3.6" rx="1.8"/></svg>',
       texto: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M8 9h8M12 9v7"/></svg>'
     };
     const SVGNS = 'http://www.w3.org/2000/svg';
@@ -1565,6 +1565,7 @@
     }
     document.addEventListener('mousemove', ev => {
       if (!document.body.classList.contains('editando') || document.body.classList.contains('escolhendo') || MK.drag) return;
+      if (document.body.classList.contains('desenhando')) return pairar(null);   // desenhando: nada da página reage ao mouse
       let m = ev.target.closest && ev.target.closest('.apostila .marca');
       if (!m) {
         const pag = ev.target.closest && ev.target.closest('section.pagina');
@@ -1681,7 +1682,7 @@
       DS.rascunho = document.createElement('span'); DS.rascunho.dataset.tipo = 'desenho';
       if (existente) { DS.rascunho.dataset.tracos = existente.dataset.tracos || ''; DS.bloco = existente.closest(BLOCOS) || existente.closest('section.pagina'); existente.classList.add('editando-agora'); }
       else { DS.range = ED.range.cloneRange(); DS.rascunho.dataset.tracos = ''; const n = noDe(DS.range.startContainer); DS.bloco = n.closest(BLOCOS) || n.closest('section.pagina'); }
-      document.body.classList.add('desenhando');
+      document.body.classList.add('desenhando'); pairar(null);
       document.querySelectorAll('section.pagina').forEach(s => s.setAttribute('contenteditable', 'false'));
       getSelection().removeAllRanges();
       $('editor-eq').hidden = true; $('pd-apagar').style.display = existente ? '' : 'none';
