@@ -42,7 +42,7 @@ html, body { background: var(--mesa); margin: 0; }
 .apostila pre { font-family: ui-monospace, Consolas, "Liberation Mono", monospace; font-size: .78em; line-height: 1.4; white-space: pre-wrap;
   color: var(--tinta); background: rgba(127,127,127,.1); border-radius: 4px; padding: .5em .8em; margin: .4em 0 .8em; }
 .apostila blockquote { margin: .4em 0 .8em 2em; padding: .1em 0 .1em .9em; border-left: 3px solid var(--laranja); font-style: italic; }
-.apostila a { color: inherit; text-decoration: underline; text-decoration-color: var(--laranja); }
+.apostila a { color: inherit; text-decoration: underline; text-decoration-color: currentColor; }
 /* alinhamento e recuo (barra de edição) */
 .apostila .alinha-esq { text-align: left; }
 .apostila .eq.passo mjx-container[display="true"], .apostila .alinha-esq mjx-container[display="true"] { text-align: left !important; }
@@ -573,6 +573,17 @@ body.editando .apostila sup.ref-nota { cursor: default; background: #fde8e8; bor
 #ee-num-l { display: inline-flex; gap: 6px; align-items: center; margin-right: 14px; }
 #ee-num-l[hidden], #ee-label-l[hidden] { display: none; }
 #ee-label { width: 120px; font: inherit; padding: 2px 6px; border: 1px solid #bbb; border-radius: 4px; }
+/* cor escolhida no diálogo do ambiente (data-cor = uma das cores do texto) */
+:root .apostila .ambiente[data-tipo][data-cor="cor-preto"] { --amb: var(--tinta); }
+:root .apostila .ambiente[data-tipo][data-cor="cor-azul"] { --amb: var(--azul); }
+:root .apostila .ambiente[data-tipo][data-cor="rotulo"] { --amb: var(--laranja); }
+:root .apostila .ambiente[data-tipo][data-cor="cor-vermelho"] { --amb: var(--vermelho); }
+:root .apostila .ambiente[data-tipo][data-cor="cor-verde"] { --amb: var(--verde); }
+:root .apostila .ambiente[data-tipo][data-cor="cor-roxo"] { --amb: var(--roxo); }
+:root .apostila .ambiente[data-tipo][data-cor] { --amb-fundo: color-mix(in srgb, var(--amb) 8%, var(--fundo)); }
+#pr-cores .pr-cor { width: 22px; height: 22px; padding: 0; border-radius: 50%; border: 2px solid #ccc; background: var(--c); }
+#pr-cores .pr-cor[data-cor=""] { background: linear-gradient(135deg, #fff 45%, #d01c1c 45%, #d01c1c 55%, #fff 55%); }
+#pr-cores .pr-cor.ativo { border-color: #222; box-shadow: 0 0 0 2px #fff inset; }
 /* numeração automática */
 .apostila span.eq-num { display: block; position: relative; padding-right: 3.2em; }
 .apostila span.eq-num::after { content: "(" attr(data-num) ")"; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }

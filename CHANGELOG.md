@@ -2,6 +2,12 @@
 
 ## Próxima versão
 
+- Menu Numerados lembra a última opção (o botão principal a repete).
+- Cor nos diálogos dos numerados (capítulo, seção, subseção, ambientes) e das
+  legendas; cada tipo lembra a última cor escolhida. Legenda nova começa com a
+  cor da barra.
+- Texto digitado num bloco vazio entra com a cor da barra.
+- Sublinhado de link na cor do próprio texto (antes, sempre laranja).
 - Colar limpo: do Word, PDF ou web ficam só parágrafos, títulos, listas,
   tabelas, negrito, itálico, links e fórmulas do próprio Strata; Ctrl+Shift+V
   cola texto puro.

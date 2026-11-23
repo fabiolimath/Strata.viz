@@ -111,8 +111,8 @@
 <div id="barra">
   <span class="combo" id="c-estilo"><button type="button" id="b-estilo" class="b-icone" title="Estilo do parágrafo: Parágrafo" aria-label="Estilo do parágrafo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4v16M17 4v16M19.5 4H10.5a4.5 4.5 0 0 0 0 9H13"/></svg></button><button type="button" class="combo-seta" title="Estilo do parágrafo: escolher" aria-label="Estilo do parágrafo: escolher">▾</button>
     <span class="combo-menu" hidden=""><button type="button" data-estilo="p" style="font: 15px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4v16M17 4v16M19.5 4H10.5a4.5 4.5 0 0 0 0 9H13"/></svg></span>Parágrafo</button><button type="button" data-estilo="h1" style="font: bold 25px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">1</text></svg></span>Título 1</button><button type="button" data-estilo="subtitulo" style="font: 17px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16" stroke-width="3"/><path d="M7 15h10M9 19h6"/></svg></span>Subtítulo</button><button type="button" data-estilo="h2" style="font: bold 23px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">2</text></svg></span>Título 2</button><button type="button" data-estilo="h3" style="font: bold 21px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">3</text></svg></span>Título 3</button><button type="button" data-estilo="h4" style="font: bold 18px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">4</text></svg></span>Título 4</button><button type="button" data-estilo="eq" style="font: 15px system-ui, sans-serif" title="Linha de equação: fórmulas sem recuo; alinhada à esquerda vira linha de igualdades (Enter no fim cria a próxima linha)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="5" y="18.5" font-family="Times New Roman, serif" font-style="italic" font-weight="bold" font-size="17">x</text><text x="14" y="10.5" font-family="Times New Roman, serif" font-weight="bold" font-size="10">2</text></svg></span>Equação</button><button type="button" data-estilo="pre" style="font: 14px ui-monospace, Consolas, monospace"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 7L3.5 12l5 5M15.5 7l5 5-5 5M13.5 5l-3 14"/></svg></span>Pré-formatado</button><button type="button" data-estilo="blockquote" style="font: 15px system-ui, sans-serif; color: #666"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7c-3.2.6-5 2.8-5 6v4h5v-5H7.2c.2-1.6 1.2-2.7 2.8-3.1zM19 7c-3.2.6-5 2.8-5 6v4h5v-5h-2.8c.2-1.6 1.2-2.7 2.8-3.1z" fill="currentColor" stroke="none"/></svg></span>Bloco de citação</button></span></span>
-  <span class="combo" id="c-num"><button type="button" id="b-num" class="b-icone" title="Numerados: capítulo, seção, subseção, definição, teorema, exemplo, observação" aria-label="Numerados"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="13" font-weight="700" font-family="system-ui, sans-serif" fill="currentColor" stroke="none">§1</text></svg></button><button type="button" class="combo-seta" title="Numerados: escolher" aria-label="Numerados: escolher">▾</button>
-    <span class="combo-menu" hidden=""><button type="button" data-numerado="capitulo" title="Capítulo numerado (1, 2, ...): o parágrafo do cursor vira o título"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="13" font-weight="700" font-family="system-ui, sans-serif" fill="currentColor" stroke="none">C1</text></svg></span>Capítulo</button><button type="button" data-numerado="secao" title="Seção numerada (1, 2, ... ou 2.1 com capítulos): o parágrafo do cursor vira o título"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="13" font-weight="700" font-family="system-ui, sans-serif" fill="currentColor" stroke="none">1.1</text></svg></span>Seção</button><button type="button" data-numerado="subsecao" title="Subseção numerada (1.1, 1.2, ...): o parágrafo do cursor vira o título"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="9.5" font-weight="700" font-family="system-ui, sans-serif" fill="currentColor" stroke="none">1.1.1</text></svg></span>Subseção</button><button type="button" data-numerado="definicao" title="Definição numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#1b8a3a"/><path d="M6 8.5h5" stroke="#1b8a3a" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Definição</button><button type="button" data-numerado="teorema" title="Teorema numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#3333cc"/><path d="M6 8.5h5" stroke="#3333cc" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Teorema</button><button type="button" data-numerado="exemplo" title="Exemplo numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#ff8000"/><path d="M6 8.5h5" stroke="#ff8000" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Exemplo</button><button type="button" data-numerado="observacao" title="Observação numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#777"/><path d="M6 8.5h5" stroke="#777" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Observação</button></span></span>
+  <span class="combo grupo" id="c-num"><button type="button" id="b-num" class="b-icone" title="Numerados: capítulo, seção, subseção, definição, teorema, exemplo, observação" aria-label="Numerados"></button><button type="button" class="combo-seta" title="Numerados: escolher" aria-label="Numerados: escolher">▾</button>
+    <span class="combo-menu" hidden=""><button type="button" id="bn-capitulo" data-numerado="capitulo" title="Capítulo numerado (1, 2, ...): o parágrafo do cursor vira o título"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="13" font-weight="700" font-family="system-ui, sans-serif" fill="currentColor" stroke="none">C1</text></svg></span>Capítulo</button><button type="button" id="bn-secao" data-numerado="secao" title="Seção numerada (1, 2, ... ou 2.1 com capítulos): o parágrafo do cursor vira o título"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="13" font-weight="700" font-family="system-ui, sans-serif" fill="currentColor" stroke="none">1.1</text></svg></span>Seção</button><button type="button" id="bn-subsecao" data-numerado="subsecao" title="Subseção numerada (1.1, 1.2, ...): o parágrafo do cursor vira o título"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="9.5" font-weight="700" font-family="system-ui, sans-serif" fill="currentColor" stroke="none">1.1.1</text></svg></span>Subseção</button><button type="button" id="bn-definicao" data-numerado="definicao" title="Definição numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#1b8a3a"/><path d="M6 8.5h5" stroke="#1b8a3a" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Definição</button><button type="button" id="bn-teorema" data-numerado="teorema" title="Teorema numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#3333cc"/><path d="M6 8.5h5" stroke="#3333cc" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Teorema</button><button type="button" id="bn-exemplo" data-numerado="exemplo" title="Exemplo numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#ff8000"/><path d="M6 8.5h5" stroke="#ff8000" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Exemplo</button><button type="button" id="bn-observacao" data-numerado="observacao" title="Observação numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#777"/><path d="M6 8.5h5" stroke="#777" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Observação</button></span></span>
   <span class="combo grupo" id="c-fmt"><button type="button" id="b-fmt" class="b-icone" title="Formatação do texto" aria-label="Formatação do texto"></button><button type="button" class="combo-seta" title="Formatação do texto: escolher" aria-label="Formatação do texto: escolher">▾</button>
     <span class="combo-menu" hidden=""><button type="button" id="b-negrito" title="Negrito (Ctrl+B)" aria-label="Negrito"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17.5" text-anchor="middle" font-size="17" font-family="Times New Roman, serif" font-weight="bold">B</text></svg></span>Negrito (Ctrl+B)</button><button type="button" id="b-italico" title="Itálico (Ctrl+I)" aria-label="Itálico"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17.5" text-anchor="middle" font-size="17" font-family="Times New Roman, serif" font-style="italic">I</text></svg></span>Itálico (Ctrl+I)</button><button type="button" id="b-limpar" title="Remover formatação (negrito, itálico, cor do texto)" aria-label="Remover formatação"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h11M11.5 5L9 18"/><path d="M14.5 14.5l5 5M19.5 14.5l-5 5"/></svg></span>Remover formatação</button></span></span>
   <span class="combo" id="c-cor"><button type="button" id="b-cor" class="b-icone" title="Cor do texto: preto (clique de novo na mesma cor para remover)" aria-label="Cor do texto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 16L12 4l5 12M8.8 12h6.4"></path><rect class="barra-cor" x="4" y="18.5" width="16" height="3.5" rx="1" stroke="none"></rect></svg></button><button type="button" class="combo-seta" title="Escolher a cor" aria-label="Escolher a cor">▾</button>
@@ -216,6 +216,7 @@
 <div id="painel-rotulo" class="painel-mini" hidden="" role="dialog" aria-label="Legenda e label">
   <div class="linha"><b id="pr-titulo">Legenda</b></div>
   <div class="linha"><span class="rot" id="pr-texto-rot">Texto</span><input type="text" id="pr-texto" spellcheck="true"></div>
+  <div class="linha" id="pr-cores"><span class="rot">Cor</span><button type="button" class="pr-cor" data-cor="" style="--c: transparent" title="Padrão do estilo" aria-label="Padrão do estilo"></button><button type="button" class="pr-cor" data-cor="cor-preto" style="--c: #111111" title="Preto" aria-label="Preto"></button><button type="button" class="pr-cor" data-cor="cor-azul" style="--c: #3333cc" title="Azul" aria-label="Azul"></button><button type="button" class="pr-cor" data-cor="rotulo" style="--c: #ff8000" title="Laranja" aria-label="Laranja"></button><button type="button" class="pr-cor" data-cor="cor-vermelho" style="--c: #d01c1c" title="Vermelho" aria-label="Vermelho"></button><button type="button" class="pr-cor" data-cor="cor-verde" style="--c: #1b8a3a" title="Verde" aria-label="Verde"></button><button type="button" class="pr-cor" data-cor="cor-roxo" style="--c: #8e24aa" title="Roxo" aria-label="Roxo"></button></div>
   <div class="linha"><span class="rot">Label</span><input type="text" id="pr-label" spellcheck="false" title="Nome para citar num link (Ctrl+K, Ou ir para). Pode trocar por um nome seu."></div>
   <div id="pr-erro"></div>
   <div class="linha" style="justify-content:flex-end"><button type="button" id="pr-remover">Remover</button><button type="button" id="pr-cancelar">Cancelar</button><button type="button" id="pr-salvar">Salvar</button></div>
@@ -722,6 +723,18 @@
       document.querySelectorAll('#c-cor .combo-menu button').forEach(x => x.classList.toggle('ativo', x === b));
     }
     $('b-cor').onclick = () => aplicarCor(COR.atual);
+    // texto novo: num bloco vazio, o que se digita entra com a cor da barra (se for diferente da do bloco)
+    document.addEventListener('beforeinput', ev => {
+      if (ev.inputType !== 'insertText' || !ev.data || !document.body.classList.contains('editando')) return;
+      const sel = getSelection(); if (!sel.rangeCount || !sel.isCollapsed) return;
+      const r = sel.getRangeAt(0), n = noDe(r.startContainer); if (!n || !n.closest('section.pagina') || n.closest(CORES.map(c => 'span.' + c).join(', ') + ', mjx-container, .amb-titulo')) return;
+      const b = n.closest(BLOCOS); if (!b || b.textContent.replace(/[\s\u200B]/g, '') || b.querySelector('mjx-container, img, .marca')) return;
+      const s = document.createElement('span'); s.className = COR.atual; s.textContent = '\u200B'; r.insertNode(s);
+      if (getComputedStyle(s).color === getComputedStyle(b).color) { s.remove(); return; }
+      ev.preventDefault(); s.textContent = ev.data;
+      const q = document.createRange(); q.setStart(s.firstChild, ev.data.length); q.collapse(true); sel.removeAllRanges(); sel.addRange(q);
+      sujo(true);
+    }, true);
     combo('c-cor', b => { COR.atual = b.dataset.cor; lembrar('apostila-cor', COR.atual); mostrarCor(); aplicarCor(COR.atual); });
     mostrarCor();
     // Q.E.D. apagado pelo teclado: tira o resto (camada e linha)
@@ -3307,6 +3320,7 @@
       $('pr-titulo').textContent = o.titulo; $('pr-texto-rot').textContent = o.rotTexto;
       $('pr-texto').value = o.texto || ''; $('pr-texto').placeholder = o.dica || ''; $('pr-label').value = o.label;
       $('pr-remover').style.display = o.remover ? '' : 'none'; $('pr-erro').textContent = '';
+      ROT.cor = o.cor || ''; mostrarCorRotulo();
       const P = $('painel-rotulo'); P.hidden = false;
       const b = o.perto.getBoundingClientRect();
       let top = b.bottom + 8; if (top + P.offsetHeight > innerHeight - 8) top = Math.max(8, b.top - P.offsetHeight - 8);
@@ -3314,6 +3328,12 @@
       $('b-rotulo').hidden = true;
       $('pr-texto').focus(); $('pr-texto').select();
     }
+    // cor do item: '' = a do estilo; senão uma das cores do texto (classe), como na barra
+    function mostrarCorRotulo() { document.querySelectorAll('#pr-cores .pr-cor').forEach(b => b.classList.toggle('ativo', b.dataset.cor === ROT.cor)); }
+    document.querySelectorAll('#pr-cores .pr-cor').forEach(b => b.onclick = () => { ROT.cor = b.dataset.cor; mostrarCorRotulo(); });
+    const corDe = el => (el && CORES.find(k => el.classList.contains(k))) || '';
+    function pintar(el, cor) { CORES.forEach(k => el.classList.remove(k)); if (cor) el.classList.add(cor); if (!el.classList.length) el.removeAttribute('class'); }
+    const corPadrao = tipo => { const c = lembrar('strata-cor-' + tipo); return CORES.includes(c) ? c : ''; };
     function fecharRotulo(voltar) {
       $('painel-rotulo').hidden = true; ROT.o = null;
       const r = ROT.r; if (!voltar || !r || !r.startContainer.isConnected) return;
@@ -3326,7 +3346,8 @@
       const texto = $('pr-texto').value.trim(), lab = limparLabel($('pr-label').value);
       if (o.obrig && !texto) { $('pr-erro').textContent = o.rotTexto + ': não pode ficar vazio'; return $('pr-texto').focus(); }
       const erro = erroLabel(lab, o.dono); if (erro) { $('pr-erro').textContent = erro; return $('pr-label').focus(); }
-      fecharRotulo(true); depoisDe(() => o.salvar(texto, lab)); depoisRotulo();
+      const cor = ROT.cor; if (o.tipo) lembrar('strata-cor-' + o.tipo, cor);
+      fecharRotulo(true); depoisDe(() => o.salvar(texto, lab, cor)); depoisRotulo();
     }
     $('pr-salvar').onclick = salvarRotulo;
     $('pr-cancelar').onclick = () => fecharRotulo(true);
@@ -3344,7 +3365,8 @@
       abrirRotulo({
         perto: alvo, titulo: ehFig ? 'Legenda da figura' : 'Legenda da tabela', rotTexto: 'Legenda', dica: ehFig ? 'Figura n: ...' : 'Tabela n: ...',
         texto: leg ? leg.textContent : '', label: caixa ? caixa.id : labelAleatorio(ehFig ? 'fig' : 'tab'), dono: caixa, remover: !!caixa,
-        salvar: (texto, lab) => {
+        cor: leg ? corDe(leg) : COR.atual,   // legenda nova: a cor da barra
+        salvar: (texto, lab, cor) => {
           if (ehFig) {
             let f = caixa;
             if (!f) {
@@ -3354,11 +3376,11 @@
               f.style.width = w;
               const l = document.createElement('span'); l.className = 'legenda'; f.append(l);
             }
-            f.querySelector(':scope > .legenda').textContent = texto; trocarLabel(f, lab);
+            const l = f.querySelector(':scope > .legenda'); l.textContent = texto; l.className = 'legenda'; pintar(l, cor); trocarLabel(f, lab);
           } else {
             alvo.classList.add('tabela');
             let c = alvo.querySelector(':scope > caption'); if (!c) { c = document.createElement('caption'); alvo.prepend(c); }
-            c.textContent = texto; trocarLabel(alvo, lab);
+            c.textContent = texto; pintar(c, cor); trocarLabel(alvo, lab);
           }
         },
         apagar: () => {
@@ -3374,13 +3396,13 @@
     function editarNumerado(el) {
       const t = tipoNum(el); if (!t) return;
       if (TITULOS_NUM[t]) return abrirRotulo({
-        perto: el, titulo: NUM[t].nome, rotTexto: 'Título', texto: textoLimpo(el), label: el.id, dono: el, obrig: true, remover: true,
-        salvar: (texto, lab) => { if (texto !== textoLimpo(el)) el.textContent = texto; trocarLabel(el, lab); },
+        perto: el, titulo: NUM[t].nome, rotTexto: 'Título', texto: textoLimpo(el), label: el.id, dono: el, obrig: true, remover: true, tipo: t, cor: corDe(el),
+        salvar: (texto, lab, cor) => { if (texto !== textoLimpo(el)) el.textContent = texto; pintar(el, cor); trocarLabel(el, lab); },
         apagar: () => { el.classList.remove(t); delete el.dataset.num; if (!el.classList.length) el.removeAttribute('class'); }
       });
       abrirRotulo({
-        perto: el, titulo: NUM[t].nome, rotTexto: 'Nome', dica: 'opcional: ' + NUM[t].nome + ' n (nome)', texto: el.dataset.nome || '', label: el.id, dono: el, remover: true,
-        salvar: (texto, lab) => { if (texto) el.dataset.nome = texto; else delete el.dataset.nome; trocarLabel(el, lab); },
+        perto: el, titulo: NUM[t].nome, rotTexto: 'Nome', dica: 'opcional: ' + NUM[t].nome + ' n (nome)', texto: el.dataset.nome || '', label: el.id, dono: el, remover: true, tipo: t, cor: el.dataset.cor || '',
+        salvar: (texto, lab, cor) => { if (texto) el.dataset.nome = texto; else delete el.dataset.nome; if (cor) el.dataset.cor = cor; else delete el.dataset.cor; trocarLabel(el, lab); },
         apagar: () => {
           const ti = el.querySelector('.amb-titulo');
           if (ti) { const nx = ti.nextSibling; if (nx && nx.nodeType === 3) nx.data = nx.data.replace(/^[\s ]+/, ''); ti.remove(); }
@@ -3408,12 +3430,12 @@
         if (ja && tipoNum(ja) === tipo) return editarNumerado(ja);
         if (!b0.matches(TEXTUAIS)) return avisar('Clique num parágrafo de texto');
         return abrirRotulo({
-          perto: b0, titulo: NUM[tipo].nome, rotTexto: 'Título', texto: textoLimpo(b0), label: ja ? ja.id : labelAleatorio(NUM[tipo].pref), dono: ja || b0, obrig: true,
-          salvar: (texto, lab) => {
+          perto: b0, titulo: NUM[tipo].nome, rotTexto: 'Título', texto: textoLimpo(b0), label: ja ? ja.id : labelAleatorio(NUM[tipo].pref), dono: ja || b0, obrig: true, tipo, cor: corPadrao(tipo),
+          salvar: (texto, lab, cor) => {
             if (!b0.isConnected) return;
             if (texto !== textoLimpo(b0)) b0.textContent = texto;
             const n = trocarTag(b0, TITULOS_NUM[tipo]);
-            ['capitulo', 'secao', 'subsecao', 'subtitulo', 'sem-recuo'].forEach(k => n.classList.remove(k)); n.classList.add(tipo);
+            ['capitulo', 'secao', 'subsecao', 'subtitulo', 'sem-recuo'].forEach(k => n.classList.remove(k)); n.classList.add(tipo); pintar(n, cor);
             delete n.dataset.num; trocarLabel(n, lab);
           }
         });
@@ -3421,12 +3443,11 @@
       const caixa = bl[0].closest('.ambiente');
       if (caixa) { if (caixa.dataset.tipo !== tipo) { caixa.dataset.tipo = tipo; depoisRotulo(); } return editarNumerado(caixa); }
       abrirRotulo({
-        perto: bl[0], titulo: NUM[tipo].nome, rotTexto: 'Nome', dica: 'opcional: ' + NUM[tipo].nome + ' n (nome)', texto: '', label: labelAleatorio(NUM[tipo].pref), dono: null,
-        salvar: (texto, lab) => { const d = envolverAmbiente(bl.filter(e => e.isConnected), tipo); if (!d) return; d.id = lab; if (texto) d.dataset.nome = texto; }
+        perto: bl[0], titulo: NUM[tipo].nome, rotTexto: 'Nome', dica: 'opcional: ' + NUM[tipo].nome + ' n (nome)', texto: '', label: labelAleatorio(NUM[tipo].pref), dono: null, tipo, cor: corPadrao(tipo),
+        salvar: (texto, lab, cor) => { const d = envolverAmbiente(bl.filter(e => e.isConnected), tipo); if (!d) return; d.id = lab; if (texto) d.dataset.nome = texto; if (cor) d.dataset.cor = cor; }
       });
     }
-    combo('c-num', b => inserirNumerado(b.dataset.numerado));
-    $('b-num').onclick = () => $('c-num').querySelector('.combo-seta').click();
+    document.querySelectorAll('#c-num [data-numerado]').forEach(b => b.onclick = () => inserirNumerado(b.dataset.numerado));
     document.querySelectorAll('#c-num button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
     // clicar na legenda ou no título do ambiente abre o diálogo
     document.addEventListener('mousedown', e => {
