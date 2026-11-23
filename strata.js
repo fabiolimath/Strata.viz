@@ -1008,7 +1008,7 @@
       doc.querySelectorAll('style.darkreader, meta[name="darkreader"]').forEach(e => e.remove());
       doc.querySelectorAll('*').forEach(e => { if (e.tagName.includes('-') && !e.tagName.startsWith('MJX')) e.remove(); });
       [doc, ...doc.querySelectorAll('*')].forEach(e => {
-        [...e.attributes].forEach(a => { if (/^data-(darkreader|qb|gramm|lt-|gr-)/.test(a.name)) e.removeAttribute(a.name); });
+        [...e.attributes].forEach(a => { if (/^data-(darkreader|qb|lpop|gramm|lt-|gr-)/.test(a.name)) e.removeAttribute(a.name); });
         if (e.style) {
           [...e.style].filter(p => p.startsWith('--darkreader')).forEach(p => e.style.removeProperty(p));
           if (!e.getAttribute('style') || !e.getAttribute('style').trim()) e.removeAttribute('style');

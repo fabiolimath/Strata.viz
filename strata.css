@@ -91,6 +91,10 @@ body.editando .apostila mjx-container[display="true"] { display: inline-block !i
 .apostila table.tabela .alinha-dir { text-align: right; }
 .apostila table.tabela .alinha-just { text-align: justify; }
 body.editando .apostila table.tabela td, body.editando .apostila table.tabela th { min-width: 2.5em; }
+/* Corretores como o QuillBot escondem o cursor nativo (caret-color transparente com !important)
+   para desenhar o deles, que não aparece no editor. O :is(#strata-caret, ...) dá especificidade
+   de id para vencer a regra da extensão. */
+:is(#strata-caret, body.editando) .apostila .pagina, :is(#strata-caret, body.editando) .apostila .pagina * { caret-color: auto !important; }
 .apostila .duas-colunas table.tabela { max-width: 100%; }
 #painel-tabela { width: min(360px, calc(100vw - 32px)); }
 #painel-tabela input[type=number] { width: 64px; font: inherit; padding: 4px 6px; border: 1px solid #bbb; border-radius: 4px; }
