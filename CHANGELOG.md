@@ -2,6 +2,10 @@
 
 ## Próxima versão
 
+- Tema escuro: as ferramentas, cores e espessuras escolhidas no desenho
+  voltam a aparecer destacadas; a cor escolhida do cabeçalho da tabela e da
+  legenda ganha um anel laranja.
+- Menu de equações: "Equação em linha" e "Equação destacada".
 - Cursor visível com o QuillBot ativo: a extensão deixava o cursor nativo
   transparente na página editável. Ao salvar, também saem os atributos
   `data-lpop-*` que ela deixa.
