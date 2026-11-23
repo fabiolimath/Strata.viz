@@ -2,6 +2,9 @@
 
 ## Próxima versão
 
+- Cursor visível com o QuillBot ativo: a extensão deixava o cursor nativo
+  transparente na página editável. Ao salvar, também saem os atributos
+  `data-lpop-*` que ela deixa.
 - Tabela: posição na página (esquerda, centro, direita) no menu da tabela
   (classes `tab-esq`/`tab-dir`); o botão marca a posição atual.
 - Duas colunas também funcionam com o cursor numa tabela, ou com uma seleção
