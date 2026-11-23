@@ -135,7 +135,11 @@ salva como `novo_documento.html`.
   `tab-esq`/`tab-dir` a encostam à esquerda/direita. No editor: botão Tabela (pergunta linhas e colunas) e o menu ▾
   ao lado (inserir/excluir linha e coluna, mesclar, separar, cabeçalho, posição na página,
   excluir tabela). Na célula, Enter quebra a linha e Tab/Shift+Tab andam entre as células
-  (Tab na última cria uma linha).
+  (Tab na última cria uma linha). A tabela fica numa linha própria,
+  `<div class="linha-tabela"><table class="tabela">…</table></div>` (o editor
+  embrulha as antigas). No modo edição, essa linha tem um ponto antes e outro depois
+  da tabela, que recebem camada, marcação e desenho, como a equação destacada; a
+  camada no ponto de antes é a da linha inteira (`div.linha-tabela.fragment`).
 - **Outros**: `class="caixa"` (caixa de destaque), `p.subtitulo`,
   `class="sem-recuo"`, `alinha-esq|centro|dir|just`, `recuo-1..4`,
   `<span class="fragment fim-exemplo">◼</span>` (Q.E.D.), `table.tabela`,
