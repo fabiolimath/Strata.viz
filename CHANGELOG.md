@@ -2,6 +2,14 @@
 
 ## Próxima versão
 
+- Símbolos: uma seção por vez, escolhida num menu (a última volta na próxima vez).
+- Rascunho: a chave não depende mais de ?editar/?aula na URL; ao recuperar,
+  o cursor é recolocado no texto.
+- Tabela: seleção em retângulo (arrastar de célula a célula), Selecionar
+  linha/coluna no menu, cor do texto aplicada célula a célula (antes
+  desmontava a tabela) e cor do cabeçalho (ao inserir e no menu).
+- Só a tabela com legenda é numerada (antes toda tabela contava).
+- Listas: o número/marcador segue a cor do começo do texto do item.
 - Menu Numerados lembra a última opção (o botão principal a repete).
 - Cor nos diálogos dos numerados (capítulo, seção, subseção, ambientes) e das
   legendas; cada tipo lembra a última cor escolhida. Legenda nova começa com a
