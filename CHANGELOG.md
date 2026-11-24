@@ -2,6 +2,8 @@
 
 ## Próxima versão
 
+- Tema escuro: barra de tabela com os botões de posição e o destaque de
+  Selecionar linha/coluna legíveis.
 - Legendas de figura e tabela editadas em linha, como o resto do texto (a cor pela
   barra); sem diálogo. O label fica interno (some dos diálogos e do editor de
   fórmula). O botão Legenda virou um ícone de adicionar, que some quando o objeto já
