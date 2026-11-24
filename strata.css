@@ -34,8 +34,8 @@ html, body { background: var(--mesa); margin: 0; }
 .apostila h1 { font-size: 2.1em; text-align: center; margin: 0 0 .15em; }
 .apostila .subtitulo { text-align: center; color: var(--laranja); font-size: 1.25em; margin-bottom: 1.2em; }
 .apostila h2 { font-size: 1.45em; margin: 0 0 .6em; }
-.apostila h3 { font-size: 1.1em; margin: 1em 0 .4em; color: var(--azul); }
-.apostila h4, .apostila h5, .apostila h6 { font-family: inherit; color: var(--azul); line-height: 1.25; text-transform: none; letter-spacing: 0; }
+.apostila h3 { font-size: 1.1em; margin: 1em 0 .4em; }
+.apostila h4, .apostila h5, .apostila h6 { font-family: inherit; line-height: 1.25; text-transform: none; letter-spacing: 0; }
 .apostila h4 { font-size: 1em; font-weight: bold; margin: .9em 0 .35em; }
 .apostila h5 { font-size: .95em; font-weight: bold; font-style: italic; margin: .8em 0 .3em; }
 .apostila h6 { font-size: .9em; font-weight: normal; font-style: italic; margin: .7em 0 .3em; }
@@ -68,7 +68,7 @@ html, body { background: var(--mesa); margin: 0; }
 .apostila .cor-preto { color: var(--tinta); }
 .apostila .cor-azul { color: var(--azul); }
 .apostila .caixa { clear: both; border: 1.5px solid var(--laranja); border-radius: 6px; padding: .3em .9em; margin: .4em 0 .9em; color: var(--tinta); }
-.apostila .caixa p { color: var(--azul); }
+
 .apostila aside.nota {
   float: right; clear: right; width: 30%; margin: .1em 0 .5em 1.2em;
   color: var(--vermelho); font-size: .72em; line-height: 1.3; text-align: left; text-indent: 0;
@@ -236,7 +236,7 @@ body.editando mjx-container:hover { background: #eef2ff; outline: 1px solid #aab
 
 /* ---------- marcações sobre termos (destaque, risco, círculo, seta, check) ---------- */
 .apostila .eq.passo { text-align: left; margin: .15em 0 .35em; }
-.apostila .eq .coment { color: var(--azul); }
+
 .apostila .fim-exemplo { display: block; text-align: right; text-indent: 0; color: var(--laranja); font-size: 1.1em; line-height: 1.2; }
 .apostila svg.tinta { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none;
   overflow: visible; z-index: 2; mix-blend-mode: multiply; }
@@ -505,6 +505,7 @@ html.strata-escuro #b-tema .sol { display: none; }
     background: var(--ui-ativo); border-color: #ff9a3c; color: #ffc48a; }
   html.strata-escuro #modos #b-salvar, html.strata-escuro #ee-aplicar, html.strata-escuro #pm-ok { background: #2a6 !important; border-color: #2a6 !important; color: #fff; }
   html.strata-escuro #aviso { background: var(--ui-fundo); color: #5fd17f; }
+  html.strata-escuro #barra #barra-tabela { background: #22252b; border-color: var(--ui-borda); }
   html.strata-escuro #barra, html.strata-escuro #sumario { background: #1a1c21; border-color: var(--ui-borda); color: var(--ui-texto); }
   html.strata-escuro #sumario a { color: var(--ui-texto); }
   html.strata-escuro #sumario a.nivel-3 { color: var(--ui-suave); }
@@ -619,15 +620,15 @@ body.editando .apostila table.com-sel ::selection { background: transparent; }
 #pt-cores[hidden] { display: none; }
 .pt-cor { width: 20px; height: 20px; padding: 0 !important; border-radius: 50% !important; border: 2px solid #ccc !important; background: var(--c) !important; }
 .pt-cor.ativo { border-color: #222 !important; box-shadow: 0 0 0 2px #fff inset; }
-#c-tabela .tab-cores { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 4px 8px 6px; }
-#c-tabela .tab-cores-rot { width: 100%; font: 12px system-ui, sans-serif; color: #777; }
-#barra #c-tabela .tab-cores .pt-cor { flex: none; width: 20px; height: 20px; min-width: 0; margin: 0; }
+#barra-tabela .tab-cores { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 4px 8px 6px; }
+#barra-tabela .tab-cores-rot { width: 100%; font: 12px system-ui, sans-serif; color: #777; }
+#barra #barra-tabela .tab-cores .pt-cor { flex: none; width: 20px; height: 20px; min-width: 0; margin: 0; }
 /* posição da tabela na página (centralizada é o padrão) */
 .apostila table.tab-esq { margin-left: 0; margin-right: auto; }
 .apostila table.tab-dir { margin-left: auto; margin-right: 0; }
-#barra #c-tabela .tab-cores .pt-pos { flex: none; width: 28px; height: 26px; min-width: 0; margin: 0; padding: 2px !important; justify-content: center; border: 1px solid #ccc !important; border-radius: 4px; }
-#barra #c-tabela .tab-cores .pt-pos svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
-#barra #c-tabela .tab-cores .pt-pos.ativo { border-color: #ff8000 !important; background: #fff3e6; }
+#barra #barra-tabela .tab-cores .pt-pos { flex: none; width: 28px; height: 26px; min-width: 0; margin: 0; padding: 2px !important; justify-content: center; border: 1px solid #ccc !important; border-radius: 4px; }
+#barra #barra-tabela .tab-cores .pt-pos svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+#barra #barra-tabela .tab-cores .pt-pos.ativo { border-color: #ff8000 !important; background: #fff3e6; }
 /* marcador da lista na cor do começo do texto do item */
 .apostila li[data-cor-marca="cor-preto"]::marker, .apostila li[data-cor-marca="cor-preto"]::before { color: var(--tinta); }
 .apostila li[data-cor-marca="cor-azul"]::marker, .apostila li[data-cor-marca="cor-azul"]::before { color: var(--azul); }
@@ -652,8 +653,23 @@ body.editando .apostila table.com-sel ::selection { background: transparent; }
 .apostila table.tabela > caption::before { content: "Tabela " attr(data-num) ": "; font-weight: bold; }
 .apostila table.tabela > caption:empty::before { content: "Tabela " attr(data-num); }
 .apostila a.ref { text-decoration: none; }
-body.editando .apostila span.figura > .legenda, body.editando .apostila table.tabela > caption, body.editando .apostila .ambiente .amb-titulo { cursor: pointer; }
-body.editando .apostila span.figura > .legenda:hover, body.editando .apostila table.tabela > caption:hover, body.editando .apostila .ambiente .amb-titulo:hover { outline: 1px dashed #c05f00; outline-offset: 2px; }
+body.editando .apostila .ambiente .amb-titulo { cursor: pointer; }
+body.editando .apostila .ambiente .amb-titulo:hover { outline: 1px dashed #c05f00; outline-offset: 2px; }
+body.editando .apostila span.figura > .legenda { cursor: text; outline: none; }
+body.editando .apostila span.figura > .legenda:hover, body.editando .apostila table.tabela > caption:hover { outline: 1px dashed #bbb; outline-offset: 2px; }
+/* adicionar legenda (ícone) e excluir legenda (×) */
+#b-rotulo.b-add-leg, #img-legenda.b-add-leg { padding: 2px; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; }
+.b-add-leg svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+#b-x-legenda { position: fixed; z-index: 54; width: 20px; height: 20px; padding: 0; border: 1px solid #bbb; border-radius: 50%; background: #fff; color: #b00; font: bold 15px/16px system-ui, sans-serif; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+#b-x-legenda:hover { background: #fde8e8; border-color: #b00; }
+#b-x-legenda[hidden], body:not(.editando) #b-x-legenda { display: none; }
+/* barra da tabela: logo abaixo da barra superior, com o cursor numa tabela */
+#barra #barra-tabela { position: absolute; top: 100%; left: 0; right: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px;
+  padding: 4px 10px; background: #f3f3f3; border-bottom: 1px solid #ccc; box-shadow: 0 2px 4px rgba(0,0,0,.08); }
+#barra #barra-tabela[hidden] { display: none; }
+#barra-tabela .bt-rot { font: 12px system-ui, sans-serif; color: #777; margin-right: 4px; }
+#barra #barra-tabela .tab-cores { padding: 0; flex-wrap: nowrap; }
+#barra #barra-tabela .tab-cores-rot { width: auto; margin-right: 2px; }
 #painel-rotulo { width: min(400px, calc(100vw - 32px)); }
 #painel-rotulo #pr-texto { flex: 1; min-width: 0; }
 #painel-rotulo #pr-label { width: 150px; font-family: ui-monospace, Consolas, monospace; font-size: 13px; }
@@ -671,7 +687,7 @@ body:not(.editando) #b-rotulo { display: none; }
   html.strata-escuro .apostila .ambiente[data-tipo="teorema"] { --amb-fundo: #22243a; --amb: #7f86ff; }
   html.strata-escuro .apostila .ambiente[data-tipo="exemplo"] { --amb-fundo: #2e2418; }
   html.strata-escuro .apostila .ambiente[data-tipo="observacao"] { --amb-fundo: #26272b; }
-  html.strata-escuro #ee-label, html.strata-escuro #b-rotulo, html.strata-escuro #img-legenda { background: var(--ui-fundo2); color: var(--ui-texto); border-color: var(--ui-borda); }
+  html.strata-escuro #ee-label, html.strata-escuro #b-rotulo, html.strata-escuro #img-legenda, html.strata-escuro #b-x-legenda { background: var(--ui-fundo2); color: var(--ui-texto); border-color: var(--ui-borda); }
 }
 
 /* vídeo e conteúdo embutido */
@@ -700,3 +716,6 @@ body.editando .apostila .video iframe { pointer-events: none; }
   .apostila section.pagina { min-height: 1216px; max-width: none; width: 860px; }
   #img-sel, #painel-video, #painel-simbolos, #painel-imagem, #painel-tabela, #painel-rotulo, #b-rotulo, #aviso-rascunho { display: none !important; }
 }
+#barra #barra-tabela .tab-cores { gap: 4px; }
+#barra #barra-tabela .tab-cores .pt-pos { width: 32px; height: 32px; border-radius: 5px; }
+#barra #barra-tabela .tab-cores .pt-pos svg { width: 20px; height: 20px; stroke-width: 1.8; }

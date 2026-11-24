@@ -100,7 +100,7 @@ salva como `novo_documento.html`.
   no pé da página (numeradas pela ordem das chamadas; na apresentação, a nota
   aparece junto com a chamada).
 - **Numeração automática** (como no LaTeX): na ordem do documento, refeita a
-  cada mudança. Cada item tem um label (o `id`), sorteado e editável:
+  cada mudança. Cada item tem um label (o `id`), sorteado e interno (não aparece na edição; os links mostram o número):
   - capítulo, seção, subseção: `<h1 class="capitulo">`, `<h2 class="secao">`,
     `<h3 class="subsecao">` (com capítulos, tudo vira 2.1, 2.2, ...);
   - ambientes: `<div class="ambiente" data-tipo="definicao|teorema|exemplo|observacao"

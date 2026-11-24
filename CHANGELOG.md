@@ -2,6 +2,20 @@
 
 ## Próxima versão
 
+- Legendas de figura e tabela editadas em linha, como o resto do texto (a cor pela
+  barra); sem diálogo. O label fica interno (some dos diálogos e do editor de
+  fórmula). O botão Legenda virou um ícone de adicionar, que some quando o objeto já
+  tem legenda; um × no canto da legenda a exclui. O diálogo de inserir tabela ganhou
+  a opção Legenda.
+- Tabela: as funções do antigo combo ficam numa barra que aparece abaixo da barra
+  superior enquanto o cursor estiver numa tabela; o botão de tabela só insere.
+  Só ícones (o nome aparece ao pairar). Sem opção de cabeçalho: ele só mudava a cor,
+  que agora sai pelo botão Cor do texto (tabelas antigas com `th` continuam iguais).
+- Ambientes: o cursor não fica mais antes do título (Teorema 1:), nem ao inserir.
+- Cor do texto: com só parte de um trecho colorido selecionada, muda a cor só da
+  seleção (antes mudava o trecho todo, às vezes a linha inteira).
+- Títulos 3 a 6, texto de caixa e comentários de equação seguem a cor base (preto),
+  não mais azul. Exemplo 3 sem os trechos azuis que sobraram.
 - Botões Marcar e Desenhar: mostram a última ferramenta usada, na cor usada, com
   um emblema no canto (marcador na marcação, pena no desenho). Desenhar virou
   combo: o ▾ escolhe a ferramenta e já abre o desenho.
