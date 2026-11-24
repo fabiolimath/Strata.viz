@@ -822,8 +822,26 @@
         sujo(true); return;
       }
       if (span && span.contains(r.endContainer)) {
-        if (span.classList.contains(cor)) span.replaceWith(...span.childNodes);
-        else { CORES.forEach(c => span.classList.remove(c)); span.classList.add(cor); }
+        const mesma = span.classList.contains(cor);
+        const tem = f => f.textContent.replace(/[\s\u200B]/g, '') || f.querySelector('mjx-container');
+        const dir = document.createRange(); dir.setStart(r.endContainer, r.endOffset); dir.setEnd(span, span.childNodes.length);
+        const esq = document.createRange(); esq.setStart(span, 0); esq.setEnd(r.startContainer, r.startOffset);
+        if (!tem(esq.cloneContents()) && !tem(dir.cloneContents())) {   // seleção cobre o trecho todo
+          if (mesma) span.replaceWith(...span.childNodes);
+          else { CORES.forEach(c => span.classList.remove(c)); span.classList.add(cor); }
+          sujo(true); return;
+        }
+        // só parte do trecho: divide em antes / selecionado / depois
+        const D = span.cloneNode(false); D.append(dir.extractContents());
+        const meio = r.extractContents(), nos = [...meio.childNodes];
+        let M = meio;
+        if (!mesma) { M = span.cloneNode(false); CORES.forEach(c => M.classList.remove(c)); M.classList.add(cor); M.append(meio); }
+        const fim = document.createTextNode('');
+        span.after(fim); fim.before(M); if (tem(D)) fim.before(D);
+        const alvo = mesma ? nos : [M];
+        if (!tem(span)) span.remove();
+        fim.remove();
+        if (alvo.length) { const c = document.createRange(); c.setStartBefore(alvo[0]); c.setEndAfter(alvo[alvo.length - 1]); sel.removeAllRanges(); sel.addRange(c); }
         sujo(true); return;
       }
       if (r.collapsed) return avisar('Selecione o texto');

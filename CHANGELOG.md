@@ -2,6 +2,10 @@
 
 ## Próxima versão
 
+- Cor do texto: com só parte de um trecho colorido selecionada, muda a cor só da
+  seleção (antes mudava o trecho todo, às vezes a linha inteira).
+- Títulos 3 a 6, texto de caixa e comentários de equação seguem a cor base (preto),
+  não mais azul. Exemplo 3 sem os trechos azuis que sobraram.
 - Botões Marcar e Desenhar: mostram a última ferramenta usada, na cor usada, com
   um emblema no canto (marcador na marcação, pena no desenho). Desenhar virou
   combo: o ▾ escolhe a ferramenta e já abre o desenho.
