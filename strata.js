@@ -132,9 +132,10 @@
   <button type="button" id="b-busca" class="b-icone" title="Localizar e substituir (Ctrl+H), também no LaTeX das fórmulas" aria-label="Localizar e substituir"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L20 20"/></svg></button>
   <span class="sep"></span>
   <button type="button" id="b-camada" class="b-icone" title="Insere camada de conteúdo. A camada começa no ponto do cursor (no início ou no meio da linha). Com o cursor logo depois de uma âncora de camada, junta essa camada à anterior. (Alt+C)" aria-label="Camada"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"></path><path d="M3 13l9 5 9-5"></path></svg></button>
-  <span class="combo" id="c-marcar"><button type="button" id="b-marcar" class="b-icone" title="Insere camada de marcação. Marca termos já escritos (destaque, risco, círculo, seta...); a marcação aparece, no modo apresentação, no ponto do cursor." aria-label="Marcar"></button><button type="button" class="combo-seta" title="Escolher o tipo de marcação" aria-label="Escolher o tipo de marcação">▾</button>
+  <span class="combo" id="c-marcar"><button type="button" id="b-marcar" class="b-icone com-emblema" title="Insere camada de marcação. Marca termos já escritos (destaque, risco, círculo, seta...); a marcação aparece, no modo apresentação, no ponto do cursor. O botão abre com o último tipo e cor usados." aria-label="Marcar"></button><button type="button" class="combo-seta" title="Escolher o tipo de marcação" aria-label="Escolher o tipo de marcação">▾</button>
     <span class="combo-menu" hidden=""><button type="button" data-tipo="destaque" title="Destaque (marca-texto)"><span class="ci"></span>Destaque (marca-texto)</button><button type="button" data-tipo="risca" title="Risco"><span class="ci"></span>Risco</button><button type="button" data-tipo="circula" title="Círculo"><span class="ci"></span>Círculo</button><button type="button" data-tipo="caixa" title="Retângulo"><span class="ci"></span>Retângulo</button><button type="button" data-tipo="seta" title="Seta apontando para cada termo"><span class="ci"></span>Seta apontando para cada termo</button><button type="button" data-tipo="liga" title="Seta ligando o 1º termo ao 2º"><span class="ci"></span>Seta ligando o 1º termo ao 2º</button><button type="button" data-tipo="check" title="Visto (✓)"><span class="ci"></span>Visto (✓)</button><button type="button" data-tipo="texto" title="Texto à direita do termo"><span class="ci"></span>Texto</button></span></span>
-  <button type="button" id="b-desenho" class="b-icone" title="Insere camada de desenho: caneta, marca-texto, linha, seta, retângulo e elipse, livres na página. O desenho aparece, no modo apresentação, no ponto do cursor, e acompanha o parágrafo em que está a âncora." aria-label="Desenhar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8L7 10.4a5.8 5.8 0 0 0 .4 6.1 4.6 4.6 0 0 1 1 2h7.2a4.6 4.6 0 0 1 1-2 5.8 5.8 0 0 0 .4-6.1z" stroke-linejoin="round"/><path d="M12 2.4v7.3"/><circle cx="12" cy="11.6" r="1.7"/><rect x="6.6" y="18.5" width="10.8" height="3.6" rx="1.8"/></svg></button>
+  <span class="combo" id="c-desenho"><button type="button" id="b-desenho" class="b-icone com-emblema" title="Insere camada de desenho: caneta, marca-texto, linha, seta, retângulo e elipse, livres na página. O desenho aparece, no modo apresentação, no ponto do cursor, e acompanha o parágrafo em que está a âncora. O botão abre com a última ferramenta e cor usadas." aria-label="Desenhar"></button><button type="button" class="combo-seta" title="Escolher a ferramenta de desenho" aria-label="Escolher a ferramenta de desenho">▾</button>
+    <span class="combo-menu" hidden=""><button type="button" data-ferr="livre"><span class="ci"></span>Caneta</button><button type="button" data-ferr="marca"><span class="ci"></span>Marca-texto</button><button type="button" data-ferr="linha"><span class="ci"></span>Linha</button><button type="button" data-ferr="seta"><span class="ci"></span>Seta</button><button type="button" data-ferr="ret"><span class="ci"></span>Retângulo</button><button type="button" data-ferr="elipse"><span class="ci"></span>Elipse</button></span></span>
   <button type="button" id="b-olho" class="b-icone" title="Mostra ou recolhe as âncoras. Recolhidas, cada âncora vira uma linha vertical, na cor dela, no ponto em que está; passe o mouse sobre a linha para ver o ícone. (Ctrl+Q)" aria-label="Mostrar ou recolher âncoras"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="olho-aberto" d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle class="olho-aberto" cx="12" cy="12" r="3"/><path class="olho-fechado" d="M2.5 10.5s3.5 4.5 9.5 4.5 9.5-4.5 9.5-4.5M5.2 13.4l-1.7 2.3M9.2 14.8l-.7 2.7M14.8 14.8l.7 2.7M18.8 13.4l1.7 2.3"/></svg></button>
   <span class="sep"></span>
   <span class="combo grupo" id="c-eq"><button type="button" id="b-eqs" class="b-icone" title="Equações" aria-label="Equações"></button><button type="button" class="combo-seta" title="Equações: escolher" aria-label="Equações: escolher">▾</button>
@@ -212,7 +213,7 @@
   <div class="pm-linha"><b>Desenho</b> <span class="pm-dica">Desenhe na página. Tudo o que fizer aqui é uma camada só. Enter conclui, Esc cancela, Ctrl+Z desfaz o último traço.</span></div>
   <div class="pm-linha"><span class="pm-rot">Ferram.</span><button type="button" data-ferr="livre" title="Caneta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17c3-5 5-7 6.5-7 2 0 .5 6 3 6s3.5-7 8-10"/></svg></button><button type="button" data-ferr="marca" title="Marca-texto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21.5h10" stroke="#f0c000" stroke-width="3.2"/><path d="M14.2 3.6l6.2 6.2-8.3 8.3-6.2-6.2z"/><path d="M5.9 11.9l-1.6 4.4 3.4 3.4 4.4-1.6"/></svg></button><button type="button" data-ferr="linha" title="Linha"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20L20 4"/></svg></button><button type="button" data-ferr="seta" title="Seta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20L19 5M11 5h8v8"/></svg></button><button type="button" data-ferr="ret" title="Retângulo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6" width="17" height="12" rx="1"/></svg></button><button type="button" data-ferr="elipse" title="Elipse"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="9" ry="6.5"/></svg></button><button type="button" data-ferr="borracha" title="Borracha (apaga o traço inteiro)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 20h12M5.5 14.5l8-8a2 2 0 0 1 2.8 0l2.2 2.2a2 2 0 0 1 0 2.8L12 18H9z"/><path d="M9.5 10.5l5 5"/></svg></button></div>
   <div class="pm-linha"><span class="pm-rot">Cor</span><button type="button" class="pm-cor" data-dcor="preto" style="--c:#111111" title="preto"></button><button type="button" class="pm-cor" data-dcor="azul" style="--c:#3333cc" title="azul"></button><button type="button" class="pm-cor" data-dcor="laranja" style="--c:#ff8000" title="laranja"></button><button type="button" class="pm-cor" data-dcor="vermelho" style="--c:#d01c1c" title="vermelho"></button><button type="button" class="pm-cor" data-dcor="verde" style="--c:#1b8a3a" title="verde"></button><button type="button" class="pm-cor" data-dcor="roxo" style="--c:#8e24aa" title="roxo"></button><button type="button" class="pm-cor" data-dcor="amarelo" style="--c:#ffe600" title="amarelo"></button><span class="pm-rot" style="width:auto;margin-left:12px">Traço</span><button type="button" data-esp="1.6" title="Fino"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16" stroke-width="1.4"/></svg></button><button type="button" data-esp="2.6" title="Médio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16" stroke-width="2.6"/></svg></button><button type="button" data-esp="4.5" title="Grosso"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16" stroke-width="4.4"/></svg></button></div>
-  <div class="ee-botoes"><button type="button" id="pd-apagar">Apagar desenho</button><button type="button" id="pd-desfazer" title="Desfazer o último traço (Ctrl+Z)">Desfazer traço</button><button type="button" id="pd-cancelar">Cancelar</button><button type="button" id="pd-ok">Concluir</button></div>
+  <div class="ee-botoes"><button type="button" id="pd-apagar">Apagar desenhos</button><button type="button" id="pd-desfazer" title="Desfazer o último traço (Ctrl+Z)">Desfazer traço</button><button type="button" id="pd-cancelar">Cancelar</button><button type="button" id="pd-ok">Concluir</button></div>
 </div>
 <div id="painel-rotulo" class="painel-mini" hidden="" role="dialog" aria-label="Legenda e label">
   <div class="linha"><b id="pr-titulo">Legenda</b></div>
@@ -1201,6 +1202,10 @@
     const MK_TRACOS = { amarelo: '#e0b800', verde: '#16a32e', laranja: '#ff7a00', azul: '#0a9bd8', rosa: '#e020b0', vermelho: '#e01010' };   // traços: tons mais escuros
     const MK_CORES_TEXTO_ESCURO = { preto: '#e8e8ea', azul: '#9aa6ff', laranja: '#ff9a3c', vermelho: '#ff6b6b', verde: '#5fd17f', roxo: '#d58cf0' };
     const MK_CORES_TEXTO = { preto: '#111111', azul: '#3333cc', laranja: '#ff8000', vermelho: '#d01c1c', verde: '#1b8a3a', roxo: '#8e24aa' };   // marcador de texto: cores do texto
+    // emblemas dos botões Marcar e Desenhar: a ferramenta fica no botão, e o emblema diz de qual dos dois é
+    const EMB_MARCADOR = '<svg viewBox="19.75 13.6 56 56" aria-hidden="true"><path fill="currentColor" stroke="none" fill-rule="evenodd" d="M 73.4,41.2 C 73.4,40.1 72.5,39.2 71.4,39.2 C 70.7,39.2 70.0,39.5 69.4,40.1 L 58.4,51.5 C 57.1,52.8 55.2,52.8 53.9,51.5 L 40.9,38.3 C 39.5,36.9 39.5,35.6 40.9,34.2 L 53.1,22.1 C 54.3,20.9 53.7,19.0 51.9,19.0 C 51.2,19.0 50.6,19.3 50.1,19.8 L 37.0,32.9 C 35.4,34.5 35.2,36.7 36.3,38.5 L 23.3,51.5 C 22.5,52.2 22.1,53.2 22.1,54.3 L 22.1,61.7 C 22.1,63.1 23.2,64.2 24.6,64.2 L 46.2,64.2 C 47.2,64.2 48.2,63.8 48.9,63.1 L 55.1,56.9 C 56.1,55.9 57.2,55.3 58.8,55.3 C 60.1,55.3 61.2,54.8 62.1,53.9 L 72.7,43.3 C 73.3,42.7 73.5,42.0 73.4,41.2 Z M 39.3,41.7 L 51.0,53.7 C 51.5,54.2 51.5,55.1 51.0,55.6 L 47.4,59.2 C 46.9,59.7 46.3,60.0 45.6,60.0 L 27.7,60.0 C 27.0,60.0 26.5,59.5 26.5,58.7 L 26.5,55.5 C 26.5,55.0 26.7,54.6 27.1,54.2 L 37.6,43.1 C 38.1,42.6 38.8,41.9 39.3,41.7 Z"/></svg>';
+    const EMB_PENA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8L7 10.4a5.8 5.8 0 0 0 .4 6.1 4.6 4.6 0 0 1 1 2h7.2a4.6 4.6 0 0 1 1-2 5.8 5.8 0 0 0 .4-6.1z" stroke-linejoin="round"/><path d="M12 2.4v7.3"/><circle cx="12" cy="11.6" r="1.7"/><rect x="6.6" y="18.5" width="10.8" height="3.6" rx="1.8"/></svg>';
+    const emblema = svg => '<span class="emblema">' + svg + '</span>';
     const MK_PADRAO = { destaque: 'amarelo', risca: 'vermelho', circula: 'azul', caixa: 'laranja', seta: 'vermelho', liga: 'rosa', check: 'verde', texto: 'vermelho' };
     // ícones dos tipos (botões do painel e âncoras das marcações no modo edição)
     const MK_ICONES = {
@@ -1672,7 +1677,7 @@
       const r = MK.rascunho;
       if (!(r.dataset.marca || '').trim()) return avisar('Escolha ao menos um termo');
       let m = MK.existente;
-      if (!m) { m = document.createElement('span'); m.className = 'fragment marca'; prepararIcone(m); MK.range.collapse(false); MK.range.insertNode(m); escolherUltimo(r.dataset.tipo); }
+      if (!m) { m = document.createElement('span'); m.className = 'fragment marca'; prepararIcone(m); MK.range.collapse(false); MK.range.insertNode(m); escolherUltimo(r.dataset.tipo, r.dataset.cor || ''); }
       ['marca', 'tipo', 'cor'].forEach(k => { m.dataset[k] = r.dataset[k]; });
       if (r.dataset.tipo === 'texto' && r.dataset.texto) m.dataset.texto = r.dataset.texto; else m.removeAttribute('data-texto');
       m.innerHTML = MK_ICONES[m.dataset.tipo] || MK_ICONES.destaque;
@@ -1680,15 +1685,24 @@
     }
     // botão Marcar: abre com o último tipo usado; a setinha escolhe outro tipo
     MK.ultimo = MK_PADRAO[lembrar('apostila-marca')] ? lembrar('apostila-marca') : 'destaque';
-    function escolherUltimo(t) {
+    MK.ultimaCor = lembrar('strata-marca-cor') || '';
+    function corDaMarca(t, c) {
+      const pal = t === 'destaque' ? MK_CORES : t === 'texto' ? (Strata.temaEscuro() ? MK_CORES_TEXTO_ESCURO : MK_CORES_TEXTO) : MK_TRACOS;
+      return pal[c] || pal[MK_PADRAO[t]] || '';
+    }
+    function escolherUltimo(t, cor) {
       MK.ultimo = t; lembrar('apostila-marca', t);
-      $('b-marcar').innerHTML = MK_ICONES[t]; $('b-marcar').dataset.tipo = t;
+      if (cor !== undefined) { MK.ultimaCor = cor || ''; lembrar('strata-marca-cor', MK.ultimaCor); }
+      const hex = corDaMarca(t, MK.ultimaCor), b = $('b-marcar');
+      // destaque: a cor vai na faixa do marca-texto; nos outros, no traço
+      b.innerHTML = (t === 'destaque' ? MK_ICONES[t].replace('#f0c000', hex) : MK_ICONES[t]) + emblema(EMB_MARCADOR); b.dataset.tipo = t;
+      if (t === 'destaque') b.style.removeProperty('color'); else b.style.color = hex;
       document.querySelectorAll('#c-marcar .combo-menu button').forEach(b => b.classList.toggle('ativo', b.dataset.tipo === t));
     }
     document.querySelectorAll('#c-marcar .combo-menu button').forEach(b => { b.querySelector('.ci').innerHTML = MK_ICONES[b.dataset.tipo]; });
     escolherUltimo(MK.ultimo);
     $('b-marcar').onclick = () => abrirPainel(null, MK.ultimo);
-    combo('c-marcar', b => { escolherUltimo(b.dataset.tipo); abrirPainel(null, b.dataset.tipo); });
+    combo('c-marcar', b => { escolherUltimo(b.dataset.tipo, b.dataset.tipo === MK.ultimo ? undefined : ''); abrirPainel(null, b.dataset.tipo); });
     document.querySelectorAll('#painel-marca [data-tipo]').forEach(b => { b.innerHTML = MK_ICONES[b.dataset.tipo]; });
     // pairar sobre uma marcação (ou sua âncora) destaca a âncora e as marcações da mesma camada
     function pairar(m) {
@@ -1794,8 +1808,9 @@
       const R = refDesenho(m); if (!R) return;
       const s = tinta(R.pag), paleta = Strata.temaEscuro() ? DS_CORES_ESCURO : DS_CORES;
       const tracos = lerTracos(m.dataset.tracos); if (!tracos.length) return;
-      let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity, atraso = 0;
+      let atraso = 0;
       tracos.forEach(t => {
+        let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
         const { d, e } = formaDoTraco(t, R);
         const el = svgEl('path', { d, class: 'traco' + (t.ferr === 'marca' ? ' marca-livre' : '') + (anima ? ' anima' : '') + (estado === 'apagada' ? ' apagada' : ''), stroke: paleta[t.cor] || paleta.vermelho, pathLength: 1 }, s);
         el.style.strokeWidth = e;
@@ -1803,9 +1818,10 @@
         let L = 0; for (let i = 1; i < pts.length; i++) L += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
         if (anima) { const dur = Math.min(1.2, Math.max(.25, L / 700)); el.style.animationDuration = dur + 's'; el.style.animationDelay = atraso + 's'; atraso += dur * .8; }
         pts.forEach(([x, y]) => { x0 = Math.min(x0, x - e); y0 = Math.min(y0, y - e); x1 = Math.max(x1, x + e); y1 = Math.max(y1, y + e); });
+        // cada traço tem a sua área (pairar) e a sua moldura (destaque), como as marcações
+        MK.formas.push({ m, pag: R.pag, x: x0 - 4, y: y0 - 4, w: x1 - x0 + 8, h: y1 - y0 + 8 });
+        if (estado === 'foco' && m !== DS.rascunho) svgEl('rect', { x: x0 - 6, y: y0 - 6, width: x1 - x0 + 12, height: y1 - y0 + 12, rx: 4, class: 'moldura' }, s);
       });
-      MK.formas.push({ m, pag: R.pag, x: x0 - 4, y: y0 - 4, w: x1 - x0 + 8, h: y1 - y0 + 8 });
-      if (estado === 'foco' && m !== DS.rascunho) svgEl('rect', { x: x0 - 6, y: y0 - 6, width: x1 - x0 + 12, height: y1 - y0 + 12, rx: 4, class: 'moldura' }, s);
     }
 
     // modo desenho: a página deixa de ser editável e o mouse (caneta, dedo) desenha
@@ -1854,13 +1870,29 @@
       $('pd-desfazer').disabled = !lerTracos(DS.rascunho && DS.rascunho.dataset.tracos).length;
     }
     try { const g = JSON.parse(lembrar('strata-desenho') || '{}'); if (DS_FERR.includes(g.ferr) || g.ferr === 'borracha') DS.ferr = g.ferr; if (DS_CORES[g.cor]) DS.cor = g.cor; if (['1.6', '2.6', '4.5'].includes(g.esp)) DS.esp = g.esp; } catch (e) {}
-    const guardarEscolha = () => lembrar('strata-desenho', JSON.stringify({ ferr: DS.ferr, cor: DS.cor, esp: DS.esp }));
-    document.querySelectorAll('#painel-desenho [data-ferr]').forEach(b => b.onclick = () => {
-      DS.ferr = b.dataset.ferr;
+    const guardarEscolha = () => { lembrar('strata-desenho', JSON.stringify({ ferr: DS.ferr, cor: DS.cor, esp: DS.esp })); mostrarBotaoDesenho(); };
+    // botão Desenhar: a última ferramenta, na última cor, com a pena como emblema
+    function ferrBotao() { return DS_FERR.includes(DS.ferr) ? DS.ferr : 'livre'; }
+    function mostrarBotaoDesenho() {
+      const f = ferrBotao(), hex = (Strata.temaEscuro() ? DS_CORES_ESCURO : DS_CORES)[DS.cor] || '', b = $('b-desenho');
+      const ic = document.querySelector('#painel-desenho [data-ferr="' + f + '"]').innerHTML;
+      b.innerHTML = (f === 'marca' ? ic.replace('#f0c000', hex) : ic) + emblema(EMB_PENA);
+      if (f === 'marca') b.style.removeProperty('color'); else b.style.color = hex;
+      b.title = b.title.replace(/ Agora: .*$/, '') + ' Agora: ' + document.querySelector('#painel-desenho [data-ferr="' + f + '"]').title.toLowerCase() + ', ' + DS.cor + '.';
+      document.querySelectorAll('#c-desenho .combo-menu button').forEach(x => x.classList.toggle('ativo', x.dataset.ferr === f));
+    }
+    document.querySelectorAll('#c-desenho .combo-menu button').forEach(x => { x.querySelector('.ci').innerHTML = document.querySelector('#painel-desenho [data-ferr="' + x.dataset.ferr + '"]').innerHTML; });
+    function escolherFerr(f) {
+      DS.ferr = f;
       if (DS.ferr === 'marca' && !['amarelo', 'verde', 'azul', 'laranja'].includes(DS.cor)) DS.cor = 'amarelo';   // marca-texto: cor clara
       else if (DS.ferr !== 'marca' && DS.ferr !== 'borracha' && DS.cor === 'amarelo') DS.cor = 'vermelho';
       guardarEscolha(); mostrarDesenho();
-    });
+    }
+    combo('c-desenho', x => { escolherFerr(x.dataset.ferr); abrirDesenho(null); });
+    // a cor do botão muda com o tema
+    new MutationObserver(() => { mostrarBotaoDesenho(); escolherUltimo(MK.ultimo); }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    document.querySelectorAll('#painel-desenho [data-ferr]').forEach(b => b.onclick = () => escolherFerr(b.dataset.ferr));
+    mostrarBotaoDesenho();
     document.querySelectorAll('#painel-desenho [data-dcor]').forEach(b => b.onclick = () => { DS.cor = b.dataset.dcor; if (DS.ferr === 'borracha') DS.ferr = 'livre'; guardarEscolha(); mostrarDesenho(); });
     document.querySelectorAll('#painel-desenho [data-esp]').forEach(b => b.onclick = () => { DS.esp = b.dataset.esp; if (DS.ferr === 'borracha') DS.ferr = 'livre'; guardarEscolha(); mostrarDesenho(); });
     document.querySelectorAll('#painel-desenho button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
