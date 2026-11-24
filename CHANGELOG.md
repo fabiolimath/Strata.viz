@@ -2,6 +2,15 @@
 
 ## Próxima versão
 
+- Link: no modo edição, clicar num link abre o diálogo para editá-lo. Link interno:
+  o campo mostra o texto como aparece no corpo (Teorema 1), não o destino (#teo:...).
+- Tema escuro: a cor preta das fórmulas aparece branca nas opções e na prévia do
+  editor de equação (as cores seguem o tema).
+- Ícones dos estilos de parágrafo e dos numerados na última cor usada em cada um
+  (estilo: a cor de texto aplicada num bloco daquele estilo; numerado: a cor do
+  diálogo); sem cor usada, a cor padrão. Seguem o tema escuro.
+- Tema escuro: barra de tabela com os botões de posição e o destaque de
+  Selecionar linha/coluna legíveis.
 - Legendas de figura e tabela editadas em linha, como o resto do texto (a cor pela
   barra); sem diálogo. O label fica interno (some dos diálogos e do editor de
   fórmula). O botão Legenda virou um ícone de adicionar, que some quando o objeto já

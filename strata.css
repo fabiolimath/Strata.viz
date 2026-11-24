@@ -506,6 +506,9 @@ html.strata-escuro #b-tema .sol { display: none; }
   html.strata-escuro #modos #b-salvar, html.strata-escuro #ee-aplicar, html.strata-escuro #pm-ok { background: #2a6 !important; border-color: #2a6 !important; color: #fff; }
   html.strata-escuro #aviso { background: var(--ui-fundo); color: #5fd17f; }
   html.strata-escuro #barra #barra-tabela { background: #22252b; border-color: var(--ui-borda); }
+  html.strata-escuro #barra #barra-tabela .tab-cores .pt-pos { border-color: var(--ui-borda) !important; background: var(--ui-fundo); }
+  html.strata-escuro #barra #barra-tabela .tab-cores .pt-pos.ativo { border-color: #ff9a3c !important; background: var(--ui-ativo); color: #ffc48a; }
+  html.strata-escuro #barra-tabela [data-tab="sel-linha"] rect[fill], html.strata-escuro #barra-tabela [data-tab="sel-col"] rect[fill] { fill: #5b8cff; opacity: .75; }
   html.strata-escuro #barra, html.strata-escuro #sumario { background: #1a1c21; border-color: var(--ui-borda); color: var(--ui-texto); }
   html.strata-escuro #sumario a { color: var(--ui-texto); }
   html.strata-escuro #sumario a.nivel-3 { color: var(--ui-suave); }
