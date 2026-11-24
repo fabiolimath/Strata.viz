@@ -2,6 +2,8 @@
 
 ## Próxima versão
 
+- Links internos: a lista "Ou ir para" tem só os elementos numerados; títulos comuns
+  saíram (links antigos para eles continuam funcionando).
 - Link: no modo edição, clicar num link abre o diálogo para editá-lo. Link interno:
   o campo mostra o texto como aparece no corpo (Teorema 1), não o destino (#teo:...).
 - Tema escuro: a cor preta das fórmulas aparece branca nas opções e na prévia do

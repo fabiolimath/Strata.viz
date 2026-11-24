@@ -4036,7 +4036,7 @@
     function destinosInternos() {
       numerar();
       const l = [];
-      document.querySelectorAll(SEL_NUM + ', .apostila section.pagina h1, .apostila section.pagina h2, .apostila section.pagina h3, .apostila section.pagina h4').forEach(e => {
+      document.querySelectorAll(SEL_NUM).forEach(e => {   // só os numerados (títulos comuns não entram)
         const t = tipoNum(e);
         if (t) {
           let extra = '';
@@ -4044,7 +4044,7 @@
           else if (TITULOS_NUM[t]) extra = ' ' + textoLimpo(e);
           else if (t !== 'equacao') extra = e.dataset.nome ? ' (' + e.dataset.nome + ')' : '';
           l.push({ el: e, ref: true, rot: (t === 'equacao' ? 'Equação ' : '') + textoRef(e) + extra.slice(0, 60) });
-        } else { const x = textoLimpo(e); if (x) l.push({ el: e, pref: 'sec', nome: x, rot: '§ ' + x.slice(0, 60) }); }
+        }
       });
       return l;
     }
