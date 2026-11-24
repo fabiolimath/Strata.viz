@@ -2,6 +2,10 @@
 
 ## Próxima versão
 
+- Link: no modo edição, clicar num link abre o diálogo para editá-lo. Link interno:
+  o campo mostra o texto como aparece no corpo (Teorema 1), não o destino (#teo:...).
+- Tema escuro: a cor preta das fórmulas aparece branca nas opções e na prévia do
+  editor de equação (as cores seguem o tema).
 - Ícones dos estilos de parágrafo e dos numerados na última cor usada em cada um
   (estilo: a cor de texto aplicada num bloco daquele estilo; numerado: a cor do
   diálogo); sem cor usada, a cor padrão. Seguem o tema escuro.
