@@ -9,6 +9,9 @@
   a opção Legenda.
 - Tabela: as funções do antigo combo ficam numa barra que aparece abaixo da barra
   superior enquanto o cursor estiver numa tabela; o botão de tabela só insere.
+  Só ícones (o nome aparece ao pairar). Sem opção de cabeçalho: ele só mudava a cor,
+  que agora sai pelo botão Cor do texto (tabelas antigas com `th` continuam iguais).
+- Ambientes: o cursor não fica mais antes do título (Teorema 1:), nem ao inserir.
 - Cor do texto: com só parte de um trecho colorido selecionada, muda a cor só da
   seleção (antes mudava o trecho todo, às vezes a linha inteira).
 - Títulos 3 a 6, texto de caixa e comentários de equação seguem a cor base (preto),
