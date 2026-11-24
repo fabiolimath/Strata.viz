@@ -2,6 +2,13 @@
 
 ## Próxima versão
 
+- Legendas de figura e tabela editadas em linha, como o resto do texto (a cor pela
+  barra); sem diálogo. O label fica interno (some dos diálogos e do editor de
+  fórmula). O botão Legenda virou um ícone de adicionar, que some quando o objeto já
+  tem legenda; um × no canto da legenda a exclui. O diálogo de inserir tabela ganhou
+  a opção Legenda.
+- Tabela: as funções do antigo combo ficam numa barra que aparece abaixo da barra
+  superior enquanto o cursor estiver numa tabela; o botão de tabela só insere.
 - Cor do texto: com só parte de um trecho colorido selecionada, muda a cor só da
   seleção (antes mudava o trecho todo, às vezes a linha inteira).
 - Títulos 3 a 6, texto de caixa e comentários de equação seguem a cor base (preto),

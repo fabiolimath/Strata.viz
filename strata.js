@@ -120,8 +120,7 @@
   <button type="button" id="b-link" class="b-icone" title="Inserir ou editar link (Ctrl+K)" aria-label="Link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></button>
   <span class="combo grupo" id="c-midia"><button type="button" id="b-midia" class="b-icone" title="Imagem, vídeo e símbolos" aria-label="Imagem, vídeo e símbolos"></button><button type="button" class="combo-seta" title="Imagem, vídeo e símbolos: escolher" aria-label="Imagem, vídeo e símbolos: escolher">▾</button>
     <span class="combo-menu" hidden=""><button type="button" id="b-imagem" title="Inserir imagem: colar, arrastar, arquivo ou link"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg></span>Imagem</button><button type="button" id="b-video" title="Inserir vídeo ou conteúdo embutido (YouTube, Vimeo, GeoGebra, código de incorporação)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></span>Vídeo</button><button type="button" id="b-simbolos" title="Símbolos e caracteres especiais"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="18" text-anchor="middle" font-size="16" font-family="Times New Roman, serif" fill="currentColor" stroke="none">Ω</text></svg></span>Símbolos</button></span></span>
-  <span class="combo" id="c-tabela"><button type="button" id="b-tabela" class="b-icone" title="Inserir tabela" aria-label="Inserir tabela"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M3 15h18M9 4v16M15 4v16"/></svg></button><button type="button" class="combo-seta" title="Tabela: linhas, colunas, mesclar" aria-label="Tabela: linhas, colunas, mesclar">▾</button>
-    <span class="combo-menu" hidden=""><button type="button" data-tab="sel-linha" title="Selecionar a linha inteira (ou as linhas da seleção)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><rect x="3" y="9.5" width="18" height="5" fill="#3366ff" stroke="none" opacity=".45"/><path d="M3 9.5h18M3 14.5h18M9 4v16M15 4v16"/></svg></span>Selecionar linha</button><button type="button" data-tab="sel-col" title="Selecionar a coluna inteira (ou as colunas da seleção)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><rect x="9" y="4" width="6" height="16" fill="#3366ff" stroke="none" opacity=".45"/><path d="M3 9.5h18M3 14.5h18M9 4v16M15 4v16"/></svg></span>Selecionar coluna</button><button type="button" data-tab="linha-acima" title="Inserir linha acima"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="9" rx="1"/><path d="M3 15.5h18M9 11v9M15 11v9M12 2.5v6M9 5.5h6"/></svg></span>Inserir linha acima</button><button type="button" data-tab="linha-abaixo" title="Inserir linha abaixo"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="9" rx="1"/><path d="M3 8.5h18M9 4v9M15 4v9M12 15.5v6M9 18.5h6"/></svg></span>Inserir linha abaixo</button><button type="button" data-tab="col-esq" title="Inserir coluna à esquerda"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="11" y="3" width="9" height="18" rx="1"/><path d="M15.5 3v18M11 9h9M11 15h9M2.5 12h6M5.5 9v6"/></svg></span>Inserir coluna à esquerda</button><button type="button" data-tab="col-dir" title="Inserir coluna à direita"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="9" height="18" rx="1"/><path d="M8.5 3v18M4 9h9M4 15h9M15.5 12h6M18.5 9v6"/></svg></span>Inserir coluna à direita</button><button type="button" data-tab="del-linha" title="Excluir linha"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="8" rx="1"/><path d="M9 8v8M15 8v8"/><path d="M8 3l8 18" stroke="#d01c1c"/></svg></span>Excluir linha</button><button type="button" data-tab="del-col" title="Excluir coluna"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="3" width="8" height="18" rx="1"/><path d="M8 9h8M8 15h8"/><path d="M3 8l18 8" stroke="#d01c1c"/></svg></span>Excluir coluna</button><button type="button" data-tab="mesclar" title="Mesclar células (selecione duas ou mais)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 12h10M14 9l3 3-3 3M10 9l-3 3 3 3"/></svg></span>Mesclar células</button><button type="button" data-tab="separar" title="Separar célula mesclada"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M12 5v14M4.5 12h5M7 9.5L9.5 12 7 14.5M19.5 12h-5M17 9.5L14.5 12l2.5 2.5"/></svg></span>Separar célula mesclada</button><button type="button" data-tab="cabecalho" title="1ª linha como cabeçalho (liga/desliga)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><rect x="3" y="4" width="18" height="5" fill="#ff8000" stroke="none" opacity=".7"/><path d="M3 9h18M3 14.5h18M12 4v16"/></svg></span>1ª linha como cabeçalho</button><span class="tab-cores" title="Posição da tabela na página"><span class="tab-cores-rot">Tabela na página</span><button type="button" class="pt-pos" data-tab="tab-pos" data-pos="esq" title="À esquerda" aria-label="À esquerda"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4v16"/><rect x="5" y="7" width="10" height="10" rx="1"/><path d="M5 12h10M10 7v10"/></svg></button><button type="button" class="pt-pos" data-tab="tab-pos" data-pos="centro" title="Centralizada" aria-label="Centralizada"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4v16M21 4v16" stroke-dasharray="2 2"/><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M7 12h10M12 7v10"/></svg></button><button type="button" class="pt-pos" data-tab="tab-pos" data-pos="dir" title="À direita" aria-label="À direita"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4v16"/><rect x="9" y="7" width="10" height="10" rx="1"/><path d="M9 12h10M14 7v10"/></svg></button></span><span class="tab-cores" title="Cor do texto do cabeçalho"><span class="tab-cores-rot">Cor do cabeçalho</span><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="" style="--c: #ff8000" title="Laranja (padrão)" aria-label="Laranja (padrão)"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-preto" style="--c: #111111" title="Preto" aria-label="Preto"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-azul" style="--c: #3333cc" title="Azul" aria-label="Azul"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-vermelho" style="--c: #d01c1c" title="Vermelho" aria-label="Vermelho"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-verde" style="--c: #1b8a3a" title="Verde" aria-label="Verde"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-roxo" style="--c: #8e24aa" title="Roxo" aria-label="Roxo"></button></span><button type="button" data-tab="del-tabela" title="Excluir tabela"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M3 15h18M9 4v16M15 4v16"/><path d="M4 21L20 3" stroke="#d01c1c"/></svg></span>Excluir tabela</button></span></span>
+  <button type="button" id="b-tabela" class="b-icone" title="Inserir tabela" aria-label="Inserir tabela"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M3 15h18M9 4v16M15 4v16"/></svg></button>
   <span class="sep"></span>
   <span class="combo grupo" id="c-alinha"><button type="button" id="b-alinha" class="b-icone" title="Alinhamento" aria-label="Alinhamento"></button><button type="button" class="combo-seta" title="Alinhamento: escolher" aria-label="Alinhamento: escolher">▾</button>
     <span class="combo-menu" hidden=""><button type="button" id="b-al-esq" data-alinha="alinha-esq" title="Alinhar à esquerda" aria-label="Alinhar à esquerda"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h10M4 14h16M4 18h10"/></svg></span>À esquerda</button><button type="button" id="b-al-centro" data-alinha="alinha-centro" title="Centralizar" aria-label="Centralizar"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 10h10M4 14h16M7 18h10"/></svg></span>Centralizado</button><button type="button" id="b-al-dir" data-alinha="alinha-dir" title="Alinhar à direita" aria-label="Alinhar à direita"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M10 10h10M4 14h16M10 18h10"/></svg></span>À direita</button><button type="button" id="b-al-just" data-alinha="alinha-just" title="Justificado (com hifenização automática)" aria-label="Justificado"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h16M4 14h16M4 18h10"/></svg></span>Justificado</button><button type="button" id="b-colunas" title="Duas colunas: os blocos selecionados (ou o atual) ficam em duas colunas. Clique de novo para voltar a uma." aria-label="Duas colunas"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h7.5M3 10h7.5M3 14h7.5M3 18h5M13.5 6H21M13.5 10H21M13.5 14H21M13.5 18h5"/></svg></span>Duas colunas</button><button type="button" id="b-nota" title="Nota lateral vermelha (*:) ao lado do parágrafo atual" aria-label="Nota lateral"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="12" height="17" rx="1"></rect><path d="M5.5 8h6M5.5 11.5h6M5.5 15h4"></path><path d="M19.5 6.5v6M16.9 8l5.2 3M22.1 8l-5.2 3" stroke="#d01c1c"></path></svg></span>Nota lateral</button><button type="button" id="b-nota-rodape" title="Nota de rodapé: número no ponto do cursor e o texto no pé da página" aria-label="Nota de rodapé"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="2.5" width="15" height="19" rx="1"/><path d="M7.5 6.5h9M7.5 10h9"/><path d="M7.5 17.5h7" stroke-width="1.3"/><path d="M7.5 15h9" stroke-dasharray="2 1.5" stroke-width="1"/><text x="15.5" y="9" font-size="6" fill="#d01c1c" stroke="none">1</text></svg></span>Nota de rodapé</button><button type="button" id="b-qed" title="Quod erat demonstrandum (Q.E.D.): ◼ laranja à direita, no fim do bloco atual, numa camada própria. Clique de novo no mesmo bloco para tirar." aria-label="Quod erat demonstrandum (Q.E.D.)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11M3 12h11M3 17h8"/><rect x="15" y="13" width="6" height="6" fill="#ff8000" stroke="none"/></svg></span>Quod erat demonstrandum (Q.E.D.)</button></span></span>
@@ -142,6 +141,7 @@
     <span class="combo-menu" hidden=""><button type="button" id="b-inline" title="Fórmula no meio do texto, na posição do cursor (Alt+X)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="5" y="18.5" font-family="Times New Roman, serif" font-style="italic" font-weight="bold" font-size="17">x</text><text x="14" y="10.5" font-family="Times New Roman, serif" font-weight="bold" font-size="10">2</text></svg></span>Equação em linha (Alt+X)</button><button type="button" id="b-display" title="Equação destacada (centralizada), abaixo do parágrafo atual"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h20M2 21.5h20" stroke-width="1.3"/><g transform="translate(2.2 1.6) scale(.8)"><text x="6" y="18.5" font-family="Times New Roman, serif" font-style="italic" font-weight="bold" font-size="17">x</text><text x="15" y="10.5" font-family="Times New Roman, serif" font-weight="bold" font-size="10">2</text></g></svg></span>Equação destacada</button></span></span>
   <span class="sep"></span>
   <button type="button" id="b-pagina" class="b-icone" title="Nova página, depois da página atual" aria-label="Nova página"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M14 3v4h4"></path><path d="M12 11v6M9 14h6"></path></svg></button>
+  <div id="barra-tabela" hidden="" role="toolbar" aria-label="Tabela"><span class="bt-rot">Tabela</span><button type="button" class="b-icone" data-tab="sel-linha" title="Selecionar a linha inteira (ou as linhas da seleção)" aria-label="Selecionar linha"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><rect x="3" y="9.5" width="18" height="5" fill="#3366ff" stroke="none" opacity=".45"/><path d="M3 9.5h18M3 14.5h18M9 4v16M15 4v16"/></svg></button><button type="button" class="b-icone" data-tab="sel-col" title="Selecionar a coluna inteira (ou as colunas da seleção)" aria-label="Selecionar coluna"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><rect x="9" y="4" width="6" height="16" fill="#3366ff" stroke="none" opacity=".45"/><path d="M3 9.5h18M3 14.5h18M9 4v16M15 4v16"/></svg></button><span class="sep"></span><button type="button" class="b-icone" data-tab="linha-acima" title="Inserir linha acima" aria-label="Inserir linha acima"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="9" rx="1"/><path d="M3 15.5h18M9 11v9M15 11v9M12 2.5v6M9 5.5h6"/></svg></button><button type="button" class="b-icone" data-tab="linha-abaixo" title="Inserir linha abaixo" aria-label="Inserir linha abaixo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="9" rx="1"/><path d="M3 8.5h18M9 4v9M15 4v9M12 15.5v6M9 18.5h6"/></svg></button><button type="button" class="b-icone" data-tab="col-esq" title="Inserir coluna à esquerda" aria-label="Inserir coluna à esquerda"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="11" y="3" width="9" height="18" rx="1"/><path d="M15.5 3v18M11 9h9M11 15h9M2.5 12h6M5.5 9v6"/></svg></button><button type="button" class="b-icone" data-tab="col-dir" title="Inserir coluna à direita" aria-label="Inserir coluna à direita"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="9" height="18" rx="1"/><path d="M8.5 3v18M4 9h9M4 15h9M15.5 12h6M18.5 9v6"/></svg></button><span class="sep"></span><button type="button" class="b-icone" data-tab="del-linha" title="Excluir linha" aria-label="Excluir linha"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="8" rx="1"/><path d="M9 8v8M15 8v8"/><path d="M8 3l8 18" stroke="#d01c1c"/></svg></button><button type="button" class="b-icone" data-tab="del-col" title="Excluir coluna" aria-label="Excluir coluna"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="3" width="8" height="18" rx="1"/><path d="M8 9h8M8 15h8"/><path d="M3 8l18 8" stroke="#d01c1c"/></svg></button><span class="sep"></span><button type="button" class="b-icone" data-tab="mesclar" title="Mesclar células (selecione duas ou mais)" aria-label="Mesclar células"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 12h10M14 9l3 3-3 3M10 9l-3 3 3 3"/></svg></button><button type="button" class="b-icone" data-tab="separar" title="Separar célula mesclada" aria-label="Separar célula mesclada"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M12 5v14M4.5 12h5M7 9.5L9.5 12 7 14.5M19.5 12h-5M17 9.5L14.5 12l2.5 2.5"/></svg></button><span class="sep"></span><button type="button" class="b-icone" data-tab="cabecalho" title="1ª linha como cabeçalho (liga/desliga)" aria-label="1ª linha como cabeçalho"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><rect x="3" y="4" width="18" height="5" fill="#ff8000" stroke="none" opacity=".7"/><path d="M3 9h18M3 14.5h18M12 4v16"/></svg></button><span class="sep"></span><span class="tab-cores" title="Posição da tabela na página"><span class="tab-cores-rot">Tabela na página</span><button type="button" class="pt-pos" data-tab="tab-pos" data-pos="esq" title="À esquerda" aria-label="À esquerda"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4v16"/><rect x="5" y="7" width="10" height="10" rx="1"/><path d="M5 12h10M10 7v10"/></svg></button><button type="button" class="pt-pos" data-tab="tab-pos" data-pos="centro" title="Centralizada" aria-label="Centralizada"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4v16M21 4v16" stroke-dasharray="2 2"/><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M7 12h10M12 7v10"/></svg></button><button type="button" class="pt-pos" data-tab="tab-pos" data-pos="dir" title="À direita" aria-label="À direita"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4v16"/><rect x="9" y="7" width="10" height="10" rx="1"/><path d="M9 12h10M14 7v10"/></svg></button></span><span class="sep"></span><span class="tab-cores" title="Cor do texto do cabeçalho"><span class="tab-cores-rot">Cor do cabeçalho</span><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="" style="--c: #ff8000" title="Laranja (padrão)" aria-label="Laranja (padrão)"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-preto" style="--c: #111111" title="Preto" aria-label="Preto"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-azul" style="--c: #3333cc" title="Azul" aria-label="Azul"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-vermelho" style="--c: #d01c1c" title="Vermelho" aria-label="Vermelho"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-verde" style="--c: #1b8a3a" title="Verde" aria-label="Verde"></button><button type="button" class="pt-cor" data-tab="cab-cor" data-cab-cor="cor-roxo" style="--c: #8e24aa" title="Roxo" aria-label="Roxo"></button></span><span class="sep"></span><button type="button" class="b-icone" data-tab="del-tabela" title="Excluir tabela" aria-label="Excluir tabela"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M3 15h18M9 4v16M15 4v16"/><path d="M4 21L20 3" stroke="#d01c1c"/></svg></button></div>
 </div>
 <div id="painel-link" class="painel-mini" hidden="">
   <div class="linha"><span class="rot">Link</span><input type="url" id="pl-url" placeholder="https://..." spellcheck="false"></div>
@@ -160,6 +160,7 @@
   <div class="linha"><b>Inserir tabela</b></div>
   <div class="linha"><span class="rot">Linhas</span><input type="number" id="pt-linhas" min="1" max="60" value="3"><span class="rot" style="width:auto;margin-left:10px">Colunas</span><input type="number" id="pt-colunas" min="1" max="20" value="3"></div>
   <div class="linha"><label><input type="checkbox" id="pt-cab" checked=""> 1ª linha como cabeçalho</label></div>
+  <div class="linha"><label><input type="checkbox" id="pt-leg"> Legenda (Tabela n: ...)</label></div>
   <div class="linha" id="pt-cores"><span class="rot">Cabeçalho</span><button type="button" class="pt-cor" data-cab-cor="" style="--c: #ff8000" title="Laranja (padrão)" aria-label="Laranja (padrão)"></button><button type="button" class="pt-cor" data-cab-cor="cor-preto" style="--c: #111111" title="Preto" aria-label="Preto"></button><button type="button" class="pt-cor" data-cab-cor="cor-azul" style="--c: #3333cc" title="Azul" aria-label="Azul"></button><button type="button" class="pt-cor" data-cab-cor="cor-vermelho" style="--c: #d01c1c" title="Vermelho" aria-label="Vermelho"></button><button type="button" class="pt-cor" data-cab-cor="cor-verde" style="--c: #1b8a3a" title="Verde" aria-label="Verde"></button><button type="button" class="pt-cor" data-cab-cor="cor-roxo" style="--c: #8e24aa" title="Roxo" aria-label="Roxo"></button></div>
   <div class="linha" style="justify-content:flex-end"><button type="button" id="pt-cancelar">Cancelar</button><button type="button" id="pt-ok" style="background:#2a6;color:#fff;border-color:#2a6">Inserir</button></div>
 </div>
@@ -219,14 +220,16 @@
   <div class="linha"><b id="pr-titulo">Legenda</b></div>
   <div class="linha"><span class="rot" id="pr-texto-rot">Texto</span><input type="text" id="pr-texto" spellcheck="true"></div>
   <div class="linha" id="pr-cores"><span class="rot">Cor</span><button type="button" class="pr-cor" data-cor="" style="--c: transparent" title="Padrão do estilo" aria-label="Padrão do estilo"></button><button type="button" class="pr-cor" data-cor="cor-preto" style="--c: #111111" title="Preto" aria-label="Preto"></button><button type="button" class="pr-cor" data-cor="cor-azul" style="--c: #3333cc" title="Azul" aria-label="Azul"></button><button type="button" class="pr-cor" data-cor="rotulo" style="--c: #ff8000" title="Laranja" aria-label="Laranja"></button><button type="button" class="pr-cor" data-cor="cor-vermelho" style="--c: #d01c1c" title="Vermelho" aria-label="Vermelho"></button><button type="button" class="pr-cor" data-cor="cor-verde" style="--c: #1b8a3a" title="Verde" aria-label="Verde"></button><button type="button" class="pr-cor" data-cor="cor-roxo" style="--c: #8e24aa" title="Roxo" aria-label="Roxo"></button></div>
-  <div class="linha"><span class="rot">Label</span><input type="text" id="pr-label" spellcheck="false" title="Nome para citar num link (Ctrl+K, Ou ir para). Pode trocar por um nome seu."></div>
+  <div class="linha" hidden=""><span class="rot">Label</span><input type="text" id="pr-label" spellcheck="false" title="Nome para citar num link (Ctrl+K, Ou ir para). Pode trocar por um nome seu."></div>
   <div id="pr-erro"></div>
   <div class="linha" style="justify-content:flex-end"><button type="button" id="pr-remover">Remover</button><button type="button" id="pr-cancelar">Cancelar</button><button type="button" id="pr-salvar">Salvar</button></div>
 </div>
 <button type="button" id="b-rotulo" hidden="">Legenda</button>
-<div id="img-sel" hidden=""><span class="img-alca" data-canto="nw"></span><span class="img-alca" data-canto="ne"></span><span class="img-alca" data-canto="sw"></span><span class="img-alca" data-canto="se"></span><span id="img-tam"></span><button type="button" id="img-legenda">Legenda</button></div>
+<button type="button" id="b-x-legenda" hidden="" title="Excluir a legenda" aria-label="Excluir a legenda">×</button>
+<div id="img-sel" hidden=""><span class="img-alca" data-canto="nw"></span><span class="img-alca" data-canto="ne"></span><span class="img-alca" data-canto="sw"></span><span class="img-alca" data-canto="se"></span><span id="img-tam"></span><button type="button" id="img-legenda" class="b-add-leg" title="Adicionar legenda (Figura n: ...)" aria-label="Adicionar legenda"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="15" height="10" rx="1"/><path d="M3 17h9M3 21h6M19 15v7M15.5 18.5h7"/></svg></button></div>
 <div id="passos"><button id="ant" title="Camada anterior (←)">◀</button><span id="contador"></span><button id="prox" title="Próxima camada (→)">▶</button></div>
 `;
+  const ICO_LEG = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="15" height="10" rx="1"/><path d="M3 17h9M3 21h6M19 15v7M15.5 18.5h7"/></svg>';
   const IDS_UI = ['b-sumario', 'sumario', 'modos', 'barra', 'painel-link', 'painel-imagem', 'painel-busca', 'editor-eq', 'painel-marca', 'retangulo', 'passos'];
   function porInterface() {
     // arquivo antigo, com a interface gravada nele: troca pela desta versão
@@ -582,8 +585,8 @@
       if (!document.body.classList.contains('editando') || document.body.classList.contains('escolhendo')) return;
       const sel = getSelection(); if (!sel.rangeCount || !sel.isCollapsed) return;
       const r = sel.getRangeAt(0), n = r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement;
-      if (!n || !n.closest('section.pagina') || n.closest(NAO_EDIT)) return;
-      const b = n.closest('td, th, ' + BLOCOS_L) || n.closest('section.pagina');   // célula de tabela conta como bloco
+      if (!n || !n.closest('section.pagina') || n.closest(NAO_EDIT + ', span.figura > .legenda')) return;
+      const b = n.closest('td, th, caption, ' + BLOCOS_L) || n.closest('section.pagina');   // célula de tabela conta como bloco
       const it = itensDoBloco(b);
       // a âncora de uma camada de linha inteira fica na margem: as setas passam por ela sem parar
       it.forEach(t => { if (t.el && t.el.matches('.fragment:not(span) > .ancora-camada')) t.zw = true; });
@@ -641,7 +644,7 @@
       if (!document.body.classList.contains('editando') || !/^(insertText|insertParagraph|insertLineBreak|insertFromPaste|insertReplacementText)$/.test(ev.inputType)) return;
       const sel = getSelection(); if (!sel.rangeCount) return;
       const r = sel.getRangeAt(0), n = noDe(r.startContainer); if (!n) return;
-      const L = n.closest(LINHA_OBJ + ', td, th'); if (!L || !L.matches(LINHA_OBJ)) return;
+      const L = n.closest(LINHA_OBJ + ', td, th, caption'); if (!L || !L.matches(LINHA_OBJ)) return;
       const tab = L.querySelector(':scope > table'); if (!tab) return;
       ev.preventDefault();
       const antes = r.comparePoint(tab, 0) > 0;   // cursor antes da tabela
@@ -670,8 +673,8 @@
       if (ev.target.closest && ev.target.closest('input, textarea')) return;
       const sel = getSelection(); if (!sel.rangeCount || !sel.isCollapsed) return;
       const r = sel.getRangeAt(0), n = r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement;
-      if (!n || !n.closest('section.pagina') || n.closest(NAO_EDIT)) return;
-      const b = n.closest('td, th, ' + BLOCOS_L) || n.closest('section.pagina');
+      if (!n || !n.closest('section.pagina') || n.closest(NAO_EDIT + ', span.figura > .legenda')) return;
+      const b = n.closest('td, th, caption, ' + BLOCOS_L) || n.closest('section.pagina');
       let it = itensDoBloco(b), k = posicaoNoBloco(it, r.startContainer, r.startOffset), k0 = k;
       // na borda de um bloco vizinho à linha de uma tabela: o navegador juntaria o bloco à linha da tabela
       if (b.matches(BLOCOS) && !b.closest('td, th')) {
@@ -719,8 +722,8 @@
       setTimeout(() => {
         const sel = getSelection(); if (!sel.rangeCount || !sel.isCollapsed) return;
         const r = sel.getRangeAt(0), n = r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement;
-        if (!n || !n.closest('section.pagina') || n.closest(NAO_EDIT)) return;
-        const b = n.closest('td, th, ' + BLOCOS_L) || n.closest('section.pagina');
+        if (!n || !n.closest('section.pagina') || n.closest(NAO_EDIT + ', span.figura > .legenda')) return;
+        const b = n.closest('td, th, caption, ' + BLOCOS_L) || n.closest('section.pagina');
         const it = itensDoBloco(b);
         let k = posicaoNoBloco(it, r.startContainer, r.startOffset);
         while (k < it.length && it[k].zw) k++;
@@ -918,7 +921,7 @@
     function abrirEditor(alvo, modo, tex, display) {
       ED.alvo = alvo; ED.modo = modo; ED.cor = corDaFormula(alvo); mostrarCorEq();
       const en = alvo && alvo.closest('span.eq-num');
-      $('ee-num').checked = !!en; $('ee-label').value = en ? en.id : labelAleatorio('eq'); $('ee-label-l').hidden = !en;
+      $('ee-num').checked = !!en; $('ee-label').value = en ? en.id : labelAleatorio('eq'); $('ee-label-l').hidden = true;
       $('ee-tex').value = tex; $('ee-display').checked = display; $('ee-num-l').hidden = !display;
       $('ee-remover').style.display = alvo ? '' : 'none';
       $('editor-eq').hidden = false; previa(); $('ee-tex').focus();
@@ -934,7 +937,6 @@
     }
     $('ee-tex').addEventListener('input', () => { clearTimeout(previa.t); previa.t = setTimeout(previa, 250); });
     $('ee-display').onchange = () => { $('ee-num-l').hidden = !$('ee-display').checked; previa(); };
-    $('ee-num').onchange = () => { $('ee-label-l').hidden = !$('ee-num').checked; };
     $('ee-label').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); $('ee-aplicar').click(); } else if (e.key === 'Escape') { e.preventDefault(); $('ee-cancelar').click(); } });
     $('ee-cancelar').onclick = () => { $('editor-eq').hidden = true; voltarAoTexto(); };
     $('ee-remover').onclick = () => {
@@ -2839,7 +2841,8 @@
       else if (b) b.after(L); else sec.append(L);
       if (!L.nextElementSibling || L.nextElementSibling.matches('.rodape')) { const p = document.createElement('p'); p.innerHTML = '<br>'; L.after(p); }   // para o cursor sair da tabela
       garantirPontos();
-      sec.focus({ preventScroll: true }); cursorEm(t.rows[0].cells[0]);
+      sec.focus({ preventScroll: true });
+      if ($('pt-leg').checked) { const c = novaLegenda(t); numerar(); cursorNaLegenda(c); } else cursorEm(t.rows[0].cells[0]);
       lerCursor(); sujo(true); iconesCamada(); desenharMarcas(); montarSumario();
     }
     $('b-tabela').onclick = () => $('painel-tabela').hidden ? abrirTabela() : fecharTabela(true);
@@ -2849,6 +2852,8 @@
     mostrarCabCor();
     $('pt-cab').onchange = () => { $('pt-cores').hidden = !$('pt-cab').checked; };
     $('pt-ok').onclick = inserirTabela;
+    $('pt-leg').checked = lembrar('strata-tab-legenda') === '1';
+    $('pt-leg').onchange = () => lembrar('strata-tab-legenda', $('pt-leg').checked ? '1' : '0');
     $('pt-cancelar').onclick = () => fecharTabela(true);
     ['pt-linhas', 'pt-colunas'].forEach(id => $(id).addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); inserirTabela(); } else if (e.key === 'Escape') { e.preventDefault(); fecharTabela(true); } }));
     document.querySelectorAll('#painel-tabela button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
@@ -2948,7 +2953,16 @@
     }
     let OPCOR = '';
     let OPPOS = '';
-    combo('c-tabela', b => { OPCOR = b.dataset.cabCor || ''; OPPOS = b.dataset.pos || ''; opTabela(b.dataset.tab); });
+    document.querySelectorAll('#barra-tabela [data-tab]').forEach(b => b.onclick = () => { OPCOR = b.dataset.cabCor || ''; OPPOS = b.dataset.pos || ''; opTabela(b.dataset.tab); });
+    // barra da tabela: aparece abaixo da barra superior enquanto o cursor estiver numa tabela
+    function mostrarBarraTabela() {
+      const B = $('barra-tabela'), s = getSelection();
+      const n = document.body.classList.contains('editando') && s.rangeCount && noDe(s.getRangeAt(0).startContainer);
+      const t = n && n.closest && n.closest('section.pagina table');
+      B.hidden = !t;
+      if (t) { const c = t.dataset.cabCor || ''; B.querySelectorAll('.pt-cor').forEach(x => x.classList.toggle('ativo', x.dataset.cabCor === c)); }
+    }
+    document.addEventListener('selectionchange', () => { cancelAnimationFrame(mostrarBarraTabela.q); mostrarBarraTabela.q = requestAnimationFrame(mostrarBarraTabela); });
     // ---------- seleção de células em retângulo (como numa planilha) ----------
     // Arrastar de uma célula a outra (ou Selecionar linha/coluna) marca o retângulo com .cel-sel;
     // a seleção do navegador continua indo da primeira à última célula, e as operações usam o retângulo.
@@ -2966,7 +2980,7 @@
     document.addEventListener('selectionchange', () => { if (document.body.classList.contains('editando')) marcarCelulas(); });
     // clicar dentro de células já selecionadas começa uma seleção nova (e não arrasta o texto selecionado)
     document.addEventListener('mousedown', e => { if (e.button === 0 && !e.shiftKey && e.target.closest && e.target.closest('.apostila table.com-sel')) getSelection().removeAllRanges(); }, true);
-    document.querySelectorAll('#c-tabela button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
+    document.querySelectorAll('#barra-tabela button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
     // dentro da célula: Enter quebra a linha; Tab/Shift+Tab andam entre as células (Tab na última cria uma linha)
     document.addEventListener('keydown', ev => {
       if (!document.body.classList.contains('editando') || (ev.key !== 'Enter' && ev.key !== 'Tab') || ev.ctrlKey || ev.metaKey || ev.altKey) return;
@@ -2998,7 +3012,7 @@
       if (!im || !im.isConnected || !document.body.classList.contains('editando')) { P.hidden = true; ISEL.img = null; return; }
       const b = im.getBoundingClientRect();
       P.hidden = false; Object.assign(P.style, { left: b.left + 'px', top: b.top + 'px', width: b.width + 'px', height: b.height + 'px' });
-      const L = $('img-legenda'); L.hidden = !im.matches('img'); L.title = figuraDe(im) ? 'Editar a legenda e o label da figura' : 'Pôr legenda na figura (Figura n: ...)';
+      const L = $('img-legenda'); L.hidden = !im.matches('img') || !!figuraDe(im);
     }
     function selecionarImagem(im) { ISEL.img = im; posImagem(); }
     document.addEventListener('mousedown', e => {
@@ -3253,7 +3267,7 @@
       document.querySelectorAll('#barra [data-alinha]').forEach(x => x.classList.toggle('ativo-fmt', tcel ? tcel.classList.contains(x.dataset.alinha) : !!b && (b.classList.contains(x.dataset.alinha) || (x.dataset.alinha === 'alinha-esq' && b.matches('div.eq.passo')))));
       $('b-colunas').classList.toggle('ativo-fmt', !!(b || tcel) && !!(b || tcel).closest('.duas-colunas'));
       const tab = tcel && tcel.closest('table'), pos = tab ? (tab.classList.contains('tab-esq') ? 'esq' : tab.classList.contains('tab-dir') ? 'dir' : 'centro') : '';
-      document.querySelectorAll('#c-tabela .pt-pos').forEach(x => x.classList.toggle('ativo', x.dataset.pos === pos));
+      document.querySelectorAll('#barra-tabela .pt-pos').forEach(x => x.classList.toggle('ativo', x.dataset.pos === pos));
       const li = b && b.matches('li') ? tipoDaLista(b.parentElement) : '';
       [['b-lista', 'ul'], ['b-lista-num', 'ol'], ['b-lista-rom', 'ol:i'], ['b-lista-alfa', 'ol:a']].forEach(([id, t]) => $(id).classList.toggle('ativo-fmt', li === t));
       const tag = b ? (b.matches('.subtitulo') ? 'subtitulo' : b.matches('div.eq') ? 'eq' : b.tagName.toLowerCase()) : 'p';
@@ -3535,6 +3549,8 @@
       const t = tipoNum(el), n = el && el.dataset.num; if (!t || !n) return '??';
       return t === 'equacao' ? '(' + n + ')' : NUM[t].nome + ' ' + n;
     }
+    // legenda vazia na edição: um ponto (U+200B) para o cursor entrar (sai ao salvar)
+    function legendaEditavel(l) { if (document.body.classList.contains('editando') && !l.textContent && !l.querySelector('mjx-container')) l.textContent = '\u200B'; }
     function naoEditavel(e) { if (e.getAttribute('contenteditable') !== 'false') e.setAttribute('contenteditable', 'false'); }
     // título do ambiente: no começo do primeiro bloco de texto, gerado aqui (Teorema 1 (Nome):)
     function tituloAmbiente(a) {
@@ -3562,9 +3578,10 @@
         else { cont[t] = (cont[t] || 0) + 1; n = pre + cont[t]; }
         if (e.dataset.num !== n) e.dataset.num = n;
         if (t === 'figura') {
-          naoEditavel(e); const l = e.querySelector(':scope > .legenda'); if (l && l.dataset.num !== n) l.dataset.num = n;
+          naoEditavel(e); const l = e.querySelector(':scope > .legenda');
+          if (l) { if (l.dataset.num !== n) l.dataset.num = n; legendaEditavel(l); if (l.getAttribute('contenteditable') !== 'true') l.setAttribute('contenteditable', 'true'); }
         } else if (t === 'tabela') {
-          const c = e.querySelector(':scope > caption'); if (c) { naoEditavel(c); if (c.dataset.num !== n) c.dataset.num = n; }
+          const c = e.querySelector(':scope > caption'); if (c) { if (c.dataset.num !== n) c.dataset.num = n; if (c.getAttribute('contenteditable') === 'false') c.removeAttribute('contenteditable'); legendaEditavel(c); }
         } else if (AMBIENTES.includes(t)) {
           const ti = tituloAmbiente(e);
           if (ti) { naoEditavel(ti); const txt = NUM[t].nome + ' ' + n + (e.dataset.nome ? ' (' + e.dataset.nome + ')' : '') + ':'; if (ti.textContent !== txt) ti.textContent = txt; }
@@ -3624,38 +3641,93 @@
     // ---------- legenda de figura e de tabela ----------
     // A figura é um <span> (pode ficar dentro do parágrafo, ao lado de outra); a largura passa da imagem para ele.
     function figuraDe(im) { return im && im.parentElement && im.parentElement.matches('span.figura') ? im.parentElement : null; }
-    function editarLegenda(alvo) {
-      const ehFig = alvo.matches('img'), caixa = ehFig ? figuraDe(alvo) : (alvo.querySelector(':scope > caption') ? alvo : null);
-      const leg = caixa && caixa.querySelector(ehFig ? ':scope > .legenda' : ':scope > caption');
-      abrirRotulo({
-        perto: alvo, titulo: ehFig ? 'Legenda da figura' : 'Legenda da tabela', rotTexto: 'Legenda', dica: ehFig ? 'Figura n: ...' : 'Tabela n: ...',
-        texto: leg ? leg.textContent : '', label: caixa ? caixa.id : labelAleatorio(ehFig ? 'fig' : 'tab'), dono: caixa, remover: !!caixa,
-        cor: leg ? corDe(leg) : COR.atual,   // legenda nova: a cor da barra
-        salvar: (texto, lab, cor) => {
-          if (ehFig) {
-            let f = caixa;
-            if (!f) {
-              const W = larguraDoPai(alvo), w = alvo.style.width || (Math.min(100, Math.round(alvo.getBoundingClientRect().width / W * 1000) / 10) + '%');
-              f = document.createElement('span'); f.className = 'figura'; alvo.replaceWith(f); f.append(alvo);
-              alvo.style.removeProperty('width'); if (!alvo.getAttribute('style')) alvo.removeAttribute('style');
-              f.style.width = w;
-              const l = document.createElement('span'); l.className = 'legenda'; f.append(l);
-            }
-            const l = f.querySelector(':scope > .legenda'); l.textContent = texto; l.className = 'legenda'; pintar(l, cor); trocarLabel(f, lab);
-          } else {
-            alvo.classList.add('tabela');
-            let c = alvo.querySelector(':scope > caption'); if (!c) { c = document.createElement('caption'); alvo.prepend(c); }
-            c.textContent = texto; pintar(c, cor); trocarLabel(alvo, lab);
-          }
-        },
-        apagar: () => {
-          if (ehFig) { const w = caixa.style.width; caixa.replaceWith(alvo); if (w) alvo.style.width = w; }
-          else { if (leg) leg.remove(); alvo.removeAttribute('id'); delete alvo.dataset.num; }
-        }
+    // A legenda é editada em linha, como o resto do texto (a cor também, pela barra); o label fica interno.
+    function novaLegenda(alvo) {
+      if (alvo.matches('table')) {
+        alvo.classList.add('tabela');
+        let c = alvo.querySelector(':scope > caption'); if (!c) { c = document.createElement('caption'); c.textContent = '\u200B'; alvo.prepend(c); }
+        if (!alvo.id) alvo.id = labelAleatorio('tab');
+        return c;
+      }
+      let f = figuraDe(alvo);
+      if (!f) {
+        const W = larguraDoPai(alvo), w = alvo.style.width || (Math.min(100, Math.round(alvo.getBoundingClientRect().width / W * 1000) / 10) + '%');
+        f = document.createElement('span'); f.className = 'figura'; alvo.replaceWith(f); f.append(alvo);
+        alvo.style.removeProperty('width'); if (!alvo.getAttribute('style')) alvo.removeAttribute('style');
+        f.style.width = w; f.id = labelAleatorio('fig');
+      }
+      let l = f.querySelector(':scope > .legenda');
+      if (!l) { l = document.createElement('span'); l.className = 'legenda'; l.setAttribute('contenteditable', 'true'); l.textContent = '\u200B'; f.append(l); }
+      return l;
+    }
+    function cursorNaLegenda(l) {
+      const sec = l.closest('section.pagina'); if (sec) sec.focus({ preventScroll: true });
+      const r = document.createRange(); r.selectNodeContents(l); r.collapse(false); const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+    function adicionarLegenda(alvo) {
+      let l; depoisDe(() => { l = novaLegenda(alvo); }); depoisRotulo();
+      if (ISEL.img) { ISEL.img = null; posImagem(); }
+      if (l) cursorNaLegenda(l); lerCursor(); posXLegenda();
+    }
+    function removerLegenda(l) {
+      const caixa = l.parentElement; if (!caixa) return;
+      let foco = null;
+      depoisDe(() => {
+        if (caixa.matches('span.figura')) {
+          const im = caixa.querySelector(':scope > img'), w = caixa.style.width;
+          if (im) { caixa.replaceWith(im); if (w) im.style.width = w; foco = im; } else l.remove();
+        } else { l.remove(); caixa.removeAttribute('id'); delete caixa.dataset.num; foco = caixa.rows[0] && caixa.rows[0].cells[0]; }
       });
+      depoisRotulo();
+      if (foco && foco.isConnected) {
+        const sec = foco.closest('section.pagina'); if (sec) sec.focus({ preventScroll: true });
+        if (foco.matches('img')) { const r = document.createRange(); r.setStartAfter(foco); r.collapse(true); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+        else cursorEm(foco);
+      }
+      lerCursor(); posXLegenda();
     }
     $('img-legenda').addEventListener('mousedown', e => { e.preventDefault(); e.stopPropagation(); });
-    $('img-legenda').onclick = () => { const im = ISEL.img; if (im && im.matches('img')) editarLegenda(im); };
+    $('img-legenda').onclick = () => { const im = ISEL.img; if (im && im.matches('img') && !figuraDe(im)) adicionarLegenda(im); };
+    // × no canto da legenda: aparece com o cursor na legenda ou na tabela, com a figura selecionada, ou com o mouse em cima
+    const XL = { sobre: null };
+    const SEL_LEG = '.apostila span.figura > .legenda, .apostila table.tabela > caption';
+    function alvoXLegenda() {
+      if (!document.body.classList.contains('editando')) return null;
+      if (XL.sobre && XL.sobre.isConnected) return XL.sobre;
+      if (ISEL.img) { const f = figuraDe(ISEL.img); if (f) return f.querySelector(':scope > .legenda'); }
+      const s = getSelection(); if (!s.rangeCount) return null;
+      const n = noDe(s.getRangeAt(0).startContainer); if (!n || !n.closest || !n.closest('section.pagina')) return null;
+      const l = n.closest(SEL_LEG); if (l) return l;
+      const t = n.closest('.apostila table.tabela'); return t && t.querySelector(':scope > caption');
+    }
+    function posXLegenda() {
+      const X = $('b-x-legenda'), l = alvoXLegenda(); X._el = l;
+      if (!l) { X.hidden = true; return; }
+      X.hidden = false;
+      const b = l.getBoundingClientRect();
+      X.style.left = Math.min(innerWidth - X.offsetWidth - 4, b.right + 2) + 'px'; X.style.top = b.top + (b.height - X.offsetHeight) / 2 + 'px';
+    }
+    document.addEventListener('mouseover', e => {
+      if (!document.body.classList.contains('editando') || !e.target.closest) return;
+      if (e.target.closest('#b-x-legenda')) return;
+      const l = e.target.closest(SEL_LEG) || null;
+      if (l !== XL.sobre) { XL.sobre = l; posXLegenda(); }
+    });
+    $('b-x-legenda').addEventListener('mousedown', e => { e.preventDefault(); e.stopPropagation(); });
+    $('b-x-legenda').onclick = () => { const l = $('b-x-legenda')._el; XL.sobre = null; if (l && l.isConnected) removerLegenda(l); };
+    document.addEventListener('selectionchange', () => { cancelAnimationFrame(posXLegenda.q); posXLegenda.q = requestAnimationFrame(posXLegenda); });
+    addEventListener('scroll', () => { if (!$('b-x-legenda').hidden) posXLegenda(); }, true); addEventListener('resize', () => { if (!$('b-x-legenda').hidden) posXLegenda(); });
+    // na legenda: Enter não cria parágrafo; Backspace no começo e Delete no fim não juntam com o que está fora
+    document.addEventListener('keydown', ev => {
+      if (!document.body.classList.contains('editando') || !['Enter', 'Backspace', 'Delete'].includes(ev.key)) return;
+      const s = getSelection(); if (!s.rangeCount) return;
+      const r = s.getRangeAt(0), n = noDe(r.startContainer), l = n && n.closest && n.closest(SEL_LEG); if (!l) return;
+      if (ev.key === 'Enter') { ev.preventDefault(); ev.stopImmediatePropagation(); return; }
+      if (!r.collapsed) return;
+      const q = document.createRange(); q.selectNodeContents(l);
+      if (ev.key === 'Backspace') q.setEnd(r.startContainer, r.startOffset); else q.setStart(r.startContainer, r.startOffset);
+      if (!q.toString().replace(/\u200B/g, '') && !q.cloneContents().querySelector('mjx-container')) { ev.preventDefault(); ev.stopImmediatePropagation(); }
+    }, true);
 
     // ---------- título de capítulo/seção e nome de ambiente ----------
     function editarNumerado(el) {
@@ -3717,33 +3789,32 @@
     // clicar na legenda ou no título do ambiente abre o diálogo
     document.addEventListener('mousedown', e => {
       if (!document.body.classList.contains('editando') || !e.target.closest) return;
-      const l = e.target.closest('.apostila span.figura > .legenda, .apostila table.tabela > caption, .apostila .ambiente .amb-titulo');
+      const l = e.target.closest('.apostila .ambiente .amb-titulo');
       if (!l) return;
       e.preventDefault();
-      if (l.matches('.legenda')) { const im = l.parentElement.querySelector(':scope > img'); if (im) editarLegenda(im); }
-      else if (l.matches('caption')) editarLegenda(l.parentElement);
-      else editarNumerado(l.closest('.ambiente'));
+      editarNumerado(l.closest('.ambiente'));
     });
     // botão flutuante: cursor numa tabela, num título numerado ou num ambiente
     function alvoDoBotaoRotulo() {
       if (!document.body.classList.contains('editando') || !$('painel-rotulo').hidden) return null;
       const s = getSelection(); if (!s.rangeCount) return null;
       const n = noDe(s.getRangeAt(0).startContainer); if (!n || !n.closest || !n.closest('section.pagina')) return null;
-      return n.closest('.apostila table') || n.closest('.apostila h1.capitulo, .apostila h2.secao, .apostila h3.subsecao') || n.closest('.apostila .ambiente');
+      const t = n.closest('.apostila table'); if (t) return t.querySelector(':scope > caption') ? null : t;
+      return n.closest('.apostila h1.capitulo, .apostila h2.secao, .apostila h3.subsecao') || n.closest('.apostila .ambiente');
     }
     function posBotaoRotulo() {
       const B = $('b-rotulo'), el = alvoDoBotaoRotulo(); B._el = el;
       if (!el) { B.hidden = true; return; }
       const t = el.matches('table') ? 'tabela' : tipoNum(el);
-      B.textContent = t === 'tabela' ? 'Legenda' : TITULOS_NUM[t] ? 'Título e label' : 'Nome e label';
-      B.title = t === 'tabela' ? 'Legenda e label da tabela (Tabela n: ...)' : TITULOS_NUM[t] ? 'Título e label do(a) ' + NUM[t].nome.toLowerCase() : 'Nome e label do ambiente (' + NUM[t].nome + ' n (nome):)';
+      if (t === 'tabela') { B.innerHTML = ICO_LEG; B.classList.add('b-add-leg'); } else { B.textContent = TITULOS_NUM[t] ? 'Título' : 'Nome'; B.classList.remove('b-add-leg'); }
+      B.title = t === 'tabela' ? 'Adicionar legenda (Tabela n: ...)' : TITULOS_NUM[t] ? 'Título do(a) ' + NUM[t].nome.toLowerCase() : 'Nome do ambiente (' + NUM[t].nome + ' n (nome):)';
       B.hidden = false;
       const b = el.getBoundingClientRect(), topo = $('barra').getBoundingClientRect().bottom;
       if (el.matches('table') && b.right + B.offsetWidth + 10 < innerWidth) { B.style.left = b.right + 6 + 'px'; B.style.top = Math.max(topo + 2, b.top) + 'px'; }   // tabela: ao lado, em cima
       else { B.style.left = Math.max(4, b.right - B.offsetWidth) + 'px'; B.style.top = Math.max(topo + 2, b.top - B.offsetHeight - 3) + 'px'; }
     }
     $('b-rotulo').addEventListener('mousedown', e => e.preventDefault());
-    $('b-rotulo').onclick = () => { const el = $('b-rotulo')._el; if (!el || !el.isConnected) return; if (el.matches('table')) editarLegenda(el); else editarNumerado(el); };
+    $('b-rotulo').onclick = () => { const el = $('b-rotulo')._el; if (!el || !el.isConnected) return; if (el.matches('table')) adicionarLegenda(el); else editarNumerado(el); };
     document.addEventListener('selectionchange', () => { cancelAnimationFrame(posBotaoRotulo.q); posBotaoRotulo.q = requestAnimationFrame(posBotaoRotulo); });
     addEventListener('scroll', () => { if (!$('b-rotulo').hidden) posBotaoRotulo(); }, true); addEventListener('resize', () => { if (!$('b-rotulo').hidden) posBotaoRotulo(); });
     // fórmula destacada: numerada = dentro de <span class="eq-num" id="eq:...">
@@ -3906,7 +3977,7 @@
         const t = tipoNum(e);
         if (t) {
           let extra = '';
-          if (t === 'figura' || t === 'tabela') { const c = e.querySelector(':scope > .legenda, :scope > caption'); extra = c && c.textContent.trim() ? ': ' + c.textContent.trim() : ''; }
+          if (t === 'figura' || t === 'tabela') { const c = e.querySelector(':scope > .legenda, :scope > caption'); const x = c ? c.textContent.replace(/\u200B/g, '').trim() : ''; extra = x ? ': ' + x : ''; }
           else if (TITULOS_NUM[t]) extra = ' ' + textoLimpo(e);
           else if (t !== 'equacao') extra = e.dataset.nome ? ' (' + e.dataset.nome + ')' : '';
           l.push({ el: e, ref: true, rot: (t === 'equacao' ? 'Equação ' : '') + textoRef(e) + extra.slice(0, 60) });
