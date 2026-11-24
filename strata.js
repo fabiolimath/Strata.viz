@@ -112,7 +112,7 @@
   <span class="combo" id="c-estilo"><button type="button" id="b-estilo" class="b-icone" title="Estilo do parágrafo: Parágrafo" aria-label="Estilo do parágrafo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4v16M17 4v16M19.5 4H10.5a4.5 4.5 0 0 0 0 9H13"/></svg></button><button type="button" class="combo-seta" title="Estilo do parágrafo: escolher" aria-label="Estilo do parágrafo: escolher">▾</button>
     <span class="combo-menu" hidden=""><button type="button" data-estilo="p" style="font: 15px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4v16M17 4v16M19.5 4H10.5a4.5 4.5 0 0 0 0 9H13"/></svg></span>Parágrafo</button><button type="button" data-estilo="h1" style="font: bold 25px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">1</text></svg></span>Título 1</button><button type="button" data-estilo="subtitulo" style="font: 17px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16" stroke-width="3"/><path d="M7 15h10M9 19h6"/></svg></span>Subtítulo</button><button type="button" data-estilo="h2" style="font: bold 23px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">2</text></svg></span>Título 2</button><button type="button" data-estilo="h3" style="font: bold 21px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">3</text></svg></span>Título 3</button><button type="button" data-estilo="h4" style="font: bold 18px system-ui, sans-serif"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="2" y="17" font-size="15" font-weight="700" font-family="system-ui, sans-serif">H</text><text x="14.5" y="19.5" font-size="10" font-weight="700" font-family="system-ui, sans-serif">4</text></svg></span>Título 4</button><button type="button" data-estilo="eq" style="font: 15px system-ui, sans-serif" title="Linha de equação: fórmulas sem recuo; alinhada à esquerda vira linha de igualdades (Enter no fim cria a próxima linha)"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="5" y="18.5" font-family="Times New Roman, serif" font-style="italic" font-weight="bold" font-size="17">x</text><text x="14" y="10.5" font-family="Times New Roman, serif" font-weight="bold" font-size="10">2</text></svg></span>Equação</button><button type="button" data-estilo="pre" style="font: 14px ui-monospace, Consolas, monospace"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 7L3.5 12l5 5M15.5 7l5 5-5 5M13.5 5l-3 14"/></svg></span>Pré-formatado</button><button type="button" data-estilo="blockquote" style="font: 15px system-ui, sans-serif; color: #666"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7c-3.2.6-5 2.8-5 6v4h5v-5H7.2c.2-1.6 1.2-2.7 2.8-3.1zM19 7c-3.2.6-5 2.8-5 6v4h5v-5h-2.8c.2-1.6 1.2-2.7 2.8-3.1z" fill="currentColor" stroke="none"/></svg></span>Bloco de citação</button></span></span>
   <span class="combo grupo" id="c-num"><button type="button" id="b-num" class="b-icone" title="Numerados: capítulo, seção, subseção, definição, teorema, exemplo, observação" aria-label="Numerados"></button><button type="button" class="combo-seta" title="Numerados: escolher" aria-label="Numerados: escolher">▾</button>
-    <span class="combo-menu" hidden=""><button type="button" id="bn-capitulo" data-numerado="capitulo" title="Capítulo numerado (1, 2, ...): o parágrafo do cursor vira o título"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="13" font-weight="700" font-family="system-ui, sans-serif" fill="currentColor" stroke="none">C1</text></svg></span>Capítulo</button><button type="button" id="bn-secao" data-numerado="secao" title="Seção numerada (1, 2, ... ou 2.1 com capítulos): o parágrafo do cursor vira o título"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="13" font-weight="700" font-family="system-ui, sans-serif" fill="currentColor" stroke="none">1.1</text></svg></span>Seção</button><button type="button" id="bn-subsecao" data-numerado="subsecao" title="Subseção numerada (1.1, 1.2, ...): o parágrafo do cursor vira o título"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="9.5" font-weight="700" font-family="system-ui, sans-serif" fill="currentColor" stroke="none">1.1.1</text></svg></span>Subseção</button><button type="button" id="bn-definicao" data-numerado="definicao" title="Definição numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#1b8a3a"/><path d="M6 8.5h5" stroke="#1b8a3a" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Definição</button><button type="button" id="bn-teorema" data-numerado="teorema" title="Teorema numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#3333cc"/><path d="M6 8.5h5" stroke="#3333cc" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Teorema</button><button type="button" id="bn-exemplo" data-numerado="exemplo" title="Exemplo numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#ff8000"/><path d="M6 8.5h5" stroke="#ff8000" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Exemplo</button><button type="button" id="bn-observacao" data-numerado="observacao" title="Observação numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#777"/><path d="M6 8.5h5" stroke="#777" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Observação</button></span></span>
+    <span class="combo-menu" hidden=""><button type="button" id="bn-capitulo" data-numerado="capitulo" title="Capítulo numerado (1, 2, ...): o parágrafo do cursor vira o título"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="13" font-weight="700" font-family="system-ui, sans-serif" fill="currentColor" stroke="none">C1</text></svg></span>Capítulo</button><button type="button" id="bn-secao" data-numerado="secao" title="Seção numerada (1, 2, ... ou 2.1 com capítulos): o parágrafo do cursor vira o título"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="13" font-weight="700" font-family="system-ui, sans-serif" fill="currentColor" stroke="none">1.1</text></svg></span>Seção</button><button type="button" id="bn-subsecao" data-numerado="subsecao" title="Subseção numerada (1.1, 1.2, ...): o parágrafo do cursor vira o título"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="9.5" font-weight="700" font-family="system-ui, sans-serif" fill="currentColor" stroke="none">1.1.1</text></svg></span>Subseção</button><button type="button" id="bn-definicao" data-numerado="definicao" title="Definição numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" style="stroke: var(--ci-cor, #1b8a3a)"/><path d="M6 8.5h5" style="stroke: var(--ci-cor, #1b8a3a)" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Definição</button><button type="button" id="bn-teorema" data-numerado="teorema" title="Teorema numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" style="stroke: var(--ci-cor, #3333cc)"/><path d="M6 8.5h5" style="stroke: var(--ci-cor, #3333cc)" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Teorema</button><button type="button" id="bn-exemplo" data-numerado="exemplo" title="Exemplo numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" style="stroke: var(--ci-cor, #ff8000)"/><path d="M6 8.5h5" style="stroke: var(--ci-cor, #ff8000)" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Exemplo</button><button type="button" id="bn-observacao" data-numerado="observacao" title="Observação numerada, em caixa, em volta dos parágrafos selecionados; nome opcional"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" style="stroke: var(--ci-cor, #777)"/><path d="M6 8.5h5" style="stroke: var(--ci-cor, #777)" stroke-width="2.4"/><path d="M6 12.5h12M6 16h9"/></svg></span>Observação</button></span></span>
   <span class="combo grupo" id="c-fmt"><button type="button" id="b-fmt" class="b-icone" title="Formatação do texto" aria-label="Formatação do texto"></button><button type="button" class="combo-seta" title="Formatação do texto: escolher" aria-label="Formatação do texto: escolher">▾</button>
     <span class="combo-menu" hidden=""><button type="button" id="b-negrito" title="Negrito (Ctrl+B)" aria-label="Negrito"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17.5" text-anchor="middle" font-size="17" font-family="Times New Roman, serif" font-weight="bold">B</text></svg></span>Negrito (Ctrl+B)</button><button type="button" id="b-italico" title="Itálico (Ctrl+I)" aria-label="Itálico"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17.5" text-anchor="middle" font-size="17" font-family="Times New Roman, serif" font-style="italic">I</text></svg></span>Itálico (Ctrl+I)</button><button type="button" id="b-limpar" title="Remover formatação (negrito, itálico, cor do texto)" aria-label="Remover formatação"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h11M11.5 5L9 18"/><path d="M14.5 14.5l5 5M19.5 14.5l-5 5"/></svg></span>Remover formatação</button></span></span>
   <span class="combo" id="c-cor"><button type="button" id="b-cor" class="b-icone" title="Cor do texto: preto (clique de novo na mesma cor para remover)" aria-label="Cor do texto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 16L12 4l5 12M8.8 12h6.4"></path><rect class="barra-cor" x="4" y="18.5" width="16" height="3.5" rx="1" stroke="none"></rect></svg></button><button type="button" class="combo-seta" title="Escolher a cor" aria-label="Escolher a cor">▾</button>
@@ -786,7 +786,11 @@
     // destaque colorido: envolve a seleção; clicar de novo na mesma cor remove, em outra cor troca
     // cor do texto: envolve a seleção; a mesma cor de novo remove, outra cor troca
     const CORES = ['cor-preto', 'cor-azul', 'rotulo', 'cor-vermelho', 'cor-verde', 'cor-roxo'];
-    function aplicarCor(cor) {
+    function aplicarCor(cor) {   // e lembra a cor usada no estilo do bloco (o ícone do estilo mostra essa cor)
+      const k = chaveEstiloCursor();
+      try { return aplicarCorX(cor); } finally { if (k) { lembrar('strata-cor-estilo-' + k, cor); pintarIconesCor(); } }
+    }
+    function aplicarCorX(cor) {
       const sel = getSelection(); if (!sel.rangeCount) return;
       const r = sel.getRangeAt(0);
       const n = r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement;
@@ -3265,7 +3269,7 @@
       const tag = b ? (b.matches('.subtitulo') ? 'subtitulo' : b.matches('div.eq') ? 'eq' : b.tagName.toLowerCase()) : 'p';
       const chave = b && b.matches('li') ? 'li' : b && b.matches('div.eq') ? 'eq' : document.querySelector('#c-estilo [data-estilo="' + tag + '"]') ? tag : 'p';
       const item = document.querySelector('#c-estilo [data-estilo="' + chave + '"] .ci');
-      $('b-estilo').innerHTML = item ? item.innerHTML : ICONES_ESTILO[chave];
+      $('b-estilo').innerHTML = item ? item.innerHTML : ICONES_ESTILO[chave]; $('b-estilo').style.cssText = item ? item.style.cssText : '';
       $('b-estilo').title = 'Estilo do parágrafo: ' + (chave === 'li' ? 'Lista' : chave === 'eq' ? 'Equação' : ESTILOS[tag] || 'Parágrafo');
       document.querySelectorAll('#c-estilo [data-estilo]').forEach(x => x.classList.toggle('ativo', x.dataset.estilo === tag));
       document.querySelectorAll('#barra .combo.grupo').forEach(c => c._mostrar && c._mostrar());
@@ -3395,11 +3399,48 @@
     document.addEventListener('input', e => { if (!$('painel-busca').hidden && e.target.closest && e.target.closest('section.pagina')) { clearTimeout(procurar.t); procurar.t = setTimeout(procurar, 300); } });
     document.querySelectorAll('#painel-link button, #painel-busca button').forEach(b => b.addEventListener('mousedown', e => e.preventDefault()));
 
+    // ícones dos estilos e dos numerados na última cor usada em cada um (sem cor usada: a cor padrão do estilo)
+    function chaveEstiloCursor() {
+      const s = getSelection(); if (!s.rangeCount) return '';
+      const n = noDe(s.getRangeAt(0).startContainer), b = n && n.closest && n.closest('section.pagina') && n.closest(BLOCOS); if (!b) return '';
+      if (b.matches('li')) return '';
+      const tag = b.matches('.subtitulo') ? 'subtitulo' : b.matches('div.eq') ? 'eq' : b.tagName.toLowerCase();
+      return document.querySelector('#c-estilo [data-estilo="' + tag + '"]') ? tag : '';
+    }
+    function corDeProva(montar) {   // cor calculada de um elemento de prova, fora da página (segue o tema)
+      const ap = document.querySelector('.apostila'); if (!ap) return '';
+      const w = document.createElement('div'); w.setAttribute('data-strata-temp', ''); w.setAttribute('aria-hidden', 'true');
+      w.style.cssText = 'position:absolute;left:-9999px;top:0;visibility:hidden';
+      ap.append(w); const el = montar(w); const c = getComputedStyle(el).color; w.remove(); return c;
+    }
+    const corLembrada = k => { const c = lembrar(k); return CORES.includes(c) ? c : ''; };
+    function pintarIconesCor() {
+      document.querySelectorAll('#c-estilo [data-estilo]').forEach(b => {
+        const k = b.dataset.estilo, cor = corLembrada('strata-cor-estilo-' + k);
+        const c = corDeProva(w => {
+          const tag = k === 'subtitulo' ? 'p' : k === 'eq' ? 'div' : k, el = document.createElement(tag);
+          if (k === 'subtitulo') el.className = 'subtitulo'; if (k === 'eq') el.className = 'eq';
+          el.textContent = 'x'; w.append(el); if (!cor) return el;
+          const sp = document.createElement('span'); sp.className = cor; sp.textContent = 'x'; el.append(sp); return sp;
+        });
+        b.querySelector('.ci').style.color = c;
+      });
+      document.querySelectorAll('#c-num [data-numerado]').forEach(b => {
+        const t = b.dataset.numerado, cor = corLembrada('strata-cor-' + t), ci = b.querySelector('.ci');
+        if (TITULOS_NUM[t]) ci.style.color = corDeProva(w => { const h = document.createElement(TITULOS_NUM[t]); h.className = t + (cor ? ' ' + cor : ''); h.textContent = 'x'; w.append(h); return h; });
+        else ci.style.setProperty('--ci-cor', corDeProva(w => {
+          const d = document.createElement('div'); d.className = 'ambiente'; d.dataset.tipo = t; if (cor) d.dataset.cor = cor;
+          const p = document.createElement('p'), ti = document.createElement('span'); ti.className = 'rotulo amb-titulo'; ti.textContent = 'x'; p.append(ti); d.append(p); w.append(d); return ti;
+        }));
+      });
+      const cn = $('c-num'); if (cn && cn._mostrar) cn._mostrar();
+      if (typeof mostrarFormatos === 'function') try { mostrarFormatos(); } catch (e) {}
+    }
     // botões agrupados (formatação, alinhamento, listas, equações): o botão principal repete a última opção usada
     document.querySelectorAll('#barra .combo.grupo').forEach(c => {
       const prin = c.querySelector(':scope > .b-icone'), menu = c.querySelector('.combo-menu'), ops = [...menu.querySelectorAll('button')];
       const chave = 'apostila-' + c.id;
-      const mostrar = b => { prin.innerHTML = b.querySelector('.ci').innerHTML; prin.title = b.title || b.textContent; prin.dataset.op = b.id; prin.classList.toggle('ativo-fmt', b.classList.contains('ativo-fmt')); };
+      const mostrar = b => { prin.innerHTML = b.querySelector('.ci').innerHTML; prin.style.cssText = b.querySelector('.ci').style.cssText; prin.title = b.title || b.textContent; prin.dataset.op = b.id; prin.classList.toggle('ativo-fmt', b.classList.contains('ativo-fmt')); };
       mostrar(ops.find(b => b.id === lembrar(chave)) || ops[0]);
       prin.onclick = () => $(prin.dataset.op).click();
       c.querySelector('.combo-seta').onclick = () => { const ab = menu.hidden; document.querySelectorAll('.combo-menu').forEach(m => m.hidden = true); menu.hidden = !ab; };
@@ -3631,7 +3672,7 @@
       const texto = $('pr-texto').value.trim(), lab = limparLabel($('pr-label').value);
       if (o.obrig && !texto) { $('pr-erro').textContent = o.rotTexto + ': não pode ficar vazio'; return $('pr-texto').focus(); }
       const erro = erroLabel(lab, o.dono); if (erro) { $('pr-erro').textContent = erro; return $('pr-label').focus(); }
-      const cor = ROT.cor; if (o.tipo) lembrar('strata-cor-' + o.tipo, cor);
+      const cor = ROT.cor; if (o.tipo) { lembrar('strata-cor-' + o.tipo, cor); pintarIconesCor(); }
       fecharRotulo(true); depoisDe(() => o.salvar(texto, lab, cor)); depoisRotulo();
     }
     $('pr-salvar').onclick = salvarRotulo;
@@ -3829,6 +3870,8 @@
       const s = document.createElement('span'); s.className = 'eq-num'; s.id = lab; w.replaceWith(s); s.append(w);
     }
     NUM_OK = true; numerar();
+    pintarIconesCor();
+    new MutationObserver(pintarIconesCor).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
     // Enter numa linha vazia no fim do ambiente: a linha sai da caixa
     document.addEventListener('keydown', ev => {
       if (ev.key !== 'Enter' || ev.shiftKey || ev.ctrlKey || ev.altKey || !document.body.classList.contains('editando')) return;

@@ -2,6 +2,9 @@
 
 ## Próxima versão
 
+- Ícones dos estilos de parágrafo e dos numerados na última cor usada em cada um
+  (estilo: a cor de texto aplicada num bloco daquele estilo; numerado: a cor do
+  diálogo); sem cor usada, a cor padrão. Seguem o tema escuro.
 - Tema escuro: barra de tabela com os botões de posição e o destaque de
   Selecionar linha/coluna legíveis.
 - Legendas de figura e tabela editadas em linha, como o resto do texto (a cor pela
