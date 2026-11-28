@@ -674,7 +674,13 @@
       setTimeout(() => {
         const s = getSelection(); if (!s.rangeCount) return;
         const r = s.getRangeAt(0);
-        if (r.startContainer !== r0.startContainer || r.startOffset !== r0.startOffset) return;   // o cursor andou
+        if (r.startContainer !== r0.startContainer || r.startOffset !== r0.startOffset) {   // o cursor andou...
+          const e = document.createRange(), ini = r0.compareBoundaryPoints(Range.START_TO_START, r) <= 0;
+          e.setStart(ini ? r0.startContainer : r.startContainer, ini ? r0.startOffset : r.startOffset);
+          e.setEnd(ini ? r.startContainer : r0.startContainer, ini ? r.startOffset : r0.startOffset);
+          const c = e.cloneContents();
+          if (c.textContent.replace(/\u200B/g, '') || c.querySelector('*:not(:empty), br, img') || r0.commonAncestorContainer === null) return;   // ...de verdade
+        }   // só passou por espaços invisíveis: conta como parado
         const pags = [...document.querySelectorAll('section.pagina')], viz = pags[pags.indexOf(sec) + (frente ? 1 : -1)];
         if (!viz) return;
         // só passa de página se o cursor está mesmo na ponta desta (depois/antes de tudo o que tem conteúdo)
@@ -688,7 +694,7 @@
         if (!it.length) cursorEm(b); else porCursor(it, frente ? 0 : it.length);
         b.scrollIntoView({ block: 'nearest' });
       }, 0);
-    });
+    }, true);   // na captura: guarda o cursor antes que os outros tratamentos das setas o mudem
     // texto digitado (ou Enter) nos pontos da linha da tabela (ou da caixa): vai para um parágrafo novo, antes ou depois dela
     document.addEventListener('beforeinput', ev => {
       if (!document.body.classList.contains('editando') || !/^(insertText|insertParagraph|insertLineBreak|insertFromPaste|insertReplacementText)$/.test(ev.inputType)) return;
