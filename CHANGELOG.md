@@ -2,6 +2,12 @@
 
 ## Próxima versão
 
+- Caixas de ambiente (definição, teorema, exemplo, observação) com ponto de inserção
+  antes e depois, como a tabela e a equação destacada: o cursor para logo fora da borda
+  (pelas setas ou clicando na margem ao lado da caixa), e digitar ou dar Enter ali cria
+  um parágrafo antes ou depois dela. Esses pontos também recebem âncoras de camada,
+  marcação e desenho. Na edição, a caixa fica numa linha própria (div.linha-objeto);
+  remover a caixa desfaz a linha.
 - Barra do modo edição reorganizada em grupos: estilo, numerados, formatação e cor |
   alinhamento e listas | recuos, nova página e localizar | link, mídia, tabela,
   desenho, marcação e equações | olho e camada. O botão Camada tem o ícone na cor da âncora

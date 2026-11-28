@@ -460,13 +460,14 @@
     function sujo(v) { ED.sujo = v; document.body.classList.toggle('sujo', v); if (v) histAgendar(); else apagarRascunho(); }
     const $ = id => document.getElementById(id);
     const BLOCOS = 'p, div.eq, div.caixa, h1, h2, h3, h4, h5, h6, pre, blockquote, aside.nota, li, .subtitulo';
-    // tabela e vídeo ficam numa linha própria (div.linha-objeto): os pontos antes e depois deles recebem âncoras
-    // de camada, marcação e desenho, como na equação destacada
+    // tabela, vídeo e caixa de ambiente (exemplo, definição, ...) ficam numa linha própria (div.linha-objeto):
+    // os pontos antes e depois deles recebem o cursor e as âncoras de camada, marcação e desenho, como na equação destacada
     const LINHA_OBJ = 'div.linha-objeto';
+    const OBJ_LINHA = 'table, div.video, div.ambiente';
     const BLOCOS_L = BLOCOS + ', ' + LINHA_OBJ;
     function embrulharObjetos() {
       let mudou = false;
-      document.querySelectorAll('section.pagina table.tabela, section.pagina div.video').forEach(t => {
+      document.querySelectorAll('section.pagina table.tabela, section.pagina div.video, section.pagina div.ambiente').forEach(t => {
         const pai = t.parentElement;
         if (pai.matches(LINHA_OBJ) || pai.closest('td, th, ' + BLOCOS)) return;
         const d = document.createElement('div'); d.className = 'linha-objeto';
@@ -540,7 +541,7 @@
         for (const f of n.childNodes) {
           if (f.nodeType === 3) for (let i = 0; i < f.data.length; i++) it.push({ no: f, i, zw: f.data[i] === ZW });
           else if (f.nodeType === 1) {
-            if (f.matches(NAO_EDIT + ', ' + OBJETOS) || (f.matches('table, div.video') && n.matches(LINHA_OBJ))) it.push({ el: f });
+            if (f.matches(NAO_EDIT + ', ' + OBJETOS) || (f.matches(OBJ_LINHA) && n.matches(LINHA_OBJ))) it.push({ el: f });
             else if (!f.matches('.tinta-html, svg.tinta, aside.nota, .rodape')) rec(f);
           }
         }
@@ -563,6 +564,17 @@
       else if (d) r.setStartBefore(d.el);
       else return;
       r.collapse(true); const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+    // "células" de um objeto da linha: as da tabela, ou os blocos de texto da caixa do ambiente
+    function celulasDe(o) {
+      if (o.matches('table')) return [...o.querySelectorAll('td, th')];
+      return [...o.querySelectorAll(BLOCOS_L)].filter(e => !e.querySelector(BLOCOS_L) && !e.closest('td, th, aside.nota'));
+    }
+    // o título do ambiente (Exemplo 1:) e o espaço depois dele: o cursor não para antes deles
+    function ehTitulo(t) {
+      if (t.el || !t.no.parentElement) return false;
+      if (t.no.parentElement.closest('.amb-titulo')) return true;
+      const a = t.no.previousSibling; return t.i === 0 && a && a.nodeType === 1 && a.matches('.amb-titulo') && /\s/.test(t.no.data[0]);
     }
     function sairDaTabela(tab, dir) {
       if (tab.parentElement.matches(LINHA_OBJ)) {   // para o ponto logo depois (ou antes) da tabela, na linha dela
@@ -592,17 +604,20 @@
       let k = posicaoNoBloco(it, r.startContainer, r.startOffset), pulou = false;
       // saindo da tabela pela última (ou primeira) célula: o navegador deixaria o cursor solto
       // na página, entre a tabela e o bloco vizinho; leva para dentro do bloco vizinho
-      if (b.matches('td, th')) {
-        const tab = b.closest('table'), cels = tab.querySelectorAll('td, th');
-        const fimDaCel = !it.slice(k).some(t => !t.zw), iniDaCel = !it.slice(0, k).some(t => !t.zw);
+      const amb = !b.matches('td, th, ' + LINHA_OBJ) && b.closest('div.ambiente');
+      if (b.matches('td, th') || (amb && amb.parentElement.matches(LINHA_OBJ))) {
+        // (o mesmo na caixa do ambiente: pelo primeiro ou último bloco dela, para os pontos da linha da caixa)
+        const tab = amb || b.closest('table'), cels = celulasDe(tab);
+        const vz = it.map(t => t.zw || ehTitulo(t));
+        const fimDaCel = !it.slice(k).some((t, i) => !vz[k + i]), iniDaCel = !it.slice(0, k).some((t, i) => !vz[i]);
         if (ev.key === 'ArrowRight' && fimDaCel && b === cels[cels.length - 1]) { ev.preventDefault(); sairDaTabela(tab, 1); return; }
         if (ev.key === 'ArrowLeft' && iniDaCel && b === cels[0]) { ev.preventDefault(); sairDaTabela(tab, -1); return; }
-      } else if (b.matches(LINHA_OBJ)) {   // nos pontos da linha da tabela: a seta que encontra a tabela entra nela
+      } else if (b.matches(LINHA_OBJ)) {   // nos pontos da linha da tabela (ou da caixa): a seta que encontra o objeto entra nele
         let j = k;
         if (ev.key === 'ArrowRight') { while (j < it.length && it[j].zw) j++; } else { while (j > 0 && it[j - 1].zw) j--; }
         const t = ev.key === 'ArrowRight' ? it[j] : it[j - 1];
-        if (t && t.el && t.el.matches('table')) {
-          const cels = t.el.querySelectorAll('td, th'); if (!cels.length) return;
+        if (t && t.el && t.el.matches('table, div.ambiente')) {
+          const cels = celulasDe(t.el); if (!cels.length) return;
           ev.preventDefault();
           const c = ev.key === 'ArrowRight' ? cels[0] : cels[cels.length - 1], ic = itensDoBloco(c);
           if (!ic.length) { cursorEm(c); return; }
@@ -638,13 +653,13 @@
       }
       ev.preventDefault(); porCursor(it, k);
     });
-    // texto digitado (ou Enter) nos pontos da linha da tabela: vai para um parágrafo novo, antes ou depois dela
+    // texto digitado (ou Enter) nos pontos da linha da tabela (ou da caixa): vai para um parágrafo novo, antes ou depois dela
     document.addEventListener('beforeinput', ev => {
       if (!document.body.classList.contains('editando') || !/^(insertText|insertParagraph|insertLineBreak|insertFromPaste|insertReplacementText)$/.test(ev.inputType)) return;
       const sel = getSelection(); if (!sel.rangeCount) return;
       const r = sel.getRangeAt(0), n = noDe(r.startContainer); if (!n) return;
-      const L = n.closest(LINHA_OBJ + ', td, th, caption'); if (!L || !L.matches(LINHA_OBJ)) return;
-      const tab = L.querySelector(':scope > table'); if (!tab) return;
+      const L = n.closest(LINHA_OBJ + ', td, th, caption, div.ambiente, div.video'); if (!L || !L.matches(LINHA_OBJ)) return;
+      const tab = L.querySelector(':scope > table, :scope > div.ambiente'); if (!tab) return;
       ev.preventDefault();
       const antes = r.comparePoint(tab, 0) > 0;   // cursor antes da tabela
       const p = document.createElement('p');
@@ -675,6 +690,13 @@
       if (!n || !n.closest('section.pagina') || n.closest(NAO_EDIT + ', span.figura > .legenda')) return;
       const b = n.closest('td, th, caption, ' + BLOCOS_L) || n.closest('section.pagina');
       let it = itensDoBloco(b), k = posicaoNoBloco(it, r.startContainer, r.startOffset), k0 = k;
+      // no começo da caixa do ambiente (depois do título) ou no fim dela: não junta com o que está fora
+      const amb = !b.matches('td, th, ' + LINHA_OBJ) && b.closest('div.ambiente');
+      if (amb && amb.parentElement.matches(LINHA_OBJ)) {
+        const cels = celulasDe(amb), vz = it.map(t => t.zw || ehTitulo(t));
+        if (ev.key === 'Backspace' && b === cels[0] && !it.slice(0, k).some((t, i) => !vz[i])) { ev.preventDefault(); return; }
+        if (ev.key === 'Delete' && b === cels[cels.length - 1] && !it.slice(k).some((t, i) => !vz[k + i])) { ev.preventDefault(); return; }
+      }
       // na borda de um bloco vizinho à linha de uma tabela: o navegador juntaria o bloco à linha da tabela
       if (b.matches(BLOCOS) && !b.closest('td, th')) {
         const viz = ev.key === 'Backspace' ? b.previousElementSibling : b.nextElementSibling;
@@ -691,7 +713,7 @@
       if (b.matches(LINHA_OBJ) && (ev.key === 'Backspace' ? !it.slice(0, k).some(t => !t.zw) : !it.slice(k).some(t => !t.zw))) { ev.preventDefault(); return; }
       if (ev.key === 'Backspace') {
         while (k > 0 && it[k - 1].zw) k--;
-        if (k > 0 && it[k - 1].el && it[k - 1].el.matches('table, div.video')) { ev.preventDefault(); return; }   // a tabela sai pelo menu dela; o vídeo, selecionado
+        if (k > 0 && it[k - 1].el && it[k - 1].el.matches(OBJ_LINHA)) { ev.preventDefault(); return; }   // a tabela sai pelo menu dela; a caixa, pelo diálogo; o vídeo, selecionado
         if (k > 0 && it[k - 1].el) {
           ev.preventDefault();
           const el = it[k - 1].el, depois = it[k0] || null;
@@ -703,7 +725,7 @@
         if (k !== k0) porCursor(it, k);   // só espaços invisíveis antes: o Backspace age no que vem antes deles
       } else {
         while (k < it.length && it[k].zw) k++;
-        if (k < it.length && it[k].el && it[k].el.matches('table, div.video')) { ev.preventDefault(); return; }
+        if (k < it.length && it[k].el && it[k].el.matches(OBJ_LINHA)) { ev.preventDefault(); return; }
         if (k < it.length && it[k].el) {
           ev.preventDefault();
           const antes = it[k0 - 1] || null;
@@ -1353,7 +1375,7 @@
       const anc = t => t.el && t.el.matches('.marca, span.fragment > .ancora-camada');
       const vazio = t => t.zw || (!t.el && /\s/.test(t.no.data[t.i])) || (t.el && t.el.matches('.fragment:not(span) > .ancora-camada'));   // a âncora da camada do bloco fica na margem
       const destacada = t => t && t.el && t.el.matches('mjx-container[display="true"]');
-      const objeto = t => t && t.el && t.el.matches(OBJETOS + ', table, div.video');
+      const objeto = t => t && t.el && t.el.matches(OBJETOS + ', ' + OBJ_LINHA);
       const larg = g => g.reduce((t, a) => { const cs = getComputedStyle(a); return t + a.getBoundingClientRect().width + (parseFloat(cs.marginLeft) || 0) + (parseFloat(cs.marginRight) || 0); }, 0);
       const mudar = [], objs = [];
       for (const b of blocos) {
@@ -3805,9 +3827,31 @@
         apagar: () => {
           const ti = el.querySelector('.amb-titulo');
           if (ti) { const nx = ti.nextSibling; if (nx && nx.nodeType === 3) nx.data = nx.data.replace(/^[\s ]+/, ''); ti.remove(); }
+          const L = el.parentElement;
           el.replaceWith(...el.childNodes);
+          if (L && L.matches(LINHA_OBJ)) desembrulharLinha(L);
         }
       });
+    }
+    // linha de objeto que perdeu o objeto (caixa removida): os blocos voltam para a página; a camada da linha
+    // passa para o primeiro bloco, e as âncoras soltas (marcação, camada em linha) vão para o bloco vizinho
+    function desembrulharLinha(L) {
+      const bl = [...L.children].filter(e => e.matches(BLOCOS_L + ', ' + OBJ_LINHA + ', ul, ol, .duas-colunas, figure'));
+      if (!bl.length) { const p = document.createElement('p'); p.innerHTML = '<br>'; bl.push(p); L.append(p); }
+      const ini = bl[0], fim = bl[bl.length - 1];
+      let antes = true;
+      for (const n of [...L.childNodes]) {
+        if (n.nodeType === 3) { if (!n.data.replace(/[\s\u200B]/g, '')) n.remove(); continue; }
+        if (n.nodeType !== 1 || bl.includes(n)) { if (n === ini) antes = false; continue; }
+        if (n.matches('.fragment:not(span) > .ancora-camada')) { n.remove(); continue; }
+        if (n.matches('.marca, span.fragment')) { if (antes) ini.prepend(n); else fim.append(n); }
+      }
+      if (L.classList.contains('fragment')) {
+        ini.classList.add('fragment');
+        if (L.dataset.junto) ini.dataset.junto = L.dataset.junto;
+      }
+      L.replaceWith(...bl);
+      iconesCamada();
     }
     // caixa do ambiente em volta dos blocos selecionados
     function envolverAmbiente(bl, tipo) {
