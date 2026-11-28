@@ -213,7 +213,13 @@ body.editando .apostila mjx-container.busca-eq-atual > svg { background-image: l
 #barra button { font: inherit; border: 1px solid #ccc; background: #fff; border-radius: 5px; padding: 5px 10px; cursor: pointer; }
 #barra button:hover { background: #eef; }
 #barra .sep { width: 1px; height: 22px; background: #ccc; margin: 0 4px; }
+/* camada de conteúdo: o botão tem as cores da âncora de camada */
+#barra #b-camada { color: #ff8000; border-color: #ff8000; background: #fff1e0; }
+#barra #b-camada:hover { background: #ffe2c4; }
 #barra #b-camada.ligada { background: #ffe2c4; border-color: #ff8000; }
+/* nome do editor, com link para o site */
+#barra #b-strata { align-self: center; margin-left: 6px; color: #ff8000; font: 600 15px system-ui, sans-serif; text-decoration: none; letter-spacing: .01em; white-space: nowrap; }
+#barra #b-strata:hover { text-decoration: underline; }
 #barra .b-eq { font-family: ui-monospace, Consolas, monospace; font-weight: 600; min-width: 38px; }
 #barra .b-cor { width: 30px; height: 30px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
 #barra .b-cor::before { content: ""; width: 16px; height: 16px; border-radius: 3px; background: var(--c); }
@@ -505,6 +511,9 @@ html.strata-escuro #b-tema .sol { display: none; }
     background: var(--ui-ativo); border-color: #ff9a3c; color: #ffc48a; }
   html.strata-escuro #modos #b-salvar, html.strata-escuro #ee-aplicar, html.strata-escuro #pm-ok { background: #2a6 !important; border-color: #2a6 !important; color: #fff; }
   html.strata-escuro #aviso { background: var(--ui-fundo); color: #5fd17f; }
+  html.strata-escuro #barra #b-camada { color: #ff9a3c; border-color: #ff9a3c; background: #3a2a1a; }
+  html.strata-escuro #barra #b-camada:hover, html.strata-escuro #barra #b-camada.ligada { background: #5a3a18; }
+  html.strata-escuro #barra #b-strata { color: #ff9a3c; }
   html.strata-escuro #barra #barra-tabela { background: #22252b; border-color: var(--ui-borda); }
   html.strata-escuro #barra #barra-tabela .tab-cores .pt-pos { border-color: var(--ui-borda) !important; background: var(--ui-fundo); }
   html.strata-escuro #barra #barra-tabela .tab-cores .pt-pos.ativo { border-color: #ff9a3c !important; background: var(--ui-ativo); color: #ffc48a; }
