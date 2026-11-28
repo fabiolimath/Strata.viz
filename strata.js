@@ -654,6 +654,41 @@
       }
       ev.preventDefault(); porCursor(it, k);
     });
+    // Setas no fim (ou no começo) de uma página: cada página é editável à parte, e o navegador não passa
+    // de uma para a outra. Se a seta não mexeu o cursor, ele vai para o começo da página seguinte
+    // (ou para o fim da anterior).
+    function pontaDaPagina(sec, fim) {
+      const ok = e => !e.matches('.rodape, svg.tinta, .tinta-html, .notas-rodape, aside.nota, script, style');
+      if (!fim) { const e = [...sec.querySelectorAll(BLOCOS_L)].find(e => ok(e) && !e.closest('.notas-rodape, .rodape, td, th')); return e; }
+      let e = [...sec.children].filter(ok).pop();
+      while (e && !e.matches(BLOCOS_L)) e = [...e.children].filter(ok).pop();
+      return e;
+    }
+    document.addEventListener('keydown', ev => {
+      if (!/^Arrow(Right|Left|Down|Up)$/.test(ev.key) || ev.shiftKey || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+      if (!document.body.classList.contains('editando') || document.body.classList.contains('escolhendo')) return;
+      const sel = getSelection(); if (!sel.rangeCount || !sel.isCollapsed) return;
+      const r0 = sel.getRangeAt(0).cloneRange(), sec = noDe(r0.startContainer) && noDe(r0.startContainer).closest('section.pagina');
+      if (!sec || noDe(r0.startContainer).closest('td, th, caption, .rodape, .notas-rodape')) return;
+      const frente = ev.key === 'ArrowRight' || ev.key === 'ArrowDown';
+      setTimeout(() => {
+        const s = getSelection(); if (!s.rangeCount) return;
+        const r = s.getRangeAt(0);
+        if (r.startContainer !== r0.startContainer || r.startOffset !== r0.startOffset) return;   // o cursor andou
+        const pags = [...document.querySelectorAll('section.pagina')], viz = pags[pags.indexOf(sec) + (frente ? 1 : -1)];
+        if (!viz) return;
+        // só passa de página se o cursor está mesmo na ponta desta (depois/antes de tudo o que tem conteúdo)
+        const fora = document.createRange(); fora.selectNodeContents(sec);
+        if (frente) fora.setStart(r.startContainer, r.startOffset); else fora.setEnd(r.startContainer, r.startOffset);
+        const resto = fora.cloneContents(); resto.querySelectorAll('.rodape, .notas-rodape, svg.tinta, .tinta-html, .ancora-camada').forEach(e => e.remove());
+        if (resto.textContent.replace(/[\s\u200B]/g, '') || resto.querySelector('mjx-container, img, table, div.video, div.ambiente, .marca')) return;
+        const b = pontaDaPagina(viz, !frente); if (!b) return;
+        viz.focus({ preventScroll: true });
+        const it = itensDoBloco(b);
+        if (!it.length) cursorEm(b); else porCursor(it, frente ? 0 : it.length);
+        b.scrollIntoView({ block: 'nearest' });
+      }, 0);
+    });
     // texto digitado (ou Enter) nos pontos da linha da tabela (ou da caixa): vai para um parágrafo novo, antes ou depois dela
     document.addEventListener('beforeinput', ev => {
       if (!document.body.classList.contains('editando') || !/^(insertText|insertParagraph|insertLineBreak|insertFromPaste|insertReplacementText)$/.test(ev.inputType)) return;

@@ -13,6 +13,9 @@
   vazio (Ctrl+Z desfaz). Seta a partir do ponto antes da caixa entra no texto depois do
   título. Na edição, a tabela fica com os pontos encostados nela (antes ficavam nas
   bordas da página).
+- Setas passam de uma página para a outra: no fim da página (depois da última caixa,
+  tabela ou parágrafo), seta para a direita ou para baixo vai para o começo da página
+  seguinte; no começo, seta para a esquerda ou para cima volta para o fim da anterior.
 - Barra do modo edição reorganizada em grupos: estilo, numerados, formatação e cor |
   alinhamento e listas | recuos, nova página e localizar | link, mídia, tabela,
   desenho, marcação e equações | olho e camada. O botão Camada tem o ícone na cor da âncora
