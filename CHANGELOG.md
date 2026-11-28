@@ -8,6 +8,11 @@
   um parágrafo antes ou depois dela. Esses pontos também recebem âncoras de camada,
   marcação e desenho. Na edição, a caixa fica numa linha própria (div.linha-objeto);
   remover a caixa desfaz a linha.
+- Backspace no ponto depois (ou Delete no ponto antes) de uma tabela, caixa, vídeo ou
+  imagem apaga o objeto inteiro, como na equação destacada; a linha dele vira um parágrafo
+  vazio (Ctrl+Z desfaz). Seta a partir do ponto antes da caixa entra no texto depois do
+  título. Na edição, a tabela fica com os pontos encostados nela (antes ficavam nas
+  bordas da página).
 - Barra do modo edição reorganizada em grupos: estilo, numerados, formatação e cor |
   alinhamento e listas | recuos, nova página e localizar | link, mídia, tabela,
   desenho, marcação e equações | olho e camada. O botão Camada tem o ícone na cor da âncora

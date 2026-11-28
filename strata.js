@@ -622,7 +622,8 @@
           const c = ev.key === 'ArrowRight' ? cels[0] : cels[cels.length - 1], ic = itensDoBloco(c);
           if (!ic.length) { cursorEm(c); return; }
           let q = ev.key === 'ArrowRight' ? 0 : ic.length;
-          if (ev.key === 'ArrowRight') while (q < ic.length && ic[q].zw) q++; else while (q > 0 && ic[q - 1].zw) q--;
+          const pula = t => t.zw || ehTitulo(t);   // o título do ambiente não é editável: o cursor fica depois dele
+          if (ev.key === 'ArrowRight') while (q < ic.length && pula(ic[q])) q++; else while (q > 0 && pula(ic[q - 1])) q--;
           porCursor(ic, q); return;
         }
       } else if (!b.matches('section.pagina')) {   // e o caminho inverso: do bloco vizinho para dentro da tabela
@@ -678,8 +679,23 @@
         if (w && w.matches('span.eq-cor') && !w.textContent.replace(/[\s\u200B]/g, '') && !w.querySelector('mjx-container')) w.remove();
       } else if (el.matches('.marca')) { el.remove(); MK.limpeza = limparRotulos(); }
       else if (el.matches('.ancora-camada')) { const f = el.parentElement; removerCamada(f); iconesCamada(); focarCamada(null); }
-      else if (el.matches(OBJETOS)) el.remove();
+      else if (el.matches(OBJETOS + ', ' + OBJ_LINHA)) {   // imagem, tabela, vídeo, caixa: some inteiro, como a equação destacada
+        const L = el.parentElement; el.remove();
+        if (L && L.matches(LINHA_OBJ) && !L.querySelector(':scope > :is(' + OBJ_LINHA + ', ' + OBJETOS + ')')) apagarItem.novo = linhaParaParagrafo(L);
+      }
       sujo(true); desenharMarcas();
+    }
+    // linha de objeto que ficou sem o objeto: vira um parágrafo (com as âncoras que estavam nela)
+    function linhaParaParagrafo(L) {
+      const p = document.createElement('p');
+      for (const n of [...L.childNodes]) {
+        if (n.nodeType === 3 ? !n.data.replace(/[\s\u200B]/g, '') : n.matches('.fragment:not(span) > .ancora-camada')) continue;
+        p.append(n);
+      }
+      if (!p.childNodes.length) p.innerHTML = '<br>';
+      if (L.classList.contains('fragment')) { p.classList.add('fragment'); if (L.dataset.junto) p.dataset.junto = L.dataset.junto; }
+      L.replaceWith(p); iconesCamada();
+      return p;
     }
     document.addEventListener('keydown', ev => {
       if ((ev.key !== 'Backspace' && ev.key !== 'Delete') || ev.shiftKey || ev.ctrlKey || ev.metaKey || ev.altKey) return;
@@ -713,11 +729,11 @@
       if (b.matches(LINHA_OBJ) && (ev.key === 'Backspace' ? !it.slice(0, k).some(t => !t.zw) : !it.slice(k).some(t => !t.zw))) { ev.preventDefault(); return; }
       if (ev.key === 'Backspace') {
         while (k > 0 && it[k - 1].zw) k--;
-        if (k > 0 && it[k - 1].el && it[k - 1].el.matches(OBJ_LINHA)) { ev.preventDefault(); return; }   // a tabela sai pelo menu dela; a caixa, pelo diálogo; o vídeo, selecionado
         if (k > 0 && it[k - 1].el) {
           ev.preventDefault();
           const el = it[k - 1].el, depois = it[k0] || null;
-          apagarItem(el);
+          apagarItem.novo = null; apagarItem(el);
+          if (!b.isConnected && apagarItem.novo) { cursorEm(apagarItem.novo); return; }
           it = itensDoBloco(b); const j = depois ? it.indexOf(it.find(t => t.el ? t.el === depois.el : t.no === depois.no && t.i === depois.i)) : -1;
           if (b.isConnected) porCursor(it, j >= 0 ? j : Math.min(k - 1, it.length));
           return;
@@ -725,11 +741,11 @@
         if (k !== k0) porCursor(it, k);   // só espaços invisíveis antes: o Backspace age no que vem antes deles
       } else {
         while (k < it.length && it[k].zw) k++;
-        if (k < it.length && it[k].el && it[k].el.matches(OBJ_LINHA)) { ev.preventDefault(); return; }
         if (k < it.length && it[k].el) {
           ev.preventDefault();
           const antes = it[k0 - 1] || null;
-          apagarItem(it[k].el);
+          apagarItem.novo = null; apagarItem(it[k].el);
+          if (!b.isConnected && apagarItem.novo) { cursorEm(apagarItem.novo); return; }
           it = itensDoBloco(b); const j = antes ? it.findIndex(t => t.el ? t.el === antes.el : t.no === antes.no && t.i === antes.i) + 1 : 0;
           if (b.isConnected) porCursor(it, Math.max(j, 0));
           return;
