@@ -502,7 +502,7 @@
       document.querySelectorAll('section.pagina').forEach(s => s.setAttribute('contenteditable', 'true'));
       document.querySelectorAll('section.pagina > .rodape').forEach(r => r.setAttribute('contenteditable', 'false'));   // número da página: automático
       document.querySelectorAll('.apostila .marca').forEach(prepararIcone);
-      soltasParaDentro(); embrulharObjetos();
+      soltasParaDentro(); embrulharObjetos(); numerarPaginas();
       iconesCamada(); garantirPontos();
       montarSumario();
       HIST.atual = null;
@@ -700,6 +700,15 @@
       if (!document.body.classList.contains('editando') || !/^(insertText|insertParagraph|insertLineBreak|insertFromPaste|insertReplacementText)$/.test(ev.inputType)) return;
       const sel = getSelection(); if (!sel.rangeCount) return;
       const r = sel.getRangeAt(0), n = noDe(r.startContainer); if (!n) return;
+      if (n.matches('section.pagina') && r.collapsed) {   // cursor solto entre dois blocos da página: o texto vai para um parágrafo novo ali
+        ev.preventDefault();
+        const p = document.createElement('p'), txt = ev.inputType === 'insertText' || ev.inputType === 'insertReplacementText' ? (ev.data || '') : ev.inputType === 'insertFromPaste' && ev.dataTransfer ? ev.dataTransfer.getData('text/plain') : '';
+        if (txt) p.textContent = txt; else p.innerHTML = '<br>';
+        let ref = n.childNodes[r.startOffset] || null; if (!ref) ref = n.querySelector(':scope > .notas-rodape, :scope > .rodape');
+        n.insertBefore(p, ref);
+        const q = document.createRange(); q.selectNodeContents(p); q.collapse(!txt); sel.removeAllRanges(); sel.addRange(q);
+        sujo(true); desenharMarcas(); return;
+      }
       const L = n.closest(LINHA_OBJ + ', td, th, caption, div.ambiente, div.video'); if (!L || !L.matches(LINHA_OBJ)) return;
       const tab = L.querySelector(':scope > table, :scope > div.ambiente'); if (!tab) return;
       ev.preventDefault();
@@ -1092,7 +1101,7 @@
       if (document.body.classList.contains('escolhendo')) { fecharPainel(); fechou = true; }
       if (fechou) { ev.preventDefault(); ev.stopImmediatePropagation(); }
     }, true);
-    // linhas novas: clicar abaixo do último bloco da página cria um parágrafo;
+    // clicar abaixo do último bloco da página põe o cursor no fim dele (numa página vazia, cria um parágrafo);
     // Enter no fim de uma equação ou título cria um parágrafo comum (não uma cópia da equação)
     function cursorEm(el) { const r = document.createRange(); r.selectNodeContents(el); r.collapse(true); getSelection().removeAllRanges(); getSelection().addRange(r); }
     function novoParagrafo(depois, enter) { const p = document.createElement('p'); p.innerHTML = '<br>'; if (enter && ED.enterCamada) p.className = 'fragment'; depois.after(p); cursorEm(p); sujo(true); if (enter && ED.enterCamada) iconesCamada(); return p; }
@@ -1104,8 +1113,9 @@
       const ult = blocos[blocos.length - 1];
       if (ult && ev.clientY < ult.getBoundingClientRect().bottom) return;
       ev.preventDefault();
-      if (ult && ult.matches('p') && !ult.textContent.trim() && !ult.querySelector('mjx-container')) return cursorEm(ult);
-      if (ult) novoParagrafo(ult); else { const p = document.createElement('p'); p.innerHTML = '<br>'; sec.prepend(p); cursorEm(p); sujo(true); }
+      // abaixo do último bloco: o cursor vai para o fim dele (numa tabela ou caixa, para o ponto depois dela)
+      if (ult) { const b = pontaDaPagina(sec, true) || ult; const it = itensDoBloco(b); sec.focus({ preventScroll: true }); if (!it.length) cursorEm(b); else porCursor(it, it.length); return; }
+      const p = document.createElement('p'); p.innerHTML = '<br>'; sec.prepend(p); cursorEm(p); sujo(true);
     });
     document.addEventListener('keydown', ev => {
       if (ev.key !== 'Enter' || ev.shiftKey || ev.ctrlKey || ev.metaKey || ev.altKey) return;
@@ -1127,6 +1137,37 @@
       }
       novoParagrafo(b, true);
     });
+    // toda página tem rodapé com o número, de 1 em diante
+    function numerarPaginas() {
+      document.querySelectorAll('section.pagina').forEach((sec, k) => {
+        let rd = sec.querySelector(':scope > .rodape');
+        if (!rd) { rd = document.createElement('div'); rd.className = 'rodape'; if (document.body.classList.contains('editando')) rd.setAttribute('contenteditable', 'false'); sec.append(rd); }
+        if (rd.textContent !== String(k + 1)) rd.textContent = k + 1;
+      });
+    }
+    // página sem conteúdo (depois de apagar tudo, ou Backspace/Delete numa página vazia) sai, se não for a única
+    function paginaVazia(sec) {
+      const c = sec.cloneNode(true);
+      c.querySelectorAll('.rodape, .notas-rodape, svg.tinta, .tinta-html, .ancora-camada').forEach(e => e.remove());
+      return !c.textContent.replace(/[\s\u200B]/g, '') && !c.querySelector('mjx-container, img, table, div.video, div.ambiente, .marca, hr, iframe');
+    }
+    document.addEventListener('keydown', ev => {
+      if ((ev.key !== 'Backspace' && ev.key !== 'Delete') || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+      if (!document.body.classList.contains('editando') || document.body.classList.contains('escolhendo')) return;
+      const s = getSelection(); if (!s.rangeCount) return;
+      const n = noDe(s.getRangeAt(0).startContainer), sec = n && n.closest && n.closest('section.pagina'); if (!sec) return;
+      const tras = ev.key === 'Backspace';
+      setTimeout(() => {
+        const pags = [...document.querySelectorAll('section.pagina')];
+        if (pags.length < 2 || !sec.isConnected || !paginaVazia(sec)) return;
+        const i = pags.indexOf(sec), viz = tras ? (pags[i - 1] || pags[i + 1]) : (pags[i + 1] || pags[i - 1]);
+        const paraFim = viz === pags[i - 1];
+        sec.remove(); numerarPaginas();
+        const b = pontaDaPagina(viz, paraFim);
+        if (b) { viz.focus({ preventScroll: true }); const it = itensDoBloco(b); if (!it.length) cursorEm(b); else porCursor(it, paraFim ? it.length : 0); b.scrollIntoView({ block: 'nearest' }); }
+        sujo(true); iconesCamada(); desenharMarcas(); montarSumario();
+      }, 0);
+    });
     // nova página, logo depois da página atual
     $('b-pagina').onclick = () => {
       const pags = [...document.querySelectorAll('section.pagina')];
@@ -1135,10 +1176,7 @@
       const p = document.createElement('p'); p.innerHTML = '<br>'; sec.append(p);
       const rd = document.createElement('div'); rd.className = 'rodape'; rd.setAttribute('contenteditable', 'false'); sec.append(rd);
       atual.after(sec);
-      // toda página tem rodapé com o número; renumera a partir do número da primeira (ou 1)
-      const rods = [...document.querySelectorAll('section.pagina > .rodape')];
-      const n0 = (rods.length && parseInt(rods[0].textContent, 10)) || 1;
-      rods.forEach((r, k) => { r.textContent = n0 + k; });
+      numerarPaginas();
       cursorEm(p); sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); sujo(true);
     };
 
@@ -2937,7 +2975,6 @@
       const vazio = b && b.matches('p') && !b.textContent.replace(/[\s​]/g, '') && !b.querySelector('mjx-container, img, .marca');
       if (vazio) { if (b.classList.contains('fragment')) L.classList.add('fragment'); b.replaceWith(L); }
       else if (b) b.after(L); else sec.append(L);
-      if (!L.nextElementSibling || L.nextElementSibling.matches('.rodape')) { const p = document.createElement('p'); p.innerHTML = '<br>'; L.after(p); }   // para o cursor sair da tabela
       garantirPontos();
       sec.focus({ preventScroll: true });
       if ($('pt-leg').checked) { const c = novaLegenda(t); numerar(); cursorNaLegenda(c); } else cursorEm(t.rows[0].cells[0]);
@@ -3689,7 +3726,7 @@
         const alvo = a.querySelector('p, h2, h3, h4, li') || a.firstElementChild; if (!alvo) return null;
         t = document.createElement('span'); t.className = 'rotulo amb-titulo';
         let pos = alvo.firstChild; while (pos && pos.nodeType === 1 && pos.matches('.ancora-camada')) pos = pos.nextSibling;
-        alvo.insertBefore(t, pos); t.after(' ');
+        alvo.insertBefore(t, pos); t.after('\u00a0');
       }
       return t;
     }
@@ -3944,7 +3981,15 @@
       if (caixa) { if (caixa.dataset.tipo !== tipo) { caixa.dataset.tipo = tipo; depoisRotulo(); } return editarNumerado(caixa); }
       abrirRotulo({
         perto: bl[0], titulo: NUM[tipo].nome, rotTexto: 'Nome', dica: 'opcional: ' + NUM[tipo].nome + ' n (nome)', texto: '', label: labelAleatorio(NUM[tipo].pref), dono: null, tipo, cor: corPadrao(tipo),
-        salvar: (texto, lab, cor) => { const d = envolverAmbiente(bl.filter(e => e.isConnected), tipo); if (!d) return; d.id = lab; if (texto) d.dataset.nome = texto; if (cor) d.dataset.cor = cor; }
+        salvar: (texto, lab, cor) => {
+          const d = envolverAmbiente(bl.filter(e => e.isConnected), tipo); if (!d) return; d.id = lab; if (texto) d.dataset.nome = texto; if (cor) d.dataset.cor = cor;
+          setTimeout(() => {   // o cursor fica dentro da caixa nova, no fim do texto, para continuar escrevendo nela
+            if (!d.isConnected) return;
+            const cels = celulasDe(d), c = cels[cels.length - 1]; if (!c) return;
+            const sec = d.closest('section.pagina'); if (sec) sec.focus({ preventScroll: true });
+            const it = itensDoBloco(c); if (!it.length) cursorEm(c); else porCursor(it, it.length);
+          }, 0);
+        }
       });
     }
     document.querySelectorAll('#c-num [data-numerado]').forEach(b => b.onclick = () => inserirNumerado(b.dataset.numerado));
