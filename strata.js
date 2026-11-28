@@ -125,7 +125,8 @@
   <span class="sep"></span>
   <button type="button" id="b-menos-recuo" class="b-icone" title="Diminuir recuo (no parágrafo sem recuo, tira o recuo da primeira linha)" aria-label="Diminuir recuo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 6h9M11 10h9M11 14h9M4 18h16"/><path d="M7.5 8.5L4.5 11.5l3 3"/></svg></button>
   <button type="button" id="b-mais-recuo" class="b-icone" title="Aumentar recuo (no parágrafo sem recuo da primeira linha, devolve esse recuo primeiro)" aria-label="Aumentar recuo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 6h9M11 10h9M11 14h9M4 18h16"/><path d="M4.5 8.5l3 3-3 3"/></svg></button>
-  <button type="button" id="b-pagina" class="b-icone" title="Nova página, depois da página atual" aria-label="Nova página"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M14 3v4h4"></path><path d="M12 11v6M9 14h6"></path></svg></button>
+  <span class="combo grupo" id="c-pagina"><button type="button" id="b-paginas" class="b-icone" title="Página" aria-label="Página"></button><button type="button" class="combo-seta" title="Página: escolher" aria-label="Página: escolher">▾</button>
+    <span class="combo-menu" hidden=""><button type="button" id="b-pagina" title="Nova página, depois da página atual" aria-label="Nova página depois"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M14 3v4h4"></path><path d="M12 11v6M9 14h6"></path></svg></span>Nova página depois</button><button type="button" id="b-pagina-antes" title="Nova página, antes da página atual" aria-label="Nova página antes"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7h7l4 4v11H9z"></path><path d="M16 7v4h4"></path><path d="M4 2h7v3"></path><path d="M4 2v9h3" stroke-dasharray="2 1.5"></path><path d="M14.5 13v6M11.5 16h6"></path></svg></span>Nova página antes</button><button type="button" id="b-pagina-dup" title="Duplicar a página atual (a cópia vem logo depois dela)" aria-label="Duplicar página"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7h8l4 4v11H8z"></path><path d="M16 7v4h4"></path><path d="M4 18V2h8l2 2"></path><path d="M11 14h6M11 17.5h6"></path></svg></span>Duplicar página</button></span></span>
   <button type="button" id="b-busca" class="b-icone" title="Localizar e substituir (Ctrl+H), também no LaTeX das fórmulas" aria-label="Localizar e substituir"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L20 20"/></svg></button>
   <span class="sep"></span>
   <button type="button" id="b-link" class="b-icone" title="Inserir ou editar link (Ctrl+K)" aria-label="Link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></button>
@@ -502,7 +503,7 @@
       document.querySelectorAll('section.pagina').forEach(s => s.setAttribute('contenteditable', 'true'));
       document.querySelectorAll('section.pagina > .rodape').forEach(r => r.setAttribute('contenteditable', 'false'));   // número da página: automático
       document.querySelectorAll('.apostila .marca').forEach(prepararIcone);
-      soltasParaDentro(); embrulharObjetos();
+      soltasParaDentro(); embrulharObjetos(); numerarPaginas();
       iconesCamada(); garantirPontos();
       montarSumario();
       HIST.atual = null;
@@ -623,7 +624,7 @@
           if (!ic.length) { cursorEm(c); return; }
           let q = ev.key === 'ArrowRight' ? 0 : ic.length;
           const pula = t => t.zw || ehTitulo(t);   // o título do ambiente não é editável: o cursor fica depois dele
-          if (ev.key === 'ArrowRight') while (q < ic.length && pula(ic[q])) q++; else while (q > 0 && pula(ic[q - 1])) q--;
+          if (ev.key === 'ArrowRight') while (q < ic.length && pula(ic[q])) q++; else while (q > 0 && ic[q - 1].zw && !ehTitulo(ic[q - 1])) q--;   // pela esquerda, para no fim (mesmo que só haja o título)
           porCursor(ic, q); return;
         }
       } else if (!b.matches('section.pagina')) {   // e o caminho inverso: do bloco vizinho para dentro da tabela
@@ -700,6 +701,15 @@
       if (!document.body.classList.contains('editando') || !/^(insertText|insertParagraph|insertLineBreak|insertFromPaste|insertReplacementText)$/.test(ev.inputType)) return;
       const sel = getSelection(); if (!sel.rangeCount) return;
       const r = sel.getRangeAt(0), n = noDe(r.startContainer); if (!n) return;
+      if (n.matches('section.pagina') && r.collapsed) {   // cursor solto entre dois blocos da página: o texto vai para um parágrafo novo ali
+        ev.preventDefault();
+        const p = document.createElement('p'), txt = ev.inputType === 'insertText' || ev.inputType === 'insertReplacementText' ? (ev.data || '') : ev.inputType === 'insertFromPaste' && ev.dataTransfer ? ev.dataTransfer.getData('text/plain') : '';
+        if (txt) p.textContent = txt; else p.innerHTML = '<br>';
+        let ref = n.childNodes[r.startOffset] || null; if (!ref) ref = n.querySelector(':scope > .notas-rodape, :scope > .rodape');
+        n.insertBefore(p, ref);
+        const q = document.createRange(); q.selectNodeContents(p); q.collapse(!txt); sel.removeAllRanges(); sel.addRange(q);
+        sujo(true); desenharMarcas(); return;
+      }
       const L = n.closest(LINHA_OBJ + ', td, th, caption, div.ambiente, div.video'); if (!L || !L.matches(LINHA_OBJ)) return;
       const tab = L.querySelector(':scope > table, :scope > div.ambiente'); if (!tab) return;
       ev.preventDefault();
@@ -1092,7 +1102,7 @@
       if (document.body.classList.contains('escolhendo')) { fecharPainel(); fechou = true; }
       if (fechou) { ev.preventDefault(); ev.stopImmediatePropagation(); }
     }, true);
-    // linhas novas: clicar abaixo do último bloco da página cria um parágrafo;
+    // clicar abaixo do último bloco da página põe o cursor no fim dele (numa página vazia, cria um parágrafo);
     // Enter no fim de uma equação ou título cria um parágrafo comum (não uma cópia da equação)
     function cursorEm(el) { const r = document.createRange(); r.selectNodeContents(el); r.collapse(true); getSelection().removeAllRanges(); getSelection().addRange(r); }
     function novoParagrafo(depois, enter) { const p = document.createElement('p'); p.innerHTML = '<br>'; if (enter && ED.enterCamada) p.className = 'fragment'; depois.after(p); cursorEm(p); sujo(true); if (enter && ED.enterCamada) iconesCamada(); return p; }
@@ -1104,8 +1114,9 @@
       const ult = blocos[blocos.length - 1];
       if (ult && ev.clientY < ult.getBoundingClientRect().bottom) return;
       ev.preventDefault();
-      if (ult && ult.matches('p') && !ult.textContent.trim() && !ult.querySelector('mjx-container')) return cursorEm(ult);
-      if (ult) novoParagrafo(ult); else { const p = document.createElement('p'); p.innerHTML = '<br>'; sec.prepend(p); cursorEm(p); sujo(true); }
+      // abaixo do último bloco: o cursor vai para o fim dele (numa tabela ou caixa, para o ponto depois dela)
+      if (ult) { const b = pontaDaPagina(sec, true) || ult; const it = itensDoBloco(b); sec.focus({ preventScroll: true }); if (!it.length) cursorEm(b); else porCursor(it, it.length); return; }
+      const p = document.createElement('p'); p.innerHTML = '<br>'; sec.prepend(p); cursorEm(p); sujo(true);
     });
     document.addEventListener('keydown', ev => {
       if (ev.key !== 'Enter' || ev.shiftKey || ev.ctrlKey || ev.metaKey || ev.altKey) return;
@@ -1127,19 +1138,81 @@
       }
       novoParagrafo(b, true);
     });
-    // nova página, logo depois da página atual
-    $('b-pagina').onclick = () => {
-      const pags = [...document.querySelectorAll('section.pagina')];
-      const atual = (ED.bloco && ED.bloco.closest('section.pagina')) || pags[pags.length - 1];
+    // toda página tem rodapé com o número, de 1 em diante
+    function numerarPaginas() {
+      document.querySelectorAll('section.pagina').forEach((sec, k) => {
+        let rd = sec.querySelector(':scope > .rodape');
+        if (!rd) { rd = document.createElement('div'); rd.className = 'rodape'; if (document.body.classList.contains('editando')) rd.setAttribute('contenteditable', 'false'); sec.append(rd); }
+        if (rd.textContent !== String(k + 1)) rd.textContent = k + 1;
+      });
+    }
+    // página sem conteúdo (depois de apagar tudo, ou Backspace/Delete numa página vazia) sai, se não for a única
+    function paginaVazia(sec) {
+      const c = sec.cloneNode(true);
+      c.querySelectorAll('.rodape, .notas-rodape, svg.tinta, .tinta-html, .ancora-camada').forEach(e => e.remove());
+      return !c.textContent.replace(/[\s\u200B]/g, '') && !c.querySelector('mjx-container, img, table, div.video, div.ambiente, .marca, hr, iframe');
+    }
+    document.addEventListener('keydown', ev => {
+      if ((ev.key !== 'Backspace' && ev.key !== 'Delete') || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+      if (!document.body.classList.contains('editando') || document.body.classList.contains('escolhendo')) return;
+      const s = getSelection(); if (!s.rangeCount) return;
+      const n = noDe(s.getRangeAt(0).startContainer), sec = n && n.closest && n.closest('section.pagina'); if (!sec) return;
+      const tras = ev.key === 'Backspace';
+      setTimeout(() => {
+        const pags = [...document.querySelectorAll('section.pagina')];
+        if (pags.length < 2 || !sec.isConnected || !paginaVazia(sec)) return;
+        const i = pags.indexOf(sec), viz = tras ? (pags[i - 1] || pags[i + 1]) : (pags[i + 1] || pags[i - 1]);
+        const paraFim = viz === pags[i - 1];
+        sec.remove(); numerarPaginas();
+        const b = pontaDaPagina(viz, paraFim);
+        if (b) { viz.focus({ preventScroll: true }); const it = itensDoBloco(b); if (!it.length) cursorEm(b); else porCursor(it, paraFim ? it.length : 0); b.scrollIntoView({ block: 'nearest' }); }
+        sujo(true); iconesCamada(); desenharMarcas(); montarSumario();
+      }, 0);
+    });
+    // nova página, depois (ou antes) da página atual
+    function paginaAtual() { const pags = [...document.querySelectorAll('section.pagina')]; return (ED.bloco && ED.bloco.isConnected && ED.bloco.closest('section.pagina')) || pags[pags.length - 1]; }
+    function novaPagina(antes) {
+      const atual = paginaAtual();
       const sec = document.createElement('section'); sec.className = 'pagina'; sec.setAttribute('contenteditable', 'true');
       const p = document.createElement('p'); p.innerHTML = '<br>'; sec.append(p);
       const rd = document.createElement('div'); rd.className = 'rodape'; rd.setAttribute('contenteditable', 'false'); sec.append(rd);
-      atual.after(sec);
-      // toda página tem rodapé com o número; renumera a partir do número da primeira (ou 1)
-      const rods = [...document.querySelectorAll('section.pagina > .rodape')];
-      const n0 = (rods.length && parseInt(rods[0].textContent, 10)) || 1;
-      rods.forEach((r, k) => { r.textContent = n0 + k; });
-      cursorEm(p); sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); sujo(true);
+      if (antes) atual.before(sec); else atual.after(sec);
+      numerarPaginas();
+      sec.focus({ preventScroll: true }); cursorEm(p); sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); sujo(true); montarSumario();
+    }
+    $('b-pagina').onclick = () => novaPagina(false);
+    $('b-pagina-antes').onclick = () => novaPagina(true);
+    // duplicar a página atual: a cópia vem logo depois; marcações, labels e notas ganham nomes novos
+    // (senão a cópia e o original se misturariam)
+    $('b-pagina-dup').onclick = () => {
+      const atual = paginaAtual(), c = atual.cloneNode(true);
+      c.querySelectorAll('.camada-foco, .na-selecao, .pairada').forEach(e => e.classList.remove('camada-foco', 'na-selecao', 'pairada'));
+      // nomes das marcações (\mk{m1}, data-mk, data-marca)
+      const usados = nomesUsados(), mapa = new Map();
+      document.querySelectorAll('.apostila .marca[data-marca]').forEach(m => m.dataset.marca.split(/\s+/).forEach(n => usados.add(n)));
+      const novo = n => { if (!mapa.has(n)) { let k = 1; while (usados.has('m' + k)) k++; usados.add('m' + k); mapa.set(n, 'm' + k); } return mapa.get(n); };
+      c.querySelectorAll('mjx-container').forEach(m => {
+        if (m.dataset.tex) m.dataset.tex = m.dataset.tex.replace(/\\mk\{([\w-]+)\}/g, (x, n) => '\\mk{' + novo(n) + '}');
+        m.querySelectorAll('[class*="mk-"]').forEach(g => g.setAttribute('class', g.getAttribute('class').replace(/\bmk-([\w-]+)/g, (x, n) => 'mk-' + novo(n))));
+      });
+      c.querySelectorAll('[data-mk]').forEach(e => { e.dataset.mk = novo(e.dataset.mk); });
+      c.querySelectorAll('.marca[data-marca]').forEach(m => { m.dataset.marca = m.dataset.marca.split(/\s+/).filter(Boolean).map(novo).join(' '); });
+      // ids (labels de numerados, notas de rodapé, ...): novos, e as chamadas de nota da cópia apontam para as notas da cópia
+      const ids = new Map(), suf = Date.now().toString(36);
+      c.querySelectorAll('[id]').forEach(e => {
+        if (e.closest('svg, .tinta-html')) return;   // ids dos glifos das fórmulas (iguais nas duas cópias, não atrapalham)
+        const v = e.id, pre = /^([a-z]+):/.exec(v);
+        let n = pre ? labelAleatorio(pre[1]) : null;
+        if (!n) { let k = 2; while (document.getElementById(v + '-' + k)) k++; n = v + '-' + k; }
+        ids.set(v, n); e.id = n;
+      });
+      c.querySelectorAll('[data-nota]').forEach(e => { if (ids.has(e.dataset.nota)) e.dataset.nota = ids.get(e.dataset.nota); });
+      c.querySelectorAll('[data-junto]').forEach(e => { e.dataset.junto = e.dataset.junto + '-' + suf; });
+      atual.after(c);
+      numerarPaginas(); numerar(); contarCamadas(); iconesCamada(); sujo(true); desenharMarcas(); montarSumario();
+      const b = pontaDaPagina(c, false);
+      c.focus({ preventScroll: true }); if (b) { const it = itensDoBloco(b); if (!it.length) cursorEm(b); else porCursor(it, 0); }
+      c.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
     // salvar: devolve as fórmulas para LaTeX e grava o HTML
@@ -2937,7 +3010,6 @@
       const vazio = b && b.matches('p') && !b.textContent.replace(/[\s​]/g, '') && !b.querySelector('mjx-container, img, .marca');
       if (vazio) { if (b.classList.contains('fragment')) L.classList.add('fragment'); b.replaceWith(L); }
       else if (b) b.after(L); else sec.append(L);
-      if (!L.nextElementSibling || L.nextElementSibling.matches('.rodape')) { const p = document.createElement('p'); p.innerHTML = '<br>'; L.after(p); }   // para o cursor sair da tabela
       garantirPontos();
       sec.focus({ preventScroll: true });
       if ($('pt-leg').checked) { const c = novaLegenda(t); numerar(); cursorNaLegenda(c); } else cursorEm(t.rows[0].cells[0]);
@@ -3689,7 +3761,7 @@
         const alvo = a.querySelector('p, h2, h3, h4, li') || a.firstElementChild; if (!alvo) return null;
         t = document.createElement('span'); t.className = 'rotulo amb-titulo';
         let pos = alvo.firstChild; while (pos && pos.nodeType === 1 && pos.matches('.ancora-camada')) pos = pos.nextSibling;
-        alvo.insertBefore(t, pos); t.after(' ');
+        alvo.insertBefore(t, pos); t.after('\u00a0');
       }
       return t;
     }
@@ -3944,7 +4016,15 @@
       if (caixa) { if (caixa.dataset.tipo !== tipo) { caixa.dataset.tipo = tipo; depoisRotulo(); } return editarNumerado(caixa); }
       abrirRotulo({
         perto: bl[0], titulo: NUM[tipo].nome, rotTexto: 'Nome', dica: 'opcional: ' + NUM[tipo].nome + ' n (nome)', texto: '', label: labelAleatorio(NUM[tipo].pref), dono: null, tipo, cor: corPadrao(tipo),
-        salvar: (texto, lab, cor) => { const d = envolverAmbiente(bl.filter(e => e.isConnected), tipo); if (!d) return; d.id = lab; if (texto) d.dataset.nome = texto; if (cor) d.dataset.cor = cor; }
+        salvar: (texto, lab, cor) => {
+          const d = envolverAmbiente(bl.filter(e => e.isConnected), tipo); if (!d) return; d.id = lab; if (texto) d.dataset.nome = texto; if (cor) d.dataset.cor = cor;
+          setTimeout(() => {   // o cursor fica dentro da caixa nova, no fim do texto, para continuar escrevendo nela
+            if (!d.isConnected) return;
+            const cels = celulasDe(d), c = cels[cels.length - 1]; if (!c) return;
+            const sec = d.closest('section.pagina'); if (sec) sec.focus({ preventScroll: true });
+            const it = itensDoBloco(c); if (!it.length) cursorEm(c); else porCursor(it, it.length);
+          }, 0);
+        }
       });
     }
     document.querySelectorAll('#c-num [data-numerado]').forEach(b => b.onclick = () => inserirNumerado(b.dataset.numerado));

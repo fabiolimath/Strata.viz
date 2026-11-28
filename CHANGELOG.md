@@ -2,6 +2,21 @@
 
 ## Próxima versão
 
+- Caixa nova (Definição, Teorema, ...): o cursor fica dentro dela, depois do título, para
+  começar a escrever. O título é seguido de espaço fixo (não some ao digitar).
+- Cursor solto entre dois blocos da página: o que se digita vai para um parágrafo novo ali.
+- Tabela nova no fim da página não cria mais um parágrafo vazio depois dela (o ponto depois
+  da tabela já serve para continuar).
+- Clicar abaixo do último bloco põe o cursor no fim dele (ou no ponto depois da tabela ou
+  caixa), em vez de criar um parágrafo novo. Numa página vazia, cria o parágrafo.
+- Página que fica sem conteúdo (apagando tudo, ou Backspace/Delete numa página vazia) é
+  removida, se não for a única; o cursor vai para a página vizinha.
+- Números das páginas sempre de 1 em diante (o Exemplo 3 começava em 8).
+- Botão Nova página virou um combo: Nova página depois, Nova página antes e
+  Duplicar página (a cópia vem logo depois; marcações, labels e notas da cópia ganham nomes
+  novos, para não se misturarem com as do original).
+- Caixa vazia: seta para a esquerda a partir do ponto depois dela para depois do título
+  (antes o cursor ia para dentro do título e sumia).
 - Caixas de ambiente (definição, teorema, exemplo, observação) com ponto de inserção
   antes e depois, como a tabela e a equação destacada: o cursor para logo fora da borda
   (pelas setas ou clicando na margem ao lado da caixa), e digitar ou dar Enter ali cria
