@@ -12,7 +12,7 @@
 - Página que fica sem conteúdo (apagando tudo, ou Backspace/Delete numa página vazia) é
   removida, se não for a única; o cursor vai para a página vizinha.
 - Números das páginas sempre de 1 em diante (o Exemplo 3 começava em 8).
-- Botão Nova página virou um combo: Nova página (depois da atual), Nova página antes e
+- Botão Nova página virou um combo: Nova página depois, Nova página antes e
   Duplicar página (a cópia vem logo depois; marcações, labels e notas da cópia ganham nomes
   novos, para não se misturarem com as do original).
 - Caixa vazia: seta para a esquerda a partir do ponto depois dela para depois do título
