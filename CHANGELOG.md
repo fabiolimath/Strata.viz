@@ -12,6 +12,11 @@
 - Página que fica sem conteúdo (apagando tudo, ou Backspace/Delete numa página vazia) é
   removida, se não for a única; o cursor vai para a página vizinha.
 - Números das páginas sempre de 1 em diante (o Exemplo 3 começava em 8).
+- Botão Nova página virou um combo: Nova página (depois da atual), Nova página antes e
+  Duplicar página (a cópia vem logo depois; marcações, labels e notas da cópia ganham nomes
+  novos, para não se misturarem com as do original).
+- Caixa vazia: seta para a esquerda a partir do ponto depois dela para depois do título
+  (antes o cursor ia para dentro do título e sumia).
 - Caixas de ambiente (definição, teorema, exemplo, observação) com ponto de inserção
   antes e depois, como a tabela e a equação destacada: o cursor para logo fora da borda
   (pelas setas ou clicando na margem ao lado da caixa), e digitar ou dar Enter ali cria

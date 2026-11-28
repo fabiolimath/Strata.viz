@@ -125,7 +125,8 @@
   <span class="sep"></span>
   <button type="button" id="b-menos-recuo" class="b-icone" title="Diminuir recuo (no parágrafo sem recuo, tira o recuo da primeira linha)" aria-label="Diminuir recuo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 6h9M11 10h9M11 14h9M4 18h16"/><path d="M7.5 8.5L4.5 11.5l3 3"/></svg></button>
   <button type="button" id="b-mais-recuo" class="b-icone" title="Aumentar recuo (no parágrafo sem recuo da primeira linha, devolve esse recuo primeiro)" aria-label="Aumentar recuo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 6h9M11 10h9M11 14h9M4 18h16"/><path d="M4.5 8.5l3 3-3 3"/></svg></button>
-  <button type="button" id="b-pagina" class="b-icone" title="Nova página, depois da página atual" aria-label="Nova página"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M14 3v4h4"></path><path d="M12 11v6M9 14h6"></path></svg></button>
+  <span class="combo grupo" id="c-pagina"><button type="button" id="b-paginas" class="b-icone" title="Página" aria-label="Página"></button><button type="button" class="combo-seta" title="Página: escolher" aria-label="Página: escolher">▾</button>
+    <span class="combo-menu" hidden=""><button type="button" id="b-pagina" title="Nova página, depois da página atual" aria-label="Nova página"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M14 3v4h4"></path><path d="M12 11v6M9 14h6"></path></svg></span>Nova página</button><button type="button" id="b-pagina-antes" title="Nova página, antes da página atual" aria-label="Nova página antes"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7h7l4 4v11H9z"></path><path d="M16 7v4h4"></path><path d="M4 2h7v3"></path><path d="M4 2v9h3" stroke-dasharray="2 1.5"></path><path d="M14.5 13v6M11.5 16h6"></path></svg></span>Nova página antes</button><button type="button" id="b-pagina-dup" title="Duplicar a página atual (a cópia vem logo depois dela)" aria-label="Duplicar página"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7h8l4 4v11H8z"></path><path d="M16 7v4h4"></path><path d="M4 18V2h8l2 2"></path><path d="M11 14h6M11 17.5h6"></path></svg></span>Duplicar página</button></span></span>
   <button type="button" id="b-busca" class="b-icone" title="Localizar e substituir (Ctrl+H), também no LaTeX das fórmulas" aria-label="Localizar e substituir"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L20 20"/></svg></button>
   <span class="sep"></span>
   <button type="button" id="b-link" class="b-icone" title="Inserir ou editar link (Ctrl+K)" aria-label="Link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></button>
@@ -623,7 +624,7 @@
           if (!ic.length) { cursorEm(c); return; }
           let q = ev.key === 'ArrowRight' ? 0 : ic.length;
           const pula = t => t.zw || ehTitulo(t);   // o título do ambiente não é editável: o cursor fica depois dele
-          if (ev.key === 'ArrowRight') while (q < ic.length && pula(ic[q])) q++; else while (q > 0 && pula(ic[q - 1])) q--;
+          if (ev.key === 'ArrowRight') while (q < ic.length && pula(ic[q])) q++; else while (q > 0 && ic[q - 1].zw && !ehTitulo(ic[q - 1])) q--;   // pela esquerda, para no fim (mesmo que só haja o título)
           porCursor(ic, q); return;
         }
       } else if (!b.matches('section.pagina')) {   // e o caminho inverso: do bloco vizinho para dentro da tabela
@@ -1168,16 +1169,50 @@
         sujo(true); iconesCamada(); desenharMarcas(); montarSumario();
       }, 0);
     });
-    // nova página, logo depois da página atual
-    $('b-pagina').onclick = () => {
-      const pags = [...document.querySelectorAll('section.pagina')];
-      const atual = (ED.bloco && ED.bloco.closest('section.pagina')) || pags[pags.length - 1];
+    // nova página, depois (ou antes) da página atual
+    function paginaAtual() { const pags = [...document.querySelectorAll('section.pagina')]; return (ED.bloco && ED.bloco.isConnected && ED.bloco.closest('section.pagina')) || pags[pags.length - 1]; }
+    function novaPagina(antes) {
+      const atual = paginaAtual();
       const sec = document.createElement('section'); sec.className = 'pagina'; sec.setAttribute('contenteditable', 'true');
       const p = document.createElement('p'); p.innerHTML = '<br>'; sec.append(p);
       const rd = document.createElement('div'); rd.className = 'rodape'; rd.setAttribute('contenteditable', 'false'); sec.append(rd);
-      atual.after(sec);
+      if (antes) atual.before(sec); else atual.after(sec);
       numerarPaginas();
-      cursorEm(p); sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); sujo(true);
+      sec.focus({ preventScroll: true }); cursorEm(p); sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); sujo(true); montarSumario();
+    }
+    $('b-pagina').onclick = () => novaPagina(false);
+    $('b-pagina-antes').onclick = () => novaPagina(true);
+    // duplicar a página atual: a cópia vem logo depois; marcações, labels e notas ganham nomes novos
+    // (senão a cópia e o original se misturariam)
+    $('b-pagina-dup').onclick = () => {
+      const atual = paginaAtual(), c = atual.cloneNode(true);
+      c.querySelectorAll('.camada-foco, .na-selecao, .pairada').forEach(e => e.classList.remove('camada-foco', 'na-selecao', 'pairada'));
+      // nomes das marcações (\mk{m1}, data-mk, data-marca)
+      const usados = nomesUsados(), mapa = new Map();
+      document.querySelectorAll('.apostila .marca[data-marca]').forEach(m => m.dataset.marca.split(/\s+/).forEach(n => usados.add(n)));
+      const novo = n => { if (!mapa.has(n)) { let k = 1; while (usados.has('m' + k)) k++; usados.add('m' + k); mapa.set(n, 'm' + k); } return mapa.get(n); };
+      c.querySelectorAll('mjx-container').forEach(m => {
+        if (m.dataset.tex) m.dataset.tex = m.dataset.tex.replace(/\\mk\{([\w-]+)\}/g, (x, n) => '\\mk{' + novo(n) + '}');
+        m.querySelectorAll('[class*="mk-"]').forEach(g => g.setAttribute('class', g.getAttribute('class').replace(/\bmk-([\w-]+)/g, (x, n) => 'mk-' + novo(n))));
+      });
+      c.querySelectorAll('[data-mk]').forEach(e => { e.dataset.mk = novo(e.dataset.mk); });
+      c.querySelectorAll('.marca[data-marca]').forEach(m => { m.dataset.marca = m.dataset.marca.split(/\s+/).filter(Boolean).map(novo).join(' '); });
+      // ids (labels de numerados, notas de rodapé, ...): novos, e as chamadas de nota da cópia apontam para as notas da cópia
+      const ids = new Map(), suf = Date.now().toString(36);
+      c.querySelectorAll('[id]').forEach(e => {
+        if (e.closest('svg, .tinta-html')) return;   // ids dos glifos das fórmulas (iguais nas duas cópias, não atrapalham)
+        const v = e.id, pre = /^([a-z]+):/.exec(v);
+        let n = pre ? labelAleatorio(pre[1]) : null;
+        if (!n) { let k = 2; while (document.getElementById(v + '-' + k)) k++; n = v + '-' + k; }
+        ids.set(v, n); e.id = n;
+      });
+      c.querySelectorAll('[data-nota]').forEach(e => { if (ids.has(e.dataset.nota)) e.dataset.nota = ids.get(e.dataset.nota); });
+      c.querySelectorAll('[data-junto]').forEach(e => { e.dataset.junto = e.dataset.junto + '-' + suf; });
+      atual.after(c);
+      numerarPaginas(); numerar(); contarCamadas(); iconesCamada(); sujo(true); desenharMarcas(); montarSumario();
+      const b = pontaDaPagina(c, false);
+      c.focus({ preventScroll: true }); if (b) { const it = itensDoBloco(b); if (!it.length) cursorEm(b); else porCursor(it, 0); }
+      c.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
     // salvar: devolve as fórmulas para LaTeX e grava o HTML
