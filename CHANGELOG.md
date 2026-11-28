@@ -2,6 +2,10 @@
 
 ## Próxima versão
 
+- Barra do modo edição reorganizada em grupos: estilo, numerados, formatação e cor |
+  alinhamento e listas | recuos, nova página e localizar | link, mídia, tabela,
+  desenho, marcação e equações | olho e camada. O botão Camada tem as cores da âncora
+  de camada (laranja), e à direita dele vem "Strata.viz", com link para o site.
 - Links internos: a lista "Ou ir para" tem só os elementos numerados; títulos comuns
   saíram (links antigos para eles continuam funcionando).
 - Link: no modo edição, clicar num link abre o diálogo para editá-lo. Link interno:
